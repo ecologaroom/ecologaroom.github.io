@@ -9,7 +9,7 @@ botonGoogle.addEventListener('click', e=> {
     /* No ha iniciado sesión. Pide datos para iniciar sesión. */
     auth.signInWithRedirect(provider)
         .then(result =>{
-            formLogin
+            formLogin();
         })
 })
 
