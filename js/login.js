@@ -7,7 +7,7 @@ botonGoogle.addEventListener('click', e=> {
     // @ts-ignore
     const provider = new firebase.auth.GoogleAuthProvider();
     /* No ha iniciado sesión. Pide datos para iniciar sesión. */
-    auth.signInWithPopup(provider)
+    auth.signInWithRedirect(provider)
         .then(result =>{
             location.href = 'restaurantes.html';
         })
