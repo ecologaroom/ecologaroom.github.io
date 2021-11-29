@@ -1,0 +1,71 @@
+.card {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    max-height: auto;
+    min-height: auto;
+    margin: 1rem auto;
+    box-shadow: 0 3px 7px -1px rgba(#000, .1);
+    overflow: hidden;
+    z-index: 0;
+    align-items: center;
+    text-align: justify;
+}
+
+.cabecera {
+    display: flex;
+    flex-direction: row;
+    width: 95%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.cabecera h2{
+    height: 100%;
+    flex-basis: 60%;
+}
+
+.cabecera .calificacion{
+    flex-basis: 40%;
+    text-align: end;
+    display: block;
+    margin: auto;
+}
+
+.cabecera img{
+    width: 25px;
+    height: 25px;
+}
+
+.cinemagraph {
+    width: 90%;
+    display: block;
+    margin: auto;
+    max-height: 400px;
+}
+
+.cuerpo {
+    width: 95%;
+    display: flex;
+    flex-direction: row;
+    height: auto;
+    max-height: auto;
+    min-height: auto;
+    margin: 1rem auto;
+}
+
+.izquierda {
+    padding: 1vw;
+    flex-basis: 50%;
+}
+
+.derecha {
+    padding: 1vw;
+    flex-basis: 50%;
+}
+
+.division {
+    padding: 4px;
+    margin: 1%;
+    background:#7ed97e;
+}

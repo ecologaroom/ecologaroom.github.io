@@ -1,0 +1,12 @@
+.sala {
+  height: 520px;
+}
+
+.virtual {
+  height: 440px;
+}
+
+.sala img{
+  width: 100%;
+  height: 100%;
+}

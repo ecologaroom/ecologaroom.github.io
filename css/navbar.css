@@ -1,0 +1,61 @@
+@import url("'https://fonts.googleapis.com/css2?family=EB+Garamond&family=Lateef&family=Outfit:wght@300&display=swap'");
+
+.navbar {
+  position: fixed; /* Establecemos que la posición del navbar al navegar por la página sea fijo */
+  top: 0%; /* Delimitamos que la posición fija del navbar sea desde el inicio del margen de hasta arriba*/
+  left: 0%; /* Delimitamos que la posición fija del navbar sea desde el inicio del margen de la izquierda */
+  right: 0%; /* Delimitamos que la posición fija del navbar sea desde el inicio del margen de la derecha */
+  z-index: 1; /* Establecemos que el navbar se posicione sobre todo contenido de la página */
+  width: 100%; /* Establecemos que el navbar abarque el 100% de la página */
+  height: 100%; /* Establecemos que el navbar abarque el 100% de la página */
+  max-height: 10%; /* Delimitamos que el navbar abarque hasta el 11% de la página en vertical */
+  background-color: #F5F3EF; /* Establecemos que el color de fondo del navbar sea crema */
+}
+
+.logo {
+  float: left; /* Establecemos que la posición del logo siempre sea a la izquierda (permite compartir espacio con la reservación) */
+  width: 10%; /* Establecemos que el logo abarque el 10% del navbar */
+  text-align: center; /* Alineamos el logo al centro del 10% de lo que abarca */
+}
+
+.logo img {
+  width: 70px; /* Establecemos que la imagen del logo mantenga su anchura de 70 pixeles */
+  height: 70px; /* Establecemos que la imagen del logo mantenga su altura de 70 pixeles */
+}
+
+.reservacion{
+  float: right; /* Establecemos que la posición de la reservación siempre sea a la derecha (permite compartir espacio con la reservación) */
+  width: 90%; /* Establecemos que la reservación abarque el 90% del navbar */
+  text-align: right; /* Alineamos los elementos de la reservación a la derecha del 90% de lo que abarca */
+  font-family: 'EB Garamond', serif; /* Asignamos la familia EB Garamond a los elementos de la reservación */
+}
+
+.navbar input {
+  width: 120px; /* Establecemos que la entrada de texto abarque 120 pixeles */
+  margin-right: 40px; /* Delimitamos que el margen a la derecha de la entrada de texto sea de 18 pixeles */
+  font-family: 'EB Garamond', serif; /* Asignamos la familia EB Garamond al texto de la entrada de texto */
+}
+
+#Num_huesped {
+  width: 50px; /* Establecemos que la entrada de texto abarque 50 pixeles */
+}
+
+.navbar button {
+  width: 100px; /* Establecemos que el botón de reservar abarque 100 pixeles */
+  margin: 18px 40px 18px 0px; /* Delimitamos que el margen del botón de reservar sea de 18 pixeles de arriba, 40 pixeles a la derecha y 18 pixeles a la izquierda*/
+  padding: 5px; 
+  background: #7ed957;
+	box-shadow:0px 3px 0px #429900;
+  border: none;
+  border-radius: 40px;
+  text-align: center; /* Alineamos el texto del botón reservar al centro de los 100 pixeles de lo que abarca */
+  font-family: 'EB Garamond', serif; /* Asignamos la familia EB Garamond al texto del botón reservar */
+  font-size: 18px;
+  font-weight: bold;
+  color:#f5f3ef;
+  transition: all 500ms ease;
+}
+
+.navbar button:hover {
+  background: #029876;  /* Establecemos que el color de fondo del botón de reservar al posicionarse sobre él sea verde oscuro */
+}

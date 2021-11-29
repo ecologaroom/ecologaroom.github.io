@@ -1,0 +1,37 @@
+@import url("'https://fonts.googleapis.com/css2?family=EB+Garamond&family=Lateef&family=Outfit:wght@300&display=swap'");
+
+.menu {
+    position: fixed; /* Establecemos que la posición del menú al navegar por la página sea fijo */
+    top: 10%; /* Delimitamos que la posición fija del menú sea el 10% del inicio del margen de hasta arriba */
+    left: 0%; /* Delimitamos que la posición fija del menú sea desde el inicio del margen de la izquierda */
+    z-index: 1; /* Establecemos que el menú se posicione sobre todo contenido de la página */
+    width: 10%; /* Establecemos que el menú abarque el 10% de la página */
+    height: 100%; /* Establecemos que el menú abarque el 100% de la página */
+    background-color: #4faae0; /* Establecemos que el color de fondo del menú sea azul */
+    text-align: center; /* Alineamos los elementos del menú al centro del 10% de lo que abarca */
+}
+  
+.menuBtn {
+    width: 100%; /* Establecemos que los botones abarquen el 100% del menú */
+    height: 70px; /* Establecemos que los botones abarquen 70 pixeles del menú */
+    background: none; /* Establecemos que el color de fondo de los botones inexistan */
+    border: none; /* Definimos que los bordes de los botones inexistan */
+    border-bottom: 2px solid #f5f3ef; /* Definimos que el borde bajo de los botones se de 2 pixeles, con forma sólida y de color blanco */
+    font-family: 'EB Garamond', serif; /* Asignamos la familia EB Garamond al texto de los botones */
+    color: #f5f3ef; /* Establecemos que el color del texto de los botones sea crema */
+}
+  
+.menuBtn:hover {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.6);  /* Definimos que aparezca una sombra negra en los botones al posicionarse sobre ellos */
+    text-shadow: 1px 1px 6px rgb(0, 0, 0);  /* Definimos que aparezca una sombra negra en el texto de los botones al posicionarse sobre ellos */
+    transition: all 0.2s ease; /* Asignamos una transición tenue y de 2 segundos al posicionarse sobre los botones */
+}
+  
+.menuNBtn {
+    width: 100%; /* Establecemos que el boton del apartado en el que estamos abarque el 100% del menú */
+    height: 70px; /* Establecemos que el boton del apartado en el que estamos abarque 70 pixeles del menú */
+    background: #7ed97e; /* Establecemos que el color del boton del apartado en el que estamos sea verde */
+    border: none; /* Definimos que el borde del boton del apartado en el que estamos inexistan */
+    font-family: 'EB Garamond', serif; /* Asignamos la familia EB Garamond al texto del boton del apartado en el que estamos */
+    color: #f5f3ef; /* Establecemos que el color del texto del boton del apartado en el que estamos sea crema */
+}
