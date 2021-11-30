@@ -123,6 +123,7 @@
           /** Tipo de autenticación de usuarios. En este caso es con Google. */
           // @ts-ignore
           const provider = new firebase.auth.GoogleAuthProvider();
+
 btnReservar.addEventListener("click", e =>{
           /* Configura el proveedor de Google para que permita seleccionar de una lista. */
           provider.setCustomParameters({ prompt: "select_account" });
@@ -154,6 +155,9 @@ btnReservar.addEventListener("click", e =>{
   
   /* Terminar la sesión. */
   async function terminaSesion() {
+    /** Conexión al sistema de autenticación de Firebase. */
+          // @ts-ignore
+          const auth = firebase.auth();
     try {
         await auth.singOut();
     } catch (e) {
