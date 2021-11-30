@@ -138,9 +138,9 @@ btnReservar.addEventListener("click", e =>{
                 /* Muestra los mensajes del chat.
                 muestraMensajes();*/
               } else {
+                location.href = 'reservacion_cliente.html';
                 // No ha iniciado sesión. Pide datos para iniciar sesión.
                 await auth.signInWithRedirect(provider);
-                location.href = 'reservacion_cliente.html';
               }
             },
             // Función que se invoca si hay un error al verificar el usuario.
