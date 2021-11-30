@@ -133,7 +133,7 @@ btnReservar.addEventListener("click", e =>{
             async usuarioAuth => {
               if (usuarioAuth && usuarioAuth.email) {
                 // Usuario aceptado.
-                location.href = 'FAQ.html';
+                formFAQ();
                 /* Muestra los mensajes del chat.
                 muestraMensajes();*/
               } else {
