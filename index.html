@@ -87,7 +87,7 @@
         </div>
         <!-- Descripción -->
 
-        <div id="nombre"></div>
+        <output id="nombre"></output>
 
         <!-- Pie de página -->
         <footer>
@@ -136,7 +136,6 @@ function formLogin(){
             if (usuarioAuth && usuarioAuth.email) {
                 /* Nombre de usuario atenticado por Firebase y aceptado. */
                 nombre.value = usuarioAuth.email; 
-                location.href = 'FAQ.html';
             } else {
                 /* No ha iniciado sesión. Pide datos para iniciar sesión. */
                 auth.signInWithRedirect(provider);
