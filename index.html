@@ -87,6 +87,8 @@
         </div>
         <!-- Descripción -->
 
+        <div id="nombre"></div>
+
         <!-- Pie de página -->
         <footer>
           <!-- Contenedor de la retícula -->
@@ -133,6 +135,7 @@ function formLogin(){
         usuarioAuth => {
             if (usuarioAuth && usuarioAuth.email) {
                 /* Nombre de usuario atenticado por Firebase y aceptado. */
+                nombre.value = usuarioAuth.email; 
                 location.href = 'FAQ.html';
             } else {
                 /* No ha iniciado sesión. Pide datos para iniciar sesión. */
