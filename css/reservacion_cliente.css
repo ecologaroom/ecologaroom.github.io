@@ -1,12 +1,78 @@
 @import url("'https://fonts.googleapis.com/css2?family=EB+Garamond&family=Lateef&family=Outfit:wght@300&display=swap'");
 
-.cuerpo {
+.grid {
     display: flex;
     flex-direction: row;
     width: auto;
     height: auto;
     margin: 1rem auto;
     align-items: justify;
+}
+
+.envoltura {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 60%;
+  height: auto;
+  margin-left: 0.5em ;
+  padding: 1em;
+  background: #E4DDDA;
+  overflow: hidden;
+  text-align: justify;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.9em;
+}
+
+.btnApartado {
+	border: none;
+	font: inherit;
+	margin: 0;
+	padding: 0 0 0 0.444em;
+	position:relative;
+	text-align: left;
+	text-transform: inherint;
+  background: none;
+}
+
+
+.btnApartado::before {
+	content: '';
+	border: solid 1px #000;
+	border-radius: 50%;
+	display: block;
+	height: 0.889em;
+	position: absolute;
+	right: 88%;
+	top: 5%;
+	width: 0.889em;
+}
+
+.btnApartado::after {
+	content: '';
+	border: solid 1px #000;
+	border-radius: 50%;
+  background: #000;
+	display: block;
+	height: 0.556em;
+	position: absolute;
+	right: 89.5%;
+	top: 20%;
+	width: 0.556em;
+	transform: .2s ease;
+}
+
+aside {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 40%;
+  height: auto;
+  margin-left: 0.5em ;
+  padding: 1em;
+  background: #7ed957;
+  overflow: hidden;
+  text-align: justify;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.9em;
 }
 
 .datos {
@@ -26,31 +92,4 @@
     font-family: 'Outfit', sans-serif;
     font-size: 0.9em;
     font-weight: bold;
-}
-
-.resumen {
-    display: flex;
-    flex-direction: column;
-    flex-basis: 40%;
-    height: auto;
-    margin-left: 0.5em ;
-    padding: 1em;
-    background: #7ed957;
-    overflow: hidden;
-    text-align: justify;
-    font-family: 'Outfit', sans-serif;
-    font-size: 0.9em;
-}
-
-.cliente{
-
-}
-
-.cliente .envoltura{
-  padding: 0;
-}
-
-.cliente img{
-  width: 100%;
-  height: 100%;
 }

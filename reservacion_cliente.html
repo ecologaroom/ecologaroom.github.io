@@ -61,115 +61,41 @@
       <!-- Contenido -->
       <section class="contenido">
         <h1>RESERVA AHORA</h1>
-        <!-- Habitación Estándar Sencilla-->
-        <div class="cuerpo">
-          <fieldset class="datos">
-            <!-- Datos del cliente -->
-            <label><input type="radio" name="color" value="azul">
-              <fieldset>
-                <legend>CLIENTE</legend>
-<form>
-  <!-- 2 column grid layout with text inputs for the first and last names -->
-  <div class="row mb-4">
-    <div class="col">
-      <div class="form-outline">
-        <input type="text" id="form6Example1" class="form-control" />
-        <label class="form-label" for="form6Example1">First name</label>
-      </div>
-    </div>
-    <div class="col">
-      <div class="form-outline">
-        <input type="text" id="form6Example2" class="form-control" />
-        <label class="form-label" for="form6Example2">Last name</label>
-      </div>
-    </div>
-  </div>
+        <!-- Grid de datos y resumen -->   
+        <div class="grid">
+          <!-- Envoltura para apartados de la izquierda -->   
+          <div class="envoltura">
+            <!-- Apartado de los datos del cliente -->
+            <div class="cliente">
+              <!-- Título del apartado -->
+              <div class="titulo">
+                <h2>
+                  <button tabindex="0" role="button" aria-expanded="true" class="btnApartado">
+                    __INGRESA TUS DATOS
+                  </button>
+                </h2>
+              </div>
+              <!-- Título del apartado -->
 
-  <!-- Text input -->
-  <div class="form-outline mb-4">
-    <input type="text" id="form6Example3" class="form-control" />
-    <label class="form-label" for="form6Example3">Company name</label>
-  </div>
+              <!-- Formulario del apartado -->
+              <form method="post" visibility="false" id="customer_login" accept-charset="UTF-8">
+                <div class="input_group">
+                  <label>Nombre</label>
+                  <input type="text" required="required" class="text">
+                </div>
+                <button type="button" class="btnFormulario">Guardar</button>
+              </form>
+              <!-- Formulario del apartado -->
+            </div>
+            <!-- Apartado de los datos del cliente -->
 
-  <!-- Text input -->
-  <div class="form-outline mb-4">
-    <input type="text" id="form6Example4" class="form-control" />
-    <label class="form-label" for="form6Example4">Address</label>
-  </div>
 
-  <!-- Email input -->
-  <div class="form-outline mb-4">
-    <input type="email" id="form6Example5" class="form-control" />
-    <label class="form-label" for="form6Example5">Email</label>
-  </div>
 
-  <!-- Number input -->
-  <div class="form-outline mb-4">
-    <input type="number" id="form6Example6" class="form-control" />
-    <label class="form-label" for="form6Example6">Phone</label>
-  </div>
+          </div>
+          <!-- Envoltura para apartados de la izquierda -->   
 
-  <!-- Message input -->
-  <div class="form-outline mb-4">
-    <textarea class="form-control" id="form6Example7" rows="4"></textarea>
-    <label class="form-label" for="form6Example7">Additional information</label>
-  </div>
-
-  <!-- Checkbox -->
-  <div class="form-check d-flex justify-content-center mb-4">
-    <input
-      class="form-check-input me-2"
-      type="checkbox"
-      value=""
-      id="form6Example8"
-      checked
-    />
-    <label class="form-check-label" for="form6Example8"> Create an account? </label>
-  </div>
-
-  <!-- Submit button -->
-  <button type="submit" class="btn btn-primary btn-block mb-4">Place order</button>
-</form>
-              </fieldset>
-            </label>
-            <!-- Datos del cliente -->
-    
-            <!-- Datos de la reservación -->
-            <label><input type="radio" name="color" value="azul">
-              <fieldset>
-                <legend>RESERVACIÓN</legend>
-                <label>
-                    <input type="radio" name="color" value="azul"> Azul
-                </label>
-                <label>
-                    <input type="radio" name="color" value="negro"> Negro
-                </label>
-                <label>
-                    <input type="radio" name="color" value="amarillo"> Amarillo
-                </label>
-              </fieldset>
-            </label>
-            <!-- Datos de la reservación -->
-
-            <!-- Datos del método de pago -->
-            <label><input type="radio" name="color" value="azul">
-              <fieldset>
-                <legend>MÉTODO DE PAGO</legend>
-                <label>
-                    <input type="radio" name="color" value="azul"> Azul
-                </label>
-                <label>
-                    <input type="radio" name="color" value="negro"> Negro
-                </label>
-                <label>
-                    <input type="radio" name="color" value="amarillo"> Amarillo
-                </label>
-              </fieldset>
-            </label>
-            <!-- Datos del método de pago -->
-          </fieldset>
-
-          <div class="resumen">
+          <!-- Envoltura para resumen de la derecha -->  
+          <aside class="resumen" role="complementary">
             <h4>Resumen de compra</h3>
             <p> Habitación estándar ... $ 600.00
               <p> Habitación doble ... $ 1,000.00</p> 
@@ -177,8 +103,11 @@
             <p class="total">
               <a><b>Total</b></a> <output>$ 1,600.00 MXN</output>
             </p>
-          </div>
+          </aside>
+          <!-- Envoltura para resumen de la derecha -->  
+
         </div>
+        <!-- Grid de datos y resumen -->
 
         <!-- Pie de página -->
         <footer>
