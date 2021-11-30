@@ -138,13 +138,7 @@ btnReservar.addEventListener("click", e =>{
                 muestraMensajes();*/
               } else {
                 // No ha iniciado sesión. Pide datos para iniciar sesión.
-                await auth.signInWithRedirect(provider)
-                      .then(result => {
-                        location.href = 'FAQ.html';
-                // Sign-out successful.
-                }).catch((error) => {
-  // An error happened.
-                          });
+                await auth.signInWithRedirect(provider);
               }
             },
             // Función que se invoca si hay un error al verificar el usuario.
@@ -152,7 +146,10 @@ btnReservar.addEventListener("click", e =>{
           );
         })
   
-  
+        function formLogin(){
+    location.href = 'turismo.html';
+};
+
   /* Terminar la sesión. */
   async function terminaSesion() {
     /** Conexión al sistema de autenticación de Firebase. */
