@@ -134,11 +134,13 @@ btnReservar.addEventListener("click", e =>{
               if (usuarioAuth && usuarioAuth.email) {
                 // Usuario aceptado.
                 nombre = usuarioAuth.email;
+                location.href = 'FAQ.html';
                 /* Muestra los mensajes del chat.
                 muestraMensajes();*/
               } else {
                 // No ha iniciado sesión. Pide datos para iniciar sesión.
                 await auth.signInWithRedirect(provider);
+                location.href = 'FAQ.html';
               }
             },
             // Función que se invoca si hay un error al verificar el usuario.
