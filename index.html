@@ -140,7 +140,6 @@ btnReservar.addEventListener("click", e =>{
               } else {
                 // No ha iniciado sesión. Pide datos para iniciar sesión.
                 await auth.signInWithRedirect(provider);
-                location.href = 'reservacion.html';
               }
             },
             // Función que se invoca si hay un error al verificar el usuario.
