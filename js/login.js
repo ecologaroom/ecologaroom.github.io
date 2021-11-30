@@ -1,4 +1,5 @@
 const botonGoogle = document.querySelector("#btnReservar");
+
 botonGoogle.addEventListener('click', e=> {
     /* Conexión al sistema de autenticación de Firebase. */
     // @ts-ignore
@@ -7,5 +8,5 @@ botonGoogle.addEventListener('click', e=> {
     // @ts-ignore
     const provider = new firebase.auth.GoogleAuthProvider();
     /* No ha iniciado sesión. Pide datos para iniciar sesión. */
-    auth.signInWithPopup(provider);
+    auth.signInWithRedirect(provider);
 }) 
