@@ -1,0 +1,56 @@
+@import url("'https://fonts.googleapis.com/css2?family=EB+Garamond&family=Lateef&family=Outfit:wght@300&display=swap'");
+
+.cuerpo {
+    display: flex;
+    flex-direction: row;
+    width: auto;
+    height: auto;
+    margin: 1rem auto;
+    align-items: justify;
+}
+
+.datos {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 60%;
+    height: 100%;
+    margin: 1rem auto;
+    box-shadow: 0 3px 7px -1px rgba(#000, .1);
+    background: #E4DDDA;
+    overflow: hidden;
+    z-index: 0;
+    align-items: justify;
+}
+
+.datos legend {
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.9em;
+    font-weight: bold;
+}
+
+.resumen {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 40%;
+    height: auto;
+    margin-left: 0.5em ;
+    padding: 1em;
+    background: #7ed957;
+    overflow: hidden;
+    text-align: justify;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.9em;
+}
+
+.cliente{
+
+}
+
+.cliente .envoltura{
+  padding: 0;
+}
+
+.cliente img{
+  width: 100%;
+  height: 100%;
+}

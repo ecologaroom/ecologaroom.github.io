@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="css/menu.css">
     <link rel="stylesheet" href="css/footer.css">
     <link rel="stylesheet" href="css/general.css">
+    <link rel="stylesheet" href="css/reservacion_cliente.css">
     <!--  Carga el núcleo de Firebase JS SDK -->
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
     <!--  Agrega el manejo de autenticación. -->
@@ -45,7 +46,7 @@
         <!-- Botón de Inicio -->
         <button type="button" onClick="formInicio();" class="menuBtn" style="font-size:34px;">INICIO</button>
         <!-- Botón de Habitaciones -->
-        <button type="button" class="menuNBtn" style="font-size:16px;">HABITACIONES</button>
+        <button type="button" onClick="formHabitaciones();" class="menuBtn" style="font-size:16px;">HABITACIONES</button>
         <!-- Botón de Intalaciones -->
         <button type="button" onClick="formInstalaciones();" class="menuBtn" style="font-size:15px;">INSTALACIONES</button>
         <!-- Botón de Turismo -->
@@ -56,6 +57,156 @@
         <button type="button" onClick="formFAQ();" class="menuBtn" style="font-size:46px;">FAQ</button>
       </div>
       <!-- Menú -->
+      
+      <!-- Contenido -->
+      <section class="contenido">
+        <h1>RESERVA AHORA</h1>
+        <!-- Habitación Estándar Sencilla-->
+        <div class="cuerpo">
+          <fieldset class="datos">
+            <!-- Datos del cliente -->
+            <label><input type="radio" name="color" value="azul">
+              <fieldset>
+                <legend>CLIENTE</legend>
+<form>
+  <!-- 2 column grid layout with text inputs for the first and last names -->
+  <div class="row mb-4">
+    <div class="col">
+      <div class="form-outline">
+        <input type="text" id="form6Example1" class="form-control" />
+        <label class="form-label" for="form6Example1">First name</label>
+      </div>
+    </div>
+    <div class="col">
+      <div class="form-outline">
+        <input type="text" id="form6Example2" class="form-control" />
+        <label class="form-label" for="form6Example2">Last name</label>
+      </div>
+    </div>
+  </div>
+
+  <!-- Text input -->
+  <div class="form-outline mb-4">
+    <input type="text" id="form6Example3" class="form-control" />
+    <label class="form-label" for="form6Example3">Company name</label>
+  </div>
+
+  <!-- Text input -->
+  <div class="form-outline mb-4">
+    <input type="text" id="form6Example4" class="form-control" />
+    <label class="form-label" for="form6Example4">Address</label>
+  </div>
+
+  <!-- Email input -->
+  <div class="form-outline mb-4">
+    <input type="email" id="form6Example5" class="form-control" />
+    <label class="form-label" for="form6Example5">Email</label>
+  </div>
+
+  <!-- Number input -->
+  <div class="form-outline mb-4">
+    <input type="number" id="form6Example6" class="form-control" />
+    <label class="form-label" for="form6Example6">Phone</label>
+  </div>
+
+  <!-- Message input -->
+  <div class="form-outline mb-4">
+    <textarea class="form-control" id="form6Example7" rows="4"></textarea>
+    <label class="form-label" for="form6Example7">Additional information</label>
+  </div>
+
+  <!-- Checkbox -->
+  <div class="form-check d-flex justify-content-center mb-4">
+    <input
+      class="form-check-input me-2"
+      type="checkbox"
+      value=""
+      id="form6Example8"
+      checked
+    />
+    <label class="form-check-label" for="form6Example8"> Create an account? </label>
+  </div>
+
+  <!-- Submit button -->
+  <button type="submit" class="btn btn-primary btn-block mb-4">Place order</button>
+</form>
+              </fieldset>
+            </label>
+            <!-- Datos del cliente -->
+    
+            <!-- Datos de la reservación -->
+            <label><input type="radio" name="color" value="azul">
+              <fieldset>
+                <legend>RESERVACIÓN</legend>
+                <label>
+                    <input type="radio" name="color" value="azul"> Azul
+                </label>
+                <label>
+                    <input type="radio" name="color" value="negro"> Negro
+                </label>
+                <label>
+                    <input type="radio" name="color" value="amarillo"> Amarillo
+                </label>
+              </fieldset>
+            </label>
+            <!-- Datos de la reservación -->
+
+            <!-- Datos del método de pago -->
+            <label><input type="radio" name="color" value="azul">
+              <fieldset>
+                <legend>MÉTODO DE PAGO</legend>
+                <label>
+                    <input type="radio" name="color" value="azul"> Azul
+                </label>
+                <label>
+                    <input type="radio" name="color" value="negro"> Negro
+                </label>
+                <label>
+                    <input type="radio" name="color" value="amarillo"> Amarillo
+                </label>
+              </fieldset>
+            </label>
+            <!-- Datos del método de pago -->
+          </fieldset>
+
+          <div class="resumen">
+            <h4>Resumen de compra</h3>
+            <p> Habitación estándar ... $ 600.00
+              <p> Habitación doble ... $ 1,000.00</p> 
+            </p>
+            <p class="total">
+              <a><b>Total</b></a> <output>$ 1,600.00 MXN</output>
+            </p>
+          </div>
+        </div>
+
+        <!-- Pie de página -->
+        <footer>
+          <!-- Contenedor de la retícula -->
+          <div class="retícula">
+            <!-- Sección: Contacto -->
+            <section class="contacto">
+              <h3>CONTACTO</h3>
+              <!-- Número -->
+              <a class="icon" title="Llámanos" href="https://goo.gl/maps/DMi8wx4pS4wtUn2z5"><img src="img/llamada-telefonica.png" height="30" width="30" style="background-color: rgba(251, 251, 251, 0.6)"/></a>  
+              <!-- Email -->
+              <a class="icon" title="Mandanos un correo" href="https://goo.gl/maps/DMi8wx4pS4wtUn2z5"><img src="img/email.png" height="30" width="30" style="background-color: rgba(251, 251, 251, 0.6)"/></a>
+              <!-- Ubicación -->
+              <a class="icon" title="Buscanos en Google Maps" href="https://goo.gl/maps/DMi8wx4pS4wtUn2z5"><img src="img/placeholder.png" height="30" width="30" style="background-color: rgba(251, 251, 251, 0.6)"/></a>
+            </section>
+            <!-- Sección: Contacto -->
+          </div>
+          <!-- Contenedor de la retícula -->
+        
+          <!-- Copyright -->
+          <div class="copyright" style="background-color: rgba(0, 0, 0, 0.2);">Copyright &copy; 2021</div>
+          <!-- Copyright -->
+        </footer>
+        <!-- Pie de página -->
+      </section>
+      <!-- Contenido -->
+
+
     </form>
   </body>
 </html>
