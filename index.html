@@ -43,7 +43,7 @@
           <label for="Fecha"># huéspedes:</label>
           <input type="number" id="Num_huesped" name="Num_huesped">
           <!-- Botón de la reservación -->
-          <button type="button" id="btnReservar"  onClick="formLogin();">Reservar</button>
+          <button type="button" id="btnReservar">Reservar</button>
         </div>
         <!-- Reservación inmediata a la derecha -->
       </nav>
@@ -133,6 +133,7 @@ btnReservar.addEventListener("click", e =>{
              * sesión. */
             async usuarioAuth => {
               if (usuarioAuth && usuarioAuth.email) {
+                location.href = 'turismo.html';
                 // Usuario aceptado.
                 /* Muestra los mensajes del chat.
                 muestraMensajes();*/
@@ -145,10 +146,6 @@ btnReservar.addEventListener("click", e =>{
             procesaError
           );
         })
-  
-        function formLogin(){
-    location.href = 'turismo.html';
-};
 
   /* Terminar la sesión. */
   async function terminaSesion() {
