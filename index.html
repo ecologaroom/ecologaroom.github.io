@@ -88,10 +88,6 @@
         </div>
         <!-- Descripción -->
 
-
-        <output id="nombre"></output>
-        <button type="button" onClick="terminaSesion()">Cerrar sesión</button>
-
         <!-- Pie de página -->
         <footer>
           <!-- Contenedor de la retícula -->
@@ -119,6 +115,22 @@
         <!-- Pie de página -->
       </section>
       <!-- Contenido -->
+
+
+      <script>
+        const botonGoogle = document.querySelector("#btnReservar");
+
+botonGoogle.addEventListener('click', e => {
+    /* Conexión al sistema de autenticación de Firebase. */
+    // @ts-ignore
+    const auth = firebase.auth();
+    /* Tipo de autenticación de usuarios. En este caso es con Google. */
+    // @ts-ignore
+    const provider = new firebase.auth.GoogleAuthProvider();
+    /* No ha iniciado sesión. Pide datos para iniciar sesión. */
+    auth.signInWithRedirect(provider);
+}) 
+      </script>
  <!-- 
 // Login con Google
 function formLogin(){
