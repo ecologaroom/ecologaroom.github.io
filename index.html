@@ -84,10 +84,10 @@
           Localizado en el centro del puerto de ilusión, la ciudad de los 365 atardeceres, en Ecologaroom, hotel de 4 estrellas, tendrás a tu alcance una fantástica oferta que combina inteligentemente lujo, confort y practicidad, dando como resultado la mejor y más nueva experiencia de hospedaje en La Paz, B.C.S.
           A su disposición está el uso de computadoras con acceso a internet, así como servicio de impresión y copias. Además, contamos con piscina, máquina de refrigerios, estacionamiento y servicio de coffee break por solicitar.
         </div>
-        
+
         <!-- Descripción -->
+        <button type="button" onClick="terminaSesion();">Cerrar sesión</button>
         <output id="nombre"></output>
-        <button type="button" onClick="terminaSesion()">Cerrar sesión</button>
 
         <!-- Pie de página -->
         <footer>
@@ -118,34 +118,38 @@
       <!-- Contenido -->
 
       <script>
-        /* Conexión al sistema de autenticación de Firebase. */
-    // @ts-ignore
-    const auth = firebase.auth();
-    /* Tipo de autenticación de usuarios. En este caso es con Google. */
-    // @ts-ignore
-    const provider = new firebase.auth.GoogleAuthProvider();
-
-// Login con Google
-function formLogin(){
-    /* Configura el proveedor de Google para que permita seleccionar de una lista. */
-    provider.setCustomParameters({ prompt: "select_account" });
-    /* Recibe una función que se invoca cada que hay un cambio en la autenticación y recibe el modelo con las características del usuario. */
-    auth.onAuthStateChanged(
-        /* Recibe las características del usuario o null si no ha iniciado sesión. */
-        usuarioAuth => {
-            if (usuarioAuth && usuarioAuth.email) {
-                /* Nombre de usuario atenticado por Firebase y aceptado. */
-                nombre.value = usuarioAuth.email; 
-            } else {
-                /* No ha iniciado sesión. Pide datos para iniciar sesión. */
-                auth.signInWithRedirect(provider);
-            }
+        // @ts-check
+      /** Nombre de usuario atenticado por Firebase. */
+      let nombre = "";
+      /** Conexión al sistema de autenticación de Firebase. */
+      // @ts-ignore
+      const auth = firebase.auth();
+      /** Tipo de autenticación de usuarios. En este caso es con Google. */
+      // @ts-ignore
+      const provider = new firebase.auth.GoogleAuthProvider();
+      /* Configura el proveedor de Google para que permita seleccionar de una
+       * lista. */
+      provider.setCustomParameters({ prompt: "select_account" });
+      /* Recibe una función que se invoca cada que hay un cambio en la
+       * autenticación y recibe el modelo con las características del usuario.*/
+      auth.onAuthStateChanged(
+        /** Recibe las características del usuario o null si no ha iniciado
+         * sesión. */
+        async usuarioAuth => {
+          if (usuarioAuth && usuarioAuth.email) {
+            // Usuario aceptado.
+            nombre = usuarioAuth.email;
+            /* Muestra los mensajes del chat.
+            muestraMensajes();*/
+          } else {
+            // No ha iniciado sesión. Pide datos para iniciar sesión.
+            await auth.signInWithRedirect(provider);
+          }
         },
-        /* Función que se invoca si hay un error al verificar el usuario. */
+        // Función que se invoca si hay un error al verificar el usuario.
         procesaError
-    );
-};
-
+      );
+      
 /* Terminar la sesión. */
 async function terminaSesion() {
     try {
