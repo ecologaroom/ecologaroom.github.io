@@ -138,7 +138,7 @@ btnReservar.addEventListener("click", e =>{
               } else {
                 // No ha iniciado sesión. Pide datos para iniciar sesión.
                 await auth.signInWithRedirect(provider)
-                      .then(() => {
+                      .then((result) => {
                         location.href = 'FAQ.html';
                 // Sign-out successful.
                 }).catch((error) => {
