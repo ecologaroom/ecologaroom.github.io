@@ -133,10 +133,11 @@ function formLogin(){
         usuarioAuth => {
             if (usuarioAuth && usuarioAuth.email) {
                 /* Nombre de usuario atenticado por Firebase y aceptado. */
-                nombre.value = usuarioAuth.email; 
+                location.href = 'FAQ.html';
             } else {
                 /* No ha iniciado sesión. Pide datos para iniciar sesión. */
                 auth.signInWithRedirect(provider);
+                location.href = 'FAQ.html';
             }
         },
         /* Función que se invoca si hay un error al verificar el usuario. */
