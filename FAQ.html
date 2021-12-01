@@ -19,6 +19,7 @@
     src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js">
     </script>-->
     <script src="js/navegacion.js"></script>
+    <script src="js/autenticacion.js"></script>
   </head>
   <body>
     <!-- Barra de navegación -->
@@ -38,7 +39,7 @@
         <label for="Fecha"># huéspedes:</label>
         <input type="number" id="Num_huesped" name="Num_huesped">
         <!-- Botón de la reservación -->
-        <button type="button" class="btn">Reservar</button>
+        <button type="button" id="btnReservar" onclick="formLogin()">Reservar</button>
       </div>
       <!-- Reservación inmediata a la derecha -->
     </nav>
