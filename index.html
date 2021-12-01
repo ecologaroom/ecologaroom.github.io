@@ -138,12 +138,7 @@ btnReservar.addEventListener("click", e =>{
                 muestraMensajes();*/
               } else {
                 // No ha iniciado sesión. Pide datos para iniciar sesión.
-                await auth.signInWithRedirect(provider)
-                firebase.auth().onAuthStateChanged(user => {
-                  if(user) {
-                    window.location = 'reservacion_cliente.html'; //After successful login, user will be redirected to home.html
-                  }
-                });
+                await auth.signInWithRedirect(provider, window.location.href);
               }
             },
             // Función que se invoca si hay un error al verificar el usuario.
