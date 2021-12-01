@@ -30,11 +30,11 @@ function formLogin(){
       } else {
         // No ha iniciado sesión. Pide datos para iniciar sesión.
         await auth.signInWithRedirect(provider)
-        /*provider.getRedirectResult().then(function(result) {
+        provider.getRedirectResult().then(function(result) {
           if (usuarioAuth) {
             location.href = 'reservacion_cliente.html'; //After successful login, user will be redirected to home.html
           }
-        })*/
+        })
       }
     },
     // Función que se invoca si hay un error al verificar el usuario.
