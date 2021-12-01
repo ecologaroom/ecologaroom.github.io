@@ -81,10 +81,16 @@
 
               <!-- Formulario del apartado -->
               <form method="post" visibility="false" id="customer_login" accept-charset="UTF-8">
-                <div class="input_group">
-                  <label>Nombre</label>
-                  <input type="text" required="required" class="text">
+                <div class="inputFlotante">
+                  <input id="input__username" class="floating__input" name="username" type="text" placeholder="Username" />
+                  <label for="input__username" class="floating__label" data-content="Username"></label>
                 </div>
+              
+                <div class="inputFlotante">
+                  <input id="input__password" type="password" class="floating__input" name="password" type="text" placeholder="Password" />
+                  <label for="input__password" class="floating__label" data-content="Password"></label>
+                </div>
+
                 <button type="button" class="btnFormulario">Guardar</button>
               </form>
               <!-- Formulario del apartado -->

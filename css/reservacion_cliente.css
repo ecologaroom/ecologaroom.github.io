@@ -61,6 +61,74 @@
 	transform: .2s ease;
 }
 
+.inputFlotante {
+  margin-bottom: 2rem;
+}
+
+.floating__input {
+  padding: 1.8rem 1rem 0.6rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5%;
+  border-bottom: 0.2rem solid rgba(0, 0, 0, 0.42);
+  transition: 0.2s ease;
+  background: none;
+}
+
+.floating__input::placeholder {
+  color: rgba(0, 0, 0, 0);
+}
+
+.floating__label {
+  display: block;
+  position: relative;
+}
+
+.floating__label::before {
+  content: attr(data-content); /* Indica que tipo de label es: parte del contenido */
+  display: inline-block;
+  transform-origin: left top; /* Asigna que en su transición se vaya al borde inferior izquierdo */
+  transition: 0.2s ease;
+  left: 1rem; /* Coloca el label a 1 renglón de distancia del borde izquierdo */
+  position: relative;
+}
+
+.floating__label::after {
+  bottom: 1rem;
+  content: "";
+  height: 0.1rem;
+  position: absolute;
+  transition: transform 180ms cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 180ms cubic-bezier(0.4, 0, 0.2, 1), 0.3s ease;
+  opacity: 0;
+  left: 0;
+  top: 100%;
+  margin-top: -0.1rem;
+  transform: scale3d(0, 1, 1);
+  width: 100%;
+}
+
+.floating__input:focus + .floating__label::after {
+  transform: scale3d(1, 1, 1);
+  opacity: 1;
+  
+}
+
+.floating__input:placeholder-shown + .floating__label::before {
+  transform: translate3d(0, -2.2rem, 0) scale3d(1, 1, 1);
+  
+}
+
+.floating__label::before,
+.floating__input:focus + .floating__label::before {
+  transform: translate3d(0, -3.12rem, 0) scale3d(0.82, 0.82, 1);
+  
+}
+
+.floating__input:focus + .floating__label::before {
+  color: #7ed957;
+}
+
 aside {
   display: flex;
   flex-direction: column;
