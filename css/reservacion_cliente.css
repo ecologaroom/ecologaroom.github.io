@@ -25,6 +25,13 @@
     padding: 1em;
 }
 
+.titulo {
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+    flex: space-between;
+}
+
 .fila {
     display: flex;
     flex-wrap: wrap;
@@ -37,7 +44,7 @@
   display: block;
   padding: 0;
   box-sizing: inherit;
-  width: calc(100%/2);
+  width: calc(100%/3);
 }
 
 .inputFlotante {
@@ -46,7 +53,7 @@
   display: block;
   margin: 0;
   box-sizing: inherit;
-  margin-right: 4vw;
+  margin-right: 6vw;
 }
 
 .floating__input {
@@ -97,6 +104,21 @@
   transform: scale3d(0, 1, 1);
   width: 100%;
 
+}
+
+.floating__select {
+  line-height: 40px;
+  background: none;
+  box-shadow: inset 0px 1px 3px 0px rgb(0 0 0 / 8%);
+  border-radius: 5px;
+  padding: 10px 10px;
+  outline: none;
+  border: none;
+  border-bottom: 0.2rem solid rgba(0, 0, 0, 0.42);
+  transition: 0.2s ease;
+  width: 100%;
+  font-family: 'Outfit';
+  font-size: 16px;
 }
 
 .floating__input:focus + .floating__label::after {

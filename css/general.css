@@ -16,6 +16,12 @@ h2 {
     text-align: justify; /* Alineamos el título al centro de lo que abarca */
 }
 
+h3 {
+    font-family: 'Lateef'; /* Asignamos la familia Outfit al primer título */
+    font-size: 1.5em;
+    margin: 0.5vw 0vw 1vw 0vw;
+}
+
 .pagina {
     background: #F5F3EF; /*linear-gradient(to top right, #fc2c77 0%, #6c4079 100%);*/
     top: 0%; /* Delimitamos que la posición fija del navbar sea desde el inicio del margen de hasta arriba*/

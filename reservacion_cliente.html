@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reservación</title>
     <link rel="stylesheet" href="css/navbar.css">
     <link rel="stylesheet" href="css/menu.css">
@@ -36,7 +36,7 @@
             <div class="colum">
               <div class="inputFlotante">
                 <label for="Fecha">Fecha de entrada:</label>
-                <input type="date" id="Fecha_llegada" name="Fecha_llegada" required pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}">
+                <input type="date" id="Fecha_llegada" name="Fecha_llegada" maxlength="10" required pattern="^(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\d\d$" required>
               </div>
             </div>
             <!-- Fecha de entrada -->
@@ -45,7 +45,7 @@
             <div class="colum">
               <div class="inputFlotante">
                 <label for="Fecha">Fecha de salida:</label>
-                <input type="date" id="Fecha_salida" name="Fecha_salida" required pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}">
+                <input type="date" id="Fecha_salida" name="Fecha_salida" maxlength="10" required pattern="^(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\d\d$" required>
               </div>
             </div>
             <!-- Fecha de salida -->
@@ -54,7 +54,7 @@
             <div class="colum">
               <div class="inputFlotante">
                 <label for="Fecha"># huéspedes:</label>
-                <input type="number" id="Num_huesped" name="Num_huesped" style="width:50px">
+                <input type="number" id="Num_huesped" name="Num_huesped" maxlength="3" min="1" max="100" required>
               </div>
             </div>
             <!-- Número de huéspedes -->
@@ -112,59 +112,55 @@
 
               <!-- Formulario del apartado -->
               <form method="post" visibility="false" id="customer_login" accept-charset="UTF-8">    
-                <div class="fila">
+                <div class="inputFlotante">
+                  <input class="floating__input" name="nom" type="text" placeholder="Nombre" maxlength="40" required/>
+                  <label class="floating__label" data-content="Nombre"></label>
+                </div>
 
-                  <div class="colum">
-                    <div class="inputFlotante">
-                      <input class="floating__input" name="nom" type="text" placeholder="Nombre" />
-                      <label class="floating__label" data-content="Nombre"></label>
-                    </div>
-                  </div>
-                  
-                  <div class="colum">
-                    <div class="inputFlotante">
-                      <input class="floating__input" name="ap_pat" type="text" placeholder="Apellido paterno" />
-                      <label class="floating__label" data-content="Apellido paterno"></label>
-                    </div>
-                  </div>
+                <div class="inputFlotante">
+                  <input class="floating__input" name="ap_pat" type="text" placeholder="Apellido paterno" maxlength="40" required/>
+                  <label class="floating__label" data-content="Apellido paterno"></label>
+                </div>
 
-                  <div class="colum">
-                    <div class="inputFlotante">
-                      <input class="floating__input" name="ap_mat" type="text" placeholder="Apellido materno" />
-                      <label class="floating__label" data-content="Apellido materno"></label>
-                    </div>
-                  </div>
+                <div class="inputFlotante">
+                  <input class="floating__input" name="ap_mat" type="text" placeholder="Apellido materno" maxlength="40" required/>
+                  <label class="floating__label" data-content="Apellido materno"></label>
                 </div>
 
                 <div class="fila">
                   <div class="colum">
                     <div class="inputFlotante">
-                      <input class="floating__input" name="edad" type="number" placeholder="Edad" />
+                      <input class="floating__input" name="edad" type="number" placeholder="Edad" maxlength="2" min="18" max="99" required/>
                       <label class="floating__label" data-content="Edad"></label>
                     </div>
                   </div>
 
                   <div class="colum">
                     <div class="inputFlotante">
-                      <input class="floating__input" name="sexo" type="text" placeholder="Sexo" /> <!--Select-->
+                      <select name="sexo" class="floating__select" placeholder="Habitación" required>
+                        <option value="volvo">Femenino</option>
+                        <option value="saab">Masculino</option>
+                      </select>
                       <label class="floating__label" data-content="Sexo"></label>
                     </div>
                   </div>
 
                   <div class="colum">
                     <div class="inputFlotante">
-                      <input class="floating__input" name="cel" type="tel" placeholder="Celular" />
+                      <input class="floating__input" name="cel" type="tel" placeholder="Celular" size="10" maxlength="12" required/>
                       <label class="floating__label" data-content="Celular"></label>
+                    </div>
+                  </div>
+                 
+                  <div class="colum">
+                    <div class="inputFlotante">
+                      <input class="floating__input" name="correo" type="email" placeholder="Correo" size="50" maxlength="80" required/>
+                      <label class="floating__label" data-content="Correo"></label>
                     </div>
                   </div>
                 </div>
 
-                <div class="inputFlotante">
-                    <input class="floating__input" name="correo" type="email" placeholder="Correo" />
-                    <label class="floating__label" data-content="Correo"></label>
-                </div>
-
-                <button type="button" class="btn">Registrar</button>
+                <button type="submit" class="btn" style="margin-bottom: 2%; margin-top: 5%;">Registrar</button>
               </form>
               <!-- Formulario del apartado -->
             </div>
@@ -187,21 +183,21 @@
 
                   <div class="colum">
                     <div class="inputFlotante">
-                      <input class="floating__input" name="Fecha_llegada" type="date" placeholder="Fecha de llegada" />
+                      <input class="floating__input" name="Fecha_llegada" type="date" placeholder="Fecha de llegada" maxlength="10" required pattern="^(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\d\d$" required/>
                       <label class="floating__label" data-content="Fecha de llegada"></label>
                     </div>
                   </div>
                   
                   <div class="colum">
                     <div class="inputFlotante">
-                      <input class="floating__input" name="Fecha_salida" type="date" placeholder="Fecha de salida" />
+                      <input class="floating__input" name="Fecha_salida" type="date" placeholder="Fecha de salida" maxlength="10" required pattern="^(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\d\d$" required/>
                       <label class="floating__label" data-content="Fecha de salida"></label>
                     </div>
                   </div>
 
                   <div class="colum">
                     <div class="inputFlotante">
-                      <input class="floating__input" name="Num_huesped" type="number" placeholder="# Huéspedes" />
+                      <input class="floating__input" name="Num_huesped" type="number" placeholder="# Huéspedes" maxlength="3" min="1" max="100" required/>
                       <label class="floating__label" data-content="# Huéspedes"></label>
                     </div>
                   </div>
@@ -210,28 +206,29 @@
                 <div class="fila">
                   <div class="colum">
                     <div class="inputFlotante">
-                      <input class="floating__input" name="Num_hab" type="number" placeholder="# Habitaciones" />
+                      <input class="floating__input" name="Num_hab" type="number" placeholder="# Habitaciones" maxlength="2" min="1" max="100" required/>
                       <label class="floating__label" data-content="# Habitaciones"></label>
                     </div>
                   </div>
                   
                   <div class="colum">
                     <div class="inputFlotante">
-                      <input class="floating__input" name="Tipo_hab" type="text" placeholder="Habitación" /> <!--Select-->
+                      <select name="Tipo_hab" class="floating__select" placeholder="Habitación" required>
+                        <option value="volvo">Estándar sencilla</option>
+                        <option value="volvo">Volvo</option>
+                        <option value="saab">Saab</option>
+                      </select>
                       <label class="floating__label" data-content="Habitación"></label>
                     </div>
                   </div>
                 </div>
 
-                <button type="button" class="btn">Realizar</button>
+                <button type="submit" class="btn" style="margin-bottom: 2%; margin-top: 5%;">Realizar</button>
+
               </form>
               <!-- Formulario del apartado -->
             </div>
             <!-- Apartado de los datos del cliente -->
-
-            <!-- División -->
-            <div class="division"></div>
-            <!-- División -->
           </div>
           <!-- Envoltura para apartados de la izquierda -->   
 

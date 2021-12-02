@@ -5,23 +5,23 @@ footer {
     width: 100%;
     background-color: #029876;
     font-size: 12px;
+    margin: auto;
 }
   
 .retícula {
     color: white;
     font-weight: bold;
+    padding: 1vw 0vw 1vw 0vw;
     text-align: center;
-    padding: 10px;
 }
   
 .icon {
-    margin-left: 18px;
-    margin-right: 18px;
+    margin: 0% 1% 0% 1%;
     filter: invert(1);
 }
   
 .copyright {
     color: white;
     text-align: center;
-    padding: 10px;
+    padding: 1vw;
 }

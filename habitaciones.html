@@ -2,16 +2,19 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <!-- Adaptación de pantalla a distintos dispositivos -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Título en pestaña de navegación -->
     <title>Habitaciones</title>
+    <!-- Hojas de estilos -->
     <link rel="stylesheet" href="css/navbar.css">
     <link rel="stylesheet" href="css/menu.css">
     <link rel="stylesheet" href="css/footer.css">
     <link rel="stylesheet" href="css/general.css">
     <link rel="stylesheet" href="css/habitaciones.css">
-    <!--  Carga el núcleo de Firebase JS SDK -->
+    <!-- Carga el núcleo de Firebase JS SDK -->
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-    <!--  Agrega el manejo de autenticación. -->
+    <!-- Agrega el manejo de autenticación. -->
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
     <!-- Conexión a firebase -->
     <script src="js/autenticacion.js"></script>
@@ -36,7 +39,7 @@
             <div class="colum">
               <div class="inputFlotante">
                 <label for="Fecha">Fecha de entrada:</label>
-                <input type="date" id="Fecha_llegada" name="Fecha_llegada" required pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}">
+                <input type="date" id="Fecha_llegada" name="Fecha_llegada" maxlength="10" required pattern="^(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\d\d$" required>
               </div>
             </div>
             <!-- Fecha de entrada -->
@@ -45,7 +48,7 @@
             <div class="colum">
               <div class="inputFlotante">
                 <label for="Fecha">Fecha de salida:</label>
-                <input type="date" id="Fecha_salida" name="Fecha_salida" required pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}">
+                <input type="date" id="Fecha_salida" name="Fecha_salida" maxlength="10" required pattern="^(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\d\d$" required>
               </div>
             </div>
             <!-- Fecha de salida -->
@@ -54,18 +57,18 @@
             <div class="colum">
               <div class="inputFlotante">
                 <label for="Fecha"># huéspedes:</label>
-                <input type="number" id="Num_huesped" name="Num_huesped" style="width:50px">
+                <input type="number" id="Num_huesped" name="Num_huesped" maxlength="3" min="1" max="100" required>
               </div>
             </div>
             <!-- Número de huéspedes -->
 
-            <!-- Botón de la reservación -->
+            <!-- Botón de reservar -->
             <div class="colum">
               <div class="inputFlotante">
-                <button type="button" class="btn" onClick="formLogin();">Reservar</button>
+                <button type="button" class="btn" onclick="formLogin();">Reservar</button>
               </div>
             </div>
-            <!-- Botón de la reservación -->
+            <!-- Botón de la reservar -->
           </div>
           <!-- Fila responsiva -->
         </div>
@@ -79,7 +82,7 @@
         <button type="button" onClick="formInicio();" class="menuBtn" style="font-size:34px;">INICIO</button>
         <!-- Botón de Habitaciones -->
         <button type="button" class="menuNBtn" style="font-size:16px;">HABITACIONES</button>
-        <!-- Botón de Intalaciones -->
+        <!-- Botón de Instalaciones -->
         <button type="button" onClick="formInstalaciones();" class="menuBtn" style="font-size:15px;">INSTALACIONES</button>
         <!-- Botón de Turismo -->
         <button type="button" onClick="formTurismo();" class="menuBtn" style="font-size:26px;">TURISMO</button>
@@ -95,9 +98,11 @@
         <!-- Título -->
         <h1>HABITACIONES</h1>
         <!-- Título -->
+
         <!-- División -->
         <div class="division"></div>
         <!-- División -->
+
         <!-- Habitación Estándar Sencilla-->
         <div class="card">
           <!-- Carrusel -->
@@ -109,8 +114,11 @@
               <img class="img" src="https://d1el5jddkxvjyd.cloudfront.net/viceroyhotelsandresorts.com-2109743334/cms/cache/v2/5c538de118f42.jpg/1920x1080/fit/80/f50fe1704571499b74925f7ee55dd0e1.jpg">
               <img class="img" src="https://d1el5jddkxvjyd.cloudfront.net/viceroyhotelsandresorts.com-2109743334/cms/cache/v2/5c538de16b696.jpg/1920x1080/fit/80/16599cca595c452736e4acc453c3310d.jpg">
             </div>
+            <!-- Envoltura de las imágenes del carrusel -->
           </section>
+          <!-- Carrusel -->
 
+          <!-- Información -->
           <div class="description">
             <h2>Estándar Sencilla</h2>
             <p> Habitación con 1 cama King Size. Escritorio de trabajo. Superficie aproximada de 37mts². Con una ocupación Máxima de  2 Personas. Ubicada en los pisos 3, 4 y 5. </p>
@@ -121,10 +129,14 @@
               <img src="https://image.flaticon.com/icons/png/512/130/130271.png" height="30" width="30" style="background-color: rgba(251, 251, 251, 0.6)"/>
             </p>
           </div>
+          <!-- Información -->
         </div>
+        <!-- Habitación Estándar Sencilla-->
+
         <!-- División -->
         <div class="division"></div>
         <!-- División -->
+
         <!-- Habitación Estándar Plus-->
         <div class="card">
           <!-- Carrusel -->
@@ -136,7 +148,9 @@
               <img class="img" src="https://d1el5jddkxvjyd.cloudfront.net/viceroyhotelsandresorts.com-2109743334/cms/cache/v2/5c538dd99d771.jpg/1920x1080/fit/80/330ebf6484384a4f38653011ab11fa28.jpg">
               <img class="img" src="https://d1el5jddkxvjyd.cloudfront.net/viceroyhotelsandresorts.com-2109743334/cms/cache/v2/5c538dd9e01f5.jpg/1920x1080/fit/80/16764decaa46005f5f0cbe6f58026f9c.jpg">
             </div>
+            <!-- Envoltura de las imágenes del carrusel -->
           </section>
+          <!-- Carrusel -->
 
           <!-- Información -->
           <div class="description">
@@ -149,8 +163,9 @@
               <img src="https://image.flaticon.com/icons/png/512/130/130271.png" height="30" width="30" style="background-color: rgba(251, 251, 251, 0.6)"/>
             </p>
           </div>
+          <!-- Información -->
         </div>
-
+        <!-- Habitación Estándar Plus-->
 
         <!-- Pie de página -->
         <footer>
@@ -169,7 +184,7 @@
             <!-- Sección: Contacto -->
           </div>
           <!-- Contenedor de la retícula -->
-        
+      
           <!-- Copyright -->
           <div class="copyright" style="background-color: rgba(0, 0, 0, 0.2);">Copyright &copy; 2021</div>
           <!-- Copyright -->
@@ -177,125 +192,7 @@
         <!-- Pie de página -->
       </section>
       <!-- Contenido -->
-
-
-    <!-- 
-    <script>
-      // @ts-check
-      /** Nombre de usuario atenticado por Firebase. */
-      let usuario = "";
-      /** Conexión al sistema de autenticación de Firebase. */
-      // @ts-ignore
-      const auth = firebase.auth();
-      /** Tipo de autenticación de usuarios. En este caso es con Google. */
-      // @ts-ignore
-      const provider = new firebase.auth.GoogleAuthProvider();
-      /* Configura el proveedor de Google para que permita seleccionar de una
-       * lista. */
-      provider.setCustomParameters({ prompt: "select_account" });
-      /* Recibe una función que se invoca cada que hay un cambio en la
-       * autenticación y recibe el modelo con las características del usuario.*/
-      auth.onAuthStateChanged(
-        /** Recibe las características del usuario o null si no ha iniciado
-         * sesión. */
-        async usuarioAuth => {
-          if (usuarioAuth && usuarioAuth.email) {
-            // Usuario aceptado.
-            usuario = usuarioAuth.email;
-            // Muestra los mensajes del chat.
-            muestraMensajes();
-          } else {
-            // No ha iniciado sesión. Pide datos para iniciar sesión.
-            await auth.signInWithRedirect(provider);
-          }
-        },
-        // Función que se invoca si hay un error al verificar el usuario.
-        procesaError
-      );
-      /** Conexión a la base de datos. */
-      // @ts-ignore
-      const firestore = firebase.firestore();
-      /** Agrega un usuario a la base de datos. */
-      function agrega() {
-        /* "MENSAJE" es el nombre de la colección a la que se agregan los datos.
-         * "USUARIO", "TEXTO" y "TIMESTAMP" son los nombres de los campos en el
-         * documento.
-         * El timestamp contiene la fecha y hora en que se agrega el registro.*/
-        firestore.collection("MENSAJE").add({
-          USUARIO: usuario,
-          // @ts-ignore
-          TEXTO: texto.value.trim(),
-          // @ts-ignore
-          TIMESTAMP: firebase.firestore.FieldValue.serverTimestamp()
-        });
-      }
-      /** Muestra los mensaje almacenados en la collection "MENSAJE". Se
-       * actualiza automáticamente. */
-      function muestraMensajes() {
-        /* Consulta que se actualiza automáticamente. Pide todos los registros
-         * de la colección "MENSAJE" ordenador por el campo "TIMESTAMP" de forma
-         * descendiente. */
-        firestore.collection("MENSAJE").orderBy("TIMESTAMP", "desc")
-          .onSnapshot(
-            /** Función que muestra los datos enviados por el servidor. Si los
-             * datos cambian en el servidor, se vuelve a invocar esta función y
-             * recibe los datos actualizados.
-             * @param {Array} querySnapshot estructura parecida a un Array, que
-             * contiene una copia de los datos en el servidor. */
-            querySnapshot => {
-              // Vacía la lista con los mensajes.
-              // @ts-ignore
-              mensajes.innerHTML = "";
-              /* Revisa un por uno los registros de la consulta y los muestra.
-               * El iterador "doc" es un registro de la base de datos. */
-              querySnapshot.forEach(doc => {
-                // recupera los datos almacenados en el registro.
-                const data = doc.data();
-                
-                var d = data.TIMESTAMP.toDate(),
-                dformat = [d.getDate(), d.getMonth()+1, d.getFullYear()].join('/')+' '+
-                          [d.getHours(),d.getMinutes(),d.getSeconds()].join(':');
-                /* Agrega un li con los datos del registro, que se codifican
-                 * para evitar inyección de código. */
-                // @ts-ignore
-                mensajes.innerHTML += /* html */
-                  `<li><u>${cod(data.USUARIO)}</u> ${dformat}<br>${cod(data.TEXTO)}</li>`;
-              })
-            },
-            /* Función que se invoca cuando hay un error. Muestra el error. Al
-             * invocar esta función la conexión se cancela. Por lo mismo, se
-             * vuelve a conectar. */
-            e => {
-              procesaError(e);
-              // Intenta conectarse otra vez.
-              muestraMensajes();
-            }
-          )
-      }
-
-      /** Procesa un error. Muestra el objeto en la consola y un cuadro de
-       * alerta con el mensaje.
-       * @param {Error} e descripción del error. */
-      function procesaError(e) {
-        console.log(e);
-        alert(e.message);
-      }
-
-      /** Map que contiene el texto de escape de los caracteres especiales de
-       * HTML.
-       * @type {Readonly<Map<string, string>> } */
-      const codMap = Object.freeze(new Map([['&', '&amp;'], ['<', '&lt;'],
-      ['>', '&gt;'], ['"', '&quot;'], ["'", '&#039;']]));
-
-      /** Codifica un texto para que escape los caracteres especiales y no se
-       * pueda interpretar como HTML. Esta técnica evita la inyección de código.
-       * @param {string} texto
-       * @returns {string} un texto que no puede interpretarse como HTML. */
-      function cod(texto) {
-        return (texto || "").replace(/[&<>"']/g, letra => codMap.get(letra));
-      }
-    </script>
-  -->
-    </form>
+    </div>
+    <!-- Página -->
   </body>
 </html>
