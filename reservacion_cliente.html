@@ -111,13 +111,16 @@
               <!-- Título del apartado -->
 
               <!-- Formulario del apartado -->
-              <form method="post" visibility="false" id="customer_login" accept-charset="UTF-8">
-                <div class="inputFlotante">
-                  <input class="floating__input" name="nom" type="text" placeholder="Nombre" />
-                  <label class="floating__label" data-content="Nombre"></label>
-                </div>
-              
+              <form method="post" visibility="false" id="customer_login" accept-charset="UTF-8">    
                 <div class="fila">
+
+                  <div class="colum">
+                    <div class="inputFlotante">
+                      <input class="floating__input" name="nom" type="text" placeholder="Nombre" />
+                      <label class="floating__label" data-content="Nombre"></label>
+                    </div>
+                  </div>
+                  
                   <div class="colum">
                     <div class="inputFlotante">
                       <input class="floating__input" name="ap_pat" type="text" placeholder="Apellido paterno" />
@@ -133,17 +136,35 @@
                   </div>
                 </div>
 
-                <div class="inputFlotante">
-                  <input id="input__password" type="password" class="floating__input" name="password" type="text" placeholder="Password" />
-                  <label for="input__password" class="floating__label" data-content="Password"></label>
+                <div class="fila">
+                  <div class="colum">
+                    <div class="inputFlotante">
+                      <input class="floating__input" name="edad" type="number" placeholder="Edad" />
+                      <label class="floating__label" data-content="Edad"></label>
+                    </div>
+                  </div>
+
+                  <div class="colum">
+                    <div class="inputFlotante">
+                      <input class="floating__input" name="sexo" type="text" placeholder="Sexo" /> <!--Select-->
+                      <label class="floating__label" data-content="Sexo"></label>
+                    </div>
+                  </div>
+
+                  <div class="colum">
+                    <div class="inputFlotante">
+                      <input class="floating__input" name="cel" type="tel" placeholder="Celular" />
+                      <label class="floating__label" data-content="Celular"></label>
+                    </div>
+                  </div>
                 </div>
 
                 <div class="inputFlotante">
-                  <input id="input__password" type="date" class="floating__input" name="password" required pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" placeholder="Password" />
-                  <label for="input__password" class="floating__label" data-content="Password"></label>
+                    <input class="floating__input" name="correo" type="email" placeholder="Correo" />
+                    <label class="floating__label" data-content="Correo"></label>
                 </div>
 
-                <button type="button" class="btn">Guardar</button>
+                <button type="button" class="btn">Registrar</button>
               </form>
               <!-- Formulario del apartado -->
             </div>
@@ -156,28 +177,53 @@
             <div class="apartado">
               <!-- Título del apartado -->
               <div class="titulo">
-                <h2>Ingresa tus datos</h2>
+                <h2>Realiza la reservación</h2>
               </div>
               <!-- Título del apartado -->
 
               <!-- Formulario del apartado -->
               <form method="post" visibility="false" id="customer_login" accept-charset="UTF-8">
-                <div class="inputFlotante">
-                  <input id="input__username" class="floating__input" name="username" type="text" placeholder="Username" />
-                  <label for="input__username" class="floating__label" data-content="Username"></label>
-                </div>
-              
-                <div class="inputFlotante">
-                  <input id="input__password" type="password" class="floating__input" name="password" type="text" placeholder="Password" />
-                  <label for="input__password" class="floating__label" data-content="Password"></label>
+                <div class="fila">
+
+                  <div class="colum">
+                    <div class="inputFlotante">
+                      <input class="floating__input" name="Fecha_llegada" type="date" placeholder="Fecha de llegada" />
+                      <label class="floating__label" data-content="Fecha de llegada"></label>
+                    </div>
+                  </div>
+                  
+                  <div class="colum">
+                    <div class="inputFlotante">
+                      <input class="floating__input" name="Fecha_salida" type="date" placeholder="Fecha de salida" />
+                      <label class="floating__label" data-content="Fecha de salida"></label>
+                    </div>
+                  </div>
+
+                  <div class="colum">
+                    <div class="inputFlotante">
+                      <input class="floating__input" name="Num_huesped" type="number" placeholder="# Huéspedes" />
+                      <label class="floating__label" data-content="# Huéspedes"></label>
+                    </div>
+                  </div>
                 </div>
 
-                <div class="inputFlotante">
-                  <input id="input__password" type="date" class="floating__input" name="password" required pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" placeholder="Password" />
-                  <label for="input__password" class="floating__label" data-content="Password"></label>
+                <div class="fila">
+                  <div class="colum">
+                    <div class="inputFlotante">
+                      <input class="floating__input" name="Num_hab" type="number" placeholder="# Habitaciones" />
+                      <label class="floating__label" data-content="# Habitaciones"></label>
+                    </div>
+                  </div>
+                  
+                  <div class="colum">
+                    <div class="inputFlotante">
+                      <input class="floating__input" name="Tipo_hab" type="text" placeholder="Habitación" /> <!--Select-->
+                      <label class="floating__label" data-content="Habitación"></label>
+                    </div>
+                  </div>
                 </div>
 
-                <button type="button" class="btn">Guardar</button>
+                <button type="button" class="btn">Realizar</button>
               </form>
               <!-- Formulario del apartado -->
             </div>
@@ -186,39 +232,6 @@
             <!-- División -->
             <div class="division"></div>
             <!-- División -->
-
-            <div class="apartado">
-              <!-- Título del apartado -->
-              <div class="titulo">
-                <h2>Ingresa tus datos</h2>
-              </div>
-              <!-- Título del apartado -->
-
-              <!-- Formulario del apartado -->
-              <form method="post" visibility="false" id="customer_login" accept-charset="UTF-8">
-                <div class="inputFlotante">
-                  <input id="input__username" class="floating__input" name="username" type="text" placeholder="Username" />
-                  <label for="input__username" class="floating__label" data-content="Username"></label>
-                </div>
-              
-                <div class="inputFlotante">
-                  <input id="input__password" type="password" class="floating__input" name="password" type="text" placeholder="Password" />
-                  <label for="input__password" class="floating__label" data-content="Password"></label>
-                </div>
-
-                <div class="inputFlotante">
-                  <input id="input__password" type="date" class="floating__input" name="password" required pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" placeholder="Password" />
-                  <label for="input__password" class="floating__label" data-content="Password"></label>
-                </div>
-
-                <button type="button" class="btn">Guardar</button>
-              </form>
-              <!-- Formulario del apartado -->
-            </div>
-            <!-- Apartado de los datos del cliente -->
-
-
-
           </div>
           <!-- Envoltura para apartados de la izquierda -->   
 
