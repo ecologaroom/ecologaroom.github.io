@@ -5,7 +5,8 @@ h1 {
     font-size: 45px;
     color: #F5F3EF;
     text-align: center; /* Alineamos el título al centro de lo que abarca */
-    padding: 70px 0px 70px 0px;
+    padding: 1em 0;
+    margin: 2% 0 2% 0;
     text-shadow: 0px 2px 5px black;
     background: rgb(52, 211, 163);
 }
@@ -16,24 +17,24 @@ h2 {
 }
 
 .pagina {
-  background: #F5F3EF; /*linear-gradient(to top right, #fc2c77 0%, #6c4079 100%);*/
-  top: 0%; /* Delimitamos que la posición fija del navbar sea desde el inicio del margen de hasta arriba*/
-  left: 0%; /* Delimitamos que la posición fija del navbar sea desde el inicio del margen de la izquierda */
-  right: 0%; /* Delimitamos que la posición fija del navbar sea desde el inicio del margen de la derecha */
-  max-height: 10%;
+    background: #F5F3EF; /*linear-gradient(to top right, #fc2c77 0%, #6c4079 100%);*/
+    top: 0%; /* Delimitamos que la posición fija del navbar sea desde el inicio del margen de hasta arriba*/
+    left: 0%; /* Delimitamos que la posición fija del navbar sea desde el inicio del margen de la izquierda */
+    right: 0%; /* Delimitamos que la posición fija del navbar sea desde el inicio del margen de la derecha */
+    max-height: 10%;
 }
 
 .contenido {
     border-radius: 10px;
     position: absolute;
-    top: 10%;
+    top: 15%;
     right: 0%;
     width: 88%;
     font-family: 'Outfit', sans-serif; /* Asignamos la familia Outfit a todo el contenido */
     font-size: 18px;
     line-height: 1.25;
     align-items: justify;
-    margin: 0% 1% 0% 1%; /* Delimitamos que el margen del contenido sea del 1% de lo que abarca a la derecha y a la izquierda */
+    margin: 0 1% 0 1%;/* Delimitamos que el margen del contenido sea del 1% de lo que abarca a la derecha y a la izquierda */
 }
 
 .btn {
@@ -52,6 +53,12 @@ h2 {
     transition: all 500ms ease;
   }
   
-  .btn:hover {
+.btn:hover {
     background: #029876;  /* Establecemos que el color de fondo del botón de reservar al posicionarse sobre él sea verde oscuro */
-  }
+}
+
+.division {
+    padding: 4px;
+    margin: 2% 1%;
+    background:#7ed97e;
+}
