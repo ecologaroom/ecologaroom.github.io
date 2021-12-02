@@ -2,8 +2,12 @@
 
 h1 {
     font-family: 'Lateef'; /* Asignamos la familia Lateef al primer título */
-    font-size: 35px;
+    font-size: 45px;
+    color: #F5F3EF;
     text-align: center; /* Alineamos el título al centro de lo que abarca */
+    padding: 70px 0px 70px 0px;
+    text-shadow: 0px 2px 5px black;
+    background: rgb(52, 211, 163);
 }
 
 h2 {
@@ -11,7 +15,16 @@ h2 {
     text-align: justify; /* Alineamos el título al centro de lo que abarca */
 }
 
+.pagina {
+  background: #F5F3EF; /*linear-gradient(to top right, #fc2c77 0%, #6c4079 100%);*/
+  top: 0%; /* Delimitamos que la posición fija del navbar sea desde el inicio del margen de hasta arriba*/
+  left: 0%; /* Delimitamos que la posición fija del navbar sea desde el inicio del margen de la izquierda */
+  right: 0%; /* Delimitamos que la posición fija del navbar sea desde el inicio del margen de la derecha */
+  max-height: 10%;
+}
+
 .contenido {
+    border-radius: 10px;
     position: absolute;
     top: 10%;
     right: 0%;
@@ -22,3 +35,23 @@ h2 {
     align-items: justify;
     margin: 0% 1% 0% 1%; /* Delimitamos que el margen del contenido sea del 1% de lo que abarca a la derecha y a la izquierda */
 }
+
+.btn {
+    width: auto; /* Establecemos que el botón de reservar abarque 100 pixeles */
+    display: inline-block;
+    padding: 0.3em 1em; 
+    background: #7ed957;
+    box-shadow:0px 3px 0px #429900;
+    border: none;
+    border-radius: 40px;
+    text-align: center; /* Alineamos el texto del botón reservar al centro de los 100 pixeles de lo que abarca */
+    font-family: 'EB Garamond', serif; /* Asignamos la familia EB Garamond al texto del botón reservar */
+    font-size: 18px;
+    font-weight: bold;
+    color:#f5f3ef;
+    transition: all 500ms ease;
+  }
+  
+  .btn:hover {
+    background: #029876;  /* Establecemos que el color de fondo del botón de reservar al posicionarse sobre él sea verde oscuro */
+  }

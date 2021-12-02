@@ -6,73 +6,62 @@
     width: auto;
     height: auto;
     margin: 1rem auto;
-    align-items: justify;
+    align-items: space-between;
 }
 
 .envoltura {
-  display: flex;
-  flex-direction: column;
-  flex-basis: 60%;
-  height: auto;
-  margin-left: 0.5em ;
-  padding: 1em;
-  background: #E4DDDA;
-  overflow: hidden;
-  text-align: justify;
-  font-family: 'Outfit', sans-serif;
-  font-size: 0.9em;
+    display: flex;
+    flex-direction: column;
+    flex-basis: 70%;
+    height: auto;
+    margin: 0;
+    text-align: justify;
+    font-family: 'Outfit', sans-serif;
 }
 
-.btnApartado {
-	border: none;
-	font: inherit;
-	margin: 0;
-	padding: 0 0 0 0.444em;
-	position:relative;
-	text-align: left;
-	text-transform: inherint;
-  background: none;
+.apartado {
+    box-shadow: -2px 2px 10px 1px grey;
+    margin-bottom: 2rem;
+    padding: 1em;
 }
 
-
-.btnApartado::before {
-	content: '';
-	border: solid 1px #000;
-	border-radius: 50%;
-	display: block;
-	height: 0.889em;
-	position: absolute;
-	right: 88%;
-	top: 5%;
-	width: 0.889em;
+.fila {
+    display: flex;
+    flex-wrap: wrap;
+    box-sizing: inherit;
+    padding: 0;
+    margin: 0;
 }
 
-.btnApartado::after {
-	content: '';
-	border: solid 1px #000;
-	border-radius: 50%;
-  background: #000;
-	display: block;
-	height: 0.556em;
-	position: absolute;
-	right: 89.5%;
-	top: 20%;
-	width: 0.556em;
-	transform: .2s ease;
+.column {
+  display: block;
+  padding: 0;
+  box-sizing: inherit;
+  width: calc(100%/2);
 }
 
 .inputFlotante {
-  margin-bottom: 2rem;
+  position: relative;
+  margin-bottom: 1rem;
+  display: block;
+  margin: 0;
+  box-sizing: inherit;
+  margin-right: 4vw;
 }
 
 .floating__input {
-  padding: 1.8rem 1rem 0.6rem;
-  font-size: 1rem;
+  line-height: 40px;
+  background: none;
+  box-shadow: inset 0px 1px 3px 0px rgb(0 0 0 / 8%);
+  border-radius: 5px;
+  padding: 0 10px;
+  outline: none;
   border: none;
-  border-radius: 5%;
   border-bottom: 0.2rem solid rgba(0, 0, 0, 0.42);
   transition: 0.2s ease;
-  background: none;
+  width: 100%;
+  font-family: 'Outfit';
+  font-size: 16px;
 }
 
 .floating__input::placeholder {
@@ -86,11 +75,12 @@
 
 .floating__label::before {
   content: attr(data-content); /* Indica que tipo de label es: parte del contenido */
-  display: inline-block;
+  display: block;
   transform-origin: left top; /* Asigna que en su transición se vaya al borde inferior izquierdo */
   transition: 0.2s ease;
   left: 1rem; /* Coloca el label a 1 renglón de distancia del borde izquierdo */
   position: relative;
+  color: #429900;
 }
 
 .floating__label::after {
@@ -106,17 +96,16 @@
   margin-top: -0.1rem;
   transform: scale3d(0, 1, 1);
   width: 100%;
+
 }
 
 .floating__input:focus + .floating__label::after {
   transform: scale3d(1, 1, 1);
   opacity: 1;
-  
 }
 
 .floating__input:placeholder-shown + .floating__label::before {
   transform: translate3d(0, -2.2rem, 0) scale3d(1, 1, 1);
-  
 }
 
 .floating__label::before,
@@ -126,34 +115,23 @@
 }
 
 .floating__input:focus + .floating__label::before {
-  color: #7ed957;
+  color: #429900;
+  font-weight: bold;
 }
 
 aside {
   display: flex;
   flex-direction: column;
-  flex-basis: 40%;
+  flex-basis: 30%;
   height: auto;
   margin-left: 0.5em ;
   padding: 1em;
+  border-radius: 2%;
   background: #7ed957;
   overflow: hidden;
   text-align: justify;
   font-family: 'Outfit', sans-serif;
   font-size: 0.9em;
-}
-
-.datos {
-    display: flex;
-    flex-direction: column;
-    flex-basis: 60%;
-    height: 100%;
-    margin: 1rem auto;
-    box-shadow: 0 3px 7px -1px rgba(#000, .1);
-    background: #E4DDDA;
-    overflow: hidden;
-    z-index: 0;
-    align-items: justify;
 }
 
 .datos legend {
