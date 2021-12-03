@@ -1,15 +1,11 @@
-.sala {
-  height: 520px;
-  box-shadow: -2px 2px 10px 1px grey;
-  margin-bottom: 2rem;
-  padding: 1em;
+header {
+  background-image: URL('https://cf.bstatic.com/xdata/images/hotel/max1280x900/69891341.jpg?k=56447c8698c526916c178de7cec23a90e05ad67110049e3e6327055ed68cb045&o=&hp=1');
+  background-size: 100% 100%, cover;
+  padding-top: 16%;
+  padding-bottom: 16%;
 }
 
-.virtual {
-  height: 440px;
-}
-
-.sala img{
-  width: 100%;
-  height: 100%;
+header h1 {
+  background: none;
+  padding: 0%;
 }

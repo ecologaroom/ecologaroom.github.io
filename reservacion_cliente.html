@@ -36,7 +36,7 @@
             <div class="colum">
               <div class="inputFlotante">
                 <label for="Fecha">Fecha de entrada:</label>
-                <input type="date" id="Fecha_llegada" name="Fecha_llegada" maxlength="10" required pattern="^(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\d\d$" required>
+                <input type="date" id="Fecha_llegada" name="Fecha_llegada" maxlength="10" required pattern="^(?:(?:31(/|-|.)(?:0?[13578]|1[02]))1|(?:(?:29|30)(/|-|.)(?:0?[1,3-9]|1[0-2])2))(?:(?:1[6-9]|[2-9]d)?d{2})$|^(?:29(/|-|.)0?23(?:(?:(?:1[6-9]|[2-9]d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1d|2[0-8])(/|-|.)(?:(?:0?[1-9])|(?:1[0-2]))4(?:(?:1[6-9]|[2-9]d)?d{2})$" required>
               </div>
             </div>
             <!-- Fecha de entrada -->
@@ -45,7 +45,7 @@
             <div class="colum">
               <div class="inputFlotante">
                 <label for="Fecha">Fecha de salida:</label>
-                <input type="date" id="Fecha_salida" name="Fecha_salida" maxlength="10" required pattern="^(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\d\d$" required>
+                <input type="date" id="Fecha_salida" name="Fecha_salida" maxlength="10" required pattern="^(?:(?:31(/|-|.)(?:0?[13578]|1[02]))1|(?:(?:29|30)(/|-|.)(?:0?[1,3-9]|1[0-2])2))(?:(?:1[6-9]|[2-9]d)?d{2})$|^(?:29(/|-|.)0?23(?:(?:(?:1[6-9]|[2-9]d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1d|2[0-8])(/|-|.)(?:(?:0?[1-9])|(?:1[0-2]))4(?:(?:1[6-9]|[2-9]d)?d{2})$" required>
               </div>
             </div>
             <!-- Fecha de salida -->
@@ -105,28 +105,30 @@
           <!-- Envoltura para apartados de la izquierda -->   
           <div class="envoltura">
             <!-- Apartado de los datos del cliente -->
-            <div class="apartado">
+            <div class="card">
               <!-- Título del apartado -->
               <h2>Ingresa tus datos</h2>
               <!-- Título del apartado -->
 
               <!-- Formulario del apartado -->
-              <form method="post" visibility="false" id="customer_login" accept-charset="UTF-8">    
+              <form method="post" visibility="false" id="customer_login" accept-charset="UTF-8">  
+                <!-- Nombre -->  
                 <div class="inputFlotante">
-                  <input class="floating__input" name="nom" type="text" placeholder="Nombre" maxlength="40" required/>
+                  <input class="floating__input" name="nom" type="text" placeholder="Nombre" maxlength="40" required pattern="([a-zA-Z ñáéíóú]{3,30}\s*)+" required/>
                   <label class="floating__label" data-content="Nombre"></label>
                 </div>
-
+                <!-- Apellido paterno -->
                 <div class="inputFlotante">
-                  <input class="floating__input" name="ap_pat" type="text" placeholder="Apellido paterno" maxlength="40" required/>
+                  <input class="floating__input" name="ap_pat" type="text" placeholder="Apellido paterno" maxlength="40" required pattern="([a-zA-Z ñáéíóú]{3,30}\s*)+" required/>
                   <label class="floating__label" data-content="Apellido paterno"></label>
                 </div>
-
+                <!-- Apellido materno -->
                 <div class="inputFlotante">
-                  <input class="floating__input" name="ap_mat" type="text" placeholder="Apellido materno" maxlength="40" required/>
+                  <input class="floating__input" name="ap_mat" type="text" placeholder="Apellido materno" maxlength="40" required pattern="([a-zA-Z ñáéíóú]{3,30}\s*)+" required/>
                   <label class="floating__label" data-content="Apellido materno"></label>
                 </div>
 
+                <!-- Fila de datos -->
                 <div class="fila">
                   <div class="colum">
                     <div class="inputFlotante">
@@ -134,33 +136,35 @@
                       <label class="floating__label" data-content="Edad"></label>
                     </div>
                   </div>
-
+                  <!-- Sexo -->
                   <div class="colum">
                     <div class="inputFlotante">
-                      <select name="sexo" class="floating__select" placeholder="Habitación" required>
+                      <select name="sexo" class="floating__select" placeholder="Sexo" required>
                         <option value="volvo">Femenino</option>
                         <option value="saab">Masculino</option>
                       </select>
                       <label class="floating__label" data-content="Sexo"></label>
                     </div>
                   </div>
-
+                  <!-- Teléfono -->
                   <div class="colum">
                     <div class="inputFlotante">
-                      <input class="floating__input" name="cel" type="tel" placeholder="Celular" size="10" maxlength="12" required/>
+                      <input class="floating__input" name="cel" type="tel" placeholder="Celular" size="10" maxlength="20" required pattern="^[1-9]+[0-9]{11,19}$" required/>
                       <label class="floating__label" data-content="Celular"></label>
                     </div>
                   </div>
-                 
+                  <!-- Correo -->
                   <div class="colum">
                     <div class="inputFlotante">
-                      <input class="floating__input" name="correo" type="email" placeholder="Correo" size="50" maxlength="80" required/>
+                      <input class="floating__input" name="correo" type="email" placeholder="Correo" size="50" maxlength="80" required pattern="^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$" required/>
                       <label class="floating__label" data-content="Correo"></label>
                     </div>
                   </div>
                 </div>
-
+                <!-- Fila de datos -->
+                <!-- Botón registrar -->
                 <button type="submit" class="btn" style="margin-bottom: 2%; margin-top: 5%;">Registrar</button>
+                <!-- Formulario del apartado -->
               </form>
               <!-- Formulario del apartado -->
             </div>
@@ -170,7 +174,8 @@
             <div class="division"></div>
             <!-- División -->
 
-            <div class="apartado">
+            <!-- Apartado de los datos de la reservación -->
+            <div class="card">
               <!-- Título del apartado -->
               <div class="titulo">
                 <h2>Realiza la reservación</h2>
@@ -179,22 +184,23 @@
 
               <!-- Formulario del apartado -->
               <form method="post" visibility="false" id="customer_login" accept-charset="UTF-8">
+                <!-- Fila de datos -->
                 <div class="fila">
-
+                  <!-- Fecha de llegada -->
                   <div class="colum">
                     <div class="inputFlotante">
-                      <input class="floating__input" name="Fecha_llegada" type="date" placeholder="Fecha de llegada" maxlength="10" required pattern="^(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\d\d$" required/>
+                      <input class="floating__input" name="Fecha_llegada" type="date" placeholder="Fecha de llegada" maxlength="10" required pattern="^(?:(?:31(/|-|.)(?:0?[13578]|1[02]))1|(?:(?:29|30)(/|-|.)(?:0?[1,3-9]|1[0-2])2))(?:(?:1[6-9]|[2-9]d)?d{2})$|^(?:29(/|-|.)0?23(?:(?:(?:1[6-9]|[2-9]d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1d|2[0-8])(/|-|.)(?:(?:0?[1-9])|(?:1[0-2]))4(?:(?:1[6-9]|[2-9]d)?d{2})$" required/>
                       <label class="floating__label" data-content="Fecha de llegada"></label>
                     </div>
                   </div>
-                  
+                  <!-- Fecha de salida -->
                   <div class="colum">
                     <div class="inputFlotante">
-                      <input class="floating__input" name="Fecha_salida" type="date" placeholder="Fecha de salida" maxlength="10" required pattern="^(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\d\d$" required/>
+                      <input class="floating__input" name="Fecha_salida" type="date" placeholder="Fecha de salida" maxlength="10" required pattern="^(?:(?:31(/|-|.)(?:0?[13578]|1[02]))1|(?:(?:29|30)(/|-|.)(?:0?[1,3-9]|1[0-2])2))(?:(?:1[6-9]|[2-9]d)?d{2})$|^(?:29(/|-|.)0?23(?:(?:(?:1[6-9]|[2-9]d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1d|2[0-8])(/|-|.)(?:(?:0?[1-9])|(?:1[0-2]))4(?:(?:1[6-9]|[2-9]d)?d{2})$" required/>
                       <label class="floating__label" data-content="Fecha de salida"></label>
                     </div>
                   </div>
-
+                  <!-- Número de huéspedes -->
                   <div class="colum">
                     <div class="inputFlotante">
                       <input class="floating__input" name="Num_huesped" type="number" placeholder="# Huéspedes" maxlength="3" min="1" max="100" required/>
@@ -202,15 +208,18 @@
                     </div>
                   </div>
                 </div>
+                <!-- Fila de datos -->
 
+                <!-- Fila de datos -->
                 <div class="fila">
+                  <!-- Número de habitaciones -->
                   <div class="colum">
                     <div class="inputFlotante">
                       <input class="floating__input" name="Num_hab" type="number" placeholder="# Habitaciones" maxlength="2" min="1" max="100" required/>
                       <label class="floating__label" data-content="# Habitaciones"></label>
                     </div>
                   </div>
-                  
+                  <!-- Tipo de habitación -->
                   <div class="colum">
                     <div class="inputFlotante">
                       <select name="Tipo_hab" class="floating__select" placeholder="Habitación" required>
@@ -222,13 +231,89 @@
                     </div>
                   </div>
                 </div>
-
+                <!-- Fila de datos -->
+                <!-- Botón registrar -->
                 <button type="submit" class="btn" style="margin-bottom: 2%; margin-top: 5%;">Realizar</button>
-
               </form>
               <!-- Formulario del apartado -->
             </div>
-            <!-- Apartado de los datos del cliente -->
+            <!-- Apartado de los datos de la reservación -->
+
+            <!-- División -->
+            <div class="division"></div>
+            <!-- División -->
+
+            <!-- Apartado de los datos del método de pago -->
+            <div class="card">
+              <!-- Título del apartado -->
+              <h2>Método de pago</h2>
+              <!-- Título del apartado -->
+
+              <!-- Formulario del apartado -->
+              <form method="post" visibility="false" id="customer_login" accept-charset="UTF-8">  
+                <!-- Nombre -->  
+                <div class="inputFlotante">
+                  <input class="floating__input" name="num_tarjeta" type="text" placeholder="Número de trajeta" maxlength="16" required/>
+                  <label class="floating__label" data-content="Número de trajeta"></label>
+                </div>
+
+                <!-- Fila de datos -->
+                <div class="fila">
+                  <!-- Mes -->
+                  <div class="colum">
+                    <div class="inputFlotante">
+                      <select name="mes" class="floating__select" placeholder="Mes" required>
+                        <option value="01">01</option>
+                        <option value="02">02</option>
+                        <option value="03">03</option>
+                        <option value="04">04</option>
+                        <option value="05">05</option>
+                        <option value="06">06</option>
+                        <option value="07">07</option>
+                        <option value="08">08</option>
+                        <option value="09">09</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                      </select>
+                      <label class="floating__label" data-content="Mes"></label>
+                    </div>
+                  </div>
+                  <!-- Año -->
+                  <div class="colum">
+                    <div class="inputFlotante">
+                      <select name="año" class="floating__select" placeholder="Año" required>
+                        <option value="2022">2022</option>
+                        <option value="2023">2023</option>
+                        <option value="2024">2024</option>
+                        <option value="2025">2025</option>
+                        <option value="2026">2026</option>
+                        <option value="2027">2027</option>
+                        <option value="2028">2028</option>
+                        <option value="2029">2029</option>
+                        <option value="2030">2030</option>
+                        <option value="2031">2031</option>
+                        <option value="2032">2032</option>
+                      </select>
+                      <label class="floating__label" data-content="Año"></label>
+                    </div>
+                  </div>
+                  <!-- Código de seguridad -->
+                  <div class="colum">
+                    <div class="inputFlotante">
+                      <input class="floating__input" name="cvv" type="text" placeholder="CVV" size="1" maxlength="3" min="000" max="999" required/>
+                      <label class="floating__label" data-content="CVV"></label>
+                    </div>
+                  </div>
+                </div>
+                <!-- Fila de datos -->
+                <!-- Botón registrar -->
+                <button type="submit" class="btn" style="margin-bottom: 2%; margin-top: 5%;">Pagar</button>
+              </form>
+              <!-- Formulario del apartado -->
+            </div>
+            <!-- Apartado de los datos del método de pago -->
+
           </div>
           <!-- Envoltura para apartados de la izquierda -->   
 
@@ -246,7 +331,9 @@
         </div>
         <!-- Grid de datos y resumen -->
 
-        <button type="button" class="btn" onClick="terminaSesion();">Cerrar sesión</button>
+        <!-- Cerrar sesión -->
+        <div class="cierre"><button type="button" class="btn" onClick="terminaSesion();">Cerrar sesión</button></div>
+        <!-- Cerrar sesión -->
 
         <!-- Pie de página -->
         <footer>

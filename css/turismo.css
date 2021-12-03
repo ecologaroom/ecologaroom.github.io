@@ -51,3 +51,36 @@
     margin: 1%;
     background:#7ed97e;
 }
+
+.carrusel{
+    height: 35vw;
+}
+  
+.carrusel .envoltura{
+    display: flex;
+    width: auto;
+    width: 100vw;
+    height: 35vw;
+    animation: cambio 20s infinite;
+}
+/*
+    background-size: 100% 100%, cover;
+    padding-top: 16%;
+    padding-bottom: 16%;*/
+
+
+.carrusel img{
+    width: 100vw;
+    height: 35vw;
+    margin-left: 12vw;
+    margin-right: 12vw;
+}
+
+@keyframes cambio {
+    0% {margin-left: 0vw;}
+    33% {margin-left: 0vw;}
+    56% {margin-left: -88vw;}
+    66% {margin-left: -88vw;}
+    90% {margin-left: -178vw;}
+    100% {margin-left: -178vw;}
+}

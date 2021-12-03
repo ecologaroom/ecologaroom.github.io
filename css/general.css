@@ -68,3 +68,9 @@ h3 {
     margin: 2% 1%;
     background:#7ed97e;
 }
+
+.card {
+    box-shadow: -2px 2px 10px 1px grey;
+    margin: 1rem 0;
+    padding: 1em;
+}
