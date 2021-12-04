@@ -3,7 +3,7 @@
 .menu {
     display: block;
     position: fixed; /* Establecemos que la posición del menú al navegar por la página sea fijo */
-    top: 12%; /* Delimitamos que la posición fija del menú sea el 10% del inicio del margen de hasta arriba */
+    top: 0%; /* Delimitamos que la posición fija del menú sea el 10% del inicio del margen de hasta arriba */
     left: 0%; /* Delimitamos que la posición fija del menú sea desde el inicio del margen de la izquierda */
     z-index: 2; /* Establecemos que el menú se posicione sobre todo contenido de la página */
     width: 10%; /* Establecemos que el menú abarque el 10% de la página */
