@@ -1,16 +1,17 @@
 @import url("'https://fonts.googleapis.com/css2?family=EB+Garamond&family=Lateef&family=Outfit:wght@300&display=swap'");
 
 .menu {
+    display: block;
     position: fixed; /* Establecemos que la posición del menú al navegar por la página sea fijo */
-    top: 10%; /* Delimitamos que la posición fija del menú sea el 10% del inicio del margen de hasta arriba */
+    top: 12%; /* Delimitamos que la posición fija del menú sea el 10% del inicio del margen de hasta arriba */
     left: 0%; /* Delimitamos que la posición fija del menú sea desde el inicio del margen de la izquierda */
-    z-index: 1; /* Establecemos que el menú se posicione sobre todo contenido de la página */
+    z-index: 2; /* Establecemos que el menú se posicione sobre todo contenido de la página */
     width: 10%; /* Establecemos que el menú abarque el 10% de la página */
     height: 100%; /* Establecemos que el menú abarque el 100% de la página */
     background-color: #4faae0; /* Establecemos que el color de fondo del menú sea azul */
     text-align: center; /* Alineamos los elementos del menú al centro del 10% de lo que abarca */
 }
-  
+
 .menuBtn {
     width: 100%; /* Establecemos que los botones abarquen el 100% del menú */
     height: 70px; /* Establecemos que los botones abarquen 70 pixeles del menú */
@@ -34,4 +35,11 @@
     border: none; /* Definimos que el borde del boton del apartado en el que estamos inexistan */
     font-family: 'EB Garamond', serif; /* Asignamos la familia EB Garamond al texto del boton del apartado en el que estamos */
     color: #f5f3ef; /* Establecemos que el color del texto del boton del apartado en el que estamos sea crema */
+}
+
+@media screen and (max-width: 100vw) and (max-height: 100vw){
+    .menu {
+      display: block;
+      overflow-x: auto;
+    }
 }
