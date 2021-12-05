@@ -59,3 +59,4 @@ function procesaError(e) {
   console.log(e);
   alert(e.message);
 }
+

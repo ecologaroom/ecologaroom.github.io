@@ -16,6 +16,8 @@
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
     <!-- Agrega el manejo de autenticación. -->
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <!-- Agrega el manejo a Cloud Firestore -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
     <!-- Conexión a firebase -->
     <script src="js/autenticacion.js"></script>
     <!-- Navegación interna de la página -->
@@ -173,5 +175,48 @@
       <!-- Contenido -->
     </div>
     <!-- Página -->
+
+    <script>
+      /* Actualización automáticamente de los datos de reservación en la tabla de reservaciones */
+function actualizaReservacion(){
+  /* Se pide a Firebase todos los registros de la colección RESERVACION ordenados por el campo del NUM_HABITACION de forma ascendente */
+  firestore.collection("RESERVACION").orderBy("NUM_HABITACION", "desc")
+    .onSnapshot(
+      /* Función con copia de datos en servidor, para la actualización cada que se modifica el servidor */
+      querySnapshot => {
+        /* Se vacia lista con los números de habitación */
+        num_hab.innerHTML = "";
+        /* Revisa y muestra cada registro de la muestra */
+        querySnapshot.forEach(doc => {
+          /* Recupera datos almacenados en el registro */
+          const data = doc.data();
+
+          num_hab.innerHTML +=
+            '<li><u>${cod(data.NUM_HABITACION)}</u></li>';
+        })
+      },
+      e => {
+        procesaError(e);
+        /* Intenta conectarse nuevamente */
+        actualizaReservacion();
+      }
+    )
+}
+
+/* Procesa un error. Muestra el objeto en la consola y un cuadro de alerta con el mensaje. @param {Error} e descripción del error. */
+function procesaError(e) {
+  console.log(e);
+  alert(e.message);
+}
+
+/* Map que contiene el texto de escape de caracteres especiales */
+const codMap = Objec.freeze(new Map([['&', '&amp;'],['<','&lt;'],['>','&gt;'],['"','&quot;'],["'",'&#039;']]));
+
+/* Codifica texto para que escape los caracteres especiales y no se interprete como HTML */
+function cod(texto){
+  return (texto||"").replace(/[&<>"']/g, letra => codMap.get(letra));
+}
+
+    </script>
   </body>
 </html>

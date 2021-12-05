@@ -16,6 +16,8 @@
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
     <!-- Agrega el manejo de autenticación. -->
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <!-- Agrega el manejo a Cloud Firestore -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
     <!-- Conexión a firebase -->
     <script src="js/autenticacion.js"></script>
     <!-- Navegación interna de la página -->
@@ -39,7 +41,7 @@
             <div class="colum">
               <div class="inputFlotante">
                 <label for="Fecha">Fecha de entrada:</label>
-                <input type="date" id="Fecha_llegada" name="Fecha_llegada" maxlength="10" required pattern="^(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\d\d$" required>
+                <input type="date" id="fecha_lleg" name="Fecha_llegada" maxlength="10" required pattern="^(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\d\d$" required>
               </div>
             </div>
             <!-- Fecha de entrada -->
@@ -48,7 +50,7 @@
             <div class="colum">
               <div class="inputFlotante">
                 <label for="Fecha">Fecha de salida:</label>
-                <input type="date" id="Fecha_salida" name="Fecha_salida" maxlength="10" required pattern="^(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\d\d$" required>
+                <input type="date" id="fecha_sal" name="Fecha_salida" maxlength="10" required pattern="^(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\d\d$" required>
               </div>
             </div>
             <!-- Fecha de salida -->
@@ -57,7 +59,7 @@
             <div class="colum">
               <div class="inputFlotante">
                 <label for="Fecha"># huéspedes:</label>
-                <input type="number" id="Num_huesped" name="Num_huesped" maxlength="3" min="1" max="100" required>
+                <input type="number" id="num_hues" name="Num_huesped" maxlength="3" min="1" max="100" required>
               </div>
             </div>
             <!-- Número de huéspedes -->
