@@ -62,15 +62,15 @@ function procesaError(e) {
 
 
 /* Otorga permisos de visualización según tipo de usuario */
-async function tipoUsuario(usuario){
+async function tipoUsuario(usuarioAuth){
   // @ts-ignore
-  if(usuario && usuario.email){
+  if(usuarioAuth && usuarioAuth.email){
       /* Crea variable html */
       // @ts-ignore
       let html = "";
       /* Crea variable constante de usuario */
       // @ts-ignore
-      const roles = await cargaRoles(usuario.email);
+      const roles = await cargaRoles(usuarioAuth.email);
 
       if(roles.has("Cliente")){
           location.href = 'reservacion_cliente.html';
