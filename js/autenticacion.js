@@ -10,27 +10,10 @@ firebase.initializeApp({
   measurementId: "G-45R2RM4HV8"
 });
 
-/* Valida campos vacíos */
-function validaVacio(valor) {
-  valor = valor.replace("&nbsp;", "");
-  valor = valor == undefined ? "" : valor;
-  if (!valor || 0 === valor.trim().length) {
-      return true;
-      }
-  else {
-      return false;
-      }
-}
 
+/* Realiza en login con Google */
 function formLogin(){
-  var llegada = document.getElementById("fecha_lleg");
-  var salida = document.getElementById("fecha_sal");
-  var huespedes = document.getElementById("num_hues");
-
-  if(validaVacio(llegada) || validaVacio(salida) || validaVacio(huespedes) ){
-    alert("Favor de llenar todos los campos");
-  } else {
-    /* Conexión al sistema de autenticación de Firebase. */
+  /* Conexión al sistema de autenticación de Firebase. */
   // @ts-ignore
   const auth = firebase.auth();
   /* Tipo de autenticación de usuarios. En este caso es con Google. */
@@ -45,21 +28,24 @@ function formLogin(){
     async usuarioAuth => {
       if (usuarioAuth && usuarioAuth.email) {
         // Usuario aceptado y con login
-        tipoUsuario();
+        /* Crea variable constante de usuario */
+        // @ts-ignore
+        const roles = await cargaRoles(usuarioAuth.email);
+
+        /* Otorga permisos de visualización según tipo de usuario */
+        if(roles.has("Cliente")){
+            location.href = 'reservacion_cliente.html';
+        } else if(roles.has("Trabajador")){
+            location.href = 'reservacion_recepcion.html';
+        }
       } else {
         // No ha iniciado sesión. Pide datos para iniciar sesión.
         await auth.signInWithRedirect(provider)
-        provider.getRedirectResult().then(function(result) {
-          if (usuarioAuth) {
-            tipoUsuario(); //After successful login, user will be redirected to home.html
-          }
-        })
       }
     },
     // Función que se invoca si hay un error al verificar el usuario.
     procesaError
-  )   
-  }   
+  )    
 }
 
 /* Terminar la sesión. */
@@ -78,25 +64,4 @@ async function terminaSesion() {
 function procesaError(e) {
   console.log(e);
   alert(e.message);
-}
-
-
-/* Otorga permisos de visualización según tipo de usuario */
-async function tipoUsuario(usuarioAuth){
-  // @ts-ignore
-  if(usuarioAuth && usuarioAuth.email){
-      /* Crea variable html */
-      // @ts-ignore
-      let html = "";
-      /* Crea variable constante de usuario */
-      // @ts-ignore
-      const roles = await cargaRoles(usuarioAuth.email);
-
-      if(roles.has("Cliente")){
-          location.href = 'reservacion_cliente.html';
-      }
-      if(roles.has("Trabajador")){
-          location.href = 'reservacion_recepcion.html';
-      }
-  }
 }
