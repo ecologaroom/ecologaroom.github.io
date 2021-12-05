@@ -177,6 +177,18 @@
     <!-- Página -->
 
     <script>
+/* Conexión a BD */
+const firestore = firebase.firestore();
+
+/* Agrega a la BD */
+function agrega(){
+  firestore.collection("RESERVACION").add({
+    NUM_HABITACION: num_hab,
+  });
+}
+
+
+
       /* Actualización automáticamente de los datos de reservación en la tabla de reservaciones */
 function actualizaReservacion(){
   /* Se pide a Firebase todos los registros de la colección RESERVACION ordenados por el campo del NUM_HABITACION de forma ascendente */

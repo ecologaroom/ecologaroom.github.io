@@ -215,7 +215,7 @@
                   <!-- Número de habitaciones -->
                   <div class="colum">
                     <div class="inputFlotante">
-                      <input class="floating__input" name="Num_hab" type="number" placeholder="# Habitaciones" maxlength="2" min="1" max="100" required/>
+                      <input class="floating__input" id="num_hab" name="Num_hab" type="number" placeholder="# Habitaciones" maxlength="2" min="1" max="100" required/>
                       <label class="floating__label" data-content="# Habitaciones"></label>
                     </div>
                   </div>
@@ -233,7 +233,7 @@
                 </div>
                 <!-- Fila de datos -->
                 <!-- Botón registrar -->
-                <button type="submit" class="btn" style="margin-bottom: 2%; margin-top: 5%;">Realizar</button>
+                <button type="submit" onClick="agrega();" class="btn" style="margin-bottom: 2%; margin-top: 5%;">Realizar</button>
               </form>
               <!-- Formulario del apartado -->
             </div>
@@ -362,5 +362,19 @@
       <!-- Contenido -->
     </div>
     <!-- Página -->
+
+    <script>
+      /* Conexión a BD */
+      const firestore = firebase.firestore();
+      
+      /* Agrega a la BD */
+      function agrega(){
+        firestore.collection("RESERVACION").add({
+          NUM_HABITACION: num_hab,
+        });
+      }
+    </script>
+
+
   </body>
 </html>
