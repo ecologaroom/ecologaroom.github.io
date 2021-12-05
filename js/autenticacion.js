@@ -26,13 +26,13 @@ function formLogin(){
     async usuarioAuth => {
       if (usuarioAuth && usuarioAuth.email) {
         // Usuario aceptado y con login
-        location.href = 'reservacion_cliente.html';
+        tipoUsuario();
       } else {
         // No ha iniciado sesión. Pide datos para iniciar sesión.
         await auth.signInWithRedirect(provider)
         provider.getRedirectResult().then(function(result) {
           if (usuarioAuth) {
-            location.href = 'reservacion_cliente.html'; //After successful login, user will be redirected to home.html
+            tipoUsuario(); //After successful login, user will be redirected to home.html
           }
         })
       }
@@ -60,3 +60,23 @@ function procesaError(e) {
   alert(e.message);
 }
 
+
+/* Otorga permisos de visualización según tipo de usuario */
+async function tipoUsuario(usuario){
+  // @ts-ignore
+  if(usuario && usuario.email){
+      /* Crea variable html */
+      // @ts-ignore
+      let html = "";
+      /* Crea variable constante de usuario */
+      // @ts-ignore
+      const roles = await cargaRoles(usuario.email);
+
+      if(roles.has("Cliente")){
+          location.href = 'reservacion_cliente.html';
+      }
+      if(roles.has("Trabajador")){
+          location.href = 'reservacion_recepcion.html';
+      }
+  }
+}

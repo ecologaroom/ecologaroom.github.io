@@ -22,6 +22,8 @@
     <script src="js/autenticacion.js"></script>
     <!-- Navegación interna de la página -->
     <script src="js/navegacion.js"></script>
+    <!-- Navegación interna de la página -->
+    <script type="module" src="js/usuario.js"></script>
   </head>
   <body>
     <!-- Página -->
@@ -35,44 +37,46 @@
           <div class="logo"><img class="imagen_logo" src="img/Logo.png" loading="lazy"/></div>
           <!-- Logo a la izquierda-->
 
-          <!-- Fila responsiva -->
-          <div class="fila">
-            <!-- Fecha de entrada -->
-            <div class="colum">
-              <div class="inputFlotante">
-                <label for="Fecha">Fecha de entrada:</label>
-                <input type="date" id="fecha_lleg" name="Fecha_llegada" maxlength="10" required pattern="^(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\d\d$" required>
+          <form action="reservacion_cliente.html" method="get">
+            <!-- Fila responsiva -->
+            <div class="fila">
+              <!-- Fecha de entrada -->
+              <div class="colum">
+                <div class="inputFlotante">
+                  <label for="Fecha">Fecha de entrada:</label>
+                  <input type="date" id="fecha_lleg" name="fecha_lleg" maxlength="10" required pattern="^(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\d\d$" required>
+                </div>
               </div>
-            </div>
-            <!-- Fecha de entrada -->
+              <!-- Fecha de entrada -->
 
-            <!-- Fecha de salida -->
-            <div class="colum">
-              <div class="inputFlotante">
-                <label for="Fecha">Fecha de salida:</label>
-                <input type="date" id="fecha_sal" name="Fecha_salida" maxlength="10" required pattern="^(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\d\d$" required>
+              <!-- Fecha de salida -->
+              <div class="colum">
+                <div class="inputFlotante">
+                  <label for="Fecha">Fecha de salida:</label>
+                  <input type="date" id="fecha_sal" name="fecha_sal" maxlength="10" required pattern="^(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\d\d$" required>
+                </div>
               </div>
-            </div>
-            <!-- Fecha de salida -->
+              <!-- Fecha de salida -->
 
-            <!-- Número de huéspedes -->
-            <div class="colum">
-              <div class="inputFlotante">
-                <label for="Fecha"># huéspedes:</label>
-                <input type="number" id="num_hues" name="Num_huesped" maxlength="3" min="1" max="100" required>
+              <!-- Número de huéspedes -->
+              <div class="colum">
+                <div class="inputFlotante">
+                  <label for="Fecha"># huéspedes:</label>
+                  <input type="number" id="num_hues" name="num_hues" maxlength="3" min="1" max="100" required>
+                </div>
               </div>
-            </div>
-            <!-- Número de huéspedes -->
+              <!-- Número de huéspedes -->
 
-            <!-- Botón de reservar -->
-            <div class="colum">
-              <div class="inputFlotante">
-                <button type="button" class="btn" onclick="formLogin();">Reservar</button>
+              <!-- Botón de reservar -->
+              <div class="colum">
+                <div class="inputFlotante">
+                  <button type="submit" class="btn" onclick="formLogin();">Reservar</button>
+                </div>
               </div>
+              <!-- Botón de la reservar -->
             </div>
-            <!-- Botón de la reservar -->
-          </div>
-          <!-- Fila responsiva -->
+            <!-- Fila responsiva -->
+          </form>
         </div>
         <!-- Reservación inmediata a la derecha -->
       </nav>
@@ -143,6 +147,19 @@
         <!-- Pie de página -->
       </section>
       <!-- Contenido -->
+
+      <script>
+        /* Envía datos de reservación inmediata a formulario. */
+        function reservaAhora() {
+          const llegada = document.getElementById("fecha_lleg");
+          document.getElementById("fecha_sal");
+          document.getElementById("num_hues");
+
+          document.getElementById("write").innerHTML = window.location.search;
+
+        }
+      </script>
+
 
  <!-- 
 // Login con Google
