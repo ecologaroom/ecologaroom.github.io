@@ -10,8 +10,27 @@ firebase.initializeApp({
   measurementId: "G-45R2RM4HV8"
 });
 
+/* Valida campos vacíos */
+function validaVacio(valor) {
+  valor = valor.replace("&nbsp;", "");
+  valor = valor == undefined ? "" : valor;
+  if (!valor || 0 === valor.trim().length) {
+      return true;
+      }
+  else {
+      return false;
+      }
+}
+
 function formLogin(){
-  /* Conexión al sistema de autenticación de Firebase. */
+  var llegada = document.getElementById("fecha_lleg");
+  var salida = document.getElementById("fecha_sal");
+  var huespedes = document.getElementById("num_hues");
+
+  if(validaVacio(llegada) || validaVacio(salida) || validaVacio(huespedes) ){
+    alert("Favor de llenar todos los campos");
+  } else {
+    /* Conexión al sistema de autenticación de Firebase. */
   // @ts-ignore
   const auth = firebase.auth();
   /* Tipo de autenticación de usuarios. En este caso es con Google. */
@@ -39,7 +58,8 @@ function formLogin(){
     },
     // Función que se invoca si hay un error al verificar el usuario.
     procesaError
-  )      
+  )   
+  }   
 }
 
 /* Terminar la sesión. */
