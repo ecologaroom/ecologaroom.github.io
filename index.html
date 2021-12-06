@@ -37,46 +37,44 @@
           <div class="logo"><img class="imagen_logo" src="img/Logo.png" loading="lazy"/></div>
           <!-- Logo a la izquierda-->
 
-          <form action="reservacion_cliente.html" method="get">
-            <!-- Fila responsiva -->
-            <div class="fila">
-              <!-- Fecha de entrada -->
-              <div class="colum">
-                <div class="inputFlotante">
-                  <label for="Fecha">Fecha de entrada:</label>
-                  <input type="date" id="fecha_lleg" name="fecha_lleg" maxlength="10" required pattern="^(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\d\d$" required>
-                </div>
+          <!-- Fila responsiva -->
+          <div class="fila">
+            <!-- Fecha de entrada -->
+            <div class="colum">
+              <div class="inputFlotante">
+                <label for="Fecha">Fecha de entrada:</label>
+                <input type="date" id="fecha_lleg" name="fecha_lleg" maxlength="10" required pattern="^(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\d\d$" required>
               </div>
-              <!-- Fecha de entrada -->
-
-              <!-- Fecha de salida -->
-              <div class="colum">
-                <div class="inputFlotante">
-                  <label for="Fecha">Fecha de salida:</label>
-                  <input type="date" id="fecha_sal" name="fecha_sal" maxlength="10" required pattern="^(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\d\d$" required>
-                </div>
-              </div>
-              <!-- Fecha de salida -->
-
-              <!-- Número de huéspedes -->
-              <div class="colum">
-                <div class="inputFlotante">
-                  <label for="Fecha"># huéspedes:</label>
-                  <input type="number" id="num_hues" name="num_hues" maxlength="3" min="1" max="100" required>
-                </div>
-              </div>
-              <!-- Número de huéspedes -->
-
-              <!-- Botón de reservar -->
-              <div class="colum">
-                <div class="inputFlotante">
-                  <button type="submit" class="btn" onclick="logIn();">Reservar</button>
-                </div>
-              </div>
-              <!-- Botón de la reservar -->
             </div>
-            <!-- Fila responsiva -->
-          </form>
+            <!-- Fecha de entrada -->
+
+            <!-- Fecha de salida -->
+            <div class="colum">
+              <div class="inputFlotante">
+                <label for="Fecha">Fecha de salida:</label>
+                <input type="date" id="fecha_sal" name="fecha_sal" maxlength="10" required pattern="^(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\d\d$" required>
+              </div>
+            </div>
+            <!-- Fecha de salida -->
+
+            <!-- Número de huéspedes -->
+            <div class="colum">
+              <div class="inputFlotante">
+                <label for="Fecha"># huéspedes:</label>
+                <input type="number" id="num_hues" name="num_hues" maxlength="3" min="1" max="100" required>
+              </div>
+            </div>
+            <!-- Número de huéspedes -->
+
+            <!-- Botón de reservar -->
+            <div class="colum">
+              <div class="inputFlotante">
+                <button type="submit" class="btn" onclick="logOut();">Reservar</button>
+              </div>
+            </div>
+            <!-- Botón de la reservar -->
+          </div>
+          <!-- Fila responsiva -->
         </div>
         <!-- Reservación inmediata a la derecha -->
       </nav>
