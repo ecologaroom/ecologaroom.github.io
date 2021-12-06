@@ -38,9 +38,10 @@ async function rol(usuario) {
   if (tieneRol(usuario,["Trabajador"])) {
     formRecepcion;
   } 
+  /*
   if (tieneRol(usuario,["Cliente"])) {
     formClientes;
-  } 
+  } */
 }
 
 /* Verifica si tiene rol */
