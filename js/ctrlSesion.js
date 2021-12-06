@@ -25,8 +25,7 @@ function enviaSesion(usuario) {
         // Usuario aceptado.
         rol();
     } else {
-        // No ha iniciado sesión.
-        logIn();
+        // No ha iniciado sesión.                    logIn(); ////////////////////////////////////////7
     }
 }
 
@@ -57,7 +56,7 @@ async function tieneRol(usuario, roles) {
         location.href = "index.html";
     } else {
         /* Si se tiene rol verdadero se manda al Login */
-        logIn();
+        ////////////////////////////////////////////////////////////////////////////////////logIn();
     }
     return false;
 }
