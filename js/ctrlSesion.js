@@ -7,6 +7,9 @@ import {
     muestraError
 } from "../lib/util.js";
 
+
+const reservacion = document.getElementById("reservar");
+
 /* Conexión con Firestore. */
 const firestore = getFirestore();
 
@@ -74,7 +77,7 @@ async function cargaRoles(email) {
 }
 
 /* Ejecuta login con Google */
-async function logIn() {
+reservacion.addEventListener("click",  async function logIn() {
     /* Tipo de autenticación de usuarios. En este caso es con Google. */
     // @ts-ignore
     const provider = new firebase.auth.GoogleAuthProvider();
@@ -82,7 +85,7 @@ async function logIn() {
     provider.setCustomParameters({ prompt: "select_account" });
     /* Pide datos para iniciar sesión. */
     await getAuth().signInWithRedirect(provider);
-}
+});
 
 /* Cierra sesión */
 async function logOut() {
