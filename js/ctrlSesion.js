@@ -45,7 +45,7 @@ async function rol(usuario) {
 }
 
 /* Verifica si tiene rol */
-export async function tieneRol(usuario, roles) {
+async function tieneRol(usuario, roles) {
     if (usuario && usuario.email) {
         /* Obtiene rol del usuario con el email entrante */
         const rolIds = await cargaRoles(usuario.email);
@@ -66,7 +66,7 @@ export async function tieneRol(usuario, roles) {
 }
 
 /* Obtención de roles */
-export async function cargaRoles(email) {
+async function cargaRoles(email) {
     /* Extracción de datos en la colección de Usuario, según el email brindado */
     let doc = await colUsuario.doc(email).get();
     /* Si existe la colección de Usuario */
@@ -80,7 +80,7 @@ export async function cargaRoles(email) {
 }
 
 /* Ejecuta login con Google */
-export async function logIn() {
+async function logIn() {
     /* Tipo de autenticación de usuarios. En este caso es con Google. */
     // @ts-ignore
     const provider = new firebase.auth.GoogleAuthProvider();
@@ -91,7 +91,7 @@ export async function logIn() {
 }
 
 /* Cierra sesión */
-export async function logOut() {
+async function logOut() {
     try {
       await getAuth().signOut();
     } catch (e) {
