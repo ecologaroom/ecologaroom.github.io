@@ -17,7 +17,7 @@ const colUsuario = firestore.collection("Usuario");
 getAuth().onAuthStateChanged(enviaSesion, muestraError);
   
 /* Muestra los datos del usuario o manda a iniciar sesión en caso de que no haya empezado. */
-async function enviaSesion(usuario) {
+function enviaSesion(usuario) {
     if (usuario && usuario.email) {
         // Usuario aceptado.
         rol();
@@ -28,7 +28,7 @@ async function enviaSesion(usuario) {
 }
 
 /* Para rol de trabajador envía a las reservaciones de recepción */
-async function rol(usuario) {
+function rol(usuario) {
   if (tieneRol(usuario,["Trabajador"])) {
     return location.href = 'reservacion_recepcion.html';
   } 
