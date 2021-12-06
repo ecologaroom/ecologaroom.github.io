@@ -26,7 +26,7 @@ getAuth().onAuthStateChanged(enviaSesion, muestraError);
 async function enviaSesion(usuario) {
     if (usuario && usuario.email) {
         // Usuario aceptado.
-        rol(usuario);
+        rol();
     } else {
         // No ha iniciado sesión.
         logIn();
