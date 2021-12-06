@@ -1,9 +1,9 @@
 function formInicio(){
-    location.href = 'index.html';
+    return location.href = 'index.html';
 };
 
 function formHabitaciones(){
-    location.href = 'habitaciones.html';
+    return location.href = 'habitaciones.html';
 };
 
 function formInstalaciones(){
