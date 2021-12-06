@@ -7,17 +7,17 @@ function formHabitaciones(){
 };
 
 function formInstalaciones(){
-    location.href = 'instalaciones.html';
+    return location.href = 'instalaciones.html';
 };
 
 function formTurismo(){
-    location.href = 'turismo.html';
+    return location.href = 'turismo.html';
 };
 
 function formRestaurantes(){
-    location.href = 'restaurantes.html';
+    return location.href = 'restaurantes.html';
 };
 
 function formFAQ(){
-    location.href = 'FAQ.html';
+    return location.href = 'FAQ.html';
 };
