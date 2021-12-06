@@ -30,7 +30,7 @@ async function enviaSesion(usuario) {
 /* Para rol de trabajador envía a las reservaciones de recepción */
 async function rol(usuario) {
   if (tieneRol(usuario,["Trabajador"])) {
-    location.href = 'reservacion_recepcion.html';
+    return location.href = 'reservacion_recepcion.html';
   } 
   /*
   if (tieneRol(usuario,["Cliente"])) {
