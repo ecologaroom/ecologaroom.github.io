@@ -7,12 +7,6 @@ import {
     muestraError
 } from "../lib/util.js";
 
-import {
-    formClientes,
-    formRecepcion
-} from "./navegacion";
-
-
 /* Conexión con Firestore. */
 const firestore = getFirestore();
 
@@ -36,11 +30,11 @@ async function enviaSesion(usuario) {
 /* Para rol de trabajador envía a las reservaciones de recepción */
 async function rol(usuario) {
   if (tieneRol(usuario,["Trabajador"])) {
-    formRecepcion;
+    location.href = 'reservacion_recepcion.html';
   } 
   /*
   if (tieneRol(usuario,["Cliente"])) {
-    formClientes;
+    location.href = 'reservacion_cliente.html';
   } */
 }
 

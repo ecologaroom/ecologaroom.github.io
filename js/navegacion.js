@@ -21,11 +21,3 @@ function formRestaurantes(){
 function formFAQ(){
     location.href = 'FAQ.html';
 };
-
-export function formClientes(){
-    location.href = 'reservacion_cliente.html';
-};
-
-export function formRecepcion(){
-    location.href = 'reservacion_recepcion.html';
-};
