@@ -76,15 +76,32 @@ async function cargaRoles(email) {
 }
 
 /* Ejecuta login con Google */
-reservacion.addEventListener("click",  async function logIn() {
+function logIn() {
     /* Tipo de autenticación de usuarios. En este caso es con Google. */
     // @ts-ignore
     const provider = new firebase.auth.GoogleAuthProvider();
     /* Configura el proveedor de Google para que permita seleccionar de una lista. */
     provider.setCustomParameters({ prompt: "select_account" });
-    /* Pide datos para iniciar sesión. */
-    await getAuth().signInWithRedirect(provider);
-});
+    /* Recibe una función que se invoca cada que hay un cambio en la autenticación y recibe el modelo con las características del usuario.*/
+  
+    getAuth().onAuthStateChanged(
+        /* Recibe las características del usuario o null si no ha iniciado sesión. */
+        async usuarioAuth => {
+            if (usuarioAuth && usuarioAuth.email) {
+                // Usuario aceptado y con login
+                location.href = 'reservacion_cliente.html';
+            } else {
+                // No ha iniciado sesión. Pide datos para iniciar sesión.
+                await getAuth().signInWithRedirect(provider)
+            }
+        },
+        // Función que se invoca si hay un error al verificar el usuario.
+        muestraError
+    )
+
+    /* Pide datos para iniciar sesión. 
+    await getAuth().signInWithRedirect(provider);*/
+}
 
 /* Cierra sesión */
 async function logOut() {
