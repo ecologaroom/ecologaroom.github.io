@@ -1,23 +1,31 @@
-function formInicio(){
+export function formInicio(){
     location.href = 'index.html';
 };
 
-function formHabitaciones(){
+export function formHabitaciones(){
     location.href = 'habitaciones.html';
 };
 
-function formInstalaciones(){
+export function formInstalaciones(){
     location.href = 'instalaciones.html';
 };
 
-function formTurismo(){
+export function formTurismo(){
     location.href = 'turismo.html';
 };
 
-function formRestaurantes(){
+export function formRestaurantes(){
     location.href = 'restaurantes.html';
 };
 
-function formFAQ(){
+export function formFAQ(){
     location.href = 'FAQ.html';
+};
+
+export function formClientes(){
+    location.href = 'reservacion_cliente.html';
+};
+
+export function formRecepcion(){
+    location.href = 'reservacion_recepcion.html';
 };
