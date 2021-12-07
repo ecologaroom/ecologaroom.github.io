@@ -22,7 +22,7 @@ import {
       "../lib/tipos.js").User}
       usuario */
   async function protege(usuario) {
-    if (tieneRol(usuario,["Administrador"])) {
+    if (tieneRol(usuario,["Cliente"])) {
       formUsuario.addEventListener("submit", registraUsuario);
     }
   }
