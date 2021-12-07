@@ -21,3 +21,7 @@ function formRestaurantes(){
 function formFAQ(){
     return location.href = 'FAQ.html';
 };
+
+function formCliente(){
+    return location.href = 'reservacion_cliente.html';
+};
