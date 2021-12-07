@@ -1,5 +1,10 @@
+
+
+
+
+
 /* Ejecuta login con Google */
-function logIn() {
+async function logIn() {
 
     // @ts-ignore
     const auth = firebase.auth();
@@ -10,5 +15,5 @@ function logIn() {
     /* Configura el proveedor de Google para que permita seleccionar de una lista. */
     provider.setCustomParameters({ prompt: "select_account" });
     /* Pide datos para iniciar sesión. */
-    return auth.signInWithRedirect(provider);
+    await auth.signInWithRedirect(provider);
 }
