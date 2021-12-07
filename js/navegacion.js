@@ -1,23 +1,23 @@
-export function formInicio(){
+function formInicio(){
     return location.href = 'index.html';
 };
 
-export function formHabitaciones(){
+function formHabitaciones(){
     return location.href = 'habitaciones.html';
 };
 
-export function formInstalaciones(){
+function formInstalaciones(){
     return location.href = 'instalaciones.html';
 };
 
-export function formTurismo(){
+function formTurismo(){
     return location.href = 'turismo.html';
 };
 
-export function formRestaurantes(){
+function formRestaurantes(){
     return location.href = 'restaurantes.html';
 };
 
-export function formFAQ(){
+function formFAQ(){
     return location.href = 'FAQ.html';
 };
