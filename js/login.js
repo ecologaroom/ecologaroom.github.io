@@ -1,9 +1,5 @@
-import {
-    getAuth,
-} from "../lib/conexFirebase";
-
 /* Ejecuta login con Google */
-async function logIn() {
+function logIn() {
 
     // @ts-ignore
     const auth = firebase.auth();
@@ -14,5 +10,5 @@ async function logIn() {
     /* Configura el proveedor de Google para que permita seleccionar de una lista. */
     provider.setCustomParameters({ prompt: "select_account" });
     /* Pide datos para iniciar sesión. */
-    await auth.signInWithRedirect(provider);
+    return auth.signInWithRedirect(provider);
 }
