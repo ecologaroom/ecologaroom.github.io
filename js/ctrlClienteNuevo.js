@@ -1,6 +1,12 @@
 /** @type {HTMLFormElement} */
 const formUsuario = document["formUsuario"];
 
+/* Conexión al sistema de Firestore. */
+// @ts-ignore
+const firestore = firebase.firestore();
+// @ts-ignore
+const daoCliente = firestore.collection("Cliente");
+
 /** @param {Event} evt */
 async function registroUsuario(evt) {
   /* Conexión al sistema de autenticación de Firebase. */
@@ -81,7 +87,8 @@ async function tieneRol(usuario) {
 /* Conexión al sistema de Firestore. */
 // @ts-ignore
 const firestore = firebase.firestore();
-const daoCliente = firestore.collection("Cliente");
+// @ts-ignore
+const daoUsuario = firestore.collection("Usuario");
 
 /** Busca si existe un rol y lo toma 
  * @param {string} email
@@ -90,7 +97,8 @@ const daoCliente = firestore.collection("Cliente");
 async function cargaRoles(email) { 
     /* Busa en la colección Usuario el email con el que se autesentificó */
     let doc = await daoUsuario.doc(email).get();
-    alert("Buscando su rol");
+
+    alert("Llega a obtención de la colección");
 
     if (doc.exists) {
       /**
