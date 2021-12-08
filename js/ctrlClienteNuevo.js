@@ -6,77 +6,18 @@ const daoCliente = firestore.collection("Cliente");
 /** @type {HTMLFormElement} */
 const formUsuario = document["formUsuario"];
 
-/* Conexión al sistema de autenticación de Firebase. */
-// @ts-ignore
-const auth = firebase.auth();
-auth.onAuthStateChanged(registroUsuario,procesaError)
-
-/** Verifica que exista una sesión abierta con un rol.
- * @param {import(
-    "../lib/tiposFire.js").User}
-    usuario
- * @param {string[]} roles
- * @returns {Promise<boolean>} */
-async function tieneRol(usuario, roles) {
-  alert("Revisando si tiene sesión");
-      if (usuario && usuario.email) {
-        const rolIds = await cargaRoles(usuario.email);
-        for (const rol of roles) {
-          if (rolIds.has(rol)) {
-            return true;
-          }
-        }
-        alert("No autorizado.");
-        location.href = "index.html";
-      } else {
-        alert("No tiene rol, debe iniciar sesión");
-        logIn();
-      }
-      return false;
-}
-
-/** Busca si existe un rol y lo toma 
- * @param {string} email
- * @returns {Promise<Set<string>>}
- */
-async function cargaRoles(email) { 
-  alert("Buscando su rol");
-    /* Busa en la colección Usuario el email con el que se autesentificó */
-    let doc = await daoUsuario.doc(email).get();
-    if (doc.exists) {
-      /**
-       * @type {
-          import("./tipos.js").
-          Usuario} */
-      const data = doc.data();
-      /* Existe email con rol, así que lo manda */
-      return new Set(data.rolIds || []);
-    } else {
-        /* No existe email con rol, así que devuleve vacío */
-      return new Set();
-    }
-}
-
-/* Tipo de autenticación de usuarios. En este caso es con Google. */
-// @ts-ignore
-const provider = new firebase.auth.GoogleAuthProvider();
-
-/* Manda a iniciar sesión con Google */
-function logIn(){
-  /* Configura el proveedor de Google para que permita seleccionar de una lista. */
-  provider.setCustomParameters({ prompt: "select_account" });
-
-  /* Recibe una función que se invoca cada que hay un cambio en la autenticación y recibe el modelo con las características del usuario.*/
-  auth.onAuthStateChanged(procesaError)      
-}
-
 /** @param {Event} evt */
 async function registroUsuario(evt, usuario) {
   alert("Función guardar");
 
-  if (tieneRol(usuario,["Cliente"])) {
-    alert("Tiene rol de clente.");
+  /* Conexión al sistema de autenticación de Firebase. */
+  // @ts-ignore
+  const auth = firebase.auth();
+
+  if (auth.onAuthStateChanged(tieneRol(usuario,["Cliente"]),procesaError)) {
+    alert("Si es un cliente");
     try {
+      alert("entra al try");  
       evt.preventDefault();
       const formData = new FormData(formUsuario);
       const nombre = getString(formData, "nombre").trim();
@@ -104,6 +45,73 @@ async function registroUsuario(evt, usuario) {
       procesaError(e);
     }
   }
+}
+
+
+/** Verifica que exista una sesión abierta con un rol.
+ * @param {import(
+    "../lib/tiposFire.js").User}
+    usuario
+ * @param {string[]} roles
+ * @returns {Promise<boolean>} */
+async function tieneRol(usuario, roles) {
+  alert("Revisando si tiene sesión");
+  if (usuario && usuario.email) {
+    alert("Ahora carga rol según el email");
+    const rolIds = await cargaRoles(usuario.email);
+
+    for (const rol of roles) {
+      if (rolIds.has(rol)) {
+        alert("El rol pertenece al rol del usuario.");
+        return true;
+      }
+    }
+    alert("No autorizado.");
+    location.href = "index.html";
+  } else {
+    alert("Inicio de sesión");
+    logIn();
+  }
+  return false;
+}
+
+/** Busca si existe un rol y lo toma 
+ * @param {string} email
+ * @returns {Promise<Set<string>>}
+ */
+async function cargaRoles(email) { 
+    alert("Buscando su rol");
+    /* Busa en la colección Usuario el email con el que se autesentificó */
+    let doc = await daoUsuario.doc(email).get();
+    if (doc.exists) {
+      /**
+       * @type {
+          import("./tipos.js").
+          Usuario} */
+      alert("Existe rol así que lo retorna");
+      const data = doc.data();
+      /* Existe email con rol, así que lo manda */
+      return new Set(data.rolIds || []);
+    } else {
+        /* No existe email con rol, así que devuleve vacío */
+        alert("No existe email con rol, así que devuleve vacío");
+      return new Set();
+    }
+}
+
+/* Tipo de autenticación de usuarios. En este caso es con Google. */
+// @ts-ignore
+const provider = new firebase.auth.GoogleAuthProvider();
+
+/* Manda a iniciar sesión con Google */
+function logIn(){
+  alert("Se supone inicia sesión nuevamente");
+
+  /* Configura el proveedor de Google para que permita seleccionar de una lista. */
+  provider.setCustomParameters({ prompt: "select_account" });
+
+  /* Recibe una función que se invoca cada que hay un cambio en la autenticación y recibe el modelo con las características del usuario.*/
+  auth.onAuthStateChanged(procesaError)      
 }
 
 /**
