@@ -13,40 +13,44 @@ const formUsuario = document["formUsuario"];
 const auth = firebase.auth();
 auth.onAuthStateChanged(tieneRol, procesaError);
 
-/** @param {Event} evt */
-async function registroCliente(evt, usuario) {
-  alert("Botón regustrar cliente");
-
+/** Valida que sea cliente */
+async function validaCliente(usuario) {
+  alert("Validando que sea cliente");
   if (tieneRol(usuario,["Cliente"])) {
-    alert("Si es un cliente");
-    try {
-      alert("Entra al try");
-      const formData = new FormData(formUsuario);
-      const nombre = getString(formData, "nombre").trim();
-      alert("nombre" + nombre);  
-      const ap_paterno = getString(formData, "ap_paterno").trim();
-      alert("ap_materno" + ap_paterno); 
-      const ap_materno = getString(formData, "ap_materno").trim();
-      alert("ap_materno" + ap_materno); 
-      const edad = getString(formData, "edad").trim();
-      alert("edad" + edad); 
-      const sexo = getString(formData, "sexo").trim();
-      alert("sexo" + sexo); 
-      const celular = getString(formData, "celular").trim();
-      alert("celular" + celular); 
-      const correo = getString(formData, "correo").trim();
-      alert("correo" + correo); 
-      /**
-       ** @type { import("./tipos.js").Alumno} */
-      const modelo = {nombre, ap_paterno, ap_materno, edad, sexo, celular, correo};
-      alert("Guarda datos en modelo");
-      await daoCliente.add(modelo); //////////////////////////////////////////////////////////////
-      alert("Sus datos han sido registrados exitosamente.");
-    } catch (e) {
-      procesaError(e);
-    }
-  }
+    registroCliente
+  } 
   
+}
+
+async function registroCliente(){
+
+  alert("Si es un cliente");
+  try {
+    alert("Entra al try");
+    const formData = new FormData(formUsuario);
+    const nombre = getString(formData, "nombre").trim();
+    alert("nombre" + nombre);  
+    const ap_paterno = getString(formData, "ap_paterno").trim();
+    alert("ap_materno" + ap_paterno); 
+    const ap_materno = getString(formData, "ap_materno").trim();
+    alert("ap_materno" + ap_materno); 
+    const edad = getString(formData, "edad").trim();
+    alert("edad" + edad); 
+    const sexo = getString(formData, "sexo").trim();
+    alert("sexo" + sexo); 
+    const celular = getString(formData, "celular").trim();
+    alert("celular" + celular); 
+    const correo = getString(formData, "correo").trim();
+    alert("correo" + correo); 
+    /**
+     ** @type { import("./tipos.js").Alumno} */
+    const modelo = {nombre, ap_paterno, ap_materno, edad, sexo, celular, correo};
+    alert("Guarda datos en modelo");
+    await daoCliente.add(modelo); //////////////////////////////////////////////////////////////
+    alert("Sus datos han sido registrados exitosamente.");
+  } catch (e) {
+    procesaError(e);
+  }
 }
 
 /** @param {import(
@@ -55,7 +59,9 @@ async function registroCliente(evt, usuario) {
  * @param {string[]} roles
  * @returns {Promise<boolean>} */
 async function tieneRol(usuario, roles) {
+  alert("Validando inicio de sesión");
   if (usuario && usuario.email) {
+    alert("Si tiene sesión iniciada");
     const rolIds = await cargaRoles(usuario.email);
     for (const rol of roles) {
       if (rolIds.has(rol)) {
@@ -66,6 +72,7 @@ async function tieneRol(usuario, roles) {
       }
     }
   } else {
+    alert("Lo manda a logear");
     logIn();
   }
   return false;
@@ -121,15 +128,21 @@ function procesaError(e) {
   alert(e.message);
 } 
 
-/** */
+/** @type {HTMLFormElement} */
+const formReservacion = document["formReservacion"];
+
+// @ts-ignore
+const daoResevacion = firestore.collection("Reservacion");
+
+/** Realiza reservación */
 async function realizaReservacion(usuario) {
   alert("Botón realizar reservacion");
 
   if (tieneRol(usuario,["Cliente"])) {
-    alert("Si es un cliente");
+    alert("Autorizado para realizar reservacion");
     try {
       alert("Entra al try");
-      const formData = new FormData(formUsuario);
+      const formData = new FormData(formReservacion);
       const nombre = getString(formData, "nombre").trim();
       alert(nombre);  
       const ap_paterno = getString(formData, "ap_paterno").trim();
@@ -143,11 +156,11 @@ async function realizaReservacion(usuario) {
       const celular = getString(formData, "celular").trim();
       alert(celular); 
       const correo = getString(formData, "correo").trim();
-      alert(correo); 
+
       /**
        ** @type { import("./tipos.js").Alumno} */
       const modelo = {nombre, ap_paterno, ap_materno, edad, sexo, celular, correo};
-      await daoCliente.add(modelo);
+      await daoResevacion.add(modelo);
       alert("Sus datos han sido registrados exitosamente.");
     } catch (e) {
       procesaError(e);
