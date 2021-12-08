@@ -1,3 +1,5 @@
+alert("llega a ctrlSesión");
+
 import {
   getAuth
 } from "../lib/conexionFirebase";
@@ -10,8 +12,6 @@ import {
   cargaRoles,
   iniciaSesión
 } from "./seguridad.js";
-
-alert("llega a ctrlSesión");
 
 
 /** @type {HTMLFormElement} */
