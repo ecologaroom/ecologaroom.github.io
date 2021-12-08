@@ -9,17 +9,7 @@ const formUsuario = document["formUsuario"];
 /* Conexión al sistema de autenticación de Firebase. */
 // @ts-ignore
 const auth = firebase.auth();
-auth.onAuthStateChanged(protege,procesaError)
-
-/** @param {import(
-    "../lib/tiposFire.js").User}
-    usuario */
-async function protege(usuario) {
-  if (tieneRol(usuario,["Cliente"])) {
-    alert("Tiene rol de Cliente");
-    formUsuario.addEventListener("submit", guarda);
-  }
-}
+auth.onAuthStateChanged(registroUsuario,procesaError)
 
 /** Verifica que exista una sesión abierta con un rol.
  * @param {import(
@@ -28,6 +18,7 @@ async function protege(usuario) {
  * @param {string[]} roles
  * @returns {Promise<boolean>} */
 async function tieneRol(usuario, roles) {
+  alert("Revisando si tiene sesión");
       if (usuario && usuario.email) {
         const rolIds = await cargaRoles(usuario.email);
         for (const rol of roles) {
@@ -38,6 +29,7 @@ async function tieneRol(usuario, roles) {
         alert("No autorizado.");
         location.href = "index.html";
       } else {
+        alert("No tiene rol, debe iniciar sesión");
         logIn();
       }
       return false;
@@ -48,6 +40,7 @@ async function tieneRol(usuario, roles) {
  * @returns {Promise<Set<string>>}
  */
 async function cargaRoles(email) { 
+  alert("Buscando su rol");
     /* Busa en la colección Usuario el email con el que se autesentificó */
     let doc = await daoUsuario.doc(email).get();
     if (doc.exists) {
@@ -78,34 +71,38 @@ function logIn(){
 }
 
 /** @param {Event} evt */
-async function guarda(evt) {
+async function registroUsuario(evt, usuario) {
   alert("Función guardar");
-  try {
-    evt.preventDefault();
-    const formData = new FormData(formUsuario);
-    const nombre = getString(formData, "nombre").trim();
-    alert(nombre);  
-    const ap_paterno = getString(formData, "ap_paterno").trim();
-    alert(ap_paterno); 
-    const ap_materno = getString(formData, "ap_materno").trim();
-    alert(ap_materno); 
-    const edad = getString(formData, "edad").trim();
-    alert(edad); 
-    const sexo = getString(formData, "sexo").trim();
-    alert(sexo); 
-    const celular = getString(formData, "celular").trim();
-    alert(celular); 
-    const correo = getString(formData, "correo").trim();
-    alert(correo); 
-    /**
-     * @type {
-        import("./tipos.js").
-                Alumno} */
-    const modelo = {nombre, ap_paterno, ap_materno, edad, sexo, celular, correo};
-    await daoCliente.add(modelo);
-    alert("Sus datos han sido registrados exitosamente.");
-  } catch (e) {
-    procesaError(e);
+
+  if (tieneRol(usuario,["Cliente"])) {
+    alert("Tiene rol de clente.");
+    try {
+      evt.preventDefault();
+      const formData = new FormData(formUsuario);
+      const nombre = getString(formData, "nombre").trim();
+      alert(nombre);  
+      const ap_paterno = getString(formData, "ap_paterno").trim();
+      alert(ap_paterno); 
+      const ap_materno = getString(formData, "ap_materno").trim();
+      alert(ap_materno); 
+      const edad = getString(formData, "edad").trim();
+      alert(edad); 
+      const sexo = getString(formData, "sexo").trim();
+      alert(sexo); 
+      const celular = getString(formData, "celular").trim();
+      alert(celular); 
+      const correo = getString(formData, "correo").trim();
+      alert(correo); 
+      /**
+       * @type {
+          import("./tipos.js").
+                  Alumno} */
+      const modelo = {nombre, ap_paterno, ap_materno, edad, sexo, celular, correo};
+      await daoCliente.add(modelo);
+      alert("Sus datos han sido registrados exitosamente.");
+    } catch (e) {
+      procesaError(e);
+    }
   }
 }
 
