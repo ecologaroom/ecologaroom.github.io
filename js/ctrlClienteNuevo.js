@@ -83,6 +83,7 @@ async function tieneRol(usuario, roles) {
 
     // No ha iniciado sesión. Pide datos para iniciar sesión.
     await auth.signInWithRedirect(provider);
+    return false;
   }
   procesaError
 }
