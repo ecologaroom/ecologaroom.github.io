@@ -24,17 +24,22 @@ getAuth().onAuthStateChanged(cambiaUsuario,muestraError);
       usu */
 async function cambiaUsuario(usu) {
   if (usu && usu.email) {
+    alert("llega a carga roles");
     const roles = await cargaRoles(usu.email);
+    alert("Rol es" + roles);
     /* Enlaces para clientes. */
     if (roles.has("Cliente")) {
       reserva.terminarSesión.addEventListener("click", location.href="reservacion_cliente");
+      alert("Es cliente");
     }
     /* Enlaces para trabajadores. */
     if (roles.has("Trabajador")) {
       reserva.terminarSesión.addEventListener("click", location.href="reservacion_recepcion");
+      alert("Es trabajador");
     }
   } else {
     // No ha iniciado sesión.
     iniciaSesión();
+    alert("Necesita iniciar sesión");
   }
 }
