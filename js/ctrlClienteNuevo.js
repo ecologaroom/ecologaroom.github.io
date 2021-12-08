@@ -20,8 +20,7 @@ async function registroCliente(evt, usuario) {
   if (tieneRol(usuario,["Cliente"])) {
     alert("Si es un cliente");
     try {
-      evt.preventDefault();
-      alert("Aquí marca error");  ///////////////////////////////////////////////////////////////
+      alert("Entra al try");
       const formData = new FormData(formUsuario);
       const nombre = getString(formData, "nombre").trim();
       alert(nombre);  
