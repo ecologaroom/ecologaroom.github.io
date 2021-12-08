@@ -1,6 +1,6 @@
 import {
     getFirestore
-} from "../lib/conexFirebase.js";
+} from "../lib/conexionFirebase.js";
 
 import {
     subeStorage

@@ -1,14 +1,16 @@
 import {
     getAuth,
     getFirestore
-  } from "../lib/conexFirebase.js";
+  } from "../lib/conexionFirebase.js";
+
   import {
     getString,
     muestraError
-  } from "../lib/util.js";
-  import {
+} from "../lib/util.js";
+
+import {
     tieneRol
-  } from "./seguridad.js";
+} from "./seguridad.js";
   
   
   const colCliente = getFirestore().collection("Cliente");

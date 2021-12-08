@@ -1,99 +1,40 @@
 import {
-    getAuth,
-    getFirestore
-} from "../lib/conexFirebase";
+  getAuth
+} from "../lib/conexionFirebase";
 
 import {
-    muestraError
+  muestraError
 } from "../lib/util.js";
 
-/* Conexión con Firestore. */
-const firestore = getFirestore();
+import {
+  cargaRoles,
+  iniciaSesión
+} from "./seguridad.js";
 
-/* Obtención de la colección Usuario en Firestore */
-const colUsuario = firestore.collection("Usuario");
+/** @type {HTMLFormElement} */
+const reserva = document["reserva"];
 
-/* Recibe una función que se invoca cada que hay un cambio en la autenticación y recibe el modelo con las características del usuario.*/  
-getAuth().onAuthStateChanged(enviaSesion, muestraError);
-  
-/* Muestra los datos del usuario o manda a iniciar sesión en caso de que no haya empezado. */
-function enviaSesion(usuario) {
-    if (usuario && usuario.email) {
-        // Usuario aceptado.
-        rol();
-    } else {
-        // No ha iniciado sesión.
-        logIn();
+/* Función invocada al haber un cambio de usuario y recibe sus datos, en otro caso presenta un error. */
+
+getAuth().onAuthStateChanged(cambiaUsuario,muestraError);
+
+/**
+  * @param {import(
+      "../lib/tiposFire.js").User}
+      usu */
+async function cambiaUsuario(usu) {
+  if (usu && usu.email) {
+    const roles = await cargaRoles(usu.email);
+    /* Enlaces para clientes. */
+    if (roles.has("Cliente")) {
+      reserva.terminarSesión.addEventListener("click", location.href="reservacion_cliente");
     }
-}
-
-/* Para rol de trabajador envía a las reservaciones de recepción */
-function rol(usuario) {
-  if (tieneRol(usuario,["Trabajador"])) {
-    return location.href = 'reservacion_recepcion.html';
-  } 
-  /*
-  if (tieneRol(usuario,["Cliente"])) {
-    location.href = 'reservacion_cliente.html';
-  } */
-}
-
-/* Verifica si tiene rol */
-async function tieneRol(usuario, roles) {
-    if (usuario && usuario.email) {
-        /* Obtiene rol del usuario con el email entrante */
-        const rolIds = await cargaRoles(usuario.email);
-        for (const rol of roles) {
-            /* Si se tiene un rol es verdadero */
-            if (rolIds.has(rol)) {
-                return true;
-            }
-        }
-        /* Si no tiene rol le indica que no está autorizado */
-        alert("No autorizado.");
-        location.href = "index.html";
-    } else {
-        /* Si se tiene rol verdadero se manda al Login */
-        logIn();
+    /* Enlaces para trabajadores. */
+    if (roles.has("Trabajador")) {
+      reserva.terminarSesión.addEventListener("click", location.href="reservacion_recepcion");
     }
-    return false;
+  } else {
+    // No ha iniciado sesión.
+    iniciaSesión();
+  }
 }
-
-/* Obtención de roles */
-async function cargaRoles(email) {
-    /* Extracción de datos en la colección de Usuario, según el email brindado */
-    let doc = await colUsuario.doc(email).get();
-    /* Si existe la colección de Usuario */
-    if (doc.exists) {
-      const data = doc.data();
-      return new Set(data.rolIds || []);
-    /* En otro caso crear instancia Set */
-    } else {
-      return new Set();
-    }
-}
-
-/* Ejecuta login con Google */
-async function logIn() {
-    /* Tipo de autenticación de usuarios. En este caso es con Google. */
-    // @ts-ignore
-    const provider = new firebase.auth.GoogleAuthProvider();
-    /* Configura el proveedor de Google para que permita seleccionar de una lista. */
-    provider.setCustomParameters({ prompt: "select_account" });
-    /* Pide datos para iniciar sesión. */
-    await getAuth().signInWithRedirect(provider);
-}
-
-/* Cierra sesión */
-async function logOut() {
-    try {
-      await getAuth().signOut();
-    } catch (e) {
-        /* En caso de error se muestra cual es */
-        muestraError(e);
-    }
-}
-
-
-
-

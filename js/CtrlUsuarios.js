@@ -1,29 +1,75 @@
 import {
-    getAuth,
-    getFirestore
-} from "../lib/conexFirebase";
-
+  getAuth,
+  getFirestore
+} from "../lib/conexionFirebase";
 import {
-    urlStorage
+  urlStorage
 } from "../lib/almacenamiento";
-
 import {
-    escape,
-    muestraError
+  escape,
+  muestraError
 } from "../lib/util.js";
-
 import {
-    tieneRol
-} from "./ctrlSesion";
+  tieneRol
+} from "./seguridad.js";
 
 /** @type {HTMLUListElement} */
 // @ts-ignore
+const lista = document.
+  querySelector("#lista");
 const firestore = getFirestore();
-const daoRol = firestore.collection("Rol");
-const daoAlumno = firestore.collection("Alumno");
-const daoUsuario = firestore.collection("Usuario");
+const daoRol = firestore.
+  collection("Rol");
+const daoAlumno = firestore.
+  collection("Alumno");
+const daoUsuario = firestore.
+  collection("Usuario");
 
+getAuth().onAuthStateChanged(
+  protege, muestraError);
 
+/** @param {import(
+    "../lib/tiposFire.js").User}
+    usuario */
+async function protege(usuario) {
+  if (tieneRol(usuario,
+    ["Administrador"])) {
+    consulta();
+  }
+}
+
+function consulta() {
+  daoUsuario.onSnapshot(
+    htmlLista, errConsulta);
+}
+
+/**
+ * @param {import(
+    "../lib/tiposFire.js").
+    QuerySnapshot} snap */
+async function htmlLista(snap) {
+  let html = "";
+  if (snap.size > 0) {
+    /** @type {
+          Promise<string>[]} */
+    let usuarios = [];
+    snap.forEach(doc => usuarios.
+      push(htmlFila(doc)));
+    const htmlFilas =
+      await Promise.all(usuarios);
+    /* Junta el todos los
+     * elementos del arreglo en
+     * una cadena. */
+    html += htmlFilas.join("");
+  } else {
+    html += /* html */
+      `<li class="vacio">
+        -- No hay usuarios
+        registrados. --
+      </li>`;
+  }
+  lista.innerHTML = html;
+}
 
 /**
  * @param {import(
@@ -31,7 +77,7 @@ const daoUsuario = firestore.collection("Usuario");
     DocumentSnapshot} doc */
 async function htmlFila(doc) {
   /**
-   * @type {import("./tiposFire.js").
+   * @type {import("./tipos.js").
                       Usuario} */
   const data = doc.data();
   const img = escape(
@@ -81,7 +127,7 @@ async function
     if (doc.exists) {
       /**
        * @type {import(
-          "./tiposFire.js").
+          "./tipos.js").
             Alumno} */
       const data = doc.data();
       return (/* html */
@@ -115,4 +161,10 @@ async function buscaRoles(ids) {
   } else {
     return "-- Sin Roles --";
   }
+}
+
+/** @param {Error} e */
+function errConsulta(e) {
+  muestraError(e);
+  consulta();
 }

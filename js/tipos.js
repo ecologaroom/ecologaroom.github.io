@@ -16,10 +16,10 @@
 
 // @ts-nocheck
 /**
- * @typedef {Object} Cliente
+ * @typedef {Object} Mensaje
  * @property {string} usuarioId
  * @property {string} texto
  * @property {firebase.firestore.Timestamp} timestamp
  */
 
- export const __tipos = 0;
+export const __tipos = 0;

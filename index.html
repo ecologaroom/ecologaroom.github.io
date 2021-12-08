@@ -1,40 +1,40 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <!-- Adaptación de pantalla a distintos dispositivos -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Título en pestaña de navegación -->
-    <title>Página principal</title>
-    <!-- Hojas de estilos -->
-    <link rel="stylesheet" href="css/navbar.css">
-    <link rel="stylesheet" href="css/menu.css">
-    <link rel="stylesheet" href="css/footer.css">
-    <link rel="stylesheet" href="css/general.css">
-    <link rel="stylesheet" href="css/inicio.css">
-    <!-- Carga el núcleo de Firebase JS SDK -->
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-    <!-- Agrega el manejo de autenticación. -->
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
-    <!-- Agrega el manejo a Cloud Firestore -->
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
-    <!-- Conexión a firebase -->
-    <script src="js/autenticacion.js"></script>
-    <!-- Navegación interna de la página -->
-    <script src="js/navegacion.js"></script>
-  </head>
-  <body>
-    <!-- Página -->
-    <div class="pagina">
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <!-- Adaptación de pantalla a distintos dispositivos -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Título en pestaña de navegación -->
+  <title>Página principal</title>
+  <!-- Hojas de estilos -->
+  <link rel="stylesheet" href="css/navbar.css">
+  <link rel="stylesheet" href="css/menu.css">
+  <link rel="stylesheet" href="css/footer.css">
+  <link rel="stylesheet" href="css/general.css">
+  <link rel="stylesheet" href="css/inicio.css">
+  <!-- Carga el núcleo de Firebase JS SDK -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <!-- Agrega el manejo de autenticación. -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+  <!-- Agrega el manejo a Cloud Firestore -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+  <!-- Inicialización con firebase -->
+  <script src="js/inicializacion.js"></script>
+  <!-- Navegación interna de la página -->
+  <script src="js/navegacion.js"></script>
+</head>
+<body>
+  <!-- Página -->
+  <div class="pagina">
+    <!-- Barra de navegación -->
+    <nav class="navbar">
+      <!-- Reservación inmediata a la derecha -->
+      <div class="reservacion">
+        <!-- Logo a la izquierda-->
+        <div class="logo"><img class="imagen_logo" src="img/Logo.png" loading="lazy"/></div>
+        <!-- Logo a la izquierda-->
 
-      <!-- Barra de navegación -->
-      <nav class="navbar">
-        <!-- Reservación inmediata a la derecha -->
-        <div class="reservacion">
-          <!-- Logo a la izquierda-->
-          <div class="logo"><img class="imagen_logo" src="img/Logo.png" loading="lazy"/></div>
-          <!-- Logo a la izquierda-->
-
+        <form name="reserva">
           <!-- Fila responsiva -->
           <div class="fila">
             <!-- Fecha de entrada -->
@@ -67,16 +67,17 @@
             <!-- Botón de reservar -->
             <div class="colum">
               <div class="inputFlotante">
-                <button type="submit" class="btn" onClick="formCliente();" id="reservar">Reservar</button>
+                <button type="submit" class="btn" id="reservar">Reservar</button>
               </div>
             </div>
             <!-- Botón de la reservar -->
           </div>
           <!-- Fila responsiva -->
-        </div>
-        <!-- Reservación inmediata a la derecha -->
-      </nav>
-      <!-- Barra de navegación -->
+        </form>
+      </div>
+      <!-- Reservación inmediata a la derecha -->
+    </nav>
+    <!-- Barra de navegación -->
 
       <!-- Menú -->
       <div class="menu" role="group">
@@ -136,14 +137,15 @@
           </div>
           <!-- Contenedor de la retícula -->
       
-          <!-- Copyright -->
-          <div class="copyright" style="background-color: rgba(0, 0, 0, 0.2);">Copyright &copy; 2021</div>
-          <!-- Copyright -->
-        </footer>
-        <!-- Pie de página -->
-      </section>
-      <!-- Contenido -->
-    </div>
-    <!-- Página -->
-  </body>
+        <!-- Copyright -->
+        <div class="copyright" style="background-color: rgba(0, 0, 0, 0.2);">Copyright &copy; 2021</div>
+        <!-- Copyright -->
+      </footer>
+      <!-- Pie de página -->
+    </section>
+    <!-- Contenido -->
+  </div>
+  <!-- Página -->
+  <script type="module" src="js/CtrlSesion.js"></script>
+</body>
 </html>

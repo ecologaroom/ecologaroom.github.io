@@ -1,7 +1,7 @@
 import {
     getAuth,
     getFirestore
-  } from "../lib/conexFirebase";
+  } from "../lib/conexionFirebase";
 
   import {
     muestraError
@@ -17,7 +17,7 @@ import {
      * usuarios. En este caso es con
      * Google.
      * @type {import(
-        "../lib/tipos.js").
+        "../lib/tiposFire.js").
         GoogleAuthProvider} */
     const provider =
       // @ts-ignore
@@ -33,7 +33,7 @@ import {
   }
   
   /** @param {import(
-      "../lib/tipos.js").User}
+      "../lib/tiposFire.js").User}
       usuario
    * @param {string[]} roles
    * @returns {Promise<boolean>} */
@@ -73,7 +73,7 @@ import {
     if (doc.exists) {
       /**
        * @type {
-          import("./tiposFire.js").
+          import("./tipos.js").
           Usuario} */
       const data = doc.data();
       return new Set(data.rolIds || []);

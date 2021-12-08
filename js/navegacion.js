@@ -25,3 +25,7 @@ function formFAQ(){
 function formCliente(){
     return location.href = 'reservacion_cliente.html';
 };
+
+function formCliente(){
+    return location.href = 'reservacion_recepcion.html';
+};
