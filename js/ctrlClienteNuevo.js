@@ -17,11 +17,11 @@ const auth = firebase.auth();
 async function registroCliente(evt, usuario) {
   alert("Botón regustrar");
 
-  if (auth.onAuthStateChanged(tieneRol(usuario,["Cliente"]),procesaError)) {
+  if (auth.onAuthStateChanged(tieneRol(usuario,["Cliente"]),procesaError) == true) {
     alert("Si es un cliente");
     try {
       evt.preventDefault();
-      alert("Aquí marca error");  
+      alert("Aquí marca error");  ///////////////////////////////////////////////////////////////
       const formData = new FormData(formUsuario);
       const nombre = getString(formData, "nombre").trim();
       alert(nombre);  
@@ -68,10 +68,7 @@ async function tieneRol(usuario, roles) {
     if (roles.has("Cliente")) {
       return true;
     }
-    /* Formulario de reservación para trabajadores. */
-    else if (roles.has("Trabajador")) {
-      return false;
-    } else {
+    else {
       alert("No autorizado.");
       location.href = "index.html";
     }
