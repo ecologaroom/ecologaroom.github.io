@@ -19,15 +19,17 @@ async function cambiaBoton(usuarioAuth) {
     if (usuarioAuth && usuarioAuth.email) {
         /* Usuario aceptado y con login es revisado en su rol. */
         const roles = await cargaRoles(usuarioAuth.email);
+        const reserva = document["reserva"];
+
         /* Enlaces para clientes. */
         if (roles.has("Cliente")) {
             alert("CLiente!!!");
-           // reserva.terminarSesión.addEventListener("click", location.href="reservacion_cliente.html");
+            reserva.btnReservar.addEventListener("click", location.href="reservacion_cliente.html");
         }
         /* Enlaces para trabajadores. */
         if (roles.has("Trabajador")) {
             alert("Trabajador");
-            //reserva.terminarSesión.addEventListener("click", location.href="reservacion_recepcion.html");
+            reserva.btnReservar.addEventListener("click", location.href="reservacion_recepcion.html");
         }
     } else {
         // No ha iniciado sesión. Pide datos para iniciar sesión.
