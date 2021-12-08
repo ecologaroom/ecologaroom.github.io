@@ -64,7 +64,9 @@ async function tieneRol(usuario, roles) {
     alert("Si tiene sesión iniciada");
     const rolIds = await cargaRoles(usuario.email);
     for (const rol of roles) {
+      alert("For de roles");
       if (rolIds.has(rol)) {
+        alert("Su rol coincide con el de un cliente");
         return true;
       } else {
         alert("No autorizado.");
