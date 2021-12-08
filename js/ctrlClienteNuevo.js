@@ -1,21 +1,23 @@
-/** @type {HTMLFormElement} */
-const formUsuario = document["formUsuario"];
-
 /* Conexión al sistema de Firestore. */
 // @ts-ignore
 const firestore = firebase.firestore();
-// @ts-ignore
 const daoCliente = firestore.collection("Cliente");
+// @ts-ignore
+const daoUsuario = firestore.collection("Usuario");
+
+/** @type {HTMLFormElement} */
+const formUsuario = document["formUsuario"];
+
+/* Conexión al sistema de autenticación de Firebase. */
+  // @ts-ignore
+const auth = firebase.auth();
+
 
 /** @param {Event} evt */
-async function registroCliente(evt) {
-  alert("botón registrar");
+async function registroCliente(evt, usuario) {
+  alert("Botón regustrar");
 
-  /* Conexión al sistema de autenticación de Firebase. */
-  // @ts-ignore
-  const auth = firebase.auth();
-
-  if (auth.onAuthStateChanged(tieneRol,procesaError)==true) {
+  if (auth.onAuthStateChanged(tieneRol(usuario,["Cliente"]),procesaError)) {
     alert("Si es un cliente");
     try {
       evt.preventDefault();
@@ -53,20 +55,21 @@ async function registroCliente(evt) {
  * @param {import(
     "../lib/tiposFire.js").User}
     usuario
+ * @param {string[]} roles
  * @returns {Promise<boolean>} */
-async function tieneRol(usuario) {
+async function tieneRol(usuario, roles) {
+  alert("Revisando si tiene sesión");
+
   if (usuario && usuario.email) {
-    alert("Si inició sesisón");
+    alert("Ahora carga rol según el email");
     /* Usuario aceptado y con login es revisado en su rol. */
     const roles = await cargaRoles(usuario.email);
     /* Formulario de reservación para clientes. */
     if (roles.has("Cliente")) {
-      alert("Rol de cliente.");
       return true;
     }
     /* Formulario de reservación para trabajadores. */
     else if (roles.has("Trabajador")) {
-      alert("Rol de travajador.");
       return false;
     } else {
       alert("No autorizado.");
@@ -87,22 +90,16 @@ async function tieneRol(usuario) {
   procesaError
 }
 
-/* Conexión al sistema de Firestore. */
-// @ts-ignore
-const firestore = firebase.firestore();
-// @ts-ignore
-const daoUsuario = firestore.collection("Usuario");
+
 
 /** Busca si existe un rol y lo toma 
  * @param {string} email
  * @returns {Promise<Set<string>>}
  */
 async function cargaRoles(email) { 
+    alert("Buscando su rol");
     /* Busa en la colección Usuario el email con el que se autesentificó */
     let doc = await daoUsuario.doc(email).get();
-
-    alert("Llega a obtención de la colección");
-
     if (doc.exists) {
       /**
        * @type {
@@ -118,7 +115,6 @@ async function cargaRoles(email) {
       return new Set();
     }
 }
-
 
 /**
  * @param {FormData} formData

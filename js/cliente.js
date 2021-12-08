@@ -1,10 +1,7 @@
 /** @param {Event} evt */
 async function registroCliente(evt) {
-   /* Conexión al sistema de autenticación de Firebase. */
-  // @ts-ignore
-  const auth = firebase.auth();
 
-  if (auth.onAuthStateChanged(tieneRol,procesaError) == true) {
+  if (tieneRol(usuario) == true) {
     alert("Si es un cliente");
   } else {
     alert("No es un cliente");
