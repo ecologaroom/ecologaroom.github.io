@@ -1,31 +1,10 @@
-function formInicio(){
-    return location.href = 'index.html';
-};
+export function
+  muestraAlumnos() {
+  location.href =
+    "alumnos.html";
+}
 
-function formHabitaciones(){
-    return location.href = 'habitaciones.html';
-};
-
-function formInstalaciones(){
-    return location.href = 'instalaciones.html';
-};
-
-function formTurismo(){
-    return location.href = 'turismo.html';
-};
-
-function formRestaurantes(){
-    return location.href = 'restaurantes.html';
-};
-
-function formFAQ(){
-    return location.href = 'FAQ.html';
-};
-
-function formCliente(){
-    return location.href = 'reservacion_cliente.html';
-};
-
-function formCliente(){
-    return location.href = 'reservacion_recepcion.html';
-};
+export function
+  muestraUsuarios() {
+  location.href = "usuarios.html";
+}
