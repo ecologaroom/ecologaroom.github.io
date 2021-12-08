@@ -23,7 +23,6 @@ async function validaCliente(usuario) {
 }
 
 async function registroCliente(){
-
   alert("Si es un cliente");
   try {
     alert("Entra al try");
@@ -46,7 +45,7 @@ async function registroCliente(){
      ** @type { import("./tipos.js").Alumno} */
     const modelo = {nombre, ap_paterno, ap_materno, edad, sexo, celular, correo};
     alert("Guarda datos en modelo");
-    await daoCliente.add(modelo); //////////////////////////////////////////////////////////////
+    await daoCliente.add(modelo); 
     alert("Sus datos han sido registrados exitosamente.");
   } catch (e) {
     procesaError(e);
@@ -63,6 +62,7 @@ async function tieneRol(usuario, roles) {
   if (usuario && usuario.email) {
     alert("Si tiene sesión iniciada");
     const rolIds = await cargaRoles(usuario.email);
+
     for (const rol of roles) {
       alert("For de roles");
       if (rolIds.has(rol)) {
@@ -145,25 +145,59 @@ async function realizaReservacion(usuario) {
     try {
       alert("Entra al try");
       const formData = new FormData(formReservacion);
-      const nombre = getString(formData, "nombre").trim();
-      alert(nombre);  
-      const ap_paterno = getString(formData, "ap_paterno").trim();
-      alert(ap_paterno); 
-      const ap_materno = getString(formData, "ap_materno").trim();
-      alert(ap_materno); 
-      const edad = getString(formData, "edad").trim();
-      alert(edad); 
-      const sexo = getString(formData, "sexo").trim();
-      alert(sexo); 
-      const celular = getString(formData, "celular").trim();
-      alert(celular); 
-      const correo = getString(formData, "correo").trim();
+      const fecha_entrada = getString(formData, "fecha_entrada").trim();
+      alert("fecha_entrada");  
+      const fecha_salida = getString(formData, "fecha_salida").trim();
+      alert("fecha_salida"); 
+      const num_huespedes = getString(formData, "num_huespedes").trim();
+      alert(num_huespedes); 
+      const clv_huesped = usuario.email;
+      alert(clv_huesped); 
+      const estatus = "I";
+      alert("estatus");
 
       /**
        ** @type { import("./tipos.js").Alumno} */
-      const modelo = {nombre, ap_paterno, ap_materno, edad, sexo, celular, correo};
+      const modelo = {fecha_entrada, fecha_salida, num_huespedes, clv_huesped, estatus};
       await daoResevacion.add(modelo);
-      alert("Sus datos han sido registrados exitosamente.");
+      alert("Se ha realizado la reservación.");
+    } catch (e) {
+      procesaError(e);
+    }
+  }
+} 
+
+/** @type {HTMLFormElement} */
+const formPago = document["formPago"];
+
+// @ts-ignore
+const daoResevacion = firestore.collection("Pago");
+
+/** Realiza reservación */
+async function efectuaPago(usuario) {
+  alert("Botón efectuar pago");
+
+  if (tieneRol(usuario,["Cliente"])) {
+    alert("Autorizado para realizar el pago");
+    try {
+      alert("Entra al try");
+      const formData = new FormData(formPago);
+      const num_tarjeta = getString(formData, "num_tarjeta").trim();
+      alert("num_tarjeta");  
+      const caducidad = getString(formData, "mes").trim() + "/" + getString(formData, "año").trim();
+      alert("caducidad"); 
+      const cvv = getString(formData, "cvv").trim();
+      alert("cvv"); 
+
+      const estatus = "A";
+      alert("estatus");
+
+      /**
+       ** @type { import("./tipos.js").Alumno} */
+      const modelo = {num_tarjeta, caducidad, cvv};
+      await daoResevacion.add(modelo);
+      alert("Se ha efectuado el pago.");
+      await daoResevacion.add(estatus)
     } catch (e) {
       procesaError(e);
     }
