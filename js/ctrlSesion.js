@@ -40,6 +40,7 @@ async function cambiaBoton(usuarioAuth) {
 /* Conexión al sistema de Firestore. */
 // @ts-ignore
 const firestore = firebase.firestore();
+// @ts-ignore
 const daoUsuario = firestore.collection("Usuario");
 
 /** Busca si existe un rol y lo toma 

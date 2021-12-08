@@ -11,13 +11,13 @@ const formUsuario = document["formUsuario"];
 /* Conexión al sistema de autenticación de Firebase. */
   // @ts-ignore
 const auth = firebase.auth();
-
+auth.onAuthStateChanged(tieneRol, procesaError);
 
 /** @param {Event} evt */
 async function registroCliente(evt, usuario) {
   alert("Botón regustrar");
 
-  if (auth.onAuthStateChanged(tieneRol(usuario,["Cliente"]),procesaError) == true) {
+  if (tieneRol(usuario,["Cliente"])) {
     alert("Si es un cliente");
     try {
       evt.preventDefault();
@@ -38,9 +38,7 @@ async function registroCliente(evt, usuario) {
       const correo = getString(formData, "correo").trim();
       alert(correo); 
       /**
-       * @type {
-          import("./tipos.js").
-                  Alumno} */
+       ** @type { import("./tipos.js").Alumno} */
       const modelo = {nombre, ap_paterno, ap_materno, edad, sexo, celular, correo};
       await daoCliente.add(modelo);
       alert("Sus datos han sido registrados exitosamente.");
@@ -48,47 +46,29 @@ async function registroCliente(evt, usuario) {
       procesaError(e);
     }
   }
+  
 }
 
-
-/** Verifica que exista una sesión abierta con un rol.
- * @param {import(
+/** @param {import(
     "../lib/tiposFire.js").User}
     usuario
  * @param {string[]} roles
  * @returns {Promise<boolean>} */
 async function tieneRol(usuario, roles) {
-  alert("Revisando si tiene sesión");
-
   if (usuario && usuario.email) {
-    alert("Ahora carga rol según el email");
-    /* Usuario aceptado y con login es revisado en su rol. */
-    const roles = await cargaRoles(usuario.email);
-    /* Formulario de reservación para clientes. */
-    if (roles.has("Cliente")) {
-      return true;
+    const rolIds = await cargaRoles(usuario.email);
+    for (const rol of roles) {
+      if (rolIds.has(rol)) {
+        return true;
+      }
     }
-    else {
-      alert("No autorizado.");
-      location.href = "index.html";
-    }
+    alert("No autorizado.");
+    location.href = "index.html";
   } else {
-    alert("Inicio de sesión");
-    /* Tipo de autenticación de usuarios. En este caso es con Google. */
-    // @ts-ignore
-    const provider = new firebase.auth.GoogleAuthProvider();
-
-    /* Configura el proveedor de Google para que permita seleccionar de una lista. */
-    provider.setCustomParameters({ prompt: "select_account" });
-
-    // No ha iniciado sesión. Pide datos para iniciar sesión.
-    await auth.signInWithRedirect(provider);
-    return false;
+    logIn();
   }
-  procesaError
+  return false;
 }
-
-
 
 /** Busca si existe un rol y lo toma 
  * @param {string} email
@@ -109,10 +89,21 @@ async function cargaRoles(email) {
       return new Set(data.rolIds || []);
     } else {
         /* No existe email con rol, así que devuleve vacío */
-        alert("No existe email con rol, así que devuleve vacío");
+      alert("No existe email con rol, así que devuleve vacío");
       return new Set();
     }
 }
+
+async function logIn() {
+  /* Tipo de autenticación de usuarios. En este caso es con Google. */
+// @ts-ignore
+  const provider = new firebase.auth.GoogleAuthProvider();
+  /* Configura el proveedor de Google para que permita seleccionar de una lista. */
+  provider.setCustomParameters({ prompt: "select_account" });
+  /* Recibe una función que se invoca cada que hay un cambio en la autenticación y recibe el modelo con las características del usuario.*/
+  await auth.signInWithRedirect(provider);
+}
+
 
 /**
  * @param {FormData} formData
