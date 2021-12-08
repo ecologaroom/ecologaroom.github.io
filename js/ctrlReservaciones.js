@@ -11,6 +11,7 @@ const lista = document.querySelector("#lista");
 
 /** Muestra las reservaciones y se actualiza automáticamente. */
 function consulta() {
+  alert("entra a consulta");
   /* Registros de la colección Reservación, ordenados por número de habitación */
   daoReservaciones.orderBy("num_habitacion", "desc").onSnapshot(htmlLista, errConsulta);
 }
@@ -20,6 +21,7 @@ function consulta() {
     "../lib/tiposFire.js").
     QuerySnapshot} snap estructura parecida a un Array, copia de los datos del servidor. */
 function htmlLista(snap) {
+  alert("entra a htmllist");
   let html = "";
   if (snap.size > 0) {
     /* Uno por uno se revisan los documentos de la consulta y los muestra. El iterador*/
