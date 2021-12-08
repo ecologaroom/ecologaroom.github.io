@@ -8,27 +8,29 @@ function formLogin(){
   
     /* Configura el proveedor de Google para que permita seleccionar de una lista. */
     provider.setCustomParameters({ prompt: "select_account" });
+
     /* Recibe una función que se invoca cada que hay un cambio en la autenticación y recibe el modelo con las características del usuario.*/
-    auth.onAuthStateChanged(
-      /* Recibe las características del usuario o null si no ha iniciado sesión. */
+    auth.onAuthStateChanged(cambiaBoton,procesaError)      
+}
+
+function cambiaBoton() {
+    alert("Ha iniciado sesión correctamente.");
+}
+
+  /* Recibe las características del usuario o null si no ha iniciado sesión. 
       async usuarioAuth => {
         if (usuarioAuth && usuarioAuth.email) {
           // Usuario aceptado y con login
           location.href = 'reservacion_cliente.html';
         } else {
           // No ha iniciado sesión. Pide datos para iniciar sesión.
-          await auth.signInWithRedirect(provider)
-          /*provider.getRedirectResult().then(function(result) {
-            if (usuarioAuth) {
-              location.href = 'reservacion_cliente.html'; //After successful login, user will be redirected to home.html
-            }
-          })*/
+          await auth.signInWithRedirect(provider);
         }
       },
       // Función que se invoca si hay un error al verificar el usuario.
-      procesaError
-    )      
-  }
+      procesaError*/
+
+
   
   /* Terminar la sesión. */
   async function terminaSesion() {
