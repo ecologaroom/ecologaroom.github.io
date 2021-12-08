@@ -2,19 +2,16 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <!-- Adaptación de pantalla a distintos dispositivos -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Título en pestaña de navegación -->
-    <title>Tabla de reservaciones</title>
-    <!-- Hojas de estilos -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Información de reservaciones</title>
     <link rel="stylesheet" href="css/navbar.css">
     <link rel="stylesheet" href="css/menu.css">
     <link rel="stylesheet" href="css/footer.css">
     <link rel="stylesheet" href="css/general.css">
     <link rel="stylesheet" href="css/reservacion_recepcion.css">
-    <!-- Carga el núcleo de Firebase JS SDK -->
+    <!--  Carga el núcleo de Firebase JS SDK -->
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-    <!-- Agrega el manejo de autenticación. -->
+    <!--  Agrega el manejo de autenticación. -->
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
     <!-- Agrega el manejo a Cloud Firestore -->
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
@@ -22,6 +19,8 @@
     <script src="js/autenticacion.js"></script>
     <!-- Navegación interna de la página -->
     <script src="js/navegacion.js"></script>
+    <!-- Navegación interna de la página -->
+    <script src="js/ctrlReservaciones.js"></script>
   </head>
   <body>
     <!-- Página -->
@@ -37,40 +36,15 @@
         <div class="reservacion">
           <!-- Fila responsiva -->
           <div class="fila">
-            <!-- Fecha de entrada -->
+            <!-- Botón de la reservación -->
             <div class="colum">
               <div class="inputFlotante">
-                <label for="Fecha">Fecha de entrada:</label>
-                <input type="date" id="Fecha_llegada" name="Fecha_llegada" maxlength="10" required pattern="^(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\d\d$" required>
+                <!-- Cerrar sesión -->
+                <button type="button" class="btn">Cerrar Sesión</button>
+                <!-- Cerrar sesión -->
               </div>
             </div>
-            <!-- Fecha de entrada -->
-
-            <!-- Fecha de salida -->
-            <div class="colum">
-              <div class="inputFlotante">
-                <label for="Fecha">Fecha de salida:</label>
-                <input type="date" id="Fecha_salida" name="Fecha_salida" maxlength="10" required pattern="^(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\d\d$" required>
-              </div>
-            </div>
-            <!-- Fecha de salida -->
-
-            <!-- Número de huéspedes -->
-            <div class="colum">
-              <div class="inputFlotante">
-                <label for="Fecha"># huéspedes:</label>
-                <input type="number" id="Num_huesped" name="Num_huesped" maxlength="3" min="1" max="100" required>
-              </div>
-            </div>
-            <!-- Número de huéspedes -->
-
-            <!-- Botón de reservar -->
-            <div class="colum">
-              <div class="inputFlotante">
-                <button type="button" class="btn" onclick="formLogin();">Reservar</button>
-              </div>
-            </div>
-            <!-- Botón de la reservar -->
+            <!-- Botón de la reservación -->
           </div>
           <!-- Fila responsiva -->
         </div>
@@ -78,8 +52,23 @@
       </nav>
       <!-- Barra de navegación -->
 
-     
-      
+      <!-- Menú -->
+      <div class="menu" role="group">
+        <!-- Botón de Inicio -->
+        <button type="button" onClick="formInicio();" class="menuBtn" style="font-size:34px;">INICIO</button>
+        <!-- Botón de Habitaciones -->
+        <button type="button" onClick="formHabitaciones();" class="menuBtn" style="font-size:16px;">HABITACIONES</button>
+        <!-- Botón de Intalaciones -->
+        <button type="button" onClick="formInstalaciones();" class="menuBtn" style="font-size:15px;">INSTALACIONES</button>
+        <!-- Botón de Turismo -->
+        <button type="button" onClick="formTurismo();" class="menuBtn" style="font-size:26px;">TURISMO</button>
+        <!-- Botón de Restaurantes -->
+        <button type="button" onClick="formRestaurantes();" class="menuBtn" style="font-size:15px;">RESTAURANTES</button>
+        <!-- Botón de FAQ -->
+        <button type="button" onClick="formFAQ();" class="menuBtn" style="font-size:46px;">FAQ</button>
+      </div>
+      <!-- Menú -->
+   
       <!-- Contenido -->
       <section class="contenedor">
         <!-- Título -->
