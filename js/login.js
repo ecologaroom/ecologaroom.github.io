@@ -15,16 +15,15 @@ function formLogin(){
     auth.onAuthStateChanged(cambiaBoton,procesaError)      
 }
 
-function cambiaBoton(usuarioAuth) {
+async function cambiaBoton(usuarioAuth) {
     alert("Se verifica si ha o no iniciado sesión");
     if (usuarioAuth && usuarioAuth.email) {
         // Usuario aceptado y con login
         alert("Se le redireccionará");
         /*location.href = 'reservacion_cliente.html';*/
     } else {
-        alert("Debe iniciar sesión");
         // No ha iniciado sesión. Pide datos para iniciar sesión.
-        //await auth.signInWithRedirect(provider);
+        await auth.signInWithRedirect(provider);
     }
 }
 
