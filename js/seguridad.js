@@ -10,8 +10,7 @@ import {
 const firestore = getFirestore();
 const daoUsuario = firestore.collection("Usuario");
 
-export async function
-  iniciaSesión() {
+export async function iniciaSesión() {
   /** Autenticación con Google.
    * @type {import(
       "../lib/tiposFire.js").
@@ -29,12 +28,9 @@ export async function
     usuario
  * @param {string[]} roles
  * @returns {Promise<boolean>} */
-export async function
-  tieneRol(usuario, roles) {
+export async function tieneRol(usuario, roles) {
   if (usuario && usuario.email) {
-    const rolIds =
-      await cargaRoles(
-        usuario.email);
+    const rolIds = await cargaRoles(usuario.email);
     for (const rol of roles) {
       if (rolIds.has(rol)) {
         return true;
@@ -48,8 +44,7 @@ export async function
   return false;
 }
 
-export async function
-  terminaSesión() {
+export async function terminaSesión() {
   try {
     await getAuth().signOut();
   } catch (e) {
@@ -60,7 +55,7 @@ export async function
 /** @param {string} email
  * @returns {Promise<Set<string>>}
  */
-export async function cargaRoles(email) {
+export async function cargaRoles(email) { 
   let doc = await daoUsuario.doc(email).get();
   if (doc.exists) {
     /**
