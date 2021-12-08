@@ -7,7 +7,7 @@ const daoCliente = firestore.collection("Cliente");
 const formUsuario = document["formUsuario"];
 
 /** @param {Event} evt */
-async function registroUsuario(evt, usuario) {
+async function registroUsuario(evt) {
   /* Conexión al sistema de autenticación de Firebase. */
   // @ts-ignore
   const auth = firebase.auth();
