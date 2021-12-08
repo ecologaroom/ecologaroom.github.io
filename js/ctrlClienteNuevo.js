@@ -10,7 +10,7 @@ const daoCliente = firestore.collection("Cliente");
 /** @param {Event} evt */
 async function registroCliente(evt) {
   alert("botón registrar");
-  
+
   /* Conexión al sistema de autenticación de Firebase. */
   // @ts-ignore
   const auth = firebase.auth();
