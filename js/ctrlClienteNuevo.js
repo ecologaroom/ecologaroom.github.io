@@ -8,17 +8,15 @@ const formUsuario = document["formUsuario"];
 
 /** @param {Event} evt */
 async function registroUsuario(evt, usuario) {
-  alert("Función guardar");
-
   /* Conexión al sistema de autenticación de Firebase. */
   // @ts-ignore
   const auth = firebase.auth();
 
-  if (auth.onAuthStateChanged(tieneRol(usuario,["Cliente"]),procesaError)) {
+  if (auth.onAuthStateChanged(tieneRol,procesaError)==true) {
     alert("Si es un cliente");
     try {
-      alert("entra al try");  
       evt.preventDefault();
+      alert("Aquí marca error");  
       const formData = new FormData(formUsuario);
       const nombre = getString(formData, "nombre").trim();
       alert(nombre);  
@@ -52,28 +50,41 @@ async function registroUsuario(evt, usuario) {
  * @param {import(
     "../lib/tiposFire.js").User}
     usuario
- * @param {string[]} roles
  * @returns {Promise<boolean>} */
-async function tieneRol(usuario, roles) {
+async function tieneRol(usuario) {
   alert("Revisando si tiene sesión");
+
   if (usuario && usuario.email) {
     alert("Ahora carga rol según el email");
-    const rolIds = await cargaRoles(usuario.email);
-
-    for (const rol of roles) {
-      if (rolIds.has(rol)) {
-        alert("El rol pertenece al rol del usuario.");
-        return true;
-      }
+    /* Usuario aceptado y con login es revisado en su rol. */
+    const roles = await cargaRoles(usuario.email);
+    /* Formulario de reservación para clientes. */
+    if (roles.has("Cliente")) {
+      return true;
     }
-    alert("No autorizado.");
-    location.href = "index.html";
+    /* Formulario de reservación para trabajadores. */
+    else if (roles.has("Trabajador")) {
+      return false;
+    } else {
+      alert("No autorizado.");
+      location.href = "index.html";
+    }
   } else {
     alert("Inicio de sesión");
-    logIn();
+    /* Tipo de autenticación de usuarios. En este caso es con Google. */
+    // @ts-ignore
+    const provider = new firebase.auth.GoogleAuthProvider();
+
+    /* Configura el proveedor de Google para que permita seleccionar de una lista. */
+    provider.setCustomParameters({ prompt: "select_account" });
+
+    // No ha iniciado sesión. Pide datos para iniciar sesión.
+    await auth.signInWithRedirect(provider);
   }
-  return false;
+  procesaError
 }
+
+
 
 /** Busca si existe un rol y lo toma 
  * @param {string} email
@@ -99,20 +110,6 @@ async function cargaRoles(email) {
     }
 }
 
-/* Tipo de autenticación de usuarios. En este caso es con Google. */
-// @ts-ignore
-const provider = new firebase.auth.GoogleAuthProvider();
-
-/* Manda a iniciar sesión con Google */
-function logIn(){
-  alert("Se supone inicia sesión nuevamente");
-
-  /* Configura el proveedor de Google para que permita seleccionar de una lista. */
-  provider.setCustomParameters({ prompt: "select_account" });
-
-  /* Recibe una función que se invoca cada que hay un cambio en la autenticación y recibe el modelo con las características del usuario.*/
-  auth.onAuthStateChanged(procesaError)      
-}
 
 /**
  * @param {FormData} formData
