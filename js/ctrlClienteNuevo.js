@@ -40,7 +40,7 @@ async function registroCliente(evt, usuario) {
        ** @type { import("./tipos.js").Alumno} */
       const modelo = {nombre, ap_paterno, ap_materno, edad, sexo, celular, correo};
       alert("Guarda datos en modelo");
-      await daoCliente.add(modelo);
+      await daoCliente.add(modelo); //////////////////////////////////////////////////////////////
       alert("Sus datos han sido registrados exitosamente.");
     } catch (e) {
       procesaError(e);
@@ -60,10 +60,11 @@ async function tieneRol(usuario, roles) {
     for (const rol of roles) {
       if (rolIds.has(rol)) {
         return true;
+      } else {
+        alert("No autorizado.");
+        location.href = "index.html";
       }
     }
-    alert("No autorizado.");
-    location.href = "index.html";
   } else {
     logIn();
   }
