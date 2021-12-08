@@ -12,6 +12,7 @@ async function registroUsuario(evt) {
   /* Conexión al sistema de autenticación de Firebase. */
   // @ts-ignore
   const auth = firebase.auth();
+  alert("botón registrar");
 
   if (auth.onAuthStateChanged(tieneRol,procesaError)==true) {
     alert("Si es un cliente");
@@ -54,6 +55,7 @@ async function registroUsuario(evt) {
  * @returns {Promise<boolean>} */
 async function tieneRol(usuario) {
   if (usuario && usuario.email) {
+    alert("Si inició sesisón");
     /* Usuario aceptado y con login es revisado en su rol. */
     const roles = await cargaRoles(usuario.email);
     /* Formulario de reservación para clientes. */
