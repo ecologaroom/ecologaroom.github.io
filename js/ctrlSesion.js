@@ -11,11 +11,13 @@ import {
   iniciaSesión
 } from "./seguridad.js";
 
+alert("llega a ctrlSesión");
+
+
 /** @type {HTMLFormElement} */
 const reserva = document["reserva"];
 
 /* Función invocada al haber un cambio de usuario y recibe sus datos, en otro caso presenta un error. */
-
 getAuth().onAuthStateChanged(cambiaUsuario,muestraError);
 
 /**

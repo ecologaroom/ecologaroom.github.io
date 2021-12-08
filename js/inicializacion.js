@@ -9,3 +9,5 @@ firebase.initializeApp({
     appId: "1:509252941570:web:e651c919f5d0902470741b",
     measurementId: /*"G-45R2RM4HV8" */ "${config.measurementId}"
 });
+
+alert("realiza inicialización");
