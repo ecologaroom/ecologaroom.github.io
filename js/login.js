@@ -1,11 +1,13 @@
+/* Conexión al sistema de autenticación de Firebase. */
+// @ts-ignore
+const auth = firebase.auth();
+
+/* Tipo de autenticación de usuarios. En este caso es con Google. */
+// @ts-ignore
+const provider = new firebase.auth.GoogleAuthProvider();
+
+
 function formLogin(){
-    /* Conexión al sistema de autenticación de Firebase. */
-    // @ts-ignore
-    const auth = firebase.auth();
-    /* Tipo de autenticación de usuarios. En este caso es con Google. */
-    // @ts-ignore
-    const provider = new firebase.auth.GoogleAuthProvider();
-  
     /* Configura el proveedor de Google para que permita seleccionar de una lista. */
     provider.setCustomParameters({ prompt: "select_account" });
 
@@ -13,19 +15,22 @@ function formLogin(){
     auth.onAuthStateChanged(cambiaBoton,procesaError)      
 }
 
-function cambiaBoton() {
-    alert("Ha iniciado sesión correctamente.");
+function cambiaBoton(usuarioAuth) {
+    alert("Se verifica si ha o no iniciado sesión");
+    if (usuarioAuth && usuarioAuth.email) {
+        // Usuario aceptado y con login
+        alert("Se le redireccionará");
+        /*location.href = 'reservacion_cliente.html';*/
+    } else {
+        alert("Debe iniciar sesión");
+        // No ha iniciado sesión. Pide datos para iniciar sesión.
+        //await auth.signInWithRedirect(provider);
+    }
 }
 
   /* Recibe las características del usuario o null si no ha iniciado sesión. 
       async usuarioAuth => {
-        if (usuarioAuth && usuarioAuth.email) {
-          // Usuario aceptado y con login
-          location.href = 'reservacion_cliente.html';
-        } else {
-          // No ha iniciado sesión. Pide datos para iniciar sesión.
-          await auth.signInWithRedirect(provider);
-        }
+        
       },
       // Función que se invoca si hay un error al verificar el usuario.
       procesaError*/
