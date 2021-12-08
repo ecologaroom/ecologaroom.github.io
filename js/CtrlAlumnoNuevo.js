@@ -48,13 +48,7 @@ async function guarda(evt) {
      * @type {
         import("./tipos.js").
                 Alumno} */
-    const modelo = {
-      matricula,
-      nombre,
-      telefono,
-      grupo,
-      fecha 
-    };
+    const modelo = {matricula,nombre, telefono, grupo, fecha};
     await daoAlumno.
       add(modelo);
     muestraAlumnos();

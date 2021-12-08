@@ -1,153 +1,152 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8">
-  <!-- Adaptación de pantalla a distintos dispositivos -->
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- Título en pestaña de navegación -->
-  <title>Página principal</title>
-  <!-- Hojas de estilos -->
-  <link rel="stylesheet" href="css/navbar.css">
-  <link rel="stylesheet" href="css/menu.css">
-  <link rel="stylesheet" href="css/footer.css">
-  <link rel="stylesheet" href="css/general.css">
-  <link rel="stylesheet" href="css/inicio.css">
-  <!-- Carga el núcleo de Firebase JS SDK -->
-  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-  <!-- Agrega el manejo de autenticación. -->
-  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
-  <!-- Agrega el manejo a Cloud Firestore -->
-  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
-  <!-- Inicialización con firebase -->
-  <script src="js/inicializacion.js"></script>
-  <!-- Navegación interna de la página -->
-  <script src="js/nav.js"></script>
-
-  <script src="js/login.js"></script>
-
+    <meta charset="utf-8">
+    <!-- Adaptación de pantalla a distintos dispositivos -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Título en pestaña de navegación -->
+    <title>Página principal</title>
+    <!-- Hojas de estilos -->
+    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/menu.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/general.css">
+    <link rel="stylesheet" href="css/inicio.css">
+    <!-- Carga el núcleo de Firebase JS SDK -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <!-- Agrega el manejo de autenticación. -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <!-- Agrega el manejo a Cloud Firestore -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <!-- Inicialización con firebase -->
+    <script src="js/inicializacion.js"></script>
+    <!-- Navegación interna de la página -->
+    <script src="js/nav.js"></script>
+    <!-- Controla el botón de reservar según el tipo de usuario -->
+    <script src="js/ctrlSesion.js"></script>
 </head>
 <body>
-  <!-- Página -->
-  <div class="pagina">
-    <!-- Barra de navegación -->
-    <nav class="navbar">
-      <!-- Reservación inmediata a la derecha -->
-      <div class="reservacion">
-        <!-- Logo a la izquierda-->
-        <div class="logo"><img class="imagen_logo" src="img/Logo.png" loading="lazy"/></div>
-        <!-- Logo a la izquierda-->
+    <!-- Página -->
+    <div class="pagina">
+        <!-- Barra de navegación -->
+        <nav class="navbar">
+        <!-- Reservación inmediata a la derecha -->
+        <div class="reservacion">
+            <!-- Logo a la izquierda-->
+            <div class="logo"><img class="imagen_logo" src="img/Logo.png" loading="lazy"/></div>
+            <!-- Logo a la izquierda-->
 
-        <form name="reserva">
-          <!-- Fila responsiva -->
-          <div class="fila">
-            <!-- Fecha de entrada -->
-            <div class="colum">
-              <div class="inputFlotante">
-                <label for="Fecha">Fecha de entrada:</label>
-                <input type="date" id="fecha_lleg" name="fecha_lleg" maxlength="10" required pattern="^(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\d\d$" required>
-              </div>
+            <form name="reserva">
+            <!-- Fila responsiva -->
+            <div class="fila">
+                <!-- Fecha de entrada -->
+                <div class="colum">
+                <div class="inputFlotante">
+                    <label for="Fecha">Fecha de entrada:</label>
+                    <input type="date" id="fecha_lleg" name="fecha_lleg" maxlength="10" required pattern="^(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\d\d$" required>
+                </div>
+                </div>
+                <!-- Fecha de entrada -->
+
+                <!-- Fecha de salida -->
+                <div class="colum">
+                <div class="inputFlotante">
+                    <label for="Fecha">Fecha de salida:</label>
+                    <input type="date" id="fecha_sal" name="fecha_sal" maxlength="10" required pattern="^(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\d\d$" required>
+                </div>
+                </div>
+                <!-- Fecha de salida -->
+
+                <!-- Número de huéspedes -->
+                <div class="colum">
+                <div class="inputFlotante">
+                    <label for="Fecha"># huéspedes:</label>
+                    <input type="number" id="num_hues" name="num_hues" maxlength="3" min="1" max="100" required>
+                </div>
+                </div>
+                <!-- Número de huéspedes -->
+
+                <!-- Botón de reservar -->
+                <div class="colum">
+                <div class="inputFlotante">
+                    <button type="submit" name="btnReservar" class="btn" onclick="logIn();">Reservar</button>
+                </div>
+                </div>
+                <!-- Botón de la reservar -->
             </div>
-            <!-- Fecha de entrada -->
-
-            <!-- Fecha de salida -->
-            <div class="colum">
-              <div class="inputFlotante">
-                <label for="Fecha">Fecha de salida:</label>
-                <input type="date" id="fecha_sal" name="fecha_sal" maxlength="10" required pattern="^(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\d\d$" required>
-              </div>
-            </div>
-            <!-- Fecha de salida -->
-
-            <!-- Número de huéspedes -->
-            <div class="colum">
-              <div class="inputFlotante">
-                <label for="Fecha"># huéspedes:</label>
-                <input type="number" id="num_hues" name="num_hues" maxlength="3" min="1" max="100" required>
-              </div>
-            </div>
-            <!-- Número de huéspedes -->
-
-            <!-- Botón de reservar -->
-            <div class="colum">
-              <div class="inputFlotante">
-                <button type="submit" name="btnReservar" class="btn" onclick="formLogin();">Reservar</button>
-              </div>
-            </div>
-            <!-- Botón de la reservar -->
-          </div>
-          <!-- Fila responsiva -->
-        </form>
-      </div>
-      <!-- Reservación inmediata a la derecha -->
-    </nav>
-    <!-- Barra de navegación -->
-
-      <!-- Menú -->
-      <div class="menu" role="group">
-        <!-- Botón de Inicio -->
-        <button type="button" class="menuNBtn" style="font-size:34px;">INICIO</button>
-        <!-- Botón de Habitaciones -->
-        <button type="button" onClick="formHabitaciones();" class="menuBtn" style="font-size:16px;">HABITACIONES</button>
-        <!-- Botón de Instalaciones -->
-        <button type="button" onClick="formInstalaciones();" class="menuBtn" style="font-size:15px;">INSTALACIONES</button>
-        <!-- Botón de Turismo -->
-        <button type="button" onClick="formTurismo();" class="menuBtn" style="font-size:26px;">TURISMO</button>
-        <!-- Botón de Restaurantes -->
-        <button type="button" onClick="formRestaurantes();" class="menuBtn" style="font-size:15px;">RESTAURANTES</button>
-        <!-- Botón de FAQ -->
-        <button type="button" onClick="formFAQ();" class="menuBtn" style="font-size:46px;">FAQ</button>
-      </div>
-      <!-- Menú -->
-      
-      <!-- Contenido -->
-      <section class="contenido">
-        <div class="card">
-          <!-- Portada -->
-          <header><h1>¡BIENVENID@ A ECOLOGAROOM!</h1></header>
-          <!-- Portada -->
+            <!-- Fila responsiva -->
+            </form>
         </div>
+        <!-- Reservación inmediata a la derecha -->
+        </nav>
+        <!-- Barra de navegación -->
 
-        <!-- Descripcióm -->
-        <div class="descripcion">
-          <h2>Descripción</h2>
-          En Hotel Ecologaroom, tendrás a tu alcance una magnífica oferta que combina inteligentemente lujo, confort y practicidad, brindándote como resultado la mejor experiencia de hospedaje en La Paz, B.C.S.
+        <!-- Menú -->
+        <div class="menu" role="group">
+            <!-- Botón de Inicio -->
+            <button type="button" class="menuNBtn" style="font-size:34px;">INICIO</button>
+            <!-- Botón de Habitaciones -->
+            <button type="button" onClick="formHabitaciones();" class="menuBtn" style="font-size:16px;">HABITACIONES</button>
+            <!-- Botón de Instalaciones -->
+            <button type="button" onClick="formInstalaciones();" class="menuBtn" style="font-size:15px;">INSTALACIONES</button>
+            <!-- Botón de Turismo -->
+            <button type="button" onClick="formTurismo();" class="menuBtn" style="font-size:26px;">TURISMO</button>
+            <!-- Botón de Restaurantes -->
+            <button type="button" onClick="formRestaurantes();" class="menuBtn" style="font-size:15px;">RESTAURANTES</button>
+            <!-- Botón de FAQ -->
+            <button type="button" onClick="formFAQ();" class="menuBtn" style="font-size:46px;">FAQ</button>
         </div>
-        <!-- Descripción -->
+        <!-- Menú -->
         
-        <!-- Acerca nosotros -->
-        <div class="nosotros">
-          <h2>Acerca nostros</h2>
-          Localizado en el centro del puerto de ilusión, la ciudad de los 365 atardeceres, en Ecologaroom, hotel de 4 estrellas, tendrás a tu alcance una fantástica oferta que combina inteligentemente lujo, confort y practicidad, dando como resultado la mejor y más nueva experiencia de hospedaje en La Paz, B.C.S.
-          A su disposición está el uso de computadoras con acceso a internet, así como servicio de impresión y copias. Además, contamos con piscina, máquina de refrigerios, estacionamiento y servicio de coffee break por solicitar.
-        </div>
-        <!-- Acerca nosotros -->
+        <!-- Contenido -->
+        <section class="contenido">
+            <div class="card">
+            <!-- Portada -->
+            <header><h1>¡BIENVENID@ A ECOLOGAROOM!</h1></header>
+            <!-- Portada -->
+            </div>
 
+            <!-- Descripcióm -->
+            <div class="descripcion">
+            <h2>Descripción</h2>
+            En Hotel Ecologaroom, tendrás a tu alcance una magnífica oferta que combina inteligentemente lujo, confort y practicidad, brindándote como resultado la mejor experiencia de hospedaje en La Paz, B.C.S.
+            </div>
+            <!-- Descripción -->
+            
+            <!-- Acerca nosotros -->
+            <div class="nosotros">
+            <h2>Acerca nostros</h2>
+            Localizado en el centro del puerto de ilusión, la ciudad de los 365 atardeceres, en Ecologaroom, hotel de 4 estrellas, tendrás a tu alcance una fantástica oferta que combina inteligentemente lujo, confort y practicidad, dando como resultado la mejor y más nueva experiencia de hospedaje en La Paz, B.C.S.
+            A su disposición está el uso de computadoras con acceso a internet, así como servicio de impresión y copias. Además, contamos con piscina, máquina de refrigerios, estacionamiento y servicio de coffee break por solicitar.
+            </div>
+            <!-- Acerca nosotros -->
+
+            <!-- Pie de página -->
+            <footer>
+            <!-- Contenedor de la retícula -->
+            <div class="retícula">
+                <!-- Sección: Contacto -->
+                <section class="contacto">
+                <h3>CONTACTO</h3>
+                <!-- Número -->
+                <a class="icon" title="Llámanos" href="https://goo.gl/maps/DMi8wx4pS4wtUn2z5"><img src="img/llamada-telefonica.png" height="30" width="30" style="background-color: rgba(251, 251, 251, 0.6)"/></a>  
+                <!-- Email -->
+                <a class="icon" title="Mandanos un correo" href="https://goo.gl/maps/DMi8wx4pS4wtUn2z5"><img src="img/email.png" height="30" width="30" style="background-color: rgba(251, 251, 251, 0.6)"/></a>
+                <!-- Ubicación -->
+                <a class="icon" title="Buscanos en Google Maps" href="https://goo.gl/maps/DMi8wx4pS4wtUn2z5"><img src="img/placeholder.png" height="30" width="30" style="background-color: rgba(251, 251, 251, 0.6)"/></a>
+                </section>
+                <!-- Sección: Contacto -->
+            </div>
+            <!-- Contenedor de la retícula -->
+        
+            <!-- Copyright -->
+            <div class="copyright" style="background-color: rgba(0, 0, 0, 0.2);">Copyright &copy; 2021</div>
+            <!-- Copyright -->
+        </footer>
         <!-- Pie de página -->
-        <footer>
-          <!-- Contenedor de la retícula -->
-          <div class="retícula">
-            <!-- Sección: Contacto -->
-            <section class="contacto">
-              <h3>CONTACTO</h3>
-              <!-- Número -->
-              <a class="icon" title="Llámanos" href="https://goo.gl/maps/DMi8wx4pS4wtUn2z5"><img src="img/llamada-telefonica.png" height="30" width="30" style="background-color: rgba(251, 251, 251, 0.6)"/></a>  
-              <!-- Email -->
-              <a class="icon" title="Mandanos un correo" href="https://goo.gl/maps/DMi8wx4pS4wtUn2z5"><img src="img/email.png" height="30" width="30" style="background-color: rgba(251, 251, 251, 0.6)"/></a>
-              <!-- Ubicación -->
-              <a class="icon" title="Buscanos en Google Maps" href="https://goo.gl/maps/DMi8wx4pS4wtUn2z5"><img src="img/placeholder.png" height="30" width="30" style="background-color: rgba(251, 251, 251, 0.6)"/></a>
-            </section>
-            <!-- Sección: Contacto -->
-          </div>
-          <!-- Contenedor de la retícula -->
-      
-        <!-- Copyright -->
-        <div class="copyright" style="background-color: rgba(0, 0, 0, 0.2);">Copyright &copy; 2021</div>
-        <!-- Copyright -->
-      </footer>
-      <!-- Pie de página -->
-    </section>
-    <!-- Contenido -->
-  </div>
-  <!-- Página -->
+        </section>
+        <!-- Contenido -->
+    </div>
+    <!-- Página -->
 </body>
 </html>

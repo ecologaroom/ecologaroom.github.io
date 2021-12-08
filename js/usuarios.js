@@ -55,7 +55,7 @@ function
     htmlAlumno(doc, valor) {
     const selected = doc.id === valor ? "selected" : "";
     /**
-     * @type {import("./colecciones").
+     * @type {import("./tipos").
                     Alumno} */
     const data = doc.data();
     return (/* html */
@@ -107,7 +107,7 @@ function
     checkRol(doc, set) {
     /**
      * @type {
-        import("./colecciones.js").Rol} */
+        import("./tipos.js").Rol} */
     const data = doc.data();
     const checked =
       set.has(doc.id) ?
