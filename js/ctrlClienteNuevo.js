@@ -1,8 +1,3 @@
-/* Conexión al sistema de Firestore. */
-// @ts-ignore
-const firestore = firebase.firestore();
-const daoCliente = firestore.collection("Cliente");
-
 /** @type {HTMLFormElement} */
 const formUsuario = document["formUsuario"];
 
@@ -52,18 +47,17 @@ async function registroUsuario(evt) {
     usuario
  * @returns {Promise<boolean>} */
 async function tieneRol(usuario) {
-  alert("Revisando si tiene sesión");
-
   if (usuario && usuario.email) {
-    alert("Ahora carga rol según el email");
     /* Usuario aceptado y con login es revisado en su rol. */
     const roles = await cargaRoles(usuario.email);
     /* Formulario de reservación para clientes. */
     if (roles.has("Cliente")) {
+      alert("Rol de cliente.");
       return true;
     }
     /* Formulario de reservación para trabajadores. */
     else if (roles.has("Trabajador")) {
+      alert("Rol de travajador.");
       return false;
     } else {
       alert("No autorizado.");
@@ -84,16 +78,20 @@ async function tieneRol(usuario) {
   procesaError
 }
 
-
+/* Conexión al sistema de Firestore. */
+// @ts-ignore
+const firestore = firebase.firestore();
+const daoCliente = firestore.collection("Cliente");
 
 /** Busca si existe un rol y lo toma 
  * @param {string} email
  * @returns {Promise<Set<string>>}
  */
 async function cargaRoles(email) { 
-    alert("Buscando su rol");
     /* Busa en la colección Usuario el email con el que se autesentificó */
     let doc = await daoUsuario.doc(email).get();
+    alert("Buscando su rol");
+
     if (doc.exists) {
       /**
        * @type {
