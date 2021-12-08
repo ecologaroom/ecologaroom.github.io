@@ -16,11 +16,19 @@ function formLogin(){
 }
 
 async function cambiaBoton(usuarioAuth) {
-    alert("Se verifica si ha o no iniciado sesión");
     if (usuarioAuth && usuarioAuth.email) {
-        // Usuario aceptado y con login
-        alert("Se le redireccionará");
-        /*location.href = 'reservacion_cliente.html';*/
+        /* Usuario aceptado y con login es revisado en su rol. */
+        const roles = await cargaRoles(usuarioAuth.email);
+        /* Enlaces para clientes. */
+        if (roles.has("Cliente")) {
+            alert("CLiente!!!");
+           // reserva.terminarSesión.addEventListener("click", location.href="reservacion_cliente.html");
+        }
+        /* Enlaces para trabajadores. */
+        if (roles.has("Trabajador")) {
+            alert("Trabajador");
+            //reserva.terminarSesión.addEventListener("click", location.href="reservacion_recepcion.html");
+        }
     } else {
         // No ha iniciado sesión. Pide datos para iniciar sesión.
         await auth.signInWithRedirect(provider);
@@ -34,6 +42,31 @@ async function cambiaBoton(usuarioAuth) {
       // Función que se invoca si hay un error al verificar el usuario.
       procesaError*/
 
+// @ts-ignore
+const firestore = firebase.firestore();
+const daoUsuario = firestore.collection("Usuario");
+
+/** @param {string} email
+ * @returns {Promise<Set<string>>}
+ */
+async function cargaRoles(email) { 
+    alert("Se está cargando el rol");
+    let doc = await daoUsuario.doc(email).get();
+
+    alert("Validando existencia de rol");
+    if (doc.exists) {
+      /**
+       * @type {
+          import("./tipos.js").
+          Usuario} */
+      const data = doc.data();
+      alert("Existe el rol");
+      return new Set(data.rolIds || []);
+    } else {
+    alert("No existe el rol");
+      return new Set();
+    }
+}
 
   
   /* Terminar la sesión. */
