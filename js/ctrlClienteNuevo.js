@@ -39,6 +39,7 @@ async function registroCliente(evt, usuario) {
       /**
        ** @type { import("./tipos.js").Alumno} */
       const modelo = {nombre, ap_paterno, ap_materno, edad, sexo, celular, correo};
+      alert("Guarda datos en modelo");
       await daoCliente.add(modelo);
       alert("Sus datos han sido registrados exitosamente.");
     } catch (e) {
