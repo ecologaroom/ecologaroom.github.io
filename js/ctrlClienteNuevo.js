@@ -15,7 +15,7 @@ auth.onAuthStateChanged(tieneRol, procesaError);
 
 /** @param {Event} evt */
 async function registroCliente(evt, usuario) {
-  alert("Botón regustrar");
+  alert("Botón regustrar cliente");
 
   if (tieneRol(usuario,["Cliente"])) {
     alert("Si es un cliente");
@@ -23,19 +23,19 @@ async function registroCliente(evt, usuario) {
       alert("Entra al try");
       const formData = new FormData(formUsuario);
       const nombre = getString(formData, "nombre").trim();
-      alert(nombre);  
+      alert("nombre" + nombre);  
       const ap_paterno = getString(formData, "ap_paterno").trim();
-      alert(ap_paterno); 
+      alert("ap_materno" + ap_paterno); 
       const ap_materno = getString(formData, "ap_materno").trim();
-      alert(ap_materno); 
+      alert("ap_materno" + ap_materno); 
       const edad = getString(formData, "edad").trim();
-      alert(edad); 
+      alert("edad" + edad); 
       const sexo = getString(formData, "sexo").trim();
-      alert(sexo); 
+      alert("sexo" + sexo); 
       const celular = getString(formData, "celular").trim();
-      alert(celular); 
+      alert("celular" + celular); 
       const correo = getString(formData, "correo").trim();
-      alert(correo); 
+      alert("correo" + correo); 
       /**
        ** @type { import("./tipos.js").Alumno} */
       const modelo = {nombre, ap_paterno, ap_materno, edad, sexo, celular, correo};
@@ -117,4 +117,38 @@ function getString(formData, name) {
 function procesaError(e) {
   console.log(e);
   alert(e.message);
+} 
+
+/** */
+async function realizaReservacion(usuario) {
+  alert("Botón realizar reservacion");
+
+  if (tieneRol(usuario,["Cliente"])) {
+    alert("Si es un cliente");
+    try {
+      alert("Entra al try");
+      const formData = new FormData(formUsuario);
+      const nombre = getString(formData, "nombre").trim();
+      alert(nombre);  
+      const ap_paterno = getString(formData, "ap_paterno").trim();
+      alert(ap_paterno); 
+      const ap_materno = getString(formData, "ap_materno").trim();
+      alert(ap_materno); 
+      const edad = getString(formData, "edad").trim();
+      alert(edad); 
+      const sexo = getString(formData, "sexo").trim();
+      alert(sexo); 
+      const celular = getString(formData, "celular").trim();
+      alert(celular); 
+      const correo = getString(formData, "correo").trim();
+      alert(correo); 
+      /**
+       ** @type { import("./tipos.js").Alumno} */
+      const modelo = {nombre, ap_paterno, ap_materno, edad, sexo, celular, correo};
+      await daoCliente.add(modelo);
+      alert("Sus datos han sido registrados exitosamente.");
+    } catch (e) {
+      procesaError(e);
+    }
+  }
 } 
