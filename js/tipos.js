@@ -41,5 +41,3 @@
  */
 
 export const __tipos = 0;
-
-HABITACION/001
