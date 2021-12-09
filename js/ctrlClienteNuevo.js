@@ -129,6 +129,8 @@ async function registroCliente(){
 
     await firestore.collection("CLIENTE").add(modeloCliente); 
     alert("Sus datos han sido registrados exitosamente.");
+
+    
   } catch (e) {
     procesaError(e);
   }
