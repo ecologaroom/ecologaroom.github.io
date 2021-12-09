@@ -54,10 +54,10 @@ async function cargaRoles(email) {
       /**
        * @type {
           import("./tipos.js").
-          Usuario} */
+          USUARIO} */
       const data = doc.data();
       /* Existe email con rol, así que lo manda */
-      return new Set(data.rolIds || []);
+      return new Set(data.ROLIDS || []);
     } else {
         /* No existe email con rol, así que devuleve vacío */
       return new Set();
