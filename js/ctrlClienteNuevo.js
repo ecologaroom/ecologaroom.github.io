@@ -25,12 +25,6 @@ async function protege(usuario) {
   alert("Entra a protege");
   if (tieneRol(usuario,["CLIENTE"])) {
     alert("Es cliente");
-    formDaoCliente.addEventListener("submit", registroCliente);
-    alert("Ya agregó accion de registro a cliente");
-    formDaoReservacion.addEventListener("submit", realizaReservacion);
-    alert("Ya agregó accion de reservar");
-    formDaoPago.addEventListener("submit", efectuaPago);
-    alert("Ya agregó accion de pagar");
   }
 }
 
@@ -293,6 +287,7 @@ async function efectuaPago(usuario) {
 function getString(formData, name) {
   alert("Convirtiendo a String");
   const valor = formData.get(name);
+  alert("Valor del string obtenido:" + valor);
   return (typeof valor === "string" ? valor : "" );
 }
 
