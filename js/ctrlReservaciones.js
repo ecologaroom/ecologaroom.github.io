@@ -61,10 +61,10 @@ async function cargaRoles(email) {
     /**
      * @type {
         import("./tipos.js").
-        Usuario} */
+        USUARIO} */
     const data = doc.data();
     alert("Si tiene rol asignado");
-    return new Set(data.rolIds || []);
+    return new Set(data.ROLIDS || []);
   } else {
     alert("No tiene rol asignado");
     return new Set();
@@ -130,21 +130,21 @@ function htmlFila(doc) {
   alert("Generando fila.");
   /** Recupera los datos del documento.
    * @type {import("./tipos.js").
-                      Reservacion} */
+                      RESERVACION} */
   const data = doc.data();
   /* Agrega un li con los datos
    * del documento, los cuales se
    * codifican para evitar
    * inyección de código. */
   return ( /* html */
-     `<td><output id="num_habitacion">${escape(data.num_habitacion)}</output></td>
+     `<td><output id="num_habitacion">${escape(data.NUM_HABITACION)}</output></td>
       <td><output id="clv_reservacion">1</output></td>
-      <td><output id="estatus">${escape(data.estatus)}</output></td>
-      <td><output id="nom_huesped">${escape(data.clv_huesped)}</output></td>
-      <td><output id="fecha_reservacion">${escape(data.fecha_reservacion)}</output></td>
-      <td><output id="entrada">${escape(data.fecha_entrada)}</output></td>
-      <td><output id="salida">${escape(data.fecha_salida)}</output></td>
-      <td><output id="num_huespedes">${escape(data.num_huespedes)}</output></td>
+      <td><output id="estatus">${escape(data.ESTATUS)}</output></td>
+      <td><output id="nom_huesped">${escape(data.CLV_HUESPED)}</output></td>
+      <td><output id="fecha_reservacion">${escape(data.FECHA_RESERVACION)}</output></td>
+      <td><output id="entrada">${escape(data.FECHA_ENTRADA)}</output></td>
+      <td><output id="salida">${escape(data.FECHA_SALIDA)}</output></td>
+      <td><output id="num_huespedes">${escape(data.NUM_HUESPEDES)}</output></td>
   `);
 }
 

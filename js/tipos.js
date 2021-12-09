@@ -1,30 +1,45 @@
 /**
- * @typedef {Object} Rol
- * @property {string} descripción
+ * @typedef {Object} USUARIO
+ * @property {string[]} ROLIDS
  */
 
 /**
- * @typedef {Object} Alumno
- * @property {string} nombre
+ * @typedef {Object} CLIENTE
+ * @property {string} CORREO
+ * @property {string} NOMBRE
+ * @property {string} AP_PATERNO
+ * @property {string} AP_MATERNO
+ * @property {string} EDAD
+ * @property {string} SEXO
+ * @property {string} CELULAR
  */
 
 /**
- * @typedef {Object} Usuario
- * @property {string[]} rolIds
- * @property {string} alumnoId
+ * @typedef {Object} HABITACION
+ * @property {string} NUM_HABITACION
+ * @property {string} TIPO
+ * @property {string} DISPONIBILIDAD
+ */
+
+/**
+ * @typedef {Object} TIPO_HABITACION
+ * @property {string} TIPO
+ * @property {string} DESCRIPCION
+ * @property {string} NUM_HUESPEDES
  */
 
 // @ts-nocheck
 /**
- * @typedef {Object} Reservacion
- * @property {string} num_habitacion
- * @property {string} estatus
- * @property {string} clv_huesped
- * @property {string} fecha_reservacion
- * @property {string} fecha_entrada
- * @property {string} fecha_salida
- * @property {string} num_huespedes
- * @property {firebase.firestore.Timestamp} timestamp
+ * @typedef {Object} RESERVACION
+ * @property {string} NUM_HABITACION
+ * @property {string} ESTATUS
+ * @property {string} CLV_HUESPED
+ * @property {firebase.firestore.Timestamp} FECHA_RESERVACION
+ * @property {string} FECHA_ENTRADA
+ * @property {string} FECHA_SALIDA
+ * @property {string} NUM_HUESPEDES
  */
 
 export const __tipos = 0;
+
+HABITACION/001

@@ -61,9 +61,9 @@ export async function cargaRoles(email) {
     /**
      * @type {
         import("./tipos.js").
-        Usuario} */
+        USUARIO} */
     const data = doc.data();
-    return new Set(data.rolIds || []);
+    return new Set(data.ROLIDS || []);
   } else {
     return new Set();
   }

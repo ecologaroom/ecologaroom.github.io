@@ -34,7 +34,7 @@ async function registroCliente(){
     const ap_materno = getString(formData, "ap_materno").trim();
     alert("ap_materno" + ap_materno); 
     const edad = getString(formData, "edad").trim();
-    alert("edad" + edad); 
+    alert("edad" + edad);
     const sexo = getString(formData, "sexo").trim();
     alert("sexo" + sexo); 
     const celular = getString(formData, "celular").trim();
@@ -92,11 +92,11 @@ async function cargaRoles(email) {
       /**
        * @type {
           import("./tipos.js").
-          Usuario} */
+          USUARIO} */
       alert("Existe rol así que lo retorna");
       const data = doc.data();
       /* Existe email con rol, así que lo manda */
-      return new Set(data.rolIds || []);
+      return new Set(data.ROLIDS || []);
     } else {
         /* No existe email con rol, así que devuleve vacío */
       alert("No existe email con rol, así que devuleve vacío");
