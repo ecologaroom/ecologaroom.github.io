@@ -85,9 +85,17 @@ function consulta() {
   alert("entra a consulta");
   /* Registros de la colección Reservación, ordenados por número de habitación */
   firestore.collection("RESERVACION").get().then(function(snap){
-    snap.forEach(function(doc){
-      document.getElementById("tabla").innerHTML += '<tr><td>'+doc.data().NUM_HABITACION+'</td></tr>'+'<tr><td>'+doc.data().ESTATUS+'</td></tr>'+'<tr><td>'+doc.data().CLV_HUESPED+'</td></tr>'+'<tr><td>'+doc.data().FECHA_RESERVACION+'</td></tr>'+'<tr><td>'+doc.data().FECHA_ENTRADA+'</td></tr>'+'<tr><td>'+doc.data().FECHA_SALIDA+'</td></tr>'+'<tr><td>'+doc.data().NUM_HUESPEDES+'</td></tr>';
-    });
+    if (snap.size > 0) {
+      alert("Hay registros, así que construye por cada registro");
+      /* Cuando el número de documentos es 0, agrega un texto HTML. */
+      snap.forEach(function(doc){
+        document.getElementById("tabla").innerHTML += '<tr><td>'+doc.data().NUM_HABITACION+'</td><td>'+doc.data().ESTATUS+'</td><td>'+doc.data().CLV_HUESPED+'</td><td>'+doc.data().FECHA_RESERVACION+'</td><td>'+doc.data().FECHA_ENTRADA+'</td><td>'+doc.data().FECHA_SALIDA+'</td><td>'+doc.data().NUM_HUESPEDES+'</td></tr>';
+      });
+    } else {
+      alert("No hay registros, así que envía vacío");
+      /* Cuando el número de documentos es 0, agrega un texto HTML. */
+      document.getElementById("tabla").innerHTML += '<tr><td>'+"-- No hay alumnos registrados. --"+'</td></tr>';
+    }
   });
   /* .orderBy("NUM_HABITACION", "desc")*//////////////////////////////////////////////////
 }
