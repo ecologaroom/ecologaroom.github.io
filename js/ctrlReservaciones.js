@@ -84,7 +84,11 @@ async function logIn() {
 function consulta() {
   alert("entra a consulta");
   /* Registros de la colección Reservación, ordenados por número de habitación */
-  firestore.collection("RESERVACION").get().onSnapshot(tablaHTML, errConsulta);
+  firestore.collection("RESERVACION").get().then(function(snap){
+    snap.forEach(function(doc){
+      document.getElementById("tabla").innerHTML += '<tr><td>'+doc.data().NUM_HABITACION+'</td></tr>'+'<tr><td>'+doc.data().ESTATUS+'</td></tr>'+'<tr><td>'+doc.data().CLV_HUESPED+'</td></tr>'+'<tr><td>'+doc.data().FECHA_RESERVACION+'</td></tr>'+'<tr><td>'+doc.data().FECHA_ENTRADA+'</td></tr>'+'<tr><td>'+doc.data().FECHA_SALIDA+'</td></tr>'+'<tr><td>'+doc.data().NUM_HUESPEDES+'</td></tr>';
+    });
+  });
   /* .orderBy("NUM_HABITACION", "desc")*//////////////////////////////////////////////////
 }
 
@@ -111,7 +115,7 @@ function tablaHTML(snap) {
      </tr>`;
   }
   alert("Construye la lista a partir del html obtenido.");
-  document.getElementById("tabla").innerHTML = html;
+  
   alert("Registros o no insertados");
 }
 
@@ -134,19 +138,6 @@ function htmlFila(doc) {
   const entrada= escape(data.FECHA_ENTRADA);
   const salida = escape(data.FECHA_SALIDA);
   const numHuespedes = escape(data.NUM_HUESPEDES);;
-
-  /* Agrega un li con los datos del documento, los cuales se codifican para evitar inyección de código. */
-  return ( /* html */
-    `<tr>
-      <td>${numHabitacion}</td>
-      <td>${clvReservacion}</td>
-      <td>${estatus}</td>
-      <td>${huesped}</td>
-      <td>${fechaReservacion}</td>
-      <td>${entrada}</td>
-      <td>${salida}</td>
-      <td>${numHuespedes}</td>
-     </tr>`);
 }
 
 /** Función de que muestra el error al recuperar los registros. Aquí la conexión se cancela y debe volverse a conectar
