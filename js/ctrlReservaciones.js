@@ -134,20 +134,22 @@ function htmlFila(doc) {
   const numHabitacion = escape(data.NUM_HABITACION);
   alert("Num habitacion" + numHabitacion);
   const estatus = escape(data.ESTATUS);
-  const clv_huesped = escape(data.CLV_HUESPED);
-  const fecha_reservacion = escape(data.FECHA_RESERVACION);
-
+  const clvHuesped = escape(data.CLV_HUESPED);
+  const fechaReservacion = escape(data.FECHA_RESERVACION);
+  const fechaEntrada = escape(data.FECHA_ENTRADA);
+  const fechaSalida = escape(data.FECHA_SALIDA);
+  const numHuespedes = escape(data.NUM_HUESPEDES);
 
   /* Agrega un li con los datos del documento, los cuales se codifican para evitar inyección de código. */
   return ( /* html */
      `<td><output id="num_habitacion">${numHabitacion}</output></td>
       <td><output id="clv_reservacion">1</output></td>
       <td><output id="estatus">${estatus}</output></td>
-      <td><output id="nom_huesped">${clv_huesped}</output></td>
-      <td><output id="fecha_reservacion">${fecha_reservacion}</output></td>
-      <td><output id="entrada">${escape(data.FECHA_ENTRADA)}</output></td>
-      <td><output id="salida">${escape(data.FECHA_SALIDA)}</output></td>
-      <td><output id="num_huespedes">${escape(data.NUM_HUESPEDES)}</output></td>`);
+      <td><output id="nom_huesped">${clvHuesped}</output></td>
+      <td><output id="fecha_reservacion">${fechaReservacion}</output></td>
+      <td><output id="entrada">${fechaEntrada}</output></td>
+      <td><output id="salida">${fechaSalida}</output></td>
+      <td><output id="num_huespedes">${numHuespedes}</output></td>`);
 }
 
 /** Función de que muestra el error al recuperar los registros. Aquí la conexión se cancela y debe volverse a conectar
