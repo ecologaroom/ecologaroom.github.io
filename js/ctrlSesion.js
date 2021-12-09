@@ -19,15 +19,12 @@ async function cambiaBoton(usuarioAuth) {
         /* Usuario aceptado y con login es revisado en su rol. */
         const roles = await cargaRoles(usuarioAuth.email);
         const reserva = document["reserva"];
-        ///////////////////////////////////////////////////////////////
         /* Formulario de reservación para clientes. */
         if (roles.has("CLIENTE")) {
-            alert("es cliente ");
             reserva.btnReservar.addEventListener("click", location.href="reservacion_cliente.html");
         }
         /* Formulario de reservación para trabajadores. */
         if (roles.has("TRABAJADOR")) {
-            alert("es trabajador");
             reserva.btnReservar.addEventListener("click", location.href="reservacion_recepcion.html");
         }
     } else {
@@ -58,7 +55,7 @@ async function cargaRoles(email) {
       return new Set(data.ROLIDS || []);
     } else {
         /* No existe email con rol, así que devuleve vacío */
-        alert("nO EXISTE EMAIL CON ROL");
+        /////////////////////////////////////////////////////////////////Aquí debería crear rolids////////////////////////////////////////////////
         return new Set();
     }
 }

@@ -2,7 +2,7 @@
 // @ts-ignore
 const firestore = firebase.firestore();
 
-/* Obtención de la tabla en el HTML */ /////////////////////////////////////////
+/* Obtención de la tabla en el HTML */
 /** @type {HTMLFormElement} */
 const tabla = document["tabla"];
 
@@ -17,7 +17,7 @@ auth.onAuthStateChanged(protege, procesaError);
     usuario */
 async function protege(usuario) {
   alert("Entra a protege");
-  if (tieneRol(usuario,["Trabajador"])) {
+  if (tieneRol(usuario,["TRABAJADOR"])) {
     alert("Es trabajador");
     consulta();
   }
@@ -55,7 +55,7 @@ async function tieneRol(usuario, roles) {
  * @returns {Promise<Set<string>>}
  */
 async function cargaRoles(email) { 
-  let doc = await firestore.collection("Usuario").doc(email).get();
+  let doc = await firestore.collection("USUARIO").doc(email).get();
   alert("Obtuvo rol de la colección");
   if (doc.exists) {
     /**
@@ -89,7 +89,7 @@ async function logIn() {
 function consulta() {
   alert("entra a consulta");
   /* Registros de la colección Reservación, ordenados por número de habitación */
-  firestore.collection("Reservacion").orderBy("num_habitacion", "desc").onSnapshot(tablaHTML, errConsulta);
+  firestore.collection("RESERVACION").orderBy("NUM_HABITACION", "desc").onSnapshot(tablaHTML, errConsulta);
 }
 
 
