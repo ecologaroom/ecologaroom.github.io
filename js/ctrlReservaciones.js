@@ -90,7 +90,7 @@ function consulta() {
       /* Cuando el número de documentos es 0, agrega un texto HTML. */
       snap.forEach(function(doc){
 
-        var fsf= escape(doc.data().FECHA_RESERVACION);
+        var fsf= doc.data().FECHA_RESERVACION.toDate();
         var fecha = new Date(fsf);
         var dformat = [fecha.getDate()+1, fecha.getMonth()+1, fecha.getFullYear()].join('/');
 
