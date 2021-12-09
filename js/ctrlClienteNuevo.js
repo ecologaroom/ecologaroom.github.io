@@ -93,6 +93,9 @@ async function registroCliente(){
     alert("Entra al try de registroCliente");
     const formDataCliente = new FormData(formDaoCliente);
 
+    const nom = formDataCliente.get("nombre");
+    alert("nombre:" + nom);
+
     const NOMBRE = getString(formDataCliente, "nombre").trim();
     alert("nombre" + NOMBRE);  
     const AP_PATERNO = getString(formDataCliente, "ap_paterno").trim();
@@ -108,11 +111,20 @@ async function registroCliente(){
     const CORREO = getString(formDataCliente, "correo").trim();
     alert("correo" + CORREO); 
     
+
+
     /**
      * @type {
         import("./tipos.js").
                 CLIENTE} */
-    const modeloCliente = {CORREO, NOMBRE, AP_PATERNO, AP_MATERNO, EDAD, SEXO, CELULAR};
+    const modeloCliente = {
+      CORREO, 
+      NOMBRE, 
+      AP_PATERNO, 
+      AP_MATERNO, 
+      EDAD, 
+      SEXO, 
+      CELULAR};
     alert("Guarda datos en modelo");
 
     await firestore.collection("CLIENTE").add(modeloCliente); 
