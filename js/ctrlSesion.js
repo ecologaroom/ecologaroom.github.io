@@ -10,21 +10,17 @@ const provider = new firebase.auth.GoogleAuthProvider();
 function logIn(){
     /* Configura el proveedor de Google para que permita seleccionar de una lista. */
     provider.setCustomParameters({ prompt: "select_account" });
-    alert("Entra a login");
     /* Recibe una función que se invoca cada que hay un cambio en la autenticación y recibe el modelo con las características del usuario.*/
     auth.onAuthStateChanged(cambiaBoton,procesaError)      
 }
 
 async function cambiaBoton(usuarioAuth) {
-    alert("Entra a cambia Boton");
     if (usuarioAuth && usuarioAuth.email) {
-        alert("ya inició sesión ");
         /* Usuario aceptado y con login es revisado en su rol. */
         const roles = await cargaRoles(usuarioAuth.email);
-
-        alert("ya cargó rol ");
         const reserva = document["reserva"];
-        alert("ya guardó el form");
+        alert("roles:" + roles);
+        ///////////////////////////////////////////////////////////////
         /* Formulario de reservación para clientes. */
         if (roles.has("Cliente")) {
             alert("es cliente ");
@@ -36,7 +32,6 @@ async function cambiaBoton(usuarioAuth) {
             reserva.btnReservar.addEventListener("click", location.href="reservacion_recepcion.html");
         }
     } else {
-        alert("No ha iniciado sesión");
         // No ha iniciado sesión. Pide datos para iniciar sesión.
         await auth.signInWithRedirect(provider);
     }
@@ -51,18 +46,17 @@ const firestore = firebase.firestore();
  * @param {string} email
  * @returns {Promise<Set<string>>}
  */
-async function cargaRoles(email) { 
-    alert("Entra a cargaRoles");
+async function cargaRoles(email) {
     /* Busa en la colección Usuario el email con el que se autesentificó */
     let doc = await firestore.collection("USUARIO").doc(email).get();
-    alert("Toma colección de USUARIO");
     if (doc.exists) {
       /**
        * @type {
           import("./tipos.js").
           USUARIO} */
       const data = doc.data();
-      alert("EXISTE EMAIL CON ROL");
+
+      alert("rol:" + data.ROLIDS);
       /* Existe email con rol, así que lo manda */
       return new Set(data.ROLIDS || []);
     } else {
