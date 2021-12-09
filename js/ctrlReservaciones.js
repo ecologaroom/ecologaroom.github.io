@@ -89,7 +89,12 @@ function consulta() {
       alert("Hay registros, así que construye por cada registro");
       /* Cuando el número de documentos es 0, agrega un texto HTML. */
       snap.forEach(function(doc){
-        document.getElementById("tabla").innerHTML += '<tr><td>'+doc.data().NUM_HABITACION+'</td><td>'+doc.id+'</td><td>'+doc.data().ESTATUS+'</td><td>'+doc.data().CLV_HUESPED+'</td><td>'+doc.data().FECHA_RESERVACION+'</td><td>'+doc.data().FECHA_ENTRADA+'</td><td>'+doc.data().FECHA_SALIDA+'</td><td>'+doc.data().NUM_HUESPEDES+'</td></tr>';
+
+        var fsf= escape(doc.data().FECHA_RESERVACION);
+        var fecha = new Date(fsf);
+        var dformat = [fecha.getDate()+1, fecha.getMonth()+1, fecha.getFullYear()].join('/');
+
+        document.getElementById("tabla").innerHTML += '<tr><td>'+doc.data().NUM_HABITACION+'</td><td>'+doc.id+'</td><td>'+doc.data().ESTATUS+'</td><td>'+escape(doc.data().CLV_HUESPED)+'</td><td>'+dformat+'</td><td>'+doc.data().FECHA_ENTRADA+'</td><td>'+doc.data().FECHA_SALIDA+'</td><td>'+doc.data().NUM_HUESPEDES+'</td></tr>';
       });
     } else {
       alert("No hay registros, así que envía vacío");
