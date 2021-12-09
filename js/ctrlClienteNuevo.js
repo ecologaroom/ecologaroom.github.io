@@ -130,6 +130,7 @@ async function registroCliente(){
   }
 }
 
+/*
 async function realizaReservacion(){
   try {
     alert("Entra al try de registroCliente");
@@ -156,7 +157,7 @@ async function realizaReservacion(){
      * @type {
         import("./tipos.js").
                 RESERVACION} */
-    const modeloReservacion = {
+ /*   const modeloReservacion = {
       NUM_HABITACION: getString(formDataReservacion, "num_hab").trim(), 
       // @ts-ignore
       ESTATUS: false,
@@ -179,7 +180,7 @@ async function realizaReservacion(){
 }
 
 
-
+*/
 
 
 
