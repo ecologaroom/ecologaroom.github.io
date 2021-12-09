@@ -4,7 +4,7 @@ const firestore = firebase.firestore();
 
 /* Obtención de la tabla en el HTML */ /////////////////////////////////////////
 /** @type {HTMLFormElement} */
-const tabla = document["forma"];
+const tabla = document["tabla"];
 
 
 /* Conexión al sistema de autenticación de Firebase. */
@@ -94,7 +94,7 @@ function consulta() {
 
 
 /** @type {HTMLUListElement} */
-const lista = document.querySelector("#lista");
+const fila = document.querySelector("#registro");
 
 /** Muestra actualizadamente datos enviados por el servidor.
  * @param {import(
@@ -107,16 +107,18 @@ function tablaHTML(snap) {
     alert("Hay registros, así que constuye");
     /* Uno por uno se revisan los documentos de la consulta y los muestra. El iterador*/
     snap.forEach(doc => html += htmlFila(doc));
+    alert("Registros en html");
   } else {
     alert("No hay registros, así que envía vacío");
     /* Cuando el número de documentos es 0, agrega un texto HTML. */
     html += /* html */
-      `<li class="vacio">
-        -- No hay reservaciones registradas. --
-      </li>`;
+      `<td class="vacio">
+        <output>-- No hay reservaciones registradas. --</output>
+      </td>`;
   }
   alert("Construye la lista a partir del html obtenido.");
-  lista.innerHTML = html;
+  fila.innerHTML = html;
+  alert("Registros o no insertados");
 }
 
 /////////////////////////////////////////////////////////////////////
@@ -135,14 +137,15 @@ function htmlFila(doc) {
    * codifican para evitar
    * inyección de código. */
   return ( /* html */
-    `<li class="fila">
-      <strong class="primario">
-        ${escape(data.num_habitacion)}
-      </strong>
-      <span class="secundario">
-        ${escape(data.clv_huesped)}
-      </span>
-    </li>`);
+     `<td><output id="num_habitacion">${escape(data.num_habitacion)}</output></td>
+      <td><output id="clv_reservacion">1</output></td>
+      <td><output id="estatus">${escape(data.estatus)}</output></td>
+      <td><output id="nom_huesped">${escape(data.clv_huesped)}</output></td>
+      <td><output id="fecha_reservacion">${escape(data.fecha_reservacion)}</output></td>
+      <td><output id="entrada">${escape(data.fecha_entrada)}</output></td>
+      <td><output id="salida">${escape(data.fecha_salida)}</output></td>
+      <td><output id="num_huespedes">${escape(data.num_huespedes)}</output></td>
+  `);
 }
 
 /** Función de que muestra el error al recuperar los registros. Aquí la conexión se cancela y debe volverse a conectar
