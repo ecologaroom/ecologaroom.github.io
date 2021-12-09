@@ -16,9 +16,9 @@
 
 // @ts-nocheck
 /**
- * @typedef {Object} Mensaje
- * @property {string} usuarioId
- * @property {string} texto
+ * @typedef {Object} Reservacion
+ * @property {string} num_habitacion
+ * @property {string} clv_huesped
  * @property {firebase.firestore.Timestamp} timestamp
  */
 

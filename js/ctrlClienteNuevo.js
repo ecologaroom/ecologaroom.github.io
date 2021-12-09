@@ -19,7 +19,7 @@ async function validaCliente(usuario) {
   if (tieneRol(usuario,["Cliente"])) {
     registroCliente
   } 
-  
+ 
 }
 
 async function registroCliente(){
@@ -145,6 +145,9 @@ async function realizaReservacion(usuario) {
     try {
       alert("Entra al try");
       const formData = new FormData(formReservacion);
+      // @ts-ignore
+      const fecha_reservacion = firebase.firestore.FieldValue.serverTimestamp();
+      alert("fecha_reservacion");
       const fecha_entrada = getString(formData, "fecha_entrada").trim();
       alert("fecha_entrada");  
       const fecha_salida = getString(formData, "fecha_salida").trim();
@@ -196,7 +199,9 @@ async function efectuaPago(usuario) {
        ** @type { import("./tipos.js").Alumno} */
       const modelo = {num_tarjeta, caducidad, cvv};
       await daoResevacion.add(modelo);
+
       alert("Se ha efectuado el pago.");
+
       await daoResevacion.add(estatus)
     } catch (e) {
       procesaError(e);
