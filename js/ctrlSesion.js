@@ -19,15 +19,14 @@ async function cambiaBoton(usuarioAuth) {
         /* Usuario aceptado y con login es revisado en su rol. */
         const roles = await cargaRoles(usuarioAuth.email);
         const reserva = document["reserva"];
-        alert("roles:" + roles);
         ///////////////////////////////////////////////////////////////
         /* Formulario de reservación para clientes. */
-        if (roles.has("Cliente")) {
+        if (roles.has("CLIENTE")) {
             alert("es cliente ");
             reserva.btnReservar.addEventListener("click", location.href="reservacion_cliente.html");
         }
         /* Formulario de reservación para trabajadores. */
-        if (roles.has("Trabajador")) {
+        if (roles.has("TRABAJADOR")) {
             alert("es trabajador");
             reserva.btnReservar.addEventListener("click", location.href="reservacion_recepcion.html");
         }
@@ -55,8 +54,6 @@ async function cargaRoles(email) {
           import("./tipos.js").
           USUARIO} */
       const data = doc.data();
-
-      alert("rol:" + data.ROLIDS);
       /* Existe email con rol, así que lo manda */
       return new Set(data.ROLIDS || []);
     } else {
