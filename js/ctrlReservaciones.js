@@ -188,9 +188,7 @@ function reemplaza(letra) {
 async function logOut() {
   try {
     /* Conecta a Firebase para cerrar sesión */
-    await auth.signOut().then(() => {
-      location.href = "index.html";
-    });  
+    await auth.signOut();
   } catch (e) {
     procesaError(e);
   }
