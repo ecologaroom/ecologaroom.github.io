@@ -91,6 +91,7 @@ async function logIn() {
 }
 
 async function registroCliente(){
+  alert("Registra a cliente");
   try {
     alert("Entra al try de registroCliente");
     const formDataCliente = new FormData(formDaoCliente);
