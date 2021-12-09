@@ -6,7 +6,6 @@ const firestore = firebase.firestore();
 /** @type {HTMLFormElement} */
 const tabla = document["tabla"];
 
-
 /* Conexión al sistema de autenticación de Firebase. */
 // @ts-ignore
 const auth = firebase.auth();
