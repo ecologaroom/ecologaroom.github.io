@@ -18,7 +18,7 @@ auth.onAuthStateChanged(protege, procesaError);
 async function protege(usuario) {
   alert("Entra a protege");
   if (tieneRol(usuario,["Trabajador"])) {
-    alert("Es cliente");
+    alert("Es trabajador");
     consulta();
   }
 }
@@ -187,6 +187,7 @@ async function logOut() {
   try {
     /* Conecta a Firebase para cerrar sesión */
     await auth.signOut();
+    location.href = "index.html";
   } catch (e) {
     procesaError(e);
   }
