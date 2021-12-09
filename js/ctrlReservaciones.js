@@ -2,10 +2,6 @@
 // @ts-ignore
 const firestore = firebase.firestore();
 
-/* Obtención de la tabla en el HTML */
-/** @type {HTMLFormElement} */
-const tabla = document["tabla"];
-
 /* Conexión al sistema de autenticación de Firebase. */
 // @ts-ignore
 const auth = firebase.auth();
@@ -88,12 +84,9 @@ async function logIn() {
 function consulta() {
   alert("entra a consulta");
   /* Registros de la colección Reservación, ordenados por número de habitación */
-  firestore.collection("RESERVACION").orderBy("NUM_HABITACION", "desc").onSnapshot(tablaHTML, errConsulta);
+  firestore.collection("RESERVACION").get().onSnapshot(tablaHTML, errConsulta);
+  /* .orderBy("NUM_HABITACION", "desc")*//////////////////////////////////////////////////
 }
-
-
-/** @type {HTMLUListElement} */
-const fila = document.querySelector("#registro");
 
 /** Muestra actualizadamente datos enviados por el servidor.
  * @param {import(
@@ -111,12 +104,14 @@ function tablaHTML(snap) {
     alert("No hay registros, así que envía vacío");
     /* Cuando el número de documentos es 0, agrega un texto HTML. */
     html += /* html */
-      `<td class="vacio">
-        <output>-- No hay reservaciones registradas. --</output>
-      </td>`;
+    `<tr>
+      <td>
+        -- No hay alumnos registrados. --
+      </td>
+     </tr>`;
   }
   alert("Construye la lista a partir del html obtenido.");
-  fila.innerHTML = html;
+  document.getElementById("tabla").innerHTML = html;
   alert("Registros o no insertados");
 }
 
@@ -127,29 +122,31 @@ function tablaHTML(snap) {
     DocumentSnapshot} doc */
 function htmlFila(doc) {
   alert("Generando fila.");
-  /** Recupera los datos del documento.
+  /**
    * @type {import("./tipos.js").
-                      RESERVACION} */
+                  RESERVACION} */
   const data = doc.data();
   const numHabitacion = escape(data.NUM_HABITACION);
-  alert("Num habitacion" + numHabitacion);
-  const estatus = escape(data.ESTATUS);
-  const clvHuesped = escape(data.CLV_HUESPED);
+  const clvReservacion = 1;
+  const estatus= escape(data.ESTATUS);
+  const huesped = escape(data.CLV_HUESPED);
   const fechaReservacion = escape(data.FECHA_RESERVACION);
-  const fechaEntrada = escape(data.FECHA_ENTRADA);
-  const fechaSalida = escape(data.FECHA_SALIDA);
-  const numHuespedes = escape(data.NUM_HUESPEDES);
+  const entrada= escape(data.FECHA_ENTRADA);
+  const salida = escape(data.FECHA_SALIDA);
+  const numHuespedes = escape(data.NUM_HUESPEDES);;
 
   /* Agrega un li con los datos del documento, los cuales se codifican para evitar inyección de código. */
   return ( /* html */
-     `<td><output id="num_habitacion">${numHabitacion}</output></td>
-      <td><output id="clv_reservacion">1</output></td>
-      <td><output id="estatus">${estatus}</output></td>
-      <td><output id="nom_huesped">${clvHuesped}</output></td>
-      <td><output id="fecha_reservacion">${fechaReservacion}</output></td>
-      <td><output id="entrada">${fechaEntrada}</output></td>
-      <td><output id="salida">${fechaSalida}</output></td>
-      <td><output id="num_huespedes">${numHuespedes}</output></td>`);
+    `<tr>
+      <td>${numHabitacion}</td>
+      <td>${clvReservacion}</td>
+      <td>${estatus}</td>
+      <td>${huesped}</td>
+      <td>${fechaReservacion}</td>
+      <td>${entrada}</td>
+      <td>${salida}</td>
+      <td>${numHuespedes}</td>
+     </tr>`);
 }
 
 /** Función de que muestra el error al recuperar los registros. Aquí la conexión se cancela y debe volverse a conectar
@@ -193,7 +190,9 @@ function reemplaza(letra) {
 async function logOut() {
   try {
     /* Conecta a Firebase para cerrar sesión */
-    await auth.signOut();
+    await auth.signOut().then(() => {
+      location.href = "index.html";
+    });  
   } catch (e) {
     procesaError(e);
   }
