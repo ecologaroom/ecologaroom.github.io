@@ -88,7 +88,7 @@ async function logIn() {
 function consulta() {
   alert("entra a consulta");
   /* Registros de la colección Reservación, ordenados por número de habitación */
-  firestore.collection("RESERVACION").orderBy("num_habitacion", "desc").onSnapshot(tablaHTML, errConsulta);
+  firestore.collection("RESERVACION").orderBy("NUM_HABITACION", "desc").onSnapshot(tablaHTML, errConsulta);
 }
 
 
