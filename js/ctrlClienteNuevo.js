@@ -209,15 +209,12 @@ async function efectuaPago(usuario) {
   }
 } 
 
-
 /* Terminar la sesión. */
 async function logOut() {
-  /* Conexión al sistema de autenticación de Firebase. */
-  // @ts-ignore
-  const auth = firebase.auth();
   try {
-      await auth.singOut();
+    /* Conecta a Firebase para cerrar sesión */
+    await auth.signOut();
   } catch (e) {
-      procesaError(e);
+    procesaError(e);
   }
 }

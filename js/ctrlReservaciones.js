@@ -184,11 +184,10 @@ function reemplaza(letra) {
 
 /* Terminar la sesión. */
 async function logOut() {
-  /* Conexión al sistema de autenticación de Firebase. */
-  // @ts-ignore
   try {
-      await auth.signOut();
+    /* Conecta a Firebase para cerrar sesión */
+    await auth.signOut();
   } catch (e) {
-      procesaError(e);
+    procesaError(e);
   }
 }
