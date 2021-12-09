@@ -96,13 +96,6 @@ async function logIn() {
   await auth.signInWithRedirect(provider);
 }
 
-
-
-
-
-
-
-
 async function registroCliente(){
   try {
     alert("Entra al try de registroCliente");
@@ -127,16 +120,63 @@ async function registroCliente(){
      * @type {
         import("./tipos.js").
                 CLIENTE} */
-    const modelo = {CORREO, NOMBRE, AP_PATERNO, AP_MATERNO, EDAD, SEXO, CELULAR};
+    const modeloCliente = {CORREO, NOMBRE, AP_PATERNO, AP_MATERNO, EDAD, SEXO, CELULAR};
     alert("Guarda datos en modelo");
 
-    await firestore.collection("CLIENTE").add(modelo); 
+    await firestore.collection("CLIENTE").add(modeloCliente); 
     alert("Sus datos han sido registrados exitosamente.");
   } catch (e) {
     procesaError(e);
   }
 }
 
+async function realizaReservacion(){
+  try {
+    alert("Entra al try de registroCliente");
+    const formDataReservacion = new FormData(formDaoReservacion);
+    const formDataCliente = new FormData(formDaoCliente);
+
+    ///////////////////////////////////////////////////////
+  
+
+    //////////////////////////////////
+    const CLV_HUESPED = getString(formDataCliente, "correo").trim();
+    alert("ap_materno" + CLV_HUESPED); 
+
+    const FECHA_ENTRADA = getString(formDataReservacion, "fecha_llegada").trim();
+    alert("sexo" + FECHA_ENTRADA); 
+
+    const FECHA_SALIDA = getString(formDataReservacion, "fecha_salida").trim();
+    alert("celular" + FECHA_SALIDA); 
+
+    const NUM_HUESPEDES = getString(formDataReservacion, "num_huesped").trim();
+    alert("correo" + NUM_HUESPEDES); 
+    
+    /**
+     * @type {
+        import("./tipos.js").
+                RESERVACION} */
+    const modeloReservacion = {
+      NUM_HABITACION: getString(formDataReservacion, "num_hab").trim(), 
+      // @ts-ignore
+      ESTATUS: false,
+      CLV_HUESPED,
+      FECHA_RESERVACION: firestore.firebase.Timestamp, 
+      FECHA_ENTRADA, 
+      FECHA_SALIDA, 
+      NUM_HUESPEDES
+    };
+    alert("Guarda datos en modelo");
+
+
+    await firestore.collection("RESERVACION").add(modeloReservacion).then(() => {
+      console.log("Se ha realizado la reservación exitosamente."); });
+
+
+  } catch (e) {
+    procesaError(e);
+  }
+}
 
 
 
