@@ -77,6 +77,7 @@ function consulta() {
 
   // @ts-ignore
   var hoy = firebase.firestore.Timestamp.now();
+  alert("Hoy:" + hoy);
 
   /* Registros de la colección Reservación, ordenados por número de habitación */
   firestore.collection("RESERVACION").where("FECHA_ENTRADA", "==", hoy).orderBy("NUM_HABITACION").get().then(function(snap){
@@ -146,20 +147,16 @@ function reemplaza(letra) {
 
 /** Muestra las reservaciones por fecha y se actualiza automáticamente. */
 function reservaFecha() {
-  alert("Reservaciones según fecha");
+  alert("Reservaciones de hoy");
   // @ts-ignore
-  var date = new Date(document.getElementById("calendario").value);
-  // @ts-ignore
-  var fechaLlegada = date.toUTCString();
-
-  alert("Fecha en calendario" + fechaLlegada);
+  var hoy = firebase.firestore.Timestamp.now();
 
   var tab = document.getElementById('tabla');
   tab.innerHTML = "";
   tab.innerHTML += '<tr><th colspan="1">#Habitación</th><th colspan="1">Reservación</th><th colspan="1">Estatus</th><th colspan="1">Huésped</th><th colspan="1">Fecha de reservación</th><th colspan="1">Entrada</th><th colspan="1">Salida</th><th colspan="1">#Huéspedes</th></tr>'
 
   /* Registros de la colección Reservación, ordenados por número de habitación */
-  firestore.collection("RESERVACION").where("FECHA_ENTRADA", "==", fechaLlegada).get().then(function(snap){
+  firestore.collection("RESERVACION").where("FECHA_ENTRADA", "==", hoy).get().then(function(snap){
     alert("Entra al where");
     if (snap.size > 0) {
       /* Cuando el número de documentos es 0, agrega un texto HTML. */
