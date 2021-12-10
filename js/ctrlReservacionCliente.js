@@ -83,7 +83,9 @@ async function registroCliente(){
     alert("Entra al try de registroCliente");
 
     const formDataCliente = new FormData(formDaoCliente);
-    const nom = formDataCliente.get("nombre");
+
+    // @ts-ignore
+    const nom = formDataCliente.get("nombre").value;
     alert("nombre:" + nom);
 
 /*

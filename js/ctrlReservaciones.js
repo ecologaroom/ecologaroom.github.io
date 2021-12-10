@@ -81,7 +81,7 @@ function consulta() {
   alert("Hoy:" + hoy);
 
   /* Registros de la colección Reservación, ordenados por número de habitación */
-  firestore.collection("RESERVACION").where("FECHA_ENTRADA", "==", hoy).orderBy("NUM_HABITACION").get().then(function(snap){
+  firestore.collection("RESERVACION").where("FECHA_ENTRADA", ">=", hoy).orderBy("NUM_HABITACION").get().then(function(snap){
     if (snap.size > 0) {
       /* Cuando el número de documentos es 0, agrega un texto HTML. */
       snap.forEach(function(doc){
@@ -214,6 +214,9 @@ function reservaHuesped() {
           var fs = doc.data().FECHA_SALIDA.toDate();
           var fechaSalida = new Date(fs);
           var formatoSalida = [fechaSalida.getDate(), fechaSalida.getMonth()+1, fechaSalida.getFullYear()].join('/');
+
+          var timestamp = doc.data().FECHA_ENTRADA;
+          alert("Fecha de entrada en timestamp" + timestamp);
 
           document.getElementById("tabla").innerHTML += '<tr class="registro"><td>'+doc.data().NUM_HABITACION+'</td><td><button type="button" class="btnClave" title="Cancelar reservación" onClick="eliminaReservacion();">'+doc.id+'</button></td><td>'+doc.data().ESTATUS+'</td><td>'+doc.data().CLV_HUESPED+'</td><td>'+formatoReservacion+'</td><td>'+formatoEntrada+'</td><td>'+formatoSalida+'</td><td>'+doc.data().NUM_HUESPEDES+'</td></tr>';
         });
