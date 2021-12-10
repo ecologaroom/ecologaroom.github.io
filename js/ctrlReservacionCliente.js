@@ -104,29 +104,6 @@ async function registroCliente(){
 
     alert("sexo:" +SEXO);
 
-/*
-    const formDataCliente = new FormData(formDaoCliente);
-
-    const nom = formDataCliente.get("nombre");
-    alert("nombre:" + nom);
-
-    const NOMBRE = getString(formDataCliente, "nombre").trim();
-    alert("nombre" + NOMBRE);  
-    const AP_PATERNO = getString(formDataCliente, "ap_paterno").trim();
-    alert("ap_materno" + AP_PATERNO); 
-    const AP_MATERNO = getString(formDataCliente, "ap_materno").trim();
-    alert("ap_materno" + AP_MATERNO); 
-    const EDAD = getString(formDataCliente, "edad").trim();
-    alert("edad" + EDAD);
-    const SEXO = getString(formDataCliente, "sexo").trim();
-    alert("sexo" + SEXO); 
-    const CELULAR = getString(formDataCliente, "celular").trim();
-    alert("celular" + CELULAR); 
-    const CORREO = getString(formDataCliente, "correo").trim();
-    alert("correo" + CORREO); 
-    */
-
-
     /*
      * @type {
         import("./tipos.js").
@@ -162,11 +139,11 @@ function selectHabitaciones() {
       /* Cuando el número de documentos es 0, agrega un texto HTML. */
       snap.forEach(function(doc){
         /* Transformación de tipo de dato TIMESTAMP en Firestore, por tipo Date en JS */
-        document.getElementById("tipoHab").innerHTML += '<option class="tipoHabitaciones">'+doc.id+'</option>';
+        document.getElementById("tipoHab").innerHTML += '<option class="tipoHabitaciones" value="doc.id">'+doc.id+'</option>';
       });
     } else {
       /* Cuando el número de documentos es 0, agrega un texto HTML. */
-      document.getElementById("tipoHab").innerHTML = '<option class="tipoHabitaciones">'+"Habitaciones indisponibles"+'</option>';
+      document.getElementById("tipoHab").innerHTML = '<option class="tipoHabitaciones" value="doc.id">'+"Habitaciones indisponibles"+'</option>';
     }
   });
 }
