@@ -97,7 +97,6 @@ function consulta() {
 /** Función de que muestra el error al recuperar los registros. Aquí la conexión se cancela y debe volverse a conectar
  * @param {Error} e */
 function errConsulta(e) {
-  alert("Error en la consulta y reconexión");
   procesaError(e);
   /* Intenta conectarse otra vez. */
   consulta();
