@@ -145,10 +145,9 @@ function reemplaza(letra) {
 
 async function eliminaReservacion(){
   try {
-    if (confirm("¿Estas segur@ de cancelar esta reservación?")) {
-     // await firestore.collection("RESERVACION").doc().delete();
-      consulta();
-    }
+    var id = prompt("Si desea cancelar la reservación, favor de volver a ingresar el código", "");
+    await firestore.collection("RESERVACION").doc(id).delete();
+    consulta();
   } catch (e) {
     procesaError(e);
   }
