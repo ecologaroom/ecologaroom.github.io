@@ -188,7 +188,7 @@ function reservaHuesped() {
   alert("HUESPED RES");
 
   // @ts-ignore
-  var nom = document.getElementById("buscar");
+  var nom = document.getElementById("buscar").value;
 
   alert("Fecha en calendario" + nom);
 
