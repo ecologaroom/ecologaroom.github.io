@@ -79,18 +79,19 @@ async function logIn() {
 }
 
 async function registroCliente(){
-  alert("Registra a cliente");
   try {
     alert("Entra al try de registroCliente");
 
     // @ts-ignore
     const NOMBRE = document.getElementById("nombre").value;
+    alert("nombre:" + NOMBRE);
     // @ts-ignore
     const AP_PATERNO = document.getElementById("ap_paterno").value;
+    alert("paterno:" + AP_PATERNO);
     // @ts-ignore
     const AP_MATERNO = document.getElementById("ap_materno").value;
+    alert("materno:"+AP_MATERNO);
 
-    alert("nombre:" + NOMBRE + " "+ AP_PATERNO+" "+AP_MATERNO);
     // @ts-ignore
     const EDAD = document.getElementById("edad").value;
     alert("edad:" + EDAD);
@@ -132,7 +133,6 @@ function selectHabitaciones() {
   var selection = document.getElementById('tipoHab');
   selection.innerHTML = "";
 
-  alert("Ya entró a select habitaciones");
   /* Registros de la colección Reservación, ordenados por número de habitación */
   // @ts-ignore
   firestore.collection("TIPO_HABITACION").orderBy("NUM_HUESPEDES").get().then(function(snap){
@@ -147,6 +147,36 @@ function selectHabitaciones() {
       document.getElementById("tipoHab").innerHTML = '<option class="tipoHabitaciones" value="doc.id">'+"Habitaciones indisponibles"+'</option>';
     }
   });
+}
+
+/** Muestra las reservaciones por clv_huesped y se actualiza automáticamente. */
+function numHabitaciones() {
+  var input = document.getElementById('inpFlotTipoHab');
+  input.innerHTML = "";
+  input.innerHTML += '<select id="tipoHab" class="floating__select" value="doc.id" placeholder="Habitación" required></select><label id="lblTipoHab" class="floating__label" data-content="Habitación"></label>'
+
+  // @ts-ignore
+  var num = document.getElementById("num_hab").value;
+
+  switch (num) {
+    case '8':
+    case '9':
+    case '10':
+    case '11':
+      input.innerHTML += '<select id="tipoHab" class="floating__select" value="doc.id" placeholder="Habitación" required></select><label id="lblTipoHab" class="floating__label" data-content="Habitación"></label><select id="tipoHab" class="floating__select" value="doc.id" placeholder="Habitación" required></select><label id="lblTipoHab" class="floating__label" data-content="Habitación"></label>'
+      break;
+    case '12':
+    case '13':
+    case '14':
+    case '15':
+      input.innerHTML += '<select id="tipoHab" class="floating__select" value="doc.id" placeholder="Habitación" required></select><label id="lblTipoHab" class="floating__label" data-content="Habitación"></label><select id="tipoHab" class="floating__select" value="doc.id" placeholder="Habitación" required></select><label id="lblTipoHab" class="floating__label" data-content="Habitación"></label><select id="tipoHab" class="floating__select" value="doc.id" placeholder="Habitación" required></select><label id="lblTipoHab" class="floating__label" data-content="Habitación"></label>'
+      break;
+    case '16':
+      input.innerHTML += '<select id="tipoHab" class="floating__select" value="doc.id" placeholder="Habitación" required></select><label id="lblTipoHab" class="floating__label" data-content="Habitación"></label><select id="tipoHab" class="floating__select" value="doc.id" placeholder="Habitación" required></select><label id="lblTipoHab" class="floating__label" data-content="Habitación"></label><select id="tipoHab" class="floating__select" value="doc.id" placeholder="Habitación" required></select><label id="lblTipoHab" class="floating__label" data-content="Habitación"></label><select id="tipoHab" class="floating__select" value="doc.id" placeholder="Habitación" required></select><label id="lblTipoHab" class="floating__label" data-content="Habitación"></label>'
+      break;
+    default:
+      break;
+  }
 }
 
 /** Procesa un error. Muestra el objeto en la consola y un cuadro de alerta con el mensaje. @param {Error} e descripción del error. 
