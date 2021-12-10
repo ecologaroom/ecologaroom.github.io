@@ -174,7 +174,7 @@ async function eliminaReservacion(){
   try {
     var id = prompt("Si desea cancelar la reservación, favor de volver a ingresar el código", "");
 
-    //await firestore.collection("RESERVACION").doc(id).delete();
+    await firestore.collection("RESERVACION").doc(id).delete();
 
     var tab = document.getElementById('tabla');
     tab.innerHTML = "";
