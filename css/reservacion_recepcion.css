@@ -129,23 +129,23 @@ td{
     width: auto;
 }
 
-.btnClave {
+.btn {
     width: auto; /* Establecemos que el botón de reservar abarque 100 pixeles */
     display: inline-block;
-    padding: 0.3em 0em; 
-    background: outset transparent;
+    padding: 0.3em 1em; 
+    background: #7ed957;
+    box-shadow:0px 3px 0px #429900;
     border: none;
-    border-radius: 20px;
+    border-radius: 40px;
     text-align: center; /* Alineamos el texto del botón reservar al centro de los 100 pixeles de lo que abarca */
     font-family: 'EB Garamond', serif; /* Asignamos la familia EB Garamond al texto del botón reservar */
     font-size: 18px;
     font-weight: bold;
-    color: black;
+    color:#f5f3ef;
     transition: all 500ms ease;
 }
   
-.btnClave:hover {
-    color: white;
+.btn:hover {
     background: #029876;  /* Establecemos que el color de fondo del botón de reservar al posicionarse sobre él sea verde oscuro */
 }
 
