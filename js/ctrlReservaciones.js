@@ -146,9 +146,10 @@ function reemplaza(letra) {
 function reservaFecha() {
   alert("FECHA RES");
 
+  
   // @ts-ignore
   var date = new Date(document.getElementById("calendario").value);
-  var fechaLlegada = date.getTime();
+  var fechaLlegada = date.toLocaleString('en-US', { timeZone: 'UTC-6' });
 
   alert("Fecha en calendario" + fechaLlegada);
 
@@ -173,7 +174,7 @@ function reservaFecha() {
 
         var fs = doc.data().FECHA_SALIDA.toDate();
         var fechaSalida = new Date(fs);
-        var formatoSalida = [fechaSalida.getDate()+1, fechaSalida.getMonth()+1, fechaSalida.getFullYear()].join('/');
+        var formatoSalida = [fechaSalida.getDate(), fechaSalida.getMonth()+1, fechaSalida.getFullYear()].join('/');
 
         document.getElementById("tabla").innerHTML += '<tr class="registro"><td>'+doc.data().NUM_HABITACION+'</td><td><button type="button" class="btnClave" title="Cancelar reservación" onClick="eliminaReservacion();">'+doc.id+'</button></td><td>'+doc.data().ESTATUS+'</td><td>'+doc.data().CLV_HUESPED+'</td><td>'+formatoReservacion+'</td><td>'+formatoEntrada+'</td><td>'+formatoSalida+'</td><td>'+doc.data().NUM_HUESPEDES+'</td></tr>';
       });
@@ -213,7 +214,7 @@ function reservaHuesped() {
 
           var fs = doc.data().FECHA_SALIDA.toDate();
           var fechaSalida = new Date(fs);
-          var formatoSalida = [fechaSalida.getDate()+1, fechaSalida.getMonth()+1, fechaSalida.getFullYear()].join('/');
+          var formatoSalida = [fechaSalida.getDate(), fechaSalida.getMonth()+1, fechaSalida.getFullYear()].join('/');
 
           document.getElementById("tabla").innerHTML += '<tr class="registro"><td>'+doc.data().NUM_HABITACION+'</td><td><button type="button" class="btnClave" title="Cancelar reservación" onClick="eliminaReservacion();">'+doc.id+'</button></td><td>'+doc.data().ESTATUS+'</td><td>'+doc.data().CLV_HUESPED+'</td><td>'+formatoReservacion+'</td><td>'+formatoEntrada+'</td><td>'+formatoSalida+'</td><td>'+doc.data().NUM_HUESPEDES+'</td></tr>';
         });
