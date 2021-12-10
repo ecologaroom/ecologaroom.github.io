@@ -78,12 +78,20 @@ function consulta() {
       alert("Hay registros, así que construye por cada registro");
       /* Cuando el número de documentos es 0, agrega un texto HTML. */
       snap.forEach(function(doc){
+        /* Transformación de tipo de dato TIMESTAMP en Firestore, por tipo Date en JS */
+        var fr = doc.data().FECHA_RESERVACION.toDate();
+        var fechaReservacion = new Date(fr);
+        var formatoReservacion = [fechaReservacion.getDate()+1, fechaReservacion.getMonth()+1, fechaReservacion.getFullYear()].join('/');
 
-        var fsf= doc.data().FECHA_RESERVACION.toDate();
-        var fecha = new Date(fsf);
-        var dformat = [fecha.getDate()+1, fecha.getMonth()+1, fecha.getFullYear()].join('/');
+        var fe = doc.data().FECHA_ENTRADA.toDate();
+        var fechaEntrada = new Date(fe);
+        var formatoEntrada = [fechaEntrada.getDate()+1, fechaEntrada.getMonth()+1, fechaEntrada.getFullYear()].join('/');
 
-        document.getElementById("tabla").innerHTML += '<tr><td>'+doc.data().NUM_HABITACION+'</td><td>'+doc.id+'</td><td>'+doc.data().ESTATUS+'</td><td>'+doc.data().CLV_HUESPED+'</td><td>'+dformat+'</td><td>'+doc.data().FECHA_ENTRADA+'</td><td>'+doc.data().FECHA_SALIDA+'</td><td>'+doc.data().NUM_HUESPEDES+'</td></tr>';
+        var fs = doc.data().FECHA_SALIDA.toDate();
+        var fechaSalida = new Date(fs);
+        var formatoSalida = [fechaSalida.getDate()+1, fechaSalida.getMonth()+1, fechaSalida.getFullYear()].join('/');
+
+        document.getElementById("tabla").innerHTML += '<tr><td>'+doc.data().NUM_HABITACION+'</td><td>'+doc.id+'</td><td>'+doc.data().ESTATUS+'</td><td>'+doc.data().CLV_HUESPED+'</td><td>'+formatoReservacion+'</td><td>'+formatoEntrada+'</td><td>'+formatoSalida+'</td><td>'+doc.data().NUM_HUESPEDES+'</td></tr>';
       });
     } else {
       alert("No hay registros, así que envía vacío");
