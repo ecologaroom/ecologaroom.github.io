@@ -151,77 +151,97 @@ function selectHabitaciones() {
 
 /** Muestra las reservaciones por clv_huesped y se actualiza automáticamente. */
 function numHabitaciones() {
+
   var input = document.getElementById('inpFlotHab');
   input.innerHTML = "";
-  input.innerHTML += '<input class="floating__input" onChange="numTipoHabitaciones();" id="num_hab" name="Num_hab" type="number" placeholder="# Habitaciones" maxlength="2" min="1" max="1" required/><label class="floating__label" data-content="# Habitaciones"></label>'
 
   // @ts-ignore
   var num = document.getElementById("num_hues").value;
 
   switch (num) {
     case '3':
+      input.innerHTML = '<input class="floating__input" id="num_hab" name="Num_hab" type="number" placeholder="# Habitaciones" maxlength="2" min="1" max="3" required/><label class="floating__label" data-content="# Habitaciones"></label>'
+      break;
     case '4':
-      input.innerHTML = '<input class="floating__input" onChange="numTipoHabitaciones();" id="num_hab" name="Num_hab" type="number" placeholder="# Habitaciones" maxlength="2" min="1" max="2" required/><label class="floating__label" data-content="# Habitaciones"></label>'
+      input.innerHTML = '<input class="floating__input" id="num_hab" name="Num_hab" type="number" placeholder="# Habitaciones" maxlength="2" min="1" max="4" required/><label class="floating__label" data-content="# Habitaciones"></label>'
       break;
     case '5':
+      input.innerHTML = '<input class="floating__input" id="num_hab" name="Num_hab" type="number" placeholder="# Habitaciones" maxlength="2" min="2" max="5" required/><label class="floating__label" data-content="# Habitaciones"></label>'
+      break;
     case '6':
-      input.innerHTML = '<input class="floating__input" onChange="numTipoHabitaciones();" id="num_hab" name="Num_hab" type="number" placeholder="# Habitaciones" maxlength="2" min="1" max="3" required/><label class="floating__label" data-content="# Habitaciones"></label>'
+      input.innerHTML = '<input class="floating__input" id="num_hab" name="Num_hab" type="number" placeholder="# Habitaciones" maxlength="2" min="2" max="6" required/><label class="floating__label" data-content="# Habitaciones"></label>'
       break;
     case '7':
+      input.innerHTML = '<input class="floating__input" id="num_hab" name="Num_hab" type="number" placeholder="# Habitaciones" maxlength="2" min="2" max="7" required/><label class="floating__label" data-content="# Habitaciones"></label>'
+      break;
     case '8':
-      input.innerHTML = '<input class="floating__input" onChange="numTipoHabitaciones();" id="num_hab" name="Num_hab" type="number" placeholder="# Habitaciones" maxlength="2" min="1" max="4" required/><label class="floating__label" data-content="# Habitaciones"></label>'
+      input.innerHTML = '<input class="floating__input" id="num_hab" name="Num_hab" type="number" placeholder="# Habitaciones" maxlength="2" min="2" max="8" required/><label class="floating__label" data-content="# Habitaciones"></label>'
       break;
     case '9':
+      input.innerHTML = '<input class="floating__input" id="num_hab" name="Num_hab" type="number" placeholder="# Habitaciones" maxlength="2" min="3" max="9" required/><label class="floating__label" data-content="# Habitaciones"></label>'
+      break;
     case '10':
-      input.innerHTML = '<input class="floating__input" onChange="numTipoHabitaciones();" id="num_hab" name="Num_hab" type="number" placeholder="# Habitaciones" maxlength="2" min="1" max="5" required/><label class="floating__label" data-content="# Habitaciones"></label>'
+      input.innerHTML = '<input class="floating__input" id="num_hab" name="Num_hab" type="number" placeholder="# Habitaciones" maxlength="2" min="3" max="10" required/><label class="floating__label" data-content="# Habitaciones"></label>'
       break;
     case '11':
+      input.innerHTML = '<input class="floating__input" id="num_hab" name="Num_hab" type="number" placeholder="# Habitaciones" maxlength="2" min="3" max="11" required/><label class="floating__label" data-content="# Habitaciones"></label>'
+      break;
     case '12':
-      input.innerHTML = '<input class="floating__input" onChange="numTipoHabitaciones();" id="num_hab" name="Num_hab" type="number" placeholder="# Habitaciones" maxlength="2" min="1" max="6" required/><label class="floating__label" data-content="# Habitaciones"></label>'
+      input.innerHTML = '<input class="floating__input" id="num_hab" name="Num_hab" type="number" placeholder="# Habitaciones" maxlength="2" min="3" max="12" required/><label class="floating__label" data-content="# Habitaciones"></label>'
       break;
     case '13':
+      input.innerHTML = '<input class="floating__input" id="num_hab" name="Num_hab" type="number" placeholder="# Habitaciones" maxlength="2" min="4" max="13" required/><label class="floating__label" data-content="# Habitaciones"></label>'
+      break;
     case '14':
-      input.innerHTML = '<input class="floating__input" onChange="numTipoHabitaciones();" id="num_hab" name="Num_hab" type="number" placeholder="# Habitaciones" maxlength="2" min="1" max="7" required/><label class="floating__label" data-content="# Habitaciones"></label>'
+      input.innerHTML = '<input class="floating__input" id="num_hab" name="Num_hab" type="number" placeholder="# Habitaciones" maxlength="2" min="4" max="14" required/><label class="floating__label" data-content="# Habitaciones"></label>'
       break;
     case '15':
+      input.innerHTML = '<input class="floating__input" id="num_hab" name="Num_hab" type="number" placeholder="# Habitaciones" maxlength="2" min="4" max="15" required/><label class="floating__label" data-content="# Habitaciones"></label>'
+      break;
     case '16':
-      input.innerHTML = '<input class="floating__input" onChange="numTipoHabitaciones();" id="num_hab" name="Num_hab" type="number" placeholder="# Habitaciones" maxlength="2" min="1" max="8" required/><label class="floating__label" data-content="# Habitaciones"></label>'
+      input.innerHTML = '<input class="floating__input" id="num_hab" name="Num_hab" type="number" placeholder="# Habitaciones" maxlength="2" min="4" max="16" required/><label class="floating__label" data-content="# Habitaciones"></label>'
       break;
-    default:
+    case '17':
+      input.innerHTML = '<input class="floating__input" id="num_hab" name="Num_hab" type="number" placeholder="# Habitaciones" maxlength="2" min="5" max="17" required/><label class="floating__label" data-content="# Habitaciones"></label>'
       break;
-  }
-}
-
-/** Muestra las reservaciones por clv_huesped y se actualiza automáticamente. */
-function numTipoHabitaciones() {
-  var input = document.getElementById('inpFlotTipoHab');
-  input.innerHTML = "";
-  input.innerHTML += '<select id="tipoHab" class="floating__select" value="doc.id" placeholder="Habitación" required></select><label id="lblTipoHab" class="floating__label" data-content="Habitación"></label>'
-
-  // @ts-ignore
-  var num = document.getElementById("num_hab").value;
-
-  switch (num) {
-    case '2':
-      input.innerHTML = '<select id="tipoHab" class="floating__select" value="doc.id" placeholder="Habitación" required></select><label id="lblTipoHab" class="floating__label" data-content="Habitación"></label><select id="tipoHab" class="floating__select" value="doc.id" placeholder="Habitación" required></select><label id="lblTipoHab" class="floating__label" data-content="Habitación"></label>'
+    case '18':
+      input.innerHTML = '<input class="floating__input" id="num_hab" name="Num_hab" type="number" placeholder="# Habitaciones" maxlength="2" min="5" max="18" required/><label class="floating__label" data-content="# Habitaciones"></label>'
       break;
-    case '3':
-      input.innerHTML = '<select id="tipoHab" class="floating__select" value="doc.id" placeholder="Habitación" required></select><label id="lblTipoHab" class="floating__label" data-content="Habitación"></label><select id="tipoHab" class="floating__select" value="doc.id" placeholder="Habitación" required></select><label id="lblTipoHab" class="floating__label" data-content="Habitación"></label><select id="tipoHab" class="floating__select" value="doc.id" placeholder="Habitación" required></select><label id="lblTipoHab" class="floating__label" data-content="Habitación"></label>'
+    case '19':
+      input.innerHTML = '<input class="floating__input" id="num_hab" name="Num_hab" type="number" placeholder="# Habitaciones" maxlength="2" min="5" max="19" required/><label class="floating__label" data-content="# Habitaciones"></label>'
       break;
-    case '4':
-      input.innerHTML = '<select id="tipoHab" class="floating__select" value="doc.id" placeholder="Habitación" required></select><label id="lblTipoHab" class="floating__label" data-content="Habitación"></label><select id="tipoHab" class="floating__select" value="doc.id" placeholder="Habitación" required></select><label id="lblTipoHab" class="floating__label" data-content="Habitación"></label><select id="tipoHab" class="floating__select" value="doc.id" placeholder="Habitación" required></select><label id="lblTipoHab" class="floating__label" data-content="Habitación"></label><select id="tipoHab" class="floating__select" value="doc.id" placeholder="Habitación" required></select><label id="lblTipoHab" class="floating__label" data-content="Habitación"></label>'
+    case '20':
+      input.innerHTML = '<input class="floating__input" id="num_hab" name="Num_hab" type="number" placeholder="# Habitaciones" maxlength="2" min="5" max="20" required/><label class="floating__label" data-content="# Habitaciones"></label>'
       break;
-    case '5':
-      input.innerHTML = '<select id="tipoHab" class="floating__select" value="doc.id" placeholder="Habitación" required></select><label id="lblTipoHab" class="floating__label" data-content="Habitación"></label><select id="tipoHab" class="floating__select" value="doc.id" placeholder="Habitación" required></select><label id="lblTipoHab" class="floating__label" data-content="Habitación"></label><select id="tipoHab" class="floating__select" value="doc.id" placeholder="Habitación" required></select><label id="lblTipoHab" class="floating__label" data-content="Habitación"></label><select id="tipoHab" class="floating__select" value="doc.id" placeholder="Habitación" required></select><label id="lblTipoHab" class="floating__label" data-content="Habitación"></label><select id="tipoHab" class="floating__select" value="doc.id" placeholder="Habitación" required></select><label id="lblTipoHab" class="floating__label" data-content="Habitación"></label>'
+    case '21':
+      input.innerHTML = '<input class="floating__input" id="num_hab" name="Num_hab" type="number" placeholder="# Habitaciones" maxlength="2" min="6" max="21" required/><label class="floating__label" data-content="# Habitaciones"></label>'
       break;
-    case '6':
-      input.innerHTML = '<select id="tipoHab" class="floating__select" value="doc.id" placeholder="Habitación" required></select><label id="lblTipoHab" class="floating__label" data-content="Habitación"></label><select id="tipoHab" class="floating__select" value="doc.id" placeholder="Habitación" required></select><label id="lblTipoHab" class="floating__label" data-content="Habitación"></label><select id="tipoHab" class="floating__select" value="doc.id" placeholder="Habitación" required></select><label id="lblTipoHab" class="floating__label" data-content="Habitación"></label><select id="tipoHab" class="floating__select" value="doc.id" placeholder="Habitación" required></select><label id="lblTipoHab" class="floating__label" data-content="Habitación"></label><select id="tipoHab" class="floating__select" value="doc.id" placeholder="Habitación" required></select><label id="lblTipoHab" class="floating__label" data-content="Habitación"></label><select id="tipoHab" class="floating__select" value="doc.id" placeholder="Habitación" required></select><label id="lblTipoHab" class="floating__label" data-content="Habitación"></label>'
+    case '22':
+      input.innerHTML = '<input class="floating__input" id="num_hab" name="Num_hab" type="number" placeholder="# Habitaciones" maxlength="2" min="6" max="22" required/><label class="floating__label" data-content="# Habitaciones"></label>'
       break;
-    case '7':
-      input.innerHTML = '<select id="tipoHab" class="floating__select" value="doc.id" placeholder="Habitación" required></select><label id="lblTipoHab" class="floating__label" data-content="Habitación"></label><select id="tipoHab" class="floating__select" value="doc.id" placeholder="Habitación" required></select><label id="lblTipoHab" class="floating__label" data-content="Habitación"></label><select id="tipoHab" class="floating__select" value="doc.id" placeholder="Habitación" required></select><label id="lblTipoHab" class="floating__label" data-content="Habitación"></label><select id="tipoHab" class="floating__select" value="doc.id" placeholder="Habitación" required></select><label id="lblTipoHab" class="floating__label" data-content="Habitación"></label><select id="tipoHab" class="floating__select" value="doc.id" placeholder="Habitación" required></select><label id="lblTipoHab" class="floating__label" data-content="Habitación"></label><select id="tipoHab" class="floating__select" value="doc.id" placeholder="Habitación" required></select><label id="lblTipoHab" class="floating__label" data-content="Habitación"></label><select id="tipoHab" class="floating__select" value="doc.id" placeholder="Habitación" required></select><label id="lblTipoHab" class="floating__label" data-content="Habitación"></label>'
+    case '23':
+      input.innerHTML = '<input class="floating__input" id="num_hab" name="Num_hab" type="number" placeholder="# Habitaciones" maxlength="2" min="6" max="23" required/><label class="floating__label" data-content="# Habitaciones"></label>'
       break;
-    case '8':
-      input.innerHTML = '<select id="tipoHab" class="floating__select" value="doc.id" placeholder="Habitación" required></select><label id="lblTipoHab" class="floating__label" data-content="Habitación"></label><select id="tipoHab" class="floating__select" value="doc.id" placeholder="Habitación" required></select><label id="lblTipoHab" class="floating__label" data-content="Habitación"></label><select id="tipoHab" class="floating__select" value="doc.id" placeholder="Habitación" required></select><label id="lblTipoHab" class="floating__label" data-content="Habitación"></label><select id="tipoHab" class="floating__select" value="doc.id" placeholder="Habitación" required></select><label id="lblTipoHab" class="floating__label" data-content="Habitación"></label><select id="tipoHab" class="floating__select" value="doc.id" placeholder="Habitación" required></select><label id="lblTipoHab" class="floating__label" data-content="Habitación"></label><select id="tipoHab" class="floating__select" value="doc.id" placeholder="Habitación" required></select><label id="lblTipoHab" class="floating__label" data-content="Habitación"></label><select id="tipoHab" class="floating__select" value="doc.id" placeholder="Habitación" required></select><label id="lblTipoHab" class="floating__label" data-content="Habitación"></label><select id="tipoHab" class="floating__select" value="doc.id" placeholder="Habitación" required></select><label id="lblTipoHab" class="floating__label" data-content="Habitación"></label>'
+    case '24':
+      input.innerHTML = '<input class="floating__input" id="num_hab" name="Num_hab" type="number" placeholder="# Habitaciones" maxlength="2" min="6" max="24" required/><label class="floating__label" data-content="# Habitaciones"></label>'
+      break;
+    case '25':
+      input.innerHTML = '<input class="floating__input" id="num_hab" name="Num_hab" type="number" placeholder="# Habitaciones" maxlength="2" min="7" max="25" required/><label class="floating__label" data-content="# Habitaciones"></label>'
+      break;
+    case '26':
+      input.innerHTML = '<input class="floating__input" id="num_hab" name="Num_hab" type="number" placeholder="# Habitaciones" maxlength="2" min="7" max="26" required/><label class="floating__label" data-content="# Habitaciones"></label>'
+      break;
+    case '27':
+      input.innerHTML = '<input class="floating__input" id="num_hab" name="Num_hab" type="number" placeholder="# Habitaciones" maxlength="2" min="7" max="27" required/><label class="floating__label" data-content="# Habitaciones"></label>'
+      break;
+    case '28':
+      input.innerHTML = '<input class="floating__input" id="num_hab" name="Num_hab" type="number" placeholder="# Habitaciones" maxlength="2" min="7" max="28" required/><label class="floating__label" data-content="# Habitaciones"></label>'
+      break;
+    case '29':
+      input.innerHTML = '<input class="floating__input" id="num_hab" name="Num_hab" type="number" placeholder="# Habitaciones" maxlength="2" min="8" max="29" required/><label class="floating__label" data-content="# Habitaciones"></label>'
+      break;
+    case '30':
+      input.innerHTML = '<input class="floating__input" id="num_hab" name="Num_hab" type="number" placeholder="# Habitaciones" maxlength="2" min="8" max="30" required/><label class="floating__label" data-content="# Habitaciones"></label>'
       break;
     default:
       break;
