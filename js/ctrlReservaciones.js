@@ -71,7 +71,11 @@ async function logIn() {
 
 /** Muestra las reservaciones y se actualiza automáticamente. */
 function consulta() {
-  alert("C-O-N-S-U-L-T-A!!!!!!!!!!!!");
+  alert("CO-NS-UL-TA");
+  var tab = document.getElementById('tabla');
+  tab.innerHTML = "";
+  tab.innerHTML += '<tr><th colspan="1">#Habitación</th><th colspan="1">Reservación</th><th colspan="1">Estatus</th><th colspan="1">Huésped</th><th colspan="1">Fecha de reservación</th><th colspan="1">Entrada</th><th colspan="1">Salida</th><th colspan="1">#Huéspedes</th></tr>'
+
   /* Registros de la colección Reservación, ordenados por número de habitación */
   firestore.collection("RESERVACION").orderBy("NUM_HABITACION").get().then(function(snap){
     if (snap.size > 0) {
@@ -140,7 +144,12 @@ function reemplaza(letra) {
 function reservaFecha() {
   alert("llega a reserva x fecha");
 
-  var fechaRegistros = document.getElementById("calendario");
+  var calendario = document.getElementById("calendario");
+  // @ts-ignore
+  var fechaSalida = new Date(calendario);
+  var fechaRegistros = [fechaSalida.getDate()+1, fechaSalida.getMonth()+1, fechaSalida.getFullYear()].join('/');
+
+
   alert("Fecha en calendario" + fechaRegistros);
 
   /* Registros de la colección Reservación, ordenados por número de habitación */
@@ -174,15 +183,7 @@ function reservaFecha() {
 async function eliminaReservacion(){
   try {
     var id = prompt("Si desea cancelar la reservación, favor de volver a ingresar el código", "");
-
     await firestore.collection("RESERVACION").doc(id).delete();
-
-    var tab = document.getElementById('tabla');
-    tab.innerHTML = "";
-    tab.innerHTML += '<tr><th colspan="1">#Habitación</th><th colspan="1">Reservación</th><th colspan="1">Estatus</th><th colspan="1">Huésped</th><th colspan="1">Fecha de reservación</th><th colspan="1">Entrada</th><th colspan="1">Salida</th><th colspan="1">#Huéspedes</th></tr>'
-
-    alert("elimina registros anteriores");
-
     consulta();
   } catch (e) {
     procesaError(e);
