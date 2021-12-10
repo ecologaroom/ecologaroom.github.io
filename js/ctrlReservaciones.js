@@ -141,7 +141,7 @@ function reemplaza(letra) {
 async function eliminaReservacion(){
   alert("Reservación cancelada.");
   try {
-    if (confirm("Confirmar la eliminación")) {
+    if (confirm("¿Estas segur@ de cancelar esta reservación?")) {
       /* await firestore.collection("RESERVACION").doc(doc.id).delete();*/
       consulta();
     }
