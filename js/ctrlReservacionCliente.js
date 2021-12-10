@@ -82,7 +82,9 @@ async function registroCliente(){
   try {
     alert("Entra al try de registroCliente");
 
-    const nom = document.getElementById("nombre");
+
+    // @ts-ignore
+    const nom = document.getElementById("nombre").value;
     alert("nombre:" + nom);
 
 /*

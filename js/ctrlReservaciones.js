@@ -71,17 +71,14 @@ async function logIn() {
 
 /** Muestra las reservaciones y se actualiza automáticamente. */
 function consulta() {
-  alert("CONSULTA:");
+  alert("Reservaciones vigentes:");
   var tab = document.getElementById('tabla');
   tab.innerHTML = "";
   tab.innerHTML += '<tr><th colspan="1">#Habitación</th><th colspan="1">Reservación</th><th colspan="1">Estatus</th><th colspan="1">Huésped</th><th colspan="1">Fecha de reservación</th><th colspan="1">Entrada</th><th colspan="1">Salida</th><th colspan="1">#Huéspedes</th></tr>'
 
-  // @ts-ignore
-  var hoy = firebase.firestore.Timestamp.now();
-  alert("Hoy:" + hoy);
-
   /* Registros de la colección Reservación, ordenados por número de habitación */
-  firestore.collection("RESERVACION").where("FECHA_ENTRADA", ">", hoy).orderBy("NUM_HABITACION").get().then(function(snap){
+  // @ts-ignore
+  firestore.collection("RESERVACION").where("FECHA_ENTRADA", ">", firebase.firestore.Timestamp.now()).orderBy("NUM_HABITACION").get().then(function(snap){
     if (snap.size > 0) {
       /* Cuando el número de documentos es 0, agrega un texto HTML. */
       snap.forEach(function(doc){
@@ -144,44 +141,6 @@ function reemplaza(letra) {
       case "'": return "&#039;";
       default: return letra;
   }
-}
-
-/** Muestra las reservaciones por fecha y se actualiza automáticamente. */
-function reservaFecha() {
-  alert("Reservaciones de hoy");
-  // @ts-ignore
-  var hoy = firebase.firestore.Timestamp.now();
-
-  var tab = document.getElementById('tabla');
-  tab.innerHTML = "";
-  tab.innerHTML += '<tr><th colspan="1">#Habitación</th><th colspan="1">Reservación</th><th colspan="1">Estatus</th><th colspan="1">Huésped</th><th colspan="1">Fecha de reservación</th><th colspan="1">Entrada</th><th colspan="1">Salida</th><th colspan="1">#Huéspedes</th></tr>'
-
-  /* Registros de la colección Reservación, ordenados por número de habitación */
-  firestore.collection("RESERVACION").where("FECHA_ENTRADA", ">", hoy).orderBy("FECHA_ENTRADA").orderBy("NUM_HABITACION").get().then(function(snap){
-    alert("Entra al where");
-    if (snap.size > 0) {
-      /* Cuando el número de documentos es 0, agrega un texto HTML. */
-      snap.forEach(function(doc){
-        /* Transformación de tipo de dato TIMESTAMP en Firestore, por tipo Date en JS */
-        var fr = doc.data().FECHA_RESERVACION.toDate();
-        var fechaReservacion = new Date(fr);
-        var formatoReservacion = [fechaReservacion.getDate()+1, fechaReservacion.getMonth()+1, fechaReservacion.getFullYear()].join('/');
-
-        var fe = doc.data().FECHA_ENTRADA.toDate();
-        var fechaEntrada = new Date(fe);
-        var formatoEntrada = [fechaEntrada.getDate(), fechaEntrada.getMonth()+1, fechaEntrada.getFullYear()].join('/');
-
-        var fs = doc.data().FECHA_SALIDA.toDate();
-        var fechaSalida = new Date(fs);
-        var formatoSalida = [fechaSalida.getDate(), fechaSalida.getMonth()+1, fechaSalida.getFullYear()].join('/');
-
-        document.getElementById("tabla").innerHTML += '<tr class="registro"><td>'+doc.data().NUM_HABITACION+'</td><td><button type="button" class="btnClave" title="Cancelar reservación" onClick="eliminaReservacion();">'+doc.id+'</button></td><td>'+doc.data().ESTATUS+'</td><td>'+doc.data().CLV_HUESPED+'</td><td>'+formatoReservacion+'</td><td>'+formatoEntrada+'</td><td>'+formatoSalida+'</td><td>'+doc.data().NUM_HUESPEDES+'</td></tr>';
-      });
-    } else {
-      /* Cuando el número de documentos es 0, agrega un texto HTML. */
-      document.getElementById("tabla").innerHTML = '<tr class="registro"><td>'+"-- No hay registros de reservaciones en esta fecha. --"+'</td></tr>';
-    }
-  });
 }
 
 /** Muestra las reservaciones por clv_huesped y se actualiza automáticamente. */
