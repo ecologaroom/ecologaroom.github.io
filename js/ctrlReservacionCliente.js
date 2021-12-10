@@ -19,9 +19,8 @@ const formDaoPago = document["formDaoPago"];
     "../lib/tiposFire.js").User}
     usuario */
 async function protege(usuario) {
-  alert("Entra a protege");
   if (tieneRol(usuario,["CLIENTE"])) {
-    alert("Es cliente");
+    /////////////////////////////////////////////// Faltaría consultar sus datos si ya los ha registrado
   }
 }
 
@@ -32,21 +31,16 @@ async function protege(usuario) {
  * @param {string[]} roles
  * @returns {Promise<boolean>} */
 async function tieneRol(usuario, roles) {
-  alert("Verifica inicio de sesión");
   if (usuario && usuario.email) {
-    alert("Si inició sesión");
     const rolIds = await cargaRoles(usuario.email);
-    alert("Rol cargado");
     for (const rol of roles) {
       if (rolIds.has(rol)) {
-        alert("Rol autorizado");
         return true;
       }
     }
     alert("No autorizado.");
     location.href = "index.html";
   } else {
-    alert("No inició sesión");
     logIn();
   }
   return false;
@@ -56,25 +50,21 @@ async function tieneRol(usuario, roles) {
  * @param {string} email
  * @returns {Promise<Set<string>>}
  */
- async function cargaRoles(email) { 
+async function cargaRoles(email) { 
   let doc = await firestore.collection("USUARIO").doc(email).get();
-  alert("Obtuvo rol de la colección");
   if (doc.exists) {
     /**
      * @type {
         import("./tipos.js").
         USUARIO} */
     const data = doc.data();
-    alert("Si tiene rol asignado");
     return new Set(data.ROLIDS || []);
   } else {
-    alert("No tiene rol asignado");
     return new Set();
   }
 }
 
 async function logIn() {
-  alert("Rediccionando a google");
   /** Autenticación con Google.
    * @type {import(
       "../lib/tiposFire.js").
@@ -91,6 +81,12 @@ async function registroCliente(){
   alert("Registra a cliente");
   try {
     alert("Entra al try de registroCliente");
+
+    const formDataCliente = new FormData(formDaoCliente);
+    const nom = formDataCliente.get("nombre");
+    alert("nombre:" + nom);
+
+/*
     const formDataCliente = new FormData(formDaoCliente);
 
     const nom = formDataCliente.get("nombre");
@@ -110,14 +106,13 @@ async function registroCliente(){
     alert("celular" + CELULAR); 
     const CORREO = getString(formDataCliente, "correo").trim();
     alert("correo" + CORREO); 
-    
+    */
 
 
-    /**
+    /*
      * @type {
         import("./tipos.js").
-                CLIENTE} */
-    const modeloCliente = {
+                CLIENTE}  {
       CORREO, 
       NOMBRE, 
       AP_PATERNO, 
@@ -128,7 +123,7 @@ async function registroCliente(){
     alert("Guarda datos en modelo");
 
     await firestore.collection("CLIENTE").add(modeloCliente); 
-    alert("Sus datos han sido registrados exitosamente.");
+    alert("Sus datos han sido registrados exitosamente.");*/
 
     
   } catch (e) {
