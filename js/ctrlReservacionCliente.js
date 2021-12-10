@@ -82,7 +82,6 @@ async function registroCliente(){
   try {
     alert("Entra al try de registroCliente");
 
-
     // @ts-ignore
     const nom = document.getElementById("nombre").value;
     alert("nombre:" + nom);
@@ -130,6 +129,28 @@ async function registroCliente(){
   } catch (e) {
     procesaError(e);
   }
+}
+
+/** Desplega tipo de habitaciones. */
+function selectHabitaciones() {
+  var selection = document.getElementById('tipoHab');
+  selection.innerHTML = "";
+
+  /* Registros de la colección Reservación, ordenados por número de habitación */
+  // @ts-ignore
+
+  firestore.collection("TIPO_HABITACION").orderBy("NUM_HUESPEDES").get().then(function(snap){
+    if (snap.size > 0) {
+      /* Cuando el número de documentos es 0, agrega un texto HTML. */
+      snap.forEach(function(doc){
+        /* Transformación de tipo de dato TIMESTAMP en Firestore, por tipo Date en JS */
+        document.getElementById("tipoHab").innerHTML += '<option class="tipoHabitaciones">'+doc.id+'</option>';
+      });
+    } else {
+      /* Cuando el número de documentos es 0, agrega un texto HTML. */
+      document.getElementById("tipoHab").innerHTML = '<option class="tipoHabitaciones">'+"Habitaciones indisponibles"+'</option>';
+    }
+  });
 }
 
 /** Procesa un error. Muestra el objeto en la consola y un cuadro de alerta con el mensaje. @param {Error} e descripción del error. 

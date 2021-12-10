@@ -23,7 +23,6 @@
 
 /**
  * @typedef {Object} TIPO_HABITACION
- * @property {string} TIPO
  * @property {string} DESCRIPCION
  * @property {string} NUM_HUESPEDES
  */
