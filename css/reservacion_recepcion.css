@@ -134,7 +134,6 @@ td{
     display: inline-block;
     padding: 0.3em 1em; 
     background: #7ed957;
-    box-shadow:0px 3px 0px #429900;
     border: none;
     border-radius: 40px;
     text-align: center; /* Alineamos el texto del botón reservar al centro de los 100 pixeles de lo que abarca */

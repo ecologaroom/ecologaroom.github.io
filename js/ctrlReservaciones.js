@@ -73,7 +73,7 @@ async function logIn() {
 function consulta() {
   alert("entra a consulta");
   /* Registros de la colección Reservación, ordenados por número de habitación */
-  firestore.collection("RESERVACION").get().then(function(snap){
+  firestore.collection("RESERVACION").get().orderBy("NUM_HABITACION").then(function(snap){
     if (snap.size > 0) {
       /* Cuando el número de documentos es 0, agrega un texto HTML. */
       snap.forEach(function(doc){
@@ -90,9 +90,7 @@ function consulta() {
         var fechaSalida = new Date(fs);
         var formatoSalida = [fechaSalida.getDate()+1, fechaSalida.getMonth()+1, fechaSalida.getFullYear()].join('/');
 
-        var id = doc.id;
-
-        document.getElementById("tabla").innerHTML += '<tr><td>'+doc.data().NUM_HABITACION+'</td><td><button type="button" class="btnClave" title="Cancelar reservación" onClick="eliminaReservacion(id);">'+id+'</button></td><td>'+doc.data().ESTATUS+'</td><td>'+doc.data().CLV_HUESPED+'</td><td>'+formatoReservacion+'</td><td>'+formatoEntrada+'</td><td>'+formatoSalida+'</td><td>'+doc.data().NUM_HUESPEDES+'</td></tr>';
+        document.getElementById("tabla").innerHTML += '<tr><td>'+doc.data().NUM_HABITACION+'</td><td><button type="button" class="btnClave" title="Cancelar reservación" onClick="eliminaReservacion();">'+doc.id+'</button></td><td>'+doc.data().ESTATUS+'</td><td>'+doc.data().CLV_HUESPED+'</td><td>'+formatoReservacion+'</td><td>'+formatoEntrada+'</td><td>'+formatoSalida+'</td><td>'+doc.data().NUM_HUESPEDES+'</td></tr>';
       });
     } else {
       /* Cuando el número de documentos es 0, agrega un texto HTML. */
@@ -138,11 +136,10 @@ function reemplaza(letra) {
   }
 }
 
-async function eliminaReservacion(id){
-  alert("Reservación cancelada.");
+async function eliminaReservacion(){
   try {
     if (confirm("¿Estas segur@ de cancelar esta reservación?")) {
-      await firestore.collection("RESERVACION").doc(id).delete();
+      await firestore.collection("RESERVACION").doc().delete();
     }
   } catch (e) {
     procesaError(e);
