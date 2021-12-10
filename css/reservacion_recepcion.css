@@ -129,7 +129,7 @@ td{
     width: auto;
 }
 
-.btn {
+.btnClave {
     width: auto; /* Establecemos que el botón de reservar abarque 100 pixeles */
     display: inline-block;
     padding: 0.3em 1em; 
@@ -145,7 +145,7 @@ td{
     transition: all 500ms ease;
 }
   
-.btn:hover {
+.btnClave:hover {
     background: #029876;  /* Establecemos que el color de fondo del botón de reservar al posicionarse sobre él sea verde oscuro */
 }
 
