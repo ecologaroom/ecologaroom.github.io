@@ -57,7 +57,7 @@ h3 {
     font-weight: bold;
     color:#f5f3ef;
     transition: all 500ms ease;
-  }
+}
   
 .btn:hover {
     background: #029876;  /* Establecemos que el color de fondo del botón de reservar al posicionarse sobre él sea verde oscuro */
