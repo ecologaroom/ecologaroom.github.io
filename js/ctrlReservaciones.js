@@ -73,12 +73,6 @@ async function logIn() {
 function consulta() {
   alert("llega a consulta");
 
-  const tab = document.getElementById("tabla");
-  var registro = document.getElementById("registro");
-  tab.removeChild(registro);
-
-  alert("elimina registros anteriores");
-
   /* Registros de la colección Reservación, ordenados por número de habitación */
   firestore.collection("RESERVACION").get().then(function(snap){
     if (snap.size > 0) {
@@ -147,6 +141,15 @@ async function eliminaReservacion(){
   try {
     var id = prompt("Si desea cancelar la reservación, favor de volver a ingresar el código", "");
     await firestore.collection("RESERVACION").doc(id).delete();
+
+    alert("Ya eliminó la reservación");
+
+    const tab = document.getElementById("tabla");
+    var registro = document.getElementById("registro");
+    tab.removeChild(registro);
+
+    alert("elimina registros anteriores");
+
     consulta();
   } catch (e) {
     procesaError(e);
