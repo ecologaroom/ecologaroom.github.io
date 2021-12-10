@@ -151,6 +151,49 @@ function selectHabitaciones() {
 
 /** Muestra las reservaciones por clv_huesped y se actualiza automáticamente. */
 function numHabitaciones() {
+  var input = document.getElementById('inpFlotHab');
+  input.innerHTML = "";
+  input.innerHTML += '<input class="floating__input" onChange="numTipoHabitaciones();" id="num_hab" name="Num_hab" type="number" placeholder="# Habitaciones" maxlength="2" min="1" max="1" required/><label class="floating__label" data-content="# Habitaciones"></label>'
+
+  // @ts-ignore
+  var num = document.getElementById("num_hues").value;
+
+  switch (num) {
+    case '3':
+    case '4':
+      input.innerHTML = '<input class="floating__input" onChange="numTipoHabitaciones();" id="num_hab" name="Num_hab" type="number" placeholder="# Habitaciones" maxlength="2" min="1" max="2" required/><label class="floating__label" data-content="# Habitaciones"></label>'
+      break;
+    case '5':
+    case '6':
+      input.innerHTML = '<input class="floating__input" onChange="numTipoHabitaciones();" id="num_hab" name="Num_hab" type="number" placeholder="# Habitaciones" maxlength="2" min="1" max="3" required/><label class="floating__label" data-content="# Habitaciones"></label>'
+      break;
+    case '7':
+    case '8':
+      input.innerHTML = '<input class="floating__input" onChange="numTipoHabitaciones();" id="num_hab" name="Num_hab" type="number" placeholder="# Habitaciones" maxlength="2" min="1" max="4" required/><label class="floating__label" data-content="# Habitaciones"></label>'
+      break;
+    case '9':
+    case '10':
+      input.innerHTML = '<input class="floating__input" onChange="numTipoHabitaciones();" id="num_hab" name="Num_hab" type="number" placeholder="# Habitaciones" maxlength="2" min="1" max="5" required/><label class="floating__label" data-content="# Habitaciones"></label>'
+      break;
+    case '11':
+    case '12':
+      input.innerHTML = '<input class="floating__input" onChange="numTipoHabitaciones();" id="num_hab" name="Num_hab" type="number" placeholder="# Habitaciones" maxlength="2" min="1" max="6" required/><label class="floating__label" data-content="# Habitaciones"></label>'
+      break;
+    case '13':
+    case '14':
+      input.innerHTML = '<input class="floating__input" onChange="numTipoHabitaciones();" id="num_hab" name="Num_hab" type="number" placeholder="# Habitaciones" maxlength="2" min="1" max="7" required/><label class="floating__label" data-content="# Habitaciones"></label>'
+      break;
+    case '15':
+    case '16':
+      input.innerHTML = '<input class="floating__input" onChange="numTipoHabitaciones();" id="num_hab" name="Num_hab" type="number" placeholder="# Habitaciones" maxlength="2" min="1" max="8" required/><label class="floating__label" data-content="# Habitaciones"></label>'
+      break;
+    default:
+      break;
+  }
+}
+
+/** Muestra las reservaciones por clv_huesped y se actualiza automáticamente. */
+function numTipoHabitaciones() {
   var input = document.getElementById('inpFlotTipoHab');
   input.innerHTML = "";
   input.innerHTML += '<select id="tipoHab" class="floating__select" value="doc.id" placeholder="Habitación" required></select><label id="lblTipoHab" class="floating__label" data-content="Habitación"></label>'
@@ -159,20 +202,26 @@ function numHabitaciones() {
   var num = document.getElementById("num_hab").value;
 
   switch (num) {
+    case '2':
+      input.innerHTML = '<select id="tipoHab" class="floating__select" value="doc.id" placeholder="Habitación" required></select><label id="lblTipoHab" class="floating__label" data-content="Habitación"></label><select id="tipoHab" class="floating__select" value="doc.id" placeholder="Habitación" required></select><label id="lblTipoHab" class="floating__label" data-content="Habitación"></label>'
+      break;
+    case '3':
+      input.innerHTML = '<select id="tipoHab" class="floating__select" value="doc.id" placeholder="Habitación" required></select><label id="lblTipoHab" class="floating__label" data-content="Habitación"></label><select id="tipoHab" class="floating__select" value="doc.id" placeholder="Habitación" required></select><label id="lblTipoHab" class="floating__label" data-content="Habitación"></label><select id="tipoHab" class="floating__select" value="doc.id" placeholder="Habitación" required></select><label id="lblTipoHab" class="floating__label" data-content="Habitación"></label>'
+      break;
+    case '4':
+      input.innerHTML = '<select id="tipoHab" class="floating__select" value="doc.id" placeholder="Habitación" required></select><label id="lblTipoHab" class="floating__label" data-content="Habitación"></label><select id="tipoHab" class="floating__select" value="doc.id" placeholder="Habitación" required></select><label id="lblTipoHab" class="floating__label" data-content="Habitación"></label><select id="tipoHab" class="floating__select" value="doc.id" placeholder="Habitación" required></select><label id="lblTipoHab" class="floating__label" data-content="Habitación"></label><select id="tipoHab" class="floating__select" value="doc.id" placeholder="Habitación" required></select><label id="lblTipoHab" class="floating__label" data-content="Habitación"></label>'
+      break;
+    case '5':
+      input.innerHTML = '<select id="tipoHab" class="floating__select" value="doc.id" placeholder="Habitación" required></select><label id="lblTipoHab" class="floating__label" data-content="Habitación"></label><select id="tipoHab" class="floating__select" value="doc.id" placeholder="Habitación" required></select><label id="lblTipoHab" class="floating__label" data-content="Habitación"></label><select id="tipoHab" class="floating__select" value="doc.id" placeholder="Habitación" required></select><label id="lblTipoHab" class="floating__label" data-content="Habitación"></label><select id="tipoHab" class="floating__select" value="doc.id" placeholder="Habitación" required></select><label id="lblTipoHab" class="floating__label" data-content="Habitación"></label><select id="tipoHab" class="floating__select" value="doc.id" placeholder="Habitación" required></select><label id="lblTipoHab" class="floating__label" data-content="Habitación"></label>'
+      break;
+    case '6':
+      input.innerHTML = '<select id="tipoHab" class="floating__select" value="doc.id" placeholder="Habitación" required></select><label id="lblTipoHab" class="floating__label" data-content="Habitación"></label><select id="tipoHab" class="floating__select" value="doc.id" placeholder="Habitación" required></select><label id="lblTipoHab" class="floating__label" data-content="Habitación"></label><select id="tipoHab" class="floating__select" value="doc.id" placeholder="Habitación" required></select><label id="lblTipoHab" class="floating__label" data-content="Habitación"></label><select id="tipoHab" class="floating__select" value="doc.id" placeholder="Habitación" required></select><label id="lblTipoHab" class="floating__label" data-content="Habitación"></label><select id="tipoHab" class="floating__select" value="doc.id" placeholder="Habitación" required></select><label id="lblTipoHab" class="floating__label" data-content="Habitación"></label><select id="tipoHab" class="floating__select" value="doc.id" placeholder="Habitación" required></select><label id="lblTipoHab" class="floating__label" data-content="Habitación"></label>'
+      break;
+    case '7':
+      input.innerHTML = '<select id="tipoHab" class="floating__select" value="doc.id" placeholder="Habitación" required></select><label id="lblTipoHab" class="floating__label" data-content="Habitación"></label><select id="tipoHab" class="floating__select" value="doc.id" placeholder="Habitación" required></select><label id="lblTipoHab" class="floating__label" data-content="Habitación"></label><select id="tipoHab" class="floating__select" value="doc.id" placeholder="Habitación" required></select><label id="lblTipoHab" class="floating__label" data-content="Habitación"></label><select id="tipoHab" class="floating__select" value="doc.id" placeholder="Habitación" required></select><label id="lblTipoHab" class="floating__label" data-content="Habitación"></label><select id="tipoHab" class="floating__select" value="doc.id" placeholder="Habitación" required></select><label id="lblTipoHab" class="floating__label" data-content="Habitación"></label><select id="tipoHab" class="floating__select" value="doc.id" placeholder="Habitación" required></select><label id="lblTipoHab" class="floating__label" data-content="Habitación"></label><select id="tipoHab" class="floating__select" value="doc.id" placeholder="Habitación" required></select><label id="lblTipoHab" class="floating__label" data-content="Habitación"></label>'
+      break;
     case '8':
-    case '9':
-    case '10':
-    case '11':
-      input.innerHTML += '<select id="tipoHab" class="floating__select" value="doc.id" placeholder="Habitación" required></select><label id="lblTipoHab" class="floating__label" data-content="Habitación"></label><select id="tipoHab" class="floating__select" value="doc.id" placeholder="Habitación" required></select><label id="lblTipoHab" class="floating__label" data-content="Habitación"></label>'
-      break;
-    case '12':
-    case '13':
-    case '14':
-    case '15':
-      input.innerHTML += '<select id="tipoHab" class="floating__select" value="doc.id" placeholder="Habitación" required></select><label id="lblTipoHab" class="floating__label" data-content="Habitación"></label><select id="tipoHab" class="floating__select" value="doc.id" placeholder="Habitación" required></select><label id="lblTipoHab" class="floating__label" data-content="Habitación"></label><select id="tipoHab" class="floating__select" value="doc.id" placeholder="Habitación" required></select><label id="lblTipoHab" class="floating__label" data-content="Habitación"></label>'
-      break;
-    case '16':
-      input.innerHTML += '<select id="tipoHab" class="floating__select" value="doc.id" placeholder="Habitación" required></select><label id="lblTipoHab" class="floating__label" data-content="Habitación"></label><select id="tipoHab" class="floating__select" value="doc.id" placeholder="Habitación" required></select><label id="lblTipoHab" class="floating__label" data-content="Habitación"></label><select id="tipoHab" class="floating__select" value="doc.id" placeholder="Habitación" required></select><label id="lblTipoHab" class="floating__label" data-content="Habitación"></label><select id="tipoHab" class="floating__select" value="doc.id" placeholder="Habitación" required></select><label id="lblTipoHab" class="floating__label" data-content="Habitación"></label>'
+      input.innerHTML = '<select id="tipoHab" class="floating__select" value="doc.id" placeholder="Habitación" required></select><label id="lblTipoHab" class="floating__label" data-content="Habitación"></label><select id="tipoHab" class="floating__select" value="doc.id" placeholder="Habitación" required></select><label id="lblTipoHab" class="floating__label" data-content="Habitación"></label><select id="tipoHab" class="floating__select" value="doc.id" placeholder="Habitación" required></select><label id="lblTipoHab" class="floating__label" data-content="Habitación"></label><select id="tipoHab" class="floating__select" value="doc.id" placeholder="Habitación" required></select><label id="lblTipoHab" class="floating__label" data-content="Habitación"></label><select id="tipoHab" class="floating__select" value="doc.id" placeholder="Habitación" required></select><label id="lblTipoHab" class="floating__label" data-content="Habitación"></label><select id="tipoHab" class="floating__select" value="doc.id" placeholder="Habitación" required></select><label id="lblTipoHab" class="floating__label" data-content="Habitación"></label><select id="tipoHab" class="floating__select" value="doc.id" placeholder="Habitación" required></select><label id="lblTipoHab" class="floating__label" data-content="Habitación"></label><select id="tipoHab" class="floating__select" value="doc.id" placeholder="Habitación" required></select><label id="lblTipoHab" class="floating__label" data-content="Habitación"></label>'
       break;
     default:
       break;
