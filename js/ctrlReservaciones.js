@@ -72,7 +72,6 @@ async function logIn() {
 /** Muestra las reservaciones y se actualiza automáticamente. */
 function consulta() {
   alert("llega a consulta");
-
   /* Registros de la colección Reservación, ordenados por número de habitación */
   firestore.collection("RESERVACION").get().then(function(snap){
     if (snap.size > 0) {
