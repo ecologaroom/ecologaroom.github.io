@@ -71,7 +71,7 @@ async function logIn() {
 
 /** Muestra las reservaciones y se actualiza automáticamente. */
 function consulta() {
-  alert("CONSULTAAAA");
+  alert("C-O-N-S-U-L-T-A!!!!!!!!!!!!");
   /* Registros de la colección Reservación, ordenados por número de habitación */
   firestore.collection("RESERVACION").orderBy("NUM_HABITACION").get().then(function(snap){
     if (snap.size > 0) {
@@ -177,15 +177,9 @@ async function eliminaReservacion(){
     //await firestore.collection("RESERVACION").doc(id).delete();
 
     var tab = document.getElementById('tabla');
-    var filas = tab.getElementsByTagName('tr');
-    var numFilas = filas.length;
-    var filaInicio = 1;
+    tab.innerHTML = "";
+    tab.innerHTML += '<tr><th colspan="1">#Habitación</th><th colspan="1">Reservación</th><th colspan="1">Estatus</th><th colspan="1">Huésped</th><th colspan="1">Fecha de reservación</th><th colspan="1">Entrada</th><th colspan="1">Salida</th><th colspan="1">#Huéspedes</th></tr>'
 
-    alert("Entramos a que ya tiene datos de tabla y filas");
-
-    for (var i=filaInicio; i<numFilas; i++) {
-      tab.removeChild(filas[i]);
-    }
     alert("elimina registros anteriores");
 
     consulta();
