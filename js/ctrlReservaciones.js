@@ -75,7 +75,6 @@ function consulta() {
   /* Registros de la colección Reservación, ordenados por número de habitación */
   firestore.collection("RESERVACION").get().then(function(snap){
     if (snap.size > 0) {
-      alert("Hay registros, así que construye por cada registro");
       /* Cuando el número de documentos es 0, agrega un texto HTML. */
       snap.forEach(function(doc){
         /* Transformación de tipo de dato TIMESTAMP en Firestore, por tipo Date en JS */
@@ -96,7 +95,6 @@ function consulta() {
         document.getElementById("tabla").innerHTML += '<tr><td>'+doc.data().NUM_HABITACION+'</td><td><button type="button" class="btnClave" onClick="eliminaReservacion(id);">'+id+'</button></td><td>'+doc.data().ESTATUS+'</td><td>'+doc.data().CLV_HUESPED+'</td><td>'+formatoReservacion+'</td><td>'+formatoEntrada+'</td><td>'+formatoSalida+'</td><td>'+doc.data().NUM_HUESPEDES+'</td></tr>';
       });
     } else {
-      alert("No hay registros, así que envía vacío");
       /* Cuando el número de documentos es 0, agrega un texto HTML. */
       document.getElementById("tabla").innerHTML += '<tr><td>'+"-- No hay registros de reservaciones. --"+'</td></tr>';
     }
@@ -144,8 +142,7 @@ async function eliminaReservacion(id){
   alert("Reservación cancelada.");
   try {
     if (confirm("¿Estas segur@ de cancelar esta reservación?")) {
-      /* await firestore.collection("RESERVACION").doc(id).delete();*/
-      consulta();
+      await firestore.collection("RESERVACION").doc(id).delete();
     }
   } catch (e) {
     procesaError(e);
