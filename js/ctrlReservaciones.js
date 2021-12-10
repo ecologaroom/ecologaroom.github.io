@@ -141,9 +141,11 @@ function reservaFecha() {
   alert("llega a reserva x fecha");
 
   var fechaRegistros = document.getElementById("calendario");
+  alert("Fecha en calendario" + fechaRegistros);
 
   /* Registros de la colección Reservación, ordenados por número de habitación */
   firestore.collection("RESERVACION").where("FECHA_ENTRADA", "==", fechaRegistros).get().then(function(snap){
+    alert("Entra al where");
     if (snap.size > 0) {
       /* Cuando el número de documentos es 0, agrega un texto HTML. */
       snap.forEach(function(doc){
@@ -167,7 +169,6 @@ function reservaFecha() {
       document.getElementById("tabla").innerHTML += '<tr class="registro"><td>'+"-- No hay registros de reservaciones en esta fecha. --"+'</td></tr>';
     }
   });
-  /* .orderBy("NUM_HABITACION", "desc")*//////////////////////////////////////////////////
 }
 
 async function eliminaReservacion(){
