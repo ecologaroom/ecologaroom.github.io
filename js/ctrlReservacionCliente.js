@@ -21,6 +21,7 @@ const formDaoPago = document["formDaoPago"];
 async function protege(usuario) {
   if (tieneRol(usuario,["CLIENTE"])) {
     /////////////////////////////////////////////// Faltaría consultar sus datos si ya los ha registrado
+    selectHabitaciones();
   }
 }
 
@@ -129,9 +130,9 @@ async function registroCliente(){
 /** Desplega tipo de habitaciones. */
 function selectHabitaciones() {
   var selection = document.getElementById('tipoHab');
-
   selection.innerHTML = "";
 
+  alert("Ya entró a select habitaciones");
   /* Registros de la colección Reservación, ordenados por número de habitación */
   // @ts-ignore
   firestore.collection("TIPO_HABITACION").orderBy("NUM_HUESPEDES").get().then(function(snap){
