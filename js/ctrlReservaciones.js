@@ -90,11 +90,11 @@ function consulta() {
         var fechaSalida = new Date(fs);
         var formatoSalida = [fechaSalida.getDate()+1, fechaSalida.getMonth()+1, fechaSalida.getFullYear()].join('/');
 
-        document.getElementById("tabla").innerHTML += '<tr id="registro"><td>'+doc.data().NUM_HABITACION+'</td><td><button type="button" class="btnClave" title="Cancelar reservación" onClick="eliminaReservacion();">'+doc.id+'</button></td><td>'+doc.data().ESTATUS+'</td><td>'+doc.data().CLV_HUESPED+'</td><td>'+formatoReservacion+'</td><td>'+formatoEntrada+'</td><td>'+formatoSalida+'</td><td>'+doc.data().NUM_HUESPEDES+'</td></tr>';
+        document.getElementById("tabla").innerHTML += '<tr class="registro"><td>'+doc.data().NUM_HABITACION+'</td><td><button type="button" class="btnClave" title="Cancelar reservación" onClick="eliminaReservacion();">'+doc.id+'</button></td><td>'+doc.data().ESTATUS+'</td><td>'+doc.data().CLV_HUESPED+'</td><td>'+formatoReservacion+'</td><td>'+formatoEntrada+'</td><td>'+formatoSalida+'</td><td>'+doc.data().NUM_HUESPEDES+'</td></tr>';
       });
     } else {
       /* Cuando el número de documentos es 0, agrega un texto HTML. */
-      document.getElementById("tabla").innerHTML += '<tr id="registro"><td>'+"-- No hay registros de reservaciones. --"+'</td></tr>';
+      document.getElementById("tabla").innerHTML += '<tr class="registro"><td>'+"-- No hay registros de reservaciones. --"+'</td></tr>';
     }
   });
   /* .orderBy("NUM_HABITACION", "desc")*//////////////////////////////////////////////////
@@ -139,14 +139,19 @@ function reemplaza(letra) {
 async function eliminaReservacion(){
   try {
     var id = prompt("Si desea cancelar la reservación, favor de volver a ingresar el código", "");
+
     await firestore.collection("RESERVACION").doc(id).delete();
 
     alert("Ya eliminó la reservación");
 
-    const tab = document.getElementById("tabla");
-    var registro = document.getElementById("registro");
-    tab.removeChild(registro);
+    var tab = document.getElementById('tabla');
+    var filas = tab.getElementsByTagName('tr');
+    var numFilas = filas.length;
+    var filaInicio = 1;
 
+    for (var i=filaInicio; i<numFilas; i++) {
+      tab.removeChild(filas[i]);
+    }
     alert("elimina registros anteriores");
 
     consulta();
