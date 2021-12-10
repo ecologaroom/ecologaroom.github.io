@@ -176,7 +176,7 @@ function reservaFecha() {
       });
     } else {
       /* Cuando el número de documentos es 0, agrega un texto HTML. */
-      document.getElementById("tabla").innerHTML += '<tr class="registro"><td>'+"-- No hay registros de reservaciones en esta fecha. --"+'</td></tr>';
+      document.getElementById("tabla").innerHTML = '<tr class="registro"><td>'+"-- No hay registros de reservaciones en esta fecha. --"+'</td></tr>';
     }
   });
 }
