@@ -71,11 +71,11 @@ async function logIn() {
 
 /** Muestra las reservaciones y se actualiza automáticamente. */
 function consulta() {
-  alert("entra a consulta");
+  alert("llega a consulta");
 
-  const tabla = document.getElementById("tabla");
+  const tab = document.getElementById("tabla");
   var registro = document.getElementById("registro");
-  tabla.removeChild(registro);
+  tab.removeChild(registro);
 
   alert("elimina registros anteriores");
 
