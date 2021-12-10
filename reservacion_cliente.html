@@ -20,7 +20,7 @@
     <!-- Navegación interna de la página -->
     <script src="js/navegacion.js"></script>
     <!-- Navegación interna de la página -->
-    <script src="js/ctrlClienteNuevo.js"></script>
+    <script src="js/ctrlReservacionCliente.js"></script>
   </head>
   <body>
     <!-- Página -->
@@ -221,78 +221,6 @@
             <!-- División -->
             <div class="division"></div>
             <!-- División -->
-
-            <!-- Apartado de los datos del método de pago -->
-            <div class="card">
-              <!-- Título del apartado -->
-              <h2>Método de pago</h2>
-              <!-- Título del apartado -->
-
-              <!-- Formulario del apartado -->
-              <form name="formDaoPago" accept-charset="UTF-8">  
-                <!-- Nombre -->  
-                <div class="inputFlotante">
-                  <input class="floating__input" name="num_tarjeta" type="text" placeholder="Número de trajeta" maxlength="16" required/>
-                  <label class="floating__label" data-content="Número de trajeta"></label>
-                </div>
-
-                <!-- Fila de datos -->
-                <div class="fila">
-                  <!-- Mes -->
-                  <div class="colum">
-                    <div class="inputFlotante">
-                      <select name="mes" class="floating__select" placeholder="Mes" required>
-                        <option value="01">01</option>
-                        <option value="02">02</option>
-                        <option value="03">03</option>
-                        <option value="04">04</option>
-                        <option value="05">05</option>
-                        <option value="06">06</option>
-                        <option value="07">07</option>
-                        <option value="08">08</option>
-                        <option value="09">09</option>
-                        <option value="10">10</option>
-                        <option value="11">11</option>
-                        <option value="12">12</option>
-                      </select>
-                      <label class="floating__label" data-content="Mes"></label>
-                    </div>
-                  </div>
-                  <!-- Año -->
-                  <div class="colum">
-                    <div class="inputFlotante">
-                      <select name="año" class="floating__select" placeholder="Año" required>
-                        <option value="2022">2022</option>
-                        <option value="2023">2023</option>
-                        <option value="2024">2024</option>
-                        <option value="2025">2025</option>
-                        <option value="2026">2026</option>
-                        <option value="2027">2027</option>
-                        <option value="2028">2028</option>
-                        <option value="2029">2029</option>
-                        <option value="2030">2030</option>
-                        <option value="2031">2031</option>
-                        <option value="2032">2032</option>
-                      </select>
-                      <label class="floating__label" data-content="Año"></label>
-                    </div>
-                  </div>
-                  <!-- Código de seguridad -->
-                  <div class="colum">
-                    <div class="inputFlotante">
-                      <input class="floating__input" name="cvv" type="text" placeholder="CVV" size="1" maxlength="3" min="000" max="999" required/>
-                      <label class="floating__label" data-content="CVV"></label>
-                    </div>
-                  </div>
-                </div>
-                <!-- Fila de datos -->
-                <!-- Botón registrar -->
-                <button type="submit" class="btn" onclick="efectuaPago();" style="margin-bottom: 2%; margin-top: 5%;">Pagar</button>
-              </form>
-              <!-- Formulario del apartado -->
-            </div>
-            <!-- Apartado de los datos del método de pago -->
-
           </div>
           <!-- Envoltura para apartados de la izquierda -->   
 

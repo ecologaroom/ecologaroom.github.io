@@ -147,7 +147,8 @@ function reservaFecha() {
   alert("Reservaciones según fecha");
   // @ts-ignore
   var date = new Date(document.getElementById("calendario").value);
-  var fechaLlegada = date.getUTCDate;
+  // @ts-ignore
+  var fechaLlegada = date.getUTCDate.value;
 
   alert("Fecha en calendario" + fechaLlegada);
 
