@@ -11,9 +11,7 @@ auth.onAuthStateChanged(protege, procesaError);
     "../lib/tiposFire.js").User}
     usuario */
 async function protege(usuario) {
-  alert("Entra a protege");
   if (tieneRol(usuario,["TRABAJADOR"])) {
-    alert("Es trabajador");
     consulta();
   }
 }
@@ -25,21 +23,16 @@ async function protege(usuario) {
  * @param {string[]} roles
  * @returns {Promise<boolean>} */
 async function tieneRol(usuario, roles) {
-  alert("Verifica inicio de sesión");
   if (usuario && usuario.email) {
-    alert("Si inició sesión");
     const rolIds = await cargaRoles(usuario.email);
-    alert("Rol cargado");
     for (const rol of roles) {
       if (rolIds.has(rol)) {
-        alert("Rol autorizado");
         return true;
       }
     }
     alert("No autorizado.");
     location.href = "index.html";
   } else {
-    alert("No inició sesión");
     logIn();
   }
   return false;
@@ -51,23 +44,19 @@ async function tieneRol(usuario, roles) {
  */
 async function cargaRoles(email) { 
   let doc = await firestore.collection("USUARIO").doc(email).get();
-  alert("Obtuvo rol de la colección");
   if (doc.exists) {
     /**
      * @type {
         import("./tipos.js").
         USUARIO} */
     const data = doc.data();
-    alert("Si tiene rol asignado");
     return new Set(data.ROLIDS || []);
   } else {
-    alert("No tiene rol asignado");
     return new Set();
   }
 }
 
 async function logIn() {
-  alert("Rediccionando a google");
   /** Autenticación con Google.
    * @type {import(
       "../lib/tiposFire.js").
@@ -103,54 +92,6 @@ function consulta() {
     }
   });
   /* .orderBy("NUM_HABITACION", "desc")*//////////////////////////////////////////////////
-}
-
-/** Muestra actualizadamente datos enviados por el servidor.
- * @param {import(
-    "../lib/tiposFire.js").
-    QuerySnapshot} snap estructura parecida a un Array, copia de los datos del servidor. */
-function tablaHTML(snap) {
-  alert("entra a formar la tabla.");
-  let html = "";
-  if (snap.size > 0) {
-    alert("Hay registros, así que constuye");
-    /* Uno por uno se revisan los documentos de la consulta y los muestra. El iterador*/
-    snap.forEach(doc => html += htmlFila(doc));
-    alert("Registros en html");
-  } else {
-    alert("No hay registros, así que envía vacío");
-    /* Cuando el número de documentos es 0, agrega un texto HTML. */
-    html += /* html */
-    `<tr>
-      <td>
-        -- No hay alumnos registrados. --
-      </td>
-     </tr>`;
-  }
-  alert("Construye la lista a partir del html obtenido.");
-  
-  alert("Registros o no insertados");
-}
-
-/////////////////////////////////////////////////////////////////////
-/** Agrega el texto HTML a un documento de una reservación.
- * @param {import(
-    "../lib/tiposFire.js").
-    DocumentSnapshot} doc */
-function htmlFila(doc) {
-  alert("Generando fila.");
-  /**
-   * @type {import("./tipos.js").
-                  RESERVACION} */
-  const data = doc.data();
-  const numHabitacion = escape(data.NUM_HABITACION);
-  const clvReservacion = 1;
-  const estatus= escape(data.ESTATUS);
-  const huesped = escape(data.CLV_HUESPED);
-  const fechaReservacion = escape(data.FECHA_RESERVACION);
-  const entrada= escape(data.FECHA_ENTRADA);
-  const salida = escape(data.FECHA_SALIDA);
-  const numHuespedes = escape(data.NUM_HUESPEDES);;
 }
 
 /** Función de que muestra el error al recuperar los registros. Aquí la conexión se cancela y debe volverse a conectar
