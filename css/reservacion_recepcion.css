@@ -133,14 +133,13 @@ td{
     width: auto; /* Establecemos que el botón de reservar abarque 100 pixeles */
     display: inline-block;
     padding: 0.3em 0em; 
-    background: outset;
-    border: none;
+    background: outset transparent;
     border-radius: 40px;
     text-align: center; /* Alineamos el texto del botón reservar al centro de los 100 pixeles de lo que abarca */
     font-family: 'EB Garamond', serif; /* Asignamos la familia EB Garamond al texto del botón reservar */
     font-size: 18px;
     font-weight: bold;
-    color:#f5f3ef;
+    color: black;
     transition: all 500ms ease;
 }
   
