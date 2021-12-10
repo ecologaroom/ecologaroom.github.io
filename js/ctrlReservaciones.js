@@ -142,18 +142,15 @@ function reemplaza(letra) {
 
 /** Muestra las reservaciones y se actualiza automáticamente. */
 function reservaFecha() {
-  alert("llega a reserva x fecha");
+  alert("RESERVA X FECHA");
 
-  var calendario = document.getElementById("calendario");
   // @ts-ignore
-  var fechaSalida = new Date(calendario);
-  var fechaRegistros = [fechaSalida.getDate()+1, fechaSalida.getMonth()+1, fechaSalida.getFullYear()].join('/');
+  var calendario = document.getElementById("calendario").value;
 
-
-  alert("Fecha en calendario" + fechaRegistros);
+  alert("Fecha en calendario" + calendario);
 
   /* Registros de la colección Reservación, ordenados por número de habitación */
-  firestore.collection("RESERVACION").where("FECHA_ENTRADA", "==", fechaRegistros).get().then(function(snap){
+  firestore.collection("RESERVACION").where("FECHA_ENTRADA", "==", calendario).get().then(function(snap){
     alert("Entra al where");
     if (snap.size > 0) {
       /* Cuando el número de documentos es 0, agrega un texto HTML. */
