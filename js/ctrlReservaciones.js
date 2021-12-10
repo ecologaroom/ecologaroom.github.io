@@ -77,6 +77,7 @@ function consulta() {
   var registro = document.getElementById("registro");
   tabla.removeChild(registro);
 
+  alert("elimina registros anteriores");
 
   /* Registros de la colección Reservación, ordenados por número de habitación */
   firestore.collection("RESERVACION").get().then(function(snap){
@@ -100,7 +101,7 @@ function consulta() {
       });
     } else {
       /* Cuando el número de documentos es 0, agrega un texto HTML. */
-      document.getElementById("tabla").innerHTML += '<tr><td>'+"-- No hay registros de reservaciones. --"+'</td></tr>';
+      document.getElementById("tabla").innerHTML += '<tr id="registro"><td>'+"-- No hay registros de reservaciones. --"+'</td></tr>';
     }
   });
   /* .orderBy("NUM_HABITACION", "desc")*//////////////////////////////////////////////////
