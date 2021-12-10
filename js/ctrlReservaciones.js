@@ -84,7 +84,7 @@ async function logIn() {
 function consulta() {
   alert("entra a consulta");
   /* Registros de la colección Reservación, ordenados por número de habitación */
-  firestore.collection("RESERVACION").orderBy("NUM_HABITACION").then(function(snap){
+  firestore.collection("RESERVACION").get().then(function(snap){
     if (snap.size > 0) {
       alert("Hay registros, así que construye por cada registro");
       /* Cuando el número de documentos es 0, agrega un texto HTML. */
