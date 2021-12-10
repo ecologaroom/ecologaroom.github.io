@@ -172,6 +172,8 @@ function reservaFecha() {
         var fechaSalida = new Date(fs);
         var formatoSalida = [fechaSalida.getDate()+1, fechaSalida.getMonth()+1, fechaSalida.getFullYear()].join('/');
 
+        alert("Fecha de entrada en timestamp" + doc.data().FECHA_ENTRADA);
+
         document.getElementById("tabla").innerHTML += '<tr class="registro"><td>'+doc.data().NUM_HABITACION+'</td><td><button type="button" class="btnClave" title="Cancelar reservación" onClick="eliminaReservacion();">'+doc.id+'</button></td><td>'+doc.data().ESTATUS+'</td><td>'+doc.data().CLV_HUESPED+'</td><td>'+formatoReservacion+'</td><td>'+formatoEntrada+'</td><td>'+formatoSalida+'</td><td>'+doc.data().NUM_HUESPEDES+'</td></tr>';
       });
     } else {
