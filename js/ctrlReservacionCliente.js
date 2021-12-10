@@ -88,17 +88,21 @@ async function registroCliente(){
     const AP_PATERNO = document.getElementById("ap_paterno").value;
     // @ts-ignore
     const AP_MATERNO = document.getElementById("ap_materno").value;
+
+    alert("nombre:" + NOMBRE + " "+ AP_PATERNO+" "+AP_MATERNO);
     // @ts-ignore
     const EDAD = document.getElementById("edad").value;
+    alert("edad:" + EDAD);
     // @ts-ignore
     const CELULAR = document.getElementById("celular").value;
+    alert("celular:" +CELULAR);
     // @ts-ignore
     const CORREO = document.getElementById("correo").value;
+    alert("correo:" + CORREO);
     // @ts-ignore
     const SEXO = document.getElementById("sexo").value;
 
-    alert("nombre:" + NOMBRE + " "+ AP_PATERNO+" "+AP_MATERNO+ " "+ EDAD+" "+CELULAR+ " "+ CORREO+" "+SEXO);
-
+    alert("sexo:" +SEXO);
 
 /*
     const formDataCliente = new FormData(formDaoCliente);
@@ -148,11 +152,11 @@ async function registroCliente(){
 /** Desplega tipo de habitaciones. */
 function selectHabitaciones() {
   var selection = document.getElementById('tipoHab');
+
   selection.innerHTML = "";
 
   /* Registros de la colección Reservación, ordenados por número de habitación */
   // @ts-ignore
-
   firestore.collection("TIPO_HABITACION").orderBy("NUM_HUESPEDES").get().then(function(snap){
     if (snap.size > 0) {
       /* Cuando el número de documentos es 0, agrega un texto HTML. */

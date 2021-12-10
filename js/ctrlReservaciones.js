@@ -157,7 +157,6 @@ function reservaHuesped() {
   } else {
     /* Registros de la colección Reservación, ordenados por número de habitación */
     firestore.collection("RESERVACION").where("CLV_HUESPED", "==", nom).get().then(function(snap){
-      alert("Entra al where");
       if (snap.size > 0) {
         /* Cuando el número de documentos es 0, agrega un texto HTML. */
         snap.forEach(function(doc){
