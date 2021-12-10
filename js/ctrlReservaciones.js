@@ -71,9 +71,9 @@ async function logIn() {
 
 /** Muestra las reservaciones y se actualiza automáticamente. */
 function consulta() {
-  alert("llega a consulta");
+  alert("CONSULTAAAA");
   /* Registros de la colección Reservación, ordenados por número de habitación */
-  firestore.collection("RESERVACION").get().then(function(snap){
+  firestore.collection("RESERVACION").orderBy("NUM_HABITACION").get().then(function(snap){
     if (snap.size > 0) {
       /* Cuando el número de documentos es 0, agrega un texto HTML. */
       snap.forEach(function(doc){
@@ -134,6 +134,40 @@ function reemplaza(letra) {
       case "'": return "&#039;";
       default: return letra;
   }
+}
+
+/** Muestra las reservaciones y se actualiza automáticamente. */
+function reservaFecha() {
+  alert("llega a reserva x fecha");
+
+  var fechaRegistros = document.getElementById("calendario");
+
+  /* Registros de la colección Reservación, ordenados por número de habitación */
+  firestore.collection("RESERVACION").where("FECHA_ENTRADA", "==", fechaRegistros).get().then(function(snap){
+    if (snap.size > 0) {
+      /* Cuando el número de documentos es 0, agrega un texto HTML. */
+      snap.forEach(function(doc){
+        /* Transformación de tipo de dato TIMESTAMP en Firestore, por tipo Date en JS */
+        var fr = doc.data().FECHA_RESERVACION.toDate();
+        var fechaReservacion = new Date(fr);
+        var formatoReservacion = [fechaReservacion.getDate()+1, fechaReservacion.getMonth()+1, fechaReservacion.getFullYear()].join('/');
+
+        var fe = doc.data().FECHA_ENTRADA.toDate();
+        var fechaEntrada = new Date(fe);
+        var formatoEntrada = [fechaEntrada.getDate()+1, fechaEntrada.getMonth()+1, fechaEntrada.getFullYear()].join('/');
+
+        var fs = doc.data().FECHA_SALIDA.toDate();
+        var fechaSalida = new Date(fs);
+        var formatoSalida = [fechaSalida.getDate()+1, fechaSalida.getMonth()+1, fechaSalida.getFullYear()].join('/');
+
+        document.getElementById("tabla").innerHTML += '<tr class="registro"><td>'+doc.data().NUM_HABITACION+'</td><td><button type="button" class="btnClave" title="Cancelar reservación" onClick="eliminaReservacion();">'+doc.id+'</button></td><td>'+doc.data().ESTATUS+'</td><td>'+doc.data().CLV_HUESPED+'</td><td>'+formatoReservacion+'</td><td>'+formatoEntrada+'</td><td>'+formatoSalida+'</td><td>'+doc.data().NUM_HUESPEDES+'</td></tr>';
+      });
+    } else {
+      /* Cuando el número de documentos es 0, agrega un texto HTML. */
+      document.getElementById("tabla").innerHTML += '<tr class="registro"><td>'+"-- No hay registros de reservaciones en esta fecha. --"+'</td></tr>';
+    }
+  });
+  /* .orderBy("NUM_HABITACION", "desc")*//////////////////////////////////////////////////
 }
 
 async function eliminaReservacion(){
