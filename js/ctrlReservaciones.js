@@ -140,14 +140,14 @@ async function eliminaReservacion(){
   try {
     var id = prompt("Si desea cancelar la reservación, favor de volver a ingresar el código", "");
 
-    await firestore.collection("RESERVACION").doc(id).delete();
-
-    alert("Ya eliminó la reservación");
+    //await firestore.collection("RESERVACION").doc(id).delete();
 
     var tab = document.getElementById('tabla');
     var filas = tab.getElementsByTagName('tr');
     var numFilas = filas.length;
     var filaInicio = 1;
+
+    alert("Entramos a que ya tiene datos de tabla y filas");
 
     for (var i=filaInicio; i<numFilas; i++) {
       tab.removeChild(filas[i]);
