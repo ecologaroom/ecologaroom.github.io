@@ -144,12 +144,10 @@ function reemplaza(letra) {
 
 /** Muestra las reservaciones por fecha y se actualiza automáticamente. */
 function reservaFecha() {
-  alert("FECHA RES");
-
-  
+  alert("Reservaciones según fecha");
   // @ts-ignore
   var date = new Date(document.getElementById("calendario").value);
-  var fechaLlegada = date.toLocaleString('en-US', { timeZone: 'UTC-6' });
+  var fechaLlegada = date.getUTCDate;
 
   alert("Fecha en calendario" + fechaLlegada);
 
@@ -170,7 +168,7 @@ function reservaFecha() {
 
         var fe = doc.data().FECHA_ENTRADA.toDate();
         var fechaEntrada = new Date(fe);
-        var formatoEntrada = [fechaEntrada.getDate()+1, fechaEntrada.getMonth()+1, fechaEntrada.getFullYear()].join('/');
+        var formatoEntrada = [fechaEntrada.getDate(), fechaEntrada.getMonth()+1, fechaEntrada.getFullYear()].join('/');
 
         var fs = doc.data().FECHA_SALIDA.toDate();
         var fechaSalida = new Date(fs);
@@ -210,7 +208,7 @@ function reservaHuesped() {
 
           var fe = doc.data().FECHA_ENTRADA.toDate();
           var fechaEntrada = new Date(fe);
-          var formatoEntrada = [fechaEntrada.getDate()+1, fechaEntrada.getMonth()+1, fechaEntrada.getFullYear()].join('/');
+          var formatoEntrada = [fechaEntrada.getDate(), fechaEntrada.getMonth()+1, fechaEntrada.getFullYear()].join('/');
 
           var fs = doc.data().FECHA_SALIDA.toDate();
           var fechaSalida = new Date(fs);
