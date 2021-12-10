@@ -134,7 +134,8 @@ td{
     display: inline-block;
     padding: 0.3em 0em; 
     background: outset transparent;
-    border-radius: 40px;
+    border: none;
+    border-radius: 20px;
     text-align: center; /* Alineamos el texto del botón reservar al centro de los 100 pixeles de lo que abarca */
     font-family: 'EB Garamond', serif; /* Asignamos la familia EB Garamond al texto del botón reservar */
     font-size: 18px;
