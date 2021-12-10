@@ -83,8 +83,22 @@ async function registroCliente(){
     alert("Entra al try de registroCliente");
 
     // @ts-ignore
-    const nom = document.getElementById("nombre").value;
-    alert("nombre:" + nom);
+    const NOMBRE = document.getElementById("nombre").value;
+    // @ts-ignore
+    const AP_PATERNO = document.getElementById("ap_paterno").value;
+    // @ts-ignore
+    const AP_MATERNO = document.getElementById("ap_materno").value;
+    // @ts-ignore
+    const EDAD = document.getElementById("edad").value;
+    // @ts-ignore
+    const CELULAR = document.getElementById("celular").value;
+    // @ts-ignore
+    const CORREO = document.getElementById("correo").value;
+    // @ts-ignore
+    const SEXO = document.getElementById("sexo").value;
+
+    alert("nombre:" + NOMBRE + " "+ AP_PATERNO+" "+AP_MATERNO+ " "+ EDAD+" "+CELULAR+ " "+ CORREO+" "+SEXO);
+
 
 /*
     const formDataCliente = new FormData(formDaoCliente);
