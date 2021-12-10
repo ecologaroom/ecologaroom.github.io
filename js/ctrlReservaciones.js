@@ -71,7 +71,6 @@ async function logIn() {
 
 /** Muestra las reservaciones y se actualiza automáticamente. */
 function consulta() {
-  alert("CO-NS-UL-TA");
   var tab = document.getElementById('tabla');
   tab.innerHTML = "";
   tab.innerHTML += '<tr><th colspan="1">#Habitación</th><th colspan="1">Reservación</th><th colspan="1">Estatus</th><th colspan="1">Huésped</th><th colspan="1">Fecha de reservación</th><th colspan="1">Entrada</th><th colspan="1">Salida</th><th colspan="1">#Huéspedes</th></tr>'
@@ -98,7 +97,7 @@ function consulta() {
       });
     } else {
       /* Cuando el número de documentos es 0, agrega un texto HTML. */
-      document.getElementById("tabla").innerHTML += '<tr class="registro"><td>'+"-- No hay registros de reservaciones. --"+'</td></tr>';
+      document.getElementById("tabla").innerHTML = '<tr class="registro"><td>'+"-- No hay registros de reservaciones. --"+'</td></tr>';
     }
   });
   /* .orderBy("NUM_HABITACION", "desc")*//////////////////////////////////////////////////
@@ -142,12 +141,11 @@ function reemplaza(letra) {
 
 /** Muestra las reservaciones y se actualiza automáticamente. */
 function reservaFecha() {
-  alert("RESERVA  FECHA");
+  alert("FECHA RES");
 
   // @ts-ignore
-  var calendario = document.getElementById("calendario").value;
-  var conversion = calendario.split("-");
-  var fechaLlegada = new Date( conversion[2], conversion[1] - 1, conversion[0]);
+  var date = new Date(document.getElementById("calendario").value);
+  var fechaLlegada = date.getTime();
 
   alert("Fecha en calendario" + fechaLlegada);
 
