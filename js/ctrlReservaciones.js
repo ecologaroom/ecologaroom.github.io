@@ -198,10 +198,12 @@ async function eliminaReservacion(){
 /* Terminar la sesión. */
 async function logOut() {
   try {
-    /* Conecta a Firebase para cerrar sesión */
-    await auth.signOut().then(() => {
-      location.href = "index.html";
-    });  
+    if(prompt("¿Desea cerrar sesión?", "")){
+      /* Conecta a Firebase para cerrar sesión */
+      await auth.signOut().then(() => {
+        location.href = "index.html";
+      });  
+    }
   } catch (e) {
     procesaError(e);
   }
