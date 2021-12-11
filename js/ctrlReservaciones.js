@@ -76,7 +76,7 @@ function consulta() {
   tab.innerHTML += '<tr><th colspan="1">#Habitación</th><th colspan="1">Reservación</th><th colspan="1">Estatus</th><th colspan="1">Huésped</th><th colspan="1">Fecha de reservación</th><th colspan="1">Entrada</th><th colspan="1">Salida</th><th colspan="1">#Huéspedes</th></tr>'
 
   var hoy = dateFormat(new Date(), 'dd-mm-yyyy')
-  alert(hoy);
+  alert("Hoy es:" + hoy);
 
   /* Registros de la colección Reservación, ordenados por número de habitación */
   // @ts-ignore
@@ -165,15 +165,15 @@ function reservaFecha() {
 
   // @ts-ignore
   var calendario = document.getElementById("calendario").value;
-  var fecha = calendario.toString().split("-").reverse().join("-");
+  /*var fecha = calendario.toString().split("-").reverse().join("-");*/
 
-  alert(fecha);
+  alert(calendario);
 
-  if(fecha == "" || fecha == "dd-mm-aaaa"){
+  if(calendario == "" || calendario == "dd-mm-aaaa"){
     consulta();
   } else {
     /* Registros de la colección Reservación, ordenados por número de habitación */
-    firestore.collection("RESERVACION").where("FECHA_ENTRADA", "==", fecha).orderBy("NUM_HABITACION").get().then(function(snap){
+    firestore.collection("RESERVACION").where("FECHA_ENTRADA", "==", calendario).orderBy("NUM_HABITACION").get().then(function(snap){
       if (snap.size > 0) {
         /* Cuando el número de documentos es 0, agrega un texto HTML. */
         snap.forEach(function(doc){
