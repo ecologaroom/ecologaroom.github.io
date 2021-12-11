@@ -265,8 +265,10 @@ async function realizaReservacion(){
     alert("Clave:"+ clv);
 
     var fecha = new Date();
+
+    
     var hoy = [fecha.getDate(), fecha.getMonth()+1, fecha.getFullYear()].join('/');
-    alert("Fecha de hoy:" + hoy);
+    alert("Fecha HOY:" + hoy);
 
     /**
      * @type {
