@@ -17,8 +17,9 @@ footer {
   
 .icon {
     margin: 0% 1% 0% 1%;
-    filter: invert(1);
-    size: 50px;
+    background: chocolate;
+    height: 30px;
+    width: 30px;
 }
   
 .copyright {
