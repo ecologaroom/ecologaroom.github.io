@@ -14,14 +14,20 @@ footer {
     padding: 1vw 0vw 1vw 0vw;
     text-align: center;
 }
-  
+
 .icon {
     margin: 0% 1% 0% 1%;
-    background: chocolate;
-    height: 30px;
-    width: 30px;
+    color: #7ed957;
+    font-size: 20px;
+    font-weight: 600;
+    text-decoration: none;
 }
   
+.icon:hover {
+    margin: 0% 1% 0% 1%;
+    color: blue;
+}
+
 .copyright {
     color: white;
     text-align: center;
