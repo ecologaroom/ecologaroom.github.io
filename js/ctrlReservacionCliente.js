@@ -85,9 +85,10 @@ async function registroCliente(){
     // @ts-ignore
     const NOMBRE = document.getElementById("nombre").value;
     alert("nombre:" + NOMBRE);
-    // @ts-ignore
-    const AP_PATERNO = document.getElementById("ap_paterno").value;
+    
+    const AP_PATERNO = document.getElementById('ap_paterno').nodeValue;
     alert("paterno:" + AP_PATERNO);
+    
     // @ts-ignore
     const AP_MATERNO = document.getElementById("ap_materno").value;
     alert("materno:"+AP_MATERNO);
