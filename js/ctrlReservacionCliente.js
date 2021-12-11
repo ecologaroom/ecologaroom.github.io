@@ -79,43 +79,43 @@ async function logIn() {
 }
 
 async function registroCliente(){
-  // @ts-ignore
-  const nom = document.getElementById("nombre").value;
-  // @ts-ignore
-  const ap_pa = document.getElementById('ap_paterno').value;
-  // @ts-ignore
-  const ap_ma = document.getElementById("ap_materno").value;
-  // @ts-ignore
-  const ed = document.getElementById("edad").value;
-  // @ts-ignore
-  const sex = document.getElementById("sexo").value;
-  // @ts-ignore
-  const cel = document.getElementById("celular").value;
-  // @ts-ignore
-  const corr = document.getElementById("correo").value;
+  try {
+    // @ts-ignore
+    const nom = document.getElementById("nombre").value;
+    // @ts-ignore
+    const ap_pa = document.getElementById('ap_paterno').value;
+    // @ts-ignore
+    const ap_ma = document.getElementById("ap_materno").value;
+    // @ts-ignore
+    const ed = document.getElementById("edad").value;
+    // @ts-ignore
+    const sex = document.getElementById("sexo").value;
+    // @ts-ignore
+    const cel = document.getElementById("celular").value;
+    // @ts-ignore
+    const corr = document.getElementById("correo").value;
 
-  if(nom.trim() == ""){
-    alert("Debe ingresar su nombre.");
-  } else {
-    if(ap_pa.trim() == ""){
-      alert("Debe ingresar su apellido paterno.");
+    if(nom.trim() == ""){
+      alert("Debe ingresar su nombre.");
     } else {
-      if(ap_ma.trim() == ""){
-        alert("Debe ingresar su apellido materno.");
+      if(ap_pa.trim() == ""){
+        alert("Debe ingresar su apellido paterno.");
       } else {
-        if(ed.trim() == ""){
-          alert("Debe ingresar su edad.");
+        if(ap_ma.trim() == ""){
+          alert("Debe ingresar su apellido materno.");
         } else {
-          if(sex.trim() == ""){
-            alert("Debe ingresar su sexo.");
+          if(ed.trim() == ""){
+            alert("Debe ingresar su edad.");
           } else {
-            if(cel.trim() == ""){
-              alert("Debe ingresar su celular.");
+            if(sex.trim() == ""){
+              alert("Debe ingresar su sexo.");
             } else {
-              if(corr.trim() == ""){
-                alert("Debe ingresar su correo.");
+              if(cel.trim() == ""){
+                alert("Debe ingresar su celular.");
               } else {
-                try {
+                if(corr.trim() == ""){
+                  alert("Debe ingresar su correo.");
+                } else {
                   /**
                    * @type {
                       import("./tipos.js").
@@ -129,11 +129,9 @@ async function registroCliente(){
                     SEXO: sex, 
                     CELULAR: cel
                   };
-              
                   alert("Sus datos han sido registrados exitosamente.");
                   await firestore.collection("CLIENTE").add(modeloCliente); 
-                } catch (e) {
-                  procesaError(e);
+                  alert("YEEIII");
                 }
               }
             }
@@ -141,6 +139,8 @@ async function registroCliente(){
         }
       }
     }
+  } catch (e) {
+    procesaError(e);
   }
 }
 
@@ -341,10 +341,12 @@ function reemplaza(letra) {
 /* Terminar la sesión. */
 async function logOut() {
   try {
-    /* Conecta a Firebase para cerrar sesión */
-    await auth.signOut().then(() => {
-      location.href = "index.html";
-    });  
+    if(confirm("¿Desea cerrar sesión?")){
+      /* Conecta a Firebase para cerrar sesión */
+      await auth.signOut().then(() => {
+        location.href = "index.html";
+      });  
+    }
   } catch (e) {
     procesaError(e);
   }
