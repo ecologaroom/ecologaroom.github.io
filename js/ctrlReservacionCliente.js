@@ -159,6 +159,12 @@ function numHabitaciones() {
   var num = document.getElementById("num_hues").value;
 
   switch (num) {
+    case '1':
+      input.innerHTML = '<input class="floating__input" id="num_hab" name="Num_hab" type="number" placeholder="# Habitaciones" maxlength="2" min="1" max="1" required/><label class="floating__label" data-content="# Habitaciones"></label>'
+      break;
+    case '2':
+      input.innerHTML = '<input class="floating__input" id="num_hab" name="Num_hab" type="number" placeholder="# Habitaciones" maxlength="2" min="1" max="2" required/><label class="floating__label" data-content="# Habitaciones"></label>'
+      break;
     case '3':
       input.innerHTML = '<input class="floating__input" id="num_hab" name="Num_hab" type="number" placeholder="# Habitaciones" maxlength="2" min="1" max="3" required/><label class="floating__label" data-content="# Habitaciones"></label>'
       break;
@@ -243,7 +249,7 @@ function numHabitaciones() {
     case '30':
       input.innerHTML = '<input class="floating__input" id="num_hab" name="Num_hab" type="number" placeholder="# Habitaciones" maxlength="2" min="8" max="30" required/><label class="floating__label" data-content="# Habitaciones"></label>'
       break;
-    default:
+    default: 
       break;
   }
 }
@@ -253,6 +259,8 @@ function ticket() {
   // @ts-ignore
   var hab = document.getElementById('tipoHab').value;
   var precio = document.getElementById('precioDia');
+
+  alert("Tipo hab:" + hab);
 
   if(hab == 'Estándar Plus'){
     precio.innerHTML = "";
