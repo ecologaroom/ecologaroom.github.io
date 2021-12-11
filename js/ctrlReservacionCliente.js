@@ -111,11 +111,10 @@ async function registroCliente(){
      * @type {
         import("./tipos.js").
                 CLIENTE} */
-    const modeloCliente = {NOMBRE, AP_PATERNO, AP_MATERNO, EDAD, CELULAR, CORREO, SEXO};
+    const modeloCliente = {CORREO, NOMBRE, AP_PATERNO, AP_MATERNO, EDAD, SEXO, CELULAR};
+
     await firestore.collection("CLIENTE").add(modeloCliente); 
     alert("Sus datos han sido registrados exitosamente.");
-
-    
   } catch (e) {
     procesaError(e);
   }
