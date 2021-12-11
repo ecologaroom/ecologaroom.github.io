@@ -198,7 +198,7 @@ async function eliminaReservacion(){
 /* Terminar la sesión. */
 async function logOut() {
   try {
-    if(prompt("¿Desea cerrar sesión?")){
+    if(confirm("¿Desea cerrar sesión?")){
       /* Conecta a Firebase para cerrar sesión */
       await auth.signOut().then(() => {
         location.href = "index.html";
