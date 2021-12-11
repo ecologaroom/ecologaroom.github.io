@@ -79,53 +79,68 @@ async function logIn() {
 }
 
 async function registroCliente(){
-  try {
-    alert("Entra al try de registroCliente");
+  // @ts-ignore
+  const nom = document.getElementById("nombre").value;
+  // @ts-ignore
+  const ap_pa = document.getElementById('ap_paterno').value;
+  // @ts-ignore
+  const ap_ma = document.getElementById("ap_materno").value;
+  // @ts-ignore
+  const ed = document.getElementById("edad").value;
+  // @ts-ignore
+  const sex = document.getElementById("sexo").value;
+  // @ts-ignore
+  const cel = document.getElementById("celular").value;
+  // @ts-ignore
+  const corr = document.getElementById("correo").value;
 
-    // @ts-ignore
-    const nom = document.getElementById("nombre").value;
-    alert("nombre:" + nom);
-    
-    // @ts-ignore
-    const ap_pa = document.getElementById('ap_paterno').value;
-    alert("paterno:" + ap_pa);
-
-    // @ts-ignore
-    const ap_ma = document.getElementById("ap_materno").value;
-    alert("materno:"+ap_ma);
-
-    // @ts-ignore
-    const ed = document.getElementById("edad").value;
-    alert("edad:" + ed);
-    // @ts-ignore
-    const cel = document.getElementById("celular").value;
-    alert("celular:" +cel);
-    // @ts-ignore
-    const corr = document.getElementById("correo").value;
-    alert("correo:" + corr);
-    // @ts-ignore
-    const sex = document.getElementById("sexo").value;
-    alert("sexo:" +sex);
-
-    /**
-     * @type {
-        import("./tipos.js").
-                CLIENTE} */
-    const modeloCliente = {
-      CORREO: corr, 
-      NOMBRE: nom, 
-      AP_PATERNO: ap_pa, 
-      AP_MATERNO:ap_ma, 
-      EDAD: ed, 
-      SEXO: sex, 
-      CELULAR: cel
-    };
-    alert("Guarda datos en modelo");
-    await firestore.collection("CLIENTE").add(modeloCliente); 
-
-    alert("Sus datos han sido registrados exitosamente.");
-  } catch (e) {
-    procesaError(e);
+  if(nom.trim() == ""){
+    alert("Debe ingresar su nombre.");
+  } else {
+    if(ap_pa.trim() == ""){
+      alert("Debe ingresar su apellido paterno.");
+    } else {
+      if(ap_ma.trim() == ""){
+        alert("Debe ingresar su apellido materno.");
+      } else {
+        if(ed.trim() == ""){
+          alert("Debe ingresar su edad.");
+        } else {
+          if(sex.trim() == ""){
+            alert("Debe ingresar su sexo.");
+          } else {
+            if(cel.trim() == ""){
+              alert("Debe ingresar su celular.");
+            } else {
+              if(corr.trim() == ""){
+                alert("Debe ingresar su correo.");
+              } else {
+                try {
+                  /**
+                   * @type {
+                      import("./tipos.js").
+                              CLIENTE} */
+                  const modeloCliente = {
+                    CORREO: corr, 
+                    NOMBRE: nom, 
+                    AP_PATERNO: ap_pa, 
+                    AP_MATERNO:ap_ma, 
+                    EDAD: ed, 
+                    SEXO: sex, 
+                    CELULAR: cel
+                  };
+              
+                  alert("Sus datos han sido registrados exitosamente.");
+                  await firestore.collection("CLIENTE").add(modeloCliente); 
+                } catch (e) {
+                  procesaError(e);
+                }
+              }
+            }
+          }
+        }
+      }
+    }
   }
 }
 
@@ -268,12 +283,20 @@ function ticket() {
     habitacion.innerHTML = hab;
     precio.innerHTML = "";
     precio.innerHTML = "($1,000/día)";
-  } else if(hab == 'Estándar Sencilla'){
+  }
+  if(hab == 'Estándar Sencilla'){
     alert("ES Tipo hab:" + hab);
     habitacion.innerHTML = "";
     habitacion.innerHTML = hab;
     precio.innerHTML = "";
     precio.innerHTML = "($600/día)";
+  }
+  if(hab == 'Estándar Familiar'){
+    alert("EF Tipo hab:" + hab);
+    habitacion.innerHTML = "";
+    habitacion.innerHTML = hab;
+    precio.innerHTML = "";
+    precio.innerHTML = "($800/día)";
   }
 }
 
