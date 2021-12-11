@@ -135,32 +135,17 @@ function reservaHuesped() {
 
   // @ts-ignore
   var nom = document.getElementById("buscar").value;
-
-  if(nom == ""){
+  alert(nom.trim());
+  
+  if(nom.trim() == ""){
     consulta();
   } else {
     /* Registros de la colección Reservación, ordenados por número de habitación */
-    firestore.collection("RESERVACION").where("CLV_HUESPED", "==", nom).get().then(function(snap){
+    firestore.collection("RESERVACION").where("CLV_HUESPED", "==", nom.trim()).get().then(function(snap){
       if (snap.size > 0) {
         /* Cuando el número de documentos es 0, agrega un texto HTML. */
         snap.forEach(function(doc){
-          /* Transformación de tipo de dato TIMESTAMP en Firestore, por tipo Date en JS */
-          var fr = doc.data().FECHA_RESERVACION.toDate();
-          var fechaReservacion = new Date(fr);
-          var formatoReservacion = [fechaReservacion.getDate()+1, fechaReservacion.getMonth()+1, fechaReservacion.getFullYear()].join('/');
-
-          var fe = doc.data().FECHA_ENTRADA.toDate();
-          var fechaEntrada = new Date(fe);
-          var formatoEntrada = [fechaEntrada.getDate(), fechaEntrada.getMonth()+1, fechaEntrada.getFullYear()].join('/');
-
-          var fs = doc.data().FECHA_SALIDA.toDate();
-          var fechaSalida = new Date(fs);
-          var formatoSalida = [fechaSalida.getDate(), fechaSalida.getMonth()+1, fechaSalida.getFullYear()].join('/');
-
-          var timestamp = doc.data().FECHA_ENTRADA;
-          alert("Fecha de entrada en timestamp" + timestamp);
-
-          document.getElementById("tabla").innerHTML += '<tr class="registro"><td>'+doc.data().NUM_HABITACION+'</td><td><button type="button" class="btnClave" title="Cancelar reservación" onClick="eliminaReservacion();">'+doc.id+'</button></td><td>'+doc.data().ESTATUS+'</td><td>'+doc.data().CLV_HUESPED+'</td><td>'+formatoReservacion+'</td><td>'+formatoEntrada+'</td><td>'+formatoSalida+'</td><td>'+doc.data().NUM_HUESPEDES+'</td></tr>';
+          document.getElementById("tabla").innerHTML += '<tr class="registro"><td>'+doc.data().NUM_HABITACION+'</td><td><button type="button" class="btnClave" title="Cancelar reservación" onClick="eliminaReservacion();">'+doc.id+'</button></td><td>'+doc.data().ESTATUS+'</td><td>'+doc.data().CLV_HUESPED+'</td><td>'+doc.data().FECHA_RESERVACION+'</td><td>'+doc.data().FECHA_ENTRADA+'</td><td>'+doc.data().FECHA_SALIDA+'</td><td>'+doc.data().NUM_HUESPEDES+'</td></tr>';
         });
       } else {
         /* Cuando el número de documentos es 0, agrega un texto HTML. */
