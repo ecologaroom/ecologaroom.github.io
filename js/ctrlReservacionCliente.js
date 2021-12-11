@@ -87,7 +87,7 @@ async function registroCliente(){
     // @ts-ignore
    // const NOMBRE = document.getElementById("nombre").value;
 
-    const NOMBRE = getString(formData, "nombre").trim();
+    const NOMBRE = getString(formData, "nombre").value.trim();
     alert("nombre:" + NOMBRE);
     
     // @ts-ignore
