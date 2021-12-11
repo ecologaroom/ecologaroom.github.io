@@ -248,6 +248,26 @@ function numHabitaciones() {
   }
 }
 
+/** Muestra las reservaciones por clv_huesped y se actualiza automáticamente. */
+function ticket() {
+  // @ts-ignore
+  var hab = document.getElementById('tipoHab').value;
+  var precio = document.getElementById('precioDia');
+
+  var f1 = '10/09/2014';
+  var f2='15/10/2014';
+  restaFechas(f1,f2));
+
+  if(hab == 'Estándar Plus'){
+    precio.innerHTML = "";
+    precio.innerHTML = "($1,000/día)";
+  } else if(hab == 'Estándar Sencilla'){
+    precio.innerHTML = "";
+    precio.innerHTML = "($600/día)";
+  }
+
+}
+
 /** Procesa un error. Muestra el objeto en la consola y un cuadro de alerta con el mensaje. @param {Error} e descripción del error. 
  * @param {Error} e */
  function procesaError(e) {

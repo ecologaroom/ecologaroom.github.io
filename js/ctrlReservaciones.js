@@ -82,23 +82,7 @@ function consulta() {
     if (snap.size > 0) {
       /* Cuando el número de documentos es 0, agrega un texto HTML. */
       snap.forEach(function(doc){
-        /* Transformación de tipo de dato TIMESTAMP en Firestore, por tipo Date en JS */
-        var fr = doc.data().FECHA_RESERVACION.toDate();
-        var fechaReservacion = new Date(fr);
-        var formatoReservacion = [fechaReservacion.getDate()+1, fechaReservacion.getMonth()+1, fechaReservacion.getFullYear()].join('/');
-
-        var fe = doc.data().FECHA_ENTRADA.toDate();
-        var fechaEntrada = new Date(fe);
-        var formatoEntrada = [fechaEntrada.getDate(), fechaEntrada.getMonth()+1, fechaEntrada.getFullYear()].join('/');
-
-        var fs = doc.data().FECHA_SALIDA.toDate();
-        var fechaSalida = new Date(fs);
-        var formatoSalida = [fechaSalida.getDate(), fechaSalida.getMonth()+1, fechaSalida.getFullYear()].join('/');
-
-        var timestamp = doc.data().FECHA_ENTRADA;
-        alert("Fecha de entrada en timestamp" + timestamp);
-
-        document.getElementById("tabla").innerHTML += '<tr class="registro"><td>'+doc.data().NUM_HABITACION+'</td><td><button type="button" class="btnClave" title="Cancelar reservación" onClick="eliminaReservacion();">'+doc.id+'</button></td><td>'+doc.data().ESTATUS+'</td><td>'+doc.data().CLV_HUESPED+'</td><td>'+formatoReservacion+'</td><td>'+formatoEntrada+'</td><td>'+formatoSalida+'</td><td>'+doc.data().NUM_HUESPEDES+'</td></tr>';
+        document.getElementById("tabla").innerHTML += '<tr class="registro"><td>'+doc.data().NUM_HABITACION+'</td><td><button type="button" class="btnClave" title="Cancelar reservación" onClick="eliminaReservacion();">'+doc.id+'</button></td><td>'+doc.data().ESTATUS+'</td><td>'+doc.data().CLV_HUESPED+'</td><td>'+doc.data().FECHA_RESERVACION+'</td><td>'+doc.data().FECHA_ENTRADA+'</td><td>'+doc.data().FECHA_SALIDA+'</td><td>'+doc.data().NUM_HUESPEDES+'</td></tr>';
       });
     } else {
       /* Cuando el número de documentos es 0, agrega un texto HTML. */
@@ -177,6 +161,34 @@ function reservaHuesped() {
           alert("Fecha de entrada en timestamp" + timestamp);
 
           document.getElementById("tabla").innerHTML += '<tr class="registro"><td>'+doc.data().NUM_HABITACION+'</td><td><button type="button" class="btnClave" title="Cancelar reservación" onClick="eliminaReservacion();">'+doc.id+'</button></td><td>'+doc.data().ESTATUS+'</td><td>'+doc.data().CLV_HUESPED+'</td><td>'+formatoReservacion+'</td><td>'+formatoEntrada+'</td><td>'+formatoSalida+'</td><td>'+doc.data().NUM_HUESPEDES+'</td></tr>';
+        });
+      } else {
+        /* Cuando el número de documentos es 0, agrega un texto HTML. */
+        document.getElementById("tabla").innerHTML = '<tr class="registro"><td>'+"-- No hay registros de reservaciones en esta fecha. --"+'</td></tr>';
+      }
+    });
+  }
+}
+
+/** Muestra las reservaciones por clv_huesped y se actualiza automáticamente. */
+function reservaFecha() {
+  var tab = document.getElementById('tabla');
+  tab.innerHTML = "";
+  tab.innerHTML += '<tr><th colspan="1">#Habitación</th><th colspan="1">Reservación</th><th colspan="1">Estatus</th><th colspan="1">Huésped</th><th colspan="1">Fecha de reservación</th><th colspan="1">Entrada</th><th colspan="1">Salida</th><th colspan="1">#Huéspedes</th></tr>'
+
+  // @ts-ignore
+  var fecha = document.getElementById("calendario").value;
+  alert("Fecha calendario ="+fecha);
+
+  if(fecha == "" || fecha == "dd-mm-aaaa"){
+    consulta();
+  } else {
+    /* Registros de la colección Reservación, ordenados por número de habitación */
+    firestore.collection("RESERVACION").where("FECHA_ENTRADA", "==", fecha).get().then(function(snap){
+      if (snap.size > 0) {
+        /* Cuando el número de documentos es 0, agrega un texto HTML. */
+        snap.forEach(function(doc){
+          document.getElementById("tabla").innerHTML += '<tr class="registro"><td>'+doc.data().NUM_HABITACION+'</td><td><button type="button" class="btnClave" title="Cancelar reservación" onClick="eliminaReservacion();">'+doc.id+'</button></td><td>'+doc.data().ESTATUS+'</td><td>'+doc.data().CLV_HUESPED+'</td><td>'+doc.data().FECHA_RESERVACION+'</td><td>'+doc.data().FECHA_ENTRADA+'</td><td>'+doc.data().FECHA_SALIDA+'</td><td>'+doc.data().NUM_HUESPEDES+'</td></tr>';
         });
       } else {
         /* Cuando el número de documentos es 0, agrega un texto HTML. */
