@@ -82,42 +82,47 @@ async function registroCliente(){
   try {
     alert("Entra al try de registroCliente");
 
-    const formData = new FormData(formDaoCliente);
-
     // @ts-ignore
-   // const NOMBRE = document.getElementById("nombre").value;
-
-    const NOMBRE = getString(formData, "nombre").value.trim();
-    alert("nombre:" + NOMBRE);
+    const nom = document.getElementById("nombre").value;
+    alert("nombre:" + nom);
     
     // @ts-ignore
-    const AP_PATERNO = document.getElementById('ap_paterno').value;
-    alert("paterno:" + AP_PATERNO);
+    const ap_pa = document.getElementById('ap_paterno').value;
+    alert("paterno:" + ap_pa);
 
     // @ts-ignore
-    const AP_MATERNO = document.getElementById("ap_materno").value;
-    alert("materno:"+AP_MATERNO);
+    const ap_ma = document.getElementById("ap_materno").value;
+    alert("materno:"+ap_ma);
 
     // @ts-ignore
-    const EDAD = document.getElementById("edad").value;
-    alert("edad:" + EDAD);
+    const ed = document.getElementById("edad").value;
+    alert("edad:" + ed);
     // @ts-ignore
-    const CELULAR = document.getElementById("celular").value;
-    alert("celular:" +CELULAR);
+    const cel = document.getElementById("celular").value;
+    alert("celular:" +cel);
     // @ts-ignore
-    const CORREO = document.getElementById("correo").value;
-    alert("correo:" + CORREO);
+    const corr = document.getElementById("correo").value;
+    alert("correo:" + corr);
     // @ts-ignore
-    const SEXO = document.getElementById("sexo").value;
-    alert("sexo:" +SEXO);
+    const sex = document.getElementById("sexo").value;
+    alert("sexo:" +sex);
 
     /**
      * @type {
         import("./tipos.js").
                 CLIENTE} */
-    const modeloCliente = {CORREO, NOMBRE, AP_PATERNO, AP_MATERNO, EDAD, SEXO, CELULAR};
-
+    const modeloCliente = {
+      CORREO: corr, 
+      NOMBRE: nom, 
+      AP_PATERNO: ap_pa, 
+      AP_MATERNO:ap_ma, 
+      EDAD: ed, 
+      SEXO: sex, 
+      CELULAR: cel
+    };
+    alert("Guarda datos en modelo");
     await firestore.collection("CLIENTE").add(modeloCliente); 
+
     alert("Sus datos han sido registrados exitosamente.");
   } catch (e) {
     procesaError(e);
