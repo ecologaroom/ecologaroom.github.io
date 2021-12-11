@@ -266,20 +266,20 @@ async function realizaReservacion(){
 
     var fecha = new Date();
     var hoy = fecha.getDate() + "/" + (fecha.getMonth() +1) + "/" + fecha.getFullYear();  
-    alert("Hoy es:" + hoy);
+    alert("Fecha de hoy:" + hoy);
 
     /**
      * @type {
       import("./tipos.js").
         CLIENTE} */
     const modeloReservacion= {
-      NUM_HABITACION: ti_ha, //////////////////////////////
+      NUM_HABITACION: ti_ha.trim(), //////////////////////////////
       ESTATUS: true, 
-      CLV_HUESPED: clv, 
+      CLV_HUESPED: clv.trim(), 
       FECHA_RESERVACION: Date.now(), 
-      FECHA_ENTRADA: fe_ll, 
-      FECHA_SALIDA: fe_sa, 
-      NUM_HUESPEDES: nu_hu
+      FECHA_ENTRADA: fe_ll.trim(), 
+      FECHA_SALIDA: fe_sa.trim(), 
+      NUM_HUESPEDES: nu_hu.trim()
     };
     alert("Su reservación ha sido registrada exitosamente.");
     //await firestore.collection("RESERVACION").add(modeloReservacion); 
