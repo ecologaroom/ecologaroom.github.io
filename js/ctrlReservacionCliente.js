@@ -242,6 +242,53 @@ function numHabitaciones() {
   }
 }
 
+async function realizaReservacion(){
+  try {
+    // @ts-ignore
+    const fe_ll = document.getElementById("fecha_llegada").value;
+    // @ts-ignore
+    const fe_sa = document.getElementById('fecha_salida').value;
+    // @ts-ignore
+    const nu_hu = document.getElementById("num_hues").value;
+    // @ts-ignore
+    const nu_ha = document.getElementById("num_hab").value;
+    // @ts-ignore
+    const ti_ha = document.getElementById("tipoHab").value;
+
+    // @ts-ignore
+    const nom = document.getElementById("nombre").value;
+    // @ts-ignore
+    const ap_pa = document.getElementById('ap_paterno').value;
+    // @ts-ignore
+    const ap_ma = document.getElementById("ap_materno").value;
+
+    const clv = nom + " " +  ap_pa + " " +  ap_ma; 
+    alert("Clave:"+ clv);
+
+    const hoy = Date.now();
+    alert("Hoy es:" + hoy);
+
+    /**
+     * @type {
+      import("./tipos.js").
+        CLIENTE} */
+    const modeloReservacion= {
+      NUM_HABITACION: ti_ha, //////////////////////////////
+      ESTATUS: true, 
+      CLV_HUESPED: clv, 
+      FECHA_RESERVACION: Date.now(), 
+      FECHA_ENTRADA: fe_ll, 
+      FECHA_SALIDA: fe_sa, 
+      NUM_HUESPEDES: nu_hu
+    };
+    alert("Su reservación ha sido registrada exitosamente.");
+    //await firestore.collection("RESERVACION").add(modeloReservacion); 
+    alert("YEEIII");
+  } catch (e) {
+    procesaError(e);
+  }
+}
+
 /** Muestra las reservaciones por clv_huesped y se actualiza automáticamente. */
 function ticket() {
   // @ts-ignore

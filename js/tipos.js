@@ -33,7 +33,7 @@
  * @property {string} NUM_HABITACION
  * @property {string} ESTATUS
  * @property {string} CLV_HUESPED
- * @property {firebase.firestore.Timestamp} FECHA_RESERVACION
+ * @property {string} FECHA_RESERVACION
  * @property {string} FECHA_ENTRADA
  * @property {string} FECHA_SALIDA
  * @property {string} NUM_HUESPEDES
