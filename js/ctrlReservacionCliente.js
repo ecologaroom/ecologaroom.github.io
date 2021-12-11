@@ -82,8 +82,12 @@ async function registroCliente(){
   try {
     alert("Entra al try de registroCliente");
 
+    const formData = new FormData(formDaoCliente);
+
     // @ts-ignore
-    const NOMBRE = document.getElementById("nombre").value;
+   // const NOMBRE = document.getElementById("nombre").value;
+
+    const NOMBRE = getString(formData, "nombre").trim();
     alert("nombre:" + NOMBRE);
     
     // @ts-ignore
