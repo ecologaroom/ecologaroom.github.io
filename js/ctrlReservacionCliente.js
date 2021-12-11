@@ -95,50 +95,22 @@ async function registroCliente(){
     // @ts-ignore
     const corr = document.getElementById("correo").value;
 
-    if(nom.trim() == ""){
-      alert("Debe ingresar su nombre.");
-    } else {
-      if(ap_pa.trim() == ""){
-        alert("Debe ingresar su apellido paterno.");
-      } else {
-        if(ap_ma.trim() == ""){
-          alert("Debe ingresar su apellido materno.");
-        } else {
-          if(ed.trim() == ""){
-            alert("Debe ingresar su edad.");
-          } else {
-            if(sex.trim() == ""){
-              alert("Debe ingresar su sexo.");
-            } else {
-              if(cel.trim() == ""){
-                alert("Debe ingresar su celular.");
-              } else {
-                if(corr.trim() == ""){
-                  alert("Debe ingresar su correo.");
-                } else {
-                  /**
-                   * @type {
-                      import("./tipos.js").
-                              CLIENTE} */
-                  const modeloCliente = {
-                    CORREO: corr, 
-                    NOMBRE: nom, 
-                    AP_PATERNO: ap_pa, 
-                    AP_MATERNO:ap_ma, 
-                    EDAD: ed, 
-                    SEXO: sex, 
-                    CELULAR: cel
-                  };
-                  alert("Sus datos han sido registrados exitosamente.");
-                  await firestore.collection("CLIENTE").add(modeloCliente); 
-                  alert("YEEIII");
-                }
-              }
-            }
-          }
-        }
-      }
-    }
+    /**
+     * @type {
+      import("./tipos.js").
+        CLIENTE} */
+    const modeloCliente = {
+      CORREO: corr, 
+      NOMBRE: nom, 
+      AP_PATERNO: ap_pa, 
+      AP_MATERNO:ap_ma, 
+      EDAD: ed, 
+      SEXO: sex, 
+      CELULAR: cel
+    };
+    alert("Sus datos han sido registrados exitosamente.");
+    await firestore.collection("CLIENTE").add(modeloCliente); 
+    alert("YEEIII");
   } catch (e) {
     procesaError(e);
   }
