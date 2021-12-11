@@ -86,9 +86,10 @@ async function registroCliente(){
     const NOMBRE = document.getElementById("nombre").value;
     alert("nombre:" + NOMBRE);
     
-    const AP_PATERNO = document.getElementById('ap_paterno').nodeValue;
+    // @ts-ignore
+    const AP_PATERNO = document.getElementById('ap_paterno').value;
     alert("paterno:" + AP_PATERNO);
-    
+
     // @ts-ignore
     const AP_MATERNO = document.getElementById("ap_materno").value;
     alert("materno:"+AP_MATERNO);
@@ -104,24 +105,15 @@ async function registroCliente(){
     alert("correo:" + CORREO);
     // @ts-ignore
     const SEXO = document.getElementById("sexo").value;
-
     alert("sexo:" +SEXO);
 
-    /*
+    /**
      * @type {
         import("./tipos.js").
-                CLIENTE}  {
-      CORREO, 
-      NOMBRE, 
-      AP_PATERNO, 
-      AP_MATERNO, 
-      EDAD, 
-      SEXO, 
-      CELULAR};
-    alert("Guarda datos en modelo");
-
+                CLIENTE} */
+    const modeloCliente = {NOMBRE, AP_PATERNO, AP_MATERNO, EDAD, CELULAR, CORREO, SEXO};
     await firestore.collection("CLIENTE").add(modeloCliente); 
-    alert("Sus datos han sido registrados exitosamente.");*/
+    alert("Sus datos han sido registrados exitosamente.");
 
     
   } catch (e) {

@@ -100,12 +100,12 @@
                   </div>
                   <!-- Apellido paterno -->
                   <div class="inputFlotante">
-                    <input class="floating__input" name="ap_paterno" type="text" placeholder="Apellido paterno" maxlength="40" required pattern="([a-zA-Z ñáéíóú]{3,40}\s*)+" required/>
+                    <input class="floating__input" id="ap_paterno" type="text" placeholder="Apellido paterno" maxlength="40" required pattern="([a-zA-Z ñáéíóú]{3,40}\s*)+" required/>
                     <label class="floating__label" data-content="Apellido paterno"></label>
                   </div>
                   <!-- Apellido materno -->
                   <div class="inputFlotante">
-                    <input class="floating__input" name="ap_materno" type="text" placeholder="Apellido materno" maxlength="40" required pattern="([a-zA-Z ñáéíóú]{3,40}\s*)+" required/>
+                    <input class="floating__input" id="ap_materno" type="text" placeholder="Apellido materno" maxlength="40" required pattern="([a-zA-Z ñáéíóú]{3,40}\s*)+" required/>
                     <label class="floating__label" data-content="Apellido materno"></label>
                   </div>
 
@@ -113,14 +113,14 @@
                   <div class="fila">
                     <div class="colum">
                       <div class="inputFlotante">
-                        <input class="floating__input" name="edad" type="number" placeholder="Edad" maxlength="2" min="18" max="99" required/>
+                        <input class="floating__input" id="edad" type="number" placeholder="Edad" maxlength="2" min="18" max="99" required/>
                         <label class="floating__label" data-content="Edad"></label>
                       </div>
                     </div>
                     <!-- Sexo -->
                     <div class="colum">
                       <div class="inputFlotante">
-                        <select name="sexo" class="floating__select" placeholder="Sexo" required>
+                        <select id="sexo" class="floating__select" placeholder="Sexo" required>
                           <option value="Femenino">Femenino</option>
                           <option value="Masculino">Masculino</option>
                         </select>
@@ -130,14 +130,14 @@
                     <!-- Teléfono -->
                     <div class="colum">
                       <div class="inputFlotante">
-                        <input class="floating__input" name="celular" type="text" placeholder="Celular" size="10" maxlength="20" required/>
+                        <input class="floating__input" id="celular" type="text" placeholder="Celular" size="10" maxlength="20" required/>
                         <label class="floating__label" data-content="Celular"></label>
                       </div>
                     </div>
                     <!-- Correo -->
                     <div class="colum">
                       <div class="inputFlotante">
-                        <input class="floating__input" name="correo" type="email" placeholder="Correo" size="50" maxlength="80" required pattern="^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$" required/>
+                        <input class="floating__input" id="correo" type="email" placeholder="Correo" size="50" maxlength="80" required pattern="^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$" required/>
                         <label class="floating__label" data-content="Correo"></label>
                       </div>
                     </div>
