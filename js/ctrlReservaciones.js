@@ -71,12 +71,11 @@ async function logIn() {
 
 /** Muestra las reservaciones y se actualiza automáticamente. */
 function consulta() {
-  alert("Reservaciones vigentes:");
   var tab = document.getElementById('tabla');
   tab.innerHTML = "";
   tab.innerHTML += '<tr><th colspan="1">#Habitación</th><th colspan="1">Reservación</th><th colspan="1">Estatus</th><th colspan="1">Huésped</th><th colspan="1">Fecha de reservación</th><th colspan="1">Entrada</th><th colspan="1">Salida</th><th colspan="1">#Huéspedes</th></tr>'
 
-  var hoy = Date.now();
+  var hoy = dateFormat(new Date(), 'dd-mm-yyyy')
   alert(hoy);
 
   /* Registros de la colección Reservación, ordenados por número de habitación */
@@ -207,4 +206,8 @@ async function logOut() {
   } catch (e) {
     procesaError(e);
   }
+}
+
+function dateFormat(arg0, arg1) {
+  throw new Error("Function not implemented.");
 }
