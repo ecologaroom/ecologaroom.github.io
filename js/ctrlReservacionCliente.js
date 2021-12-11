@@ -254,10 +254,6 @@ function ticket() {
   var hab = document.getElementById('tipoHab').value;
   var precio = document.getElementById('precioDia');
 
-  var f1 = '10/09/2014';
-  var f2='15/10/2014';
-  restaFechas(f1,f2));
-
   if(hab == 'Estándar Plus'){
     precio.innerHTML = "";
     precio.innerHTML = "($1,000/día)";
