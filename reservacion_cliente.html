@@ -203,7 +203,7 @@
                     <!-- Tipo de habitación -->
                     <div class="colum">
                       <div id="inpFlotTipoHab" class="inputFlotante">
-                        <select id="tipoHab"  onChange="ticket();" class="floating__select" placeholder="Habitación" required></select>
+                        <select id="tipoHab"  onchange="ticket()" class="floating__select" placeholder="Habitación" required></select>
                         <label id="lblTipoHab" class="floating__label" data-content="Habitación"></label>
                       </div>
                     </div>
@@ -235,7 +235,7 @@
                 </tr>
                 <tr>
                   <th scope="row" class="Detalle">
-                    <span class="habitacion">Estándar Plus</span>
+                    <span class="habitacion" id="habitacion">Estándar Plus</span>
                     <span class="numeroDias">2 huéspedes</span>
                   </th>
                   <td class="precio">

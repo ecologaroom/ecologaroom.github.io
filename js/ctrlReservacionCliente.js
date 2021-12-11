@@ -136,7 +136,7 @@ function selectHabitaciones() {
       /* Cuando el número de documentos es 0, agrega un texto HTML. */
       snap.forEach(function(doc){
         /* Transformación de tipo de dato TIMESTAMP en Firestore, por tipo Date en JS */
-        document.getElementById("tipoHab").innerHTML += '<option class="tipoHabitaciones" id="tipoHab" value="doc.id">'+doc.id+'</option>';
+        document.getElementById("tipoHab").innerHTML += '<option class="tipoHabitaciones" id="tipoHab" value="'+doc.id+'">'+doc.id+'</option>';
       });
     } else {
       /* Cuando el número de documentos es 0, agrega un texto HTML. */
@@ -265,7 +265,6 @@ function ticket() {
     precio.innerHTML = "";
     precio.innerHTML = "($600/día)";
   }
-
 }
 
 /** Procesa un error. Muestra el objeto en la consola y un cuadro de alerta con el mensaje. @param {Error} e descripción del error. 

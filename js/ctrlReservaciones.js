@@ -166,7 +166,7 @@ function reservaFecha() {
 
   alert(fecha);
  
-   if(fecha == ""){
+  if(fecha == ""){
     consulta();
   } else {
     /* Registros de la colección Reservación, ordenados por número de habitación */
