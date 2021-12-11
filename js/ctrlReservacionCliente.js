@@ -265,7 +265,7 @@ async function realizaReservacion(){
     alert("Clave:"+ clv);
 
     var fecha = new Date();
-    var hoy = fecha.getDate() + "/" + (fecha.getMonth() +1) + "/" + fecha.getFullYear();  
+    var hoy = [fecha.getDate(), fecha.getMonth()+1, fecha.getFullYear()].join('/');
     alert("Fecha de hoy:" + hoy);
 
     /**
@@ -276,7 +276,7 @@ async function realizaReservacion(){
       NUM_HABITACION: ti_ha.trim(), //////////////////////////////
       ESTATUS: true, 
       CLV_HUESPED: clv.trim(), 
-      FECHA_RESERVACION: Date.now(), 
+      FECHA_RESERVACION: hoy.trim(), 
       FECHA_ENTRADA: fe_ll.trim(), 
       FECHA_SALIDA: fe_sa.trim(), 
       NUM_HUESPEDES: nu_hu.trim()
