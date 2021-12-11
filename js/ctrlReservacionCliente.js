@@ -108,9 +108,8 @@ async function registroCliente(){
       SEXO: sex, 
       CELULAR: cel
     };
-    alert("Sus datos han sido registrados exitosamente.");
     await firestore.collection("CLIENTE").add(modeloCliente); 
-    alert("YEEIII");
+    alert("Sus datos han sido registrados exitosamente.");
   } catch (e) {
     procesaError(e);
   }
@@ -265,7 +264,8 @@ async function realizaReservacion(){
     const clv = nom + " " +  ap_pa + " " +  ap_ma; 
     alert("Clave:"+ clv);
 
-    const hoy = Date.now();
+    var fecha = new Date();
+    var hoy = fecha.getDate() + "/" + (fecha.getMonth() +1) + "/" + fecha.getFullYear();  
     alert("Hoy es:" + hoy);
 
     /**
