@@ -144,7 +144,7 @@ function selectHabitaciones() {
       });
     } else {
       /* Cuando el número de documentos es 0, agrega un texto HTML. */
-      document.getElementById("tipoHab").innerHTML = '<option class="tipoHabitaciones" id="tipoHab" value="doc.id">'+"Habitaciones indisponibles"+'</option>';
+      document.getElementById("tipoHab").innerHTML = '<option class="tipoHabitaciones" id="tipoHab">'+"Habitaciones indisponibles"+'</option>';
     }
   });
 }
