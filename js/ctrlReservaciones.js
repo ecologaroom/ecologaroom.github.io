@@ -170,7 +170,7 @@ function reservaFecha() {
     consulta();
   } else {
     /* Registros de la colección Reservación, ordenados por número de habitación */
-    firestore.collection("RESERVACION").where("FECHA_ENTRADA", "==", fecha).orderBy("NUM_HABITACION").get().then(function(snap){
+    firestore.collection("RESERVACION").where("FECHA_ENTRADA", "==", fecha).get().then(function(snap){
       alert("Fecha ordenado por num hab");
       if (snap.size > 0) {
         /* Cuando el número de documentos es 0, agrega un texto HTML. */

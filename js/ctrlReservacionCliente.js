@@ -255,13 +255,18 @@ function ticket() {
   // @ts-ignore
   var hab = document.getElementById('tipoHab').value;
   var precio = document.getElementById('precioDia');
+  var habitacion = document.getElementById('habitacion');
 
   if(hab == 'Estándar Plus'){
     alert("EP Tipo hab:" + hab);
+    habitacion.innerHTML = "";
+    habitacion.innerHTML = hab;
     precio.innerHTML = "";
     precio.innerHTML = "($1,000/día)";
   } else if(hab == 'Estándar Sencilla'){
     alert("ES Tipo hab:" + hab);
+    habitacion.innerHTML = "";
+    habitacion.innerHTML = hab;
     precio.innerHTML = "";
     precio.innerHTML = "($600/día)";
   }
