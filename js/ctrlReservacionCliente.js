@@ -265,17 +265,15 @@ async function realizaReservacion(){
     alert("Clave:"+ clv);
 
     var fecha = new Date();
-
-    
-    var hoy = [fecha.getDate(), fecha.getMonth()+1, fecha.getFullYear()].join('/');
+    var hoy = [fecha.getDate(), fecha.getMonth()+1, fecha.getFullYear()].join('-');
     alert("Fecha HOY:" + hoy);
 
     /**
      * @type {
       import("./tipos.js").
-        CLIENTE} */
+        RESERVACION} */
     const modeloReservacion= {
-      NUM_HABITACION: ti_ha.trim(), //////////////////////////////
+      NUM_HABITACION: 102,
       ESTATUS: true, 
       CLV_HUESPED: clv.trim(), 
       FECHA_RESERVACION: hoy.trim(), 
@@ -284,7 +282,7 @@ async function realizaReservacion(){
       NUM_HUESPEDES: nu_hu.trim()
     };
     alert("Su reservación ha sido registrada exitosamente.");
-    //await firestore.collection("RESERVACION").add(modeloReservacion); 
+    await firestore.collection("RESERVACION").add(modeloReservacion); 
     alert("YEEIII");
   } catch (e) {
     procesaError(e);

@@ -9,16 +9,16 @@
  * @property {string} NOMBRE
  * @property {string} AP_PATERNO
  * @property {string} AP_MATERNO
- * @property {string} EDAD
+ * @property {number} EDAD
  * @property {string} SEXO
  * @property {string} CELULAR
  */
 
 /**
  * @typedef {Object} HABITACION
- * @property {string} NUM_HABITACION
+ * @property {number} NUM_HABITACION
  * @property {string} TIPO
- * @property {string} DISPONIBILIDAD
+ * @property {boolean} DISPONIBILIDAD
  */
 
 /**
@@ -30,13 +30,13 @@
 // @ts-nocheck
 /**
  * @typedef {Object} RESERVACION
- * @property {string} NUM_HABITACION
- * @property {string} ESTATUS
+ * @property {number} NUM_HABITACION
+ * @property {boolean} ESTATUS
  * @property {string} CLV_HUESPED
  * @property {string} FECHA_RESERVACION
  * @property {string} FECHA_ENTRADA
  * @property {string} FECHA_SALIDA
- * @property {string} NUM_HUESPEDES
+ * @property {number} NUM_HUESPEDES
  */
 
 export const __tipos = 0;
