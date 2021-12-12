@@ -294,12 +294,10 @@ async function realizaReservacion(){
     // @ts-ignore
     const ap_ma = document.getElementById("ap_materno").value;
 
-    const clv = nom + " " +  ap_pa + " " +  ap_ma; 
-    alert("Clave:"+ clv);
+    const clv = nom + " " +  ap_pa + " " +  ap_ma;
 
     var fecha = new Date();
     const hoy = [fecha.getDate(), fecha.getMonth()+1, fecha.getFullYear()].join('-');
-    alert("Fecha HOY:" + hoy);
 
     /**
      * @type {
@@ -315,9 +313,8 @@ async function realizaReservacion(){
       NUM_HUESPEDES: nu_hu
     };
 
-    alert("Su reservación ha sido registrada exitosamente.");
     await firestore.collection("RESERVACION").add(modeloReservacion); 
-    alert("YEEIII");
+    alert("Su reservación ha sido registrada exitosamente.");
   } catch (e) {
     procesaError(e);
   }
@@ -411,9 +408,7 @@ function ticket() {
  * @param {FormData} formData
  * @param {string} name */
 function getString(formData, name) {
-  alert("Convirtiendo a String");
   const valor = formData.get(name);
-  alert("Valor del string obtenido:" + valor);
   return (typeof valor === "string" ? valor : "" );
 }
 

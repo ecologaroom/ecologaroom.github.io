@@ -9,7 +9,7 @@
  * @property {string} NOMBRE
  * @property {string} AP_PATERNO
  * @property {string} AP_MATERNO
- * @property {number} EDAD
+ * @property {string} EDAD
  * @property {string} SEXO
  * @property {string} CELULAR
  */
