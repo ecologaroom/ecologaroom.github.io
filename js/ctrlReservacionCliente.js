@@ -87,19 +87,19 @@ function registroAnterior(usuario){
       /* Cuando el número de documentos es 0, agrega un texto HTML. */
       snap.forEach(function(doc){
         /* Cuando existe registro del correo. */
-        alert("Bienvenido de vuelta a Ecologaroom " + doc.data().NOMBRE);
+        alert("Bienvenid@ de vuelta a Ecologaroom " + doc.data().NOMBRE);
 
         // @ts-ignore
         document.getElementById("correo").value = usuario.email;
 
         /* Transformación de tipo de dato TIMESTAMP en Firestore, por tipo Date en JS */
-        document.getElementById("nombre").innerHTML += '<input id="nombre" value="'+doc.data().NOMBRE+'" type="text" maxlength="40" readonly/>';
+        document.getElementById("nombre").innerHTML = '<input id="nombre" value="'+doc.data().NOMBRE+'" type="text" maxlength="40" readonly/>';
 
 
       });
     } else {
       /* Cuando no existe registro de un correo. */
-      alert("Bienvenido a Ecologaroom");
+      alert("Bienvenid@ a Ecologaroom");
       // @ts-ignore
       document.getElementById("correo").value = usuario.email;
     }
