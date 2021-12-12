@@ -168,6 +168,8 @@ async function registroCliente(){
       /* Conecta a Firebase para cerrar sesión */
       await firestore.collection("CLIENTE").add(modeloCliente).then(() => {
         alert("Sus datos han sido registrados exitosamente.");
+        // @ts-ignore
+        protege(); ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
       });  
     }
   } catch (e) {
@@ -311,11 +313,6 @@ async function realizaReservacion(){
     const fe_sa = calSal.toString().split("-").reverse().join("-");
     // @ts-ignore
     const nu_hu = document.getElementById("num_hues").value;
-    // @ts-ignore
-    const nu_ha = document.getElementById("num_hab").value;
-    // @ts-ignore
-    const ti_ha = document.getElementById("tipoHab").value;
-
     // @ts-ignore
     const nom = document.getElementById("nombre").value;
     // @ts-ignore

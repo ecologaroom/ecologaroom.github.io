@@ -56,7 +56,7 @@ async function cargaRoles(email) {
     } else {
         /* No existe email con rol, así que devuleve vacío */
         const modeloUsu = {
-            ROLIDS: "CLIENTE"
+            ROLIDS: ["CLIENTE"]
         }
         firestore.collection("USUARIO").doc(email).set(modeloUsu);
         return new Set();
