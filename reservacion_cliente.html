@@ -139,8 +139,7 @@
                     <!-- Correo -->
                     <div class="colum">
                       <div class="inputFlotante">
-                        <input class="floating__input" id="correo" type="email" placeholder="Correo" size="50" maxlength="80" required pattern="^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$" required/>
-                        <label class="floating__label" data-content="Correo"></label>
+                        <input id="correo" type="email" placeholder="Correo" size="50" maxlength="80" readonly/>
                       </div>
                     </div>
                   </div>
@@ -251,7 +250,7 @@
                       </th>
                       <td class="lineTotal">
                         <span class="moneda">MXN</span>
-                        <span class="pago"></span>
+                        <span class="pago" id="pago"></span>
                       </td>
                     </tr>
                     <tr class="avisoCondiciones">
