@@ -88,17 +88,41 @@ function registroAnterior(usuario){
       snap.forEach(function(doc){
         /* Cuando existe registro del correo. */
         alert("Bienvenid@ de vuelta a Ecologaroom " + doc.data().NOMBRE);
-
         // @ts-ignore
         document.getElementById("correo").value = usuario.email;
 
-        /* Transformación de tipo de dato TIMESTAMP en Firestore, por tipo Date en JS */
-        document.getElementById("nombre").innerHTML = "";
-        document.getElementById("nombre").innerHTML = '<input id="nombre" type="text" maxlength="40" readonly/>';
+        // @ts-ignore
+        document.getElementById('nombre').setAttribute('readonly', true);
         // @ts-ignore
         document.getElementById("nombre").value = doc.data().NOMBRE;
 
+        // @ts-ignore
+        document.getElementById('ap_paterno').setAttribute('readonly', true);
+        // @ts-ignore
+        document.getElementById("ap_paterno").value = doc.data().NOMBRE;
 
+        // @ts-ignore
+        document.getElementById('ap_materno').setAttribute('readonly', true);
+        // @ts-ignore
+        document.getElementById("ap_materno").value = doc.data().NOMBRE;
+
+        // @ts-ignore
+        document.getElementById('edad').setAttribute('readonly', true);
+        // @ts-ignore
+        document.getElementById("edad").value = doc.data().NOMBRE;
+
+        // @ts-ignore
+        document.getElementById('sexo').setAttribute('readonly', true);
+        // @ts-ignore
+        document.getElementById("sexo").value = doc.data().NOMBRE;
+
+        // @ts-ignore
+        document.getElementById('celular').setAttribute('readonly', true);
+        // @ts-ignore
+        document.getElementById("celular").value = doc.data().NOMBRE;
+
+        // @ts-ignore
+        document.getElementById('regCliente').disabled = true;
       });
     } else {
       /* Cuando no existe registro de un correo. */
@@ -120,15 +144,12 @@ async function registroCliente(){
     const ap_ma = document.getElementById("ap_materno").value;
     // @ts-ignore
     const ed = document.getElementById("edad").value;
-    alert("edad: " + ed);
     // @ts-ignore
     const sex = document.getElementById("sexo").value;
-    alert("sexo: " + sex);
     // @ts-ignore
     const cel = document.getElementById("celular").value;
     // @ts-ignore
     const corr = document.getElementById("correo").value;
-    alert("correo: " + corr);
 
     /**
      * @type {
@@ -143,10 +164,13 @@ async function registroCliente(){
       SEXO: sex, 
       CELULAR: cel
     };
-    alert("correo: " + corr);
 
-    await firestore.collection("CLIENTE").add(modeloCliente); 
-    alert("Sus datos han sido registrados exitosamente.");
+    if(confirm("Una vez acepte, sus datos no podrán ser modificados. ¿Estan correctos?")){
+      /* Conecta a Firebase para cerrar sesión */
+      await firestore.collection("CLIENTE").add(modeloCliente).then(() => {
+        alert("Sus datos han sido registrados exitosamente.");
+      });  
+    }
   } catch (e) {
     procesaError(e);
   }
