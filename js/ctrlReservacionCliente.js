@@ -91,10 +91,10 @@ function registroAnterior(usuario){
       });
     } else {
       /* Cuando no existe registro de un correo. */
-      alert("Bienvenido a Ecologaroom");
+      alert("Bienvenido a Ecologaroom correo se muestra read only");
       // @ts-ignore
-      document.getElementById("correo").value = usuario.email;
-      //'<input class="floating__input" id="correo" type="email" placeholder="Correo" size="50" maxlength="80" required pattern="^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$" required/>'
+      //document.getElementById("correo").value = usuario.email;
+      document.getElementById("correo").innerHTML += '<input class="floating__input" id="correo" type="email" value="'+usuario.email+'" placeholder="Correo" size="50" maxlength="80" required pattern="^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$" required readonly/>';
     }
   });
 }
