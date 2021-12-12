@@ -134,7 +134,6 @@ function reservaHuesped() {
 
   // @ts-ignore
   var nom = document.getElementById("buscar").value;
-  alert(nom.trim());
 
   if(nom.trim() == ""){
     consulta();
@@ -163,8 +162,6 @@ function reservaFecha() {
   // @ts-ignore
   var calendario = document.getElementById("calendario").value;
   var fecha = calendario.toString().split("-").reverse().join("-");
-
-  alert(fecha);
  
   if(fecha == ""){
     consulta();
