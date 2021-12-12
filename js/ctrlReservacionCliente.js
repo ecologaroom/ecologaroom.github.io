@@ -127,6 +127,8 @@ function registroAnterior(usuario){
       /* Cuando no existe registro de un correo. */
       alert("Bienvenid@ a Ecologaroom");
       // @ts-ignore
+      document.getElementById('correo').setAttribute('readonly', true);
+      // @ts-ignore
       document.getElementById("correo").value = usuario.email;
     }
   });
@@ -339,8 +341,23 @@ async function realizaReservacion(){
       NUM_HUESPEDES: nu_hu
     };
 
-    await firestore.collection("RESERVACION").add(modeloReservacion); 
-    alert("Su reservación ha sido registrada exitosamente.");
+    alert("Ya se guardó en el modelo.");
+    /* Registros de reservación con clave del cliente. */ 
+    // @ts-ignore
+    firestore.collection("RESERVACION").where("CLV_HUESPED", "==", clv).get().then(async function(snap){
+      if (snap.size > 0) {
+        /* Cuando el número de documentos es 0, agrega un texto HTML. */
+        snap.forEach(function(doc){
+          /* Existen reservaciones */
+          alert("Ya ha realizado una reservación. De lo contrario comuníquese con el hotel.");
+        });
+      } else {
+        /* Cuando el número de reservaciones por cliente es nulo, agrega la reservación reciente. */
+        alert("No hay reservaciones, así que debe registrar.");
+        await firestore.collection("RESERVACION").add(modeloReservacion); 
+        alert("Su reservación ha sido registrada exitosamente.");
+      }
+    });
   } catch (e) {
     procesaError(e);
   }
