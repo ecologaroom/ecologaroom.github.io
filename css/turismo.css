@@ -53,14 +53,14 @@
 }
 
 .carrusel{
-    height: 35vw;
+    height: 30vw;
 }
   
 .carrusel .envoltura{
     display: flex;
     width: auto;
     width: 100vw;
-    height: 35vw;
+    height: 30vw;
     animation: cambio 20s infinite;
 }
 /*
@@ -71,9 +71,9 @@
 
 .carrusel img{
     width: 100vw;
-    height: 35vw;
-    margin-left: 12vw;
-    margin-right: 12vw;
+    height: 30vw;
+    margin-left: 22vw;
+    margin-right: 22vw;
 }
 
 @keyframes cambio {
@@ -81,6 +81,6 @@
     33% {margin-left: 0vw;}
     56% {margin-left: -88vw;}
     66% {margin-left: -88vw;}
-    90% {margin-left: -178vw;}
-    100% {margin-left: -178vw;}
+    90% {margin-left: -190vw;}
+    100% {margin-left: -190vw;}
 }
