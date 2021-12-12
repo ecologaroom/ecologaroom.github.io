@@ -91,10 +91,10 @@ function registroAnterior(usuario){
       });
     } else {
       /* Cuando no existe registro de un correo. */
-      alert("Bienvenido a Ecologaroom READ ONLY");
+      alert("READ ONLY");
       // @ts-ignore
       document.getElementById("correo").innerHTML = "";
-      document.getElementById("correo").innerHTML = '<input class="floating__input" id="correo" type="email" placeholder="Correo" size="50" maxlength="80" required pattern="^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$" readonly/>';
+      document.getElementById("correo").innerHTML = '<input id="correo" type="email" readonly/>';
       // @ts-ignore
      // document.getElementById("correo").value = usuario.email;
     }
@@ -323,6 +323,7 @@ function ticket() {
   var habitacion = document.getElementById('habitacion');
   var numeroDias = document.getElementById('numeroDias');
   var suma = document.getElementById('sumaPrecio');
+  var pago = document.getElementById('pago');
 
   // @ts-ignore
   var calEnt = document.getElementById("fecha_llegada").value;
@@ -349,6 +350,9 @@ function ticket() {
     var sumaHab = dias * 600;
     suma.innerHTML = "";
     suma.innerHTML = "$ " + sumaHab;
+    var sumPago = sumaHab + (sumaHab*0.15);
+    pago.innerHTML = "";
+    pago.innerHTML = "$ " + sumPago;
   }
   if(hab == 'Estándar Plus'){
     habitacion.innerHTML = "";
@@ -360,6 +364,9 @@ function ticket() {
     var sumaHab = dias * 1000;
     suma.innerHTML = "";
     suma.innerHTML = "$ " + sumaHab;
+    var sumPago = sumaHab + (sumaHab*0.15);
+    pago.innerHTML = "";
+    pago.innerHTML = "$ " + sumPago;
   }
   if(hab == 'Estándar Familiar'){
     habitacion.innerHTML = "";
@@ -371,6 +378,9 @@ function ticket() {
     var sumaHab = dias * 800;
     suma.innerHTML = "";
     suma.innerHTML = "$ " + sumaHab;
+    var sumPago = sumaHab + (sumaHab*0.15);
+    pago.innerHTML = "";
+    pago.innerHTML = "$ " + sumPago;
   }
 }
 
