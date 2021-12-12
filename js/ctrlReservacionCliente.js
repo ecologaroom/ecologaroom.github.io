@@ -112,16 +112,14 @@ function registroAnterior(usuario){
         document.getElementById("edad").value = doc.data().EDAD;
 
         document.getElementById('sexo').innerHTML = "";
+        document.getElementById('sexo').innerHTML += '<option id="sexoF" value="'+doc.data().SEXO+'">'+doc.data().SEXO+'</option>';
 
-        // @ts-ignore
-        document.getElementById('sexoF').setAttribute('readonly', true);
-        // @ts-ignore
-        document.getElementById("sexoF").value = doc.data().SEXO;
-
+        var cel = doc.data().CELULAR;
+        alert("Cel:" + cel);
         // @ts-ignore
         document.getElementById('celular').setAttribute('readonly', true);
         // @ts-ignore
-        document.getElementById("celular").value = doc.data().CELULAR;
+        document.getElementById("celular").value = cel;
 
         // @ts-ignore
         document.getElementById('regCliente').disabled = true;
