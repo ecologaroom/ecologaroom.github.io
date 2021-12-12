@@ -298,6 +298,24 @@ function ticket() {
   var hab = document.getElementById('tipoHab').value;
   var precio = document.getElementById('precioDia');
   var habitacion = document.getElementById('habitacion');
+  var numeroDias = document.getElementById('numeroDias');
+
+
+  // @ts-ignore
+  var calEnt = document.getElementById("fecha_llegada").value;
+  const fe_ll = calEnt.toString().split("-").reverse().join("-");
+  // @ts-ignore
+  var calSal = document.getElementById("fecha_salida").value;
+  const fe_sa = calSal.toString().split("-").reverse().join("-");
+
+  var aFecha1 = fe_ll.split('-');
+  var aFecha2 = fe_sa.split('-');
+  var fFecha1 = Date.UTC(aFecha1[2],aFecha1[1]-1,aFecha1[0]);
+  var fFecha2 = Date.UTC(aFecha2[2],aFecha2[1]-1,aFecha2[0]);
+  var dif = fFecha2 - fFecha1;
+  var dias = Math.floor(dif / (1000 * 60 * 60 * 24));
+
+
 
   if(hab == 'Estándar Sencilla'){
     alert("ES Tipo hab:" + hab);
@@ -305,6 +323,7 @@ function ticket() {
     habitacion.innerHTML = hab;
     precio.innerHTML = "";
     precio.innerHTML = "($600/día)";
+    numeroDias.innerHTML = dias + " días";
   }
   if(hab == 'Estándar Plus'){
     alert("EP Tipo hab:" + hab);
