@@ -64,7 +64,9 @@ h3 {
 }
 
 .btn:disabled{
-    background: gray;
+    background: transparent;
+    color: transparent;
+    box-shadow: none;
 }
 
 .division {

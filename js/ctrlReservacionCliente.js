@@ -115,7 +115,6 @@ function registroAnterior(usuario){
         document.getElementById('sexo').innerHTML += '<option id="sexoF" value="'+doc.data().SEXO+'">'+doc.data().SEXO+'</option>';
 
         var cel = doc.data().CELULAR;
-        alert("Cel:" + cel);
         // @ts-ignore
         document.getElementById('celular').setAttribute('readonly', true);
         // @ts-ignore
