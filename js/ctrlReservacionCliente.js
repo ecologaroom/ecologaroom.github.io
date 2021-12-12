@@ -265,7 +265,7 @@ async function realizaReservacion(){
     alert("Clave:"+ clv);
 
     var fecha = new Date();
-    var hoy = [fecha.getDate(), fecha.getMonth()+1, fecha.getFullYear()].join('-');
+    const hoy = [fecha.getDate(), fecha.getMonth()+1, fecha.getFullYear()].join('-');
     alert("Fecha HOY:" + hoy);
 
     /**
@@ -275,12 +275,13 @@ async function realizaReservacion(){
     const modeloReservacion= {
       NUM_HABITACION: 102,
       ESTATUS: true, 
-      CLV_HUESPED: clv.trim(), 
-      FECHA_RESERVACION: hoy.trim(), 
-      FECHA_ENTRADA: fe_ll.trim(), 
-      FECHA_SALIDA: fe_sa.trim(), 
-      NUM_HUESPEDES: nu_hu.trim()
+      CLV_HUESPED: clv, 
+      FECHA_RESERVACION: hoy, 
+      FECHA_ENTRADA: fe_ll, 
+      FECHA_SALIDA: fe_sa, 
+      NUM_HUESPEDES: nu_hu
     };
+
     alert("Su reservación ha sido registrada exitosamente.");
     await firestore.collection("RESERVACION").add(modeloReservacion); 
     alert("YEEIII");
