@@ -94,7 +94,7 @@ function registroAnterior(usuario){
       alert("READ ONLY");
       // @ts-ignore
       document.getElementById("correo").innerHTML = "";
-      document.getElementById("correo").innerHTML = '<input id="correo" type="email" readonly/>';
+      document.getElementById("correo").innerHTML = '<input id="correo" value="'+usuario.email+'" readonly/>';
       // @ts-ignore
      // document.getElementById("correo").value = usuario.email;
     }
