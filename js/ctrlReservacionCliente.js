@@ -20,7 +20,7 @@ const formDaoPago = document["formDaoPago"];
     usuario */
 async function protege(usuario) {
   if (tieneRol(usuario,["CLIENTE"])) {
-    /////////////////////////////////////////////// Faltaría consultar sus datos si ya los ha registrado
+    registroAnterior(usuario);
     selectHabitaciones();
   }
 }
@@ -76,6 +76,27 @@ async function logIn() {
   /* Configura el proveedor de Google para que permita seleccionar de una lista. */
   provider.setCustomParameters({ prompt: "select_account" });
   await auth.signInWithRedirect(provider);
+}
+
+/* Busca si ya hay datos del cliente registrados, a partir de su email */
+function registroAnterior(usuario){
+  /* Registros de la colección Cliente, donde el atributo de correo sea igual al email del usuario*/
+  // @ts-ignore
+  firestore.collection("CLIENTE").where("CORREO", "==", usuario.email).get().then(function(snap){
+    if (snap.size > 0) {
+      /* Cuando el número de documentos es 0, agrega un texto HTML. */
+      snap.forEach(function(doc){
+        /* Transformación de tipo de dato TIMESTAMP en Firestore, por tipo Date en JS */
+        document.getElementById("correo").innerHTML += '<option class="tipoHabitaciones" id="tipoHab" value="'+doc.id+'">'+doc.data().NUM_HABITACION+'</option>';
+      });
+    } else {
+      /* Cuando no existe registro de un correo. */
+      alert("Bienvenido a Ecologaroom");
+      // @ts-ignore
+      document.getElementById("correo").value = usuario.email;
+      //'<input class="floating__input" id="correo" type="email" placeholder="Correo" size="50" maxlength="80" required pattern="^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$" required/>'
+    }
+  });
 }
 
 async function registroCliente(){
@@ -313,9 +334,7 @@ function ticket() {
   var fFecha1 = Date.UTC(aFecha1[2],aFecha1[1]-1,aFecha1[0]);
   var fFecha2 = Date.UTC(aFecha2[2],aFecha2[1]-1,aFecha2[0]);
   var dif = fFecha2 - fFecha1;
-  var dias = Math.floor(dif / (1000 * 60 * 60 * 24));
-
-
+  var dias = Math.floor(dif / (1000 * 60 * 60 * 24)); //////////////////////////////////////////////////////////////////////////////////////////////777777777
 
   if(hab == 'Estándar Sencilla'){
     alert("ES Tipo hab:" + hab);
