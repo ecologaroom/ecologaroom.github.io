@@ -91,7 +91,7 @@ function registroAnterior(usuario){
       });
     } else {
       /* Cuando no existe registro de un correo. */
-      alert("READ ONLY");
+      alert("READ");
       // @ts-ignore
       document.getElementById("correo").innerHTML = "";
       document.getElementById("correo").innerHTML = '<input id="correo" value="'+usuario.email+'" readonly/>';
