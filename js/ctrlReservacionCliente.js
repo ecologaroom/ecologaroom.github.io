@@ -143,6 +143,8 @@ async function registroCliente(){
       SEXO: sex, 
       CELULAR: cel
     };
+    alert("correo: " + corr);
+
     await firestore.collection("CLIENTE").add(modeloCliente); 
     alert("Sus datos han sido registrados exitosamente.");
   } catch (e) {

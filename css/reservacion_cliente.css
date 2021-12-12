@@ -132,7 +132,7 @@ aside {
   display: flex;
   flex-direction: column;
   flex-basis: 30%;
-  height: auto;
+  height: 100%;
   margin-left: 0.5em ;
   padding: 1em;
   border-radius: 2%;
