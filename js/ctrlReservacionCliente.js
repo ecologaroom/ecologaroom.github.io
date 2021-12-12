@@ -99,27 +99,29 @@ function registroAnterior(usuario){
         // @ts-ignore
         document.getElementById('ap_paterno').setAttribute('readonly', true);
         // @ts-ignore
-        document.getElementById("ap_paterno").value = doc.data().NOMBRE;
+        document.getElementById("ap_paterno").value = doc.data().AP_PATERNO;
 
         // @ts-ignore
         document.getElementById('ap_materno').setAttribute('readonly', true);
         // @ts-ignore
-        document.getElementById("ap_materno").value = doc.data().NOMBRE;
+        document.getElementById("ap_materno").value = doc.data().AP_MATERNO;
 
         // @ts-ignore
         document.getElementById('edad').setAttribute('readonly', true);
         // @ts-ignore
-        document.getElementById("edad").value = doc.data().NOMBRE;
+        document.getElementById("edad").value = doc.data().EDAD;
+
+        document.getElementById('sexo').innerHTML = "";
 
         // @ts-ignore
-        document.getElementById('sexo').setAttribute('readonly', true);
+        document.getElementById('sexoF').setAttribute('readonly', true);
         // @ts-ignore
-        document.getElementById("sexo").value = doc.data().NOMBRE;
+        document.getElementById("sexoF").value = doc.data().SEXO;
 
         // @ts-ignore
         document.getElementById('celular').setAttribute('readonly', true);
         // @ts-ignore
-        document.getElementById("celular").value = doc.data().NOMBRE;
+        document.getElementById("celular").value = doc.data().CELULAR;
 
         // @ts-ignore
         document.getElementById('regCliente').disabled = true;

@@ -63,6 +63,10 @@ h3 {
     background: #029876;  /* Establecemos que el color de fondo del botón de reservar al posicionarse sobre él sea verde oscuro */
 }
 
+.btn:read-only{
+    background: gray;
+}
+
 .division {
     padding: 4px;
     margin: 2% 1%;
