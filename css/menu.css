@@ -6,7 +6,7 @@
     top: 0%; /* Delimitamos que la posición fija del menú sea el 10% del inicio del margen de hasta arriba */
     left: 0%; /* Delimitamos que la posición fija del menú sea desde el inicio del margen de la izquierda */
     z-index: 2; /* Establecemos que el menú se posicione sobre todo contenido de la página */
-    width: 5%; /* Establecemos que el menú abarque el 10% de la página */
+    width: 8%; /* Establecemos que el menú abarque el 10% de la página */
     height: 100%; /* Establecemos que el menú abarque el 100% de la página */
     background-color: #4faae0; /* Establecemos que el color de fondo del menú sea azul */
     text-align: center; /* Alineamos los elementos del menú al centro del 10% de lo que abarca */

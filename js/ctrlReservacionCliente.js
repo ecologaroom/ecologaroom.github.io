@@ -86,8 +86,16 @@ function registroAnterior(usuario){
     if (snap.size > 0) {
       /* Cuando el número de documentos es 0, agrega un texto HTML. */
       snap.forEach(function(doc){
+        /* Cuando existe registro del correo. */
+        alert("Bienvenido de vuelta a Ecologaroom " + doc.data().NOMBRE);
+
+        // @ts-ignore
+        document.getElementById("correo").value = usuario.email;
+
         /* Transformación de tipo de dato TIMESTAMP en Firestore, por tipo Date en JS */
         document.getElementById("correo").innerHTML += '<option class="tipoHabitaciones" id="tipoHab" value="'+doc.id+'">'+doc.data().NUM_HABITACION+'</option>';
+
+
       });
     } else {
       /* Cuando no existe registro de un correo. */
