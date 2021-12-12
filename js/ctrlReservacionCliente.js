@@ -91,7 +91,7 @@ function registroAnterior(usuario){
       });
     } else {
       /* Cuando no existe registro de un correo. */
-      alert("READ");
+      alert("Bienvenido a Ecologaroom");
       // @ts-ignore
       document.getElementById("correo").value = usuario.email;
     }
