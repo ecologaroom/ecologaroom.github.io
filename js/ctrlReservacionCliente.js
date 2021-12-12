@@ -96,7 +96,7 @@ function registroAnterior(usuario){
       document.getElementById("correo").innerHTML = "";
       document.getElementById("correo").innerHTML = '<input class="floating__input" id="correo" type="email" placeholder="Correo" size="50" maxlength="80" required pattern="^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$" readonly/>';
       // @ts-ignore
-      document.getElementById("correo").value = usuario.email;
+     // document.getElementById("correo").value = usuario.email;
     }
   });
 }
@@ -322,7 +322,7 @@ function ticket() {
   var precio = document.getElementById('precioDia');
   var habitacion = document.getElementById('habitacion');
   var numeroDias = document.getElementById('numeroDias');
-
+  var suma = document.getElementById('sumaPrecio');
 
   // @ts-ignore
   var calEnt = document.getElementById("fecha_llegada").value;
@@ -336,36 +336,41 @@ function ticket() {
   var fFecha1 = Date.UTC(aFecha1[2],aFecha1[1]-1,aFecha1[0]);
   var fFecha2 = Date.UTC(aFecha2[2],aFecha2[1]-1,aFecha2[0]);
   var dif = fFecha2 - fFecha1;
-  var dias = Math.floor(dif / (1000 * 60 * 60 * 24)); 
-
-  alert("Estancia:" + dias);
+  var dias = Math.floor(dif / (1000 * 60 * 60 * 24));
+  
 
   if(hab == 'Estándar Sencilla'){
-    alert("ES Tipo hab:" + hab);
     habitacion.innerHTML = "";
     habitacion.innerHTML = hab;
     precio.innerHTML = "";
     precio.innerHTML = "($600/día)";
     numeroDias.innerHTML = "";
     numeroDias.innerHTML = dias + " días";
+    var sumaHab = dias * 600;
+    suma.innerHTML = "";
+    suma.innerHTML = "$ " + sumaHab;
   }
   if(hab == 'Estándar Plus'){
-    alert("EP Tipo hab:" + hab);
     habitacion.innerHTML = "";
     habitacion.innerHTML = hab;
     precio.innerHTML = "";
     precio.innerHTML = "($1,000/día)";
     numeroDias.innerHTML = "";
     numeroDias.innerHTML = dias + " días";
+    var sumaHab = dias * 1000;
+    suma.innerHTML = "";
+    suma.innerHTML = "$ " + sumaHab;
   }
   if(hab == 'Estándar Familiar'){
-    alert("EF Tipo hab:" + hab);
     habitacion.innerHTML = "";
     habitacion.innerHTML = hab;
     precio.innerHTML = "";
     precio.innerHTML = "($800/día)";
     numeroDias.innerHTML = "";
     numeroDias.innerHTML = dias + " días";
+    var sumaHab = dias * 800;
+    suma.innerHTML = "";
+    suma.innerHTML = "$ " + sumaHab;
   }
 }
 
