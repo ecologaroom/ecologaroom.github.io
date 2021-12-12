@@ -342,6 +342,7 @@ function ticket() {
     habitacion.innerHTML = hab;
     precio.innerHTML = "";
     precio.innerHTML = "($600/día)";
+    numeroDias.innerHTML = "";
     numeroDias.innerHTML = dias + " días";
   }
   if(hab == 'Estándar Plus'){
@@ -350,6 +351,8 @@ function ticket() {
     habitacion.innerHTML = hab;
     precio.innerHTML = "";
     precio.innerHTML = "($1,000/día)";
+    numeroDias.innerHTML = "";
+    numeroDias.innerHTML = dias + " días";
   }
   if(hab == 'Estándar Familiar'){
     alert("EF Tipo hab:" + hab);
@@ -357,6 +360,8 @@ function ticket() {
     habitacion.innerHTML = hab;
     precio.innerHTML = "";
     precio.innerHTML = "($800/día)";
+    numeroDias.innerHTML = "";
+    numeroDias.innerHTML = dias + " días";
   }
 }
 
