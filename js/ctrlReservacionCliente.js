@@ -322,6 +322,8 @@ function ticket() {
   var precio = document.getElementById('precioDia');
   var habitacion = document.getElementById('habitacion');
   var numeroDias = document.getElementById('numeroDias');
+  // @ts-ignore
+  var numeroHabs = document.getElementById('num_hab').value;
   var suma = document.getElementById('sumaPrecio');
   var pago = document.getElementById('pago');
 
@@ -347,10 +349,12 @@ function ticket() {
     precio.innerHTML = "($600/día)";
     numeroDias.innerHTML = "";
     numeroDias.innerHTML = dias + " días";
-    var sumaHab = dias * 600;
+    
+    var sumaHab = numeroHabs * 600;
     suma.innerHTML = "";
     suma.innerHTML = "$ " + sumaHab;
-    var sumPago = sumaHab + (sumaHab*0.15);
+
+    var sumPago = dias * sumaHab;
     pago.innerHTML = "";
     pago.innerHTML = "$ " + sumPago;
   }
@@ -361,10 +365,12 @@ function ticket() {
     precio.innerHTML = "($1,000/día)";
     numeroDias.innerHTML = "";
     numeroDias.innerHTML = dias + " días";
-    var sumaHab = dias * 1000;
+
+    var sumaHab = numeroHabs * 1000;
     suma.innerHTML = "";
     suma.innerHTML = "$ " + sumaHab;
-    var sumPago = sumaHab + (sumaHab*0.15);
+
+    var sumPago = dias * sumaHab;
     pago.innerHTML = "";
     pago.innerHTML = "$ " + sumPago;
   }
@@ -375,10 +381,12 @@ function ticket() {
     precio.innerHTML = "($800/día)";
     numeroDias.innerHTML = "";
     numeroDias.innerHTML = dias + " días";
-    var sumaHab = dias * 800;
+
+    var sumaHab = numeroHabs * 800;
     suma.innerHTML = "";
     suma.innerHTML = "$ " + sumaHab;
-    var sumPago = sumaHab + (sumaHab*0.15);
+
+    var sumPago = dias * sumaHab;
     pago.innerHTML = "";
     pago.innerHTML = "$ " + sumPago;
   }
