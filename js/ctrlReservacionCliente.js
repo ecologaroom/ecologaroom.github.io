@@ -93,10 +93,7 @@ function registroAnterior(usuario){
       /* Cuando no existe registro de un correo. */
       alert("READ");
       // @ts-ignore
-      document.getElementById("correo").innerHTML = "";
-      document.getElementById("correo").innerHTML = '<input id="correo" value="'+usuario.email+'" readonly/>';
-      // @ts-ignore
-     // document.getElementById("correo").value = usuario.email;
+      document.getElementById("correo").value = usuario.email;
     }
   });
 }
