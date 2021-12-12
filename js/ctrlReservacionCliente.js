@@ -119,12 +119,15 @@ async function registroCliente(){
     const ap_ma = document.getElementById("ap_materno").value;
     // @ts-ignore
     const ed = document.getElementById("edad").value;
+    alert("edad: " + ed);
     // @ts-ignore
     const sex = document.getElementById("sexo").value;
+    alert("sexo: " + sex);
     // @ts-ignore
     const cel = document.getElementById("celular").value;
     // @ts-ignore
     const corr = document.getElementById("correo").value;
+    alert("correo: " + corr);
 
     /**
      * @type {
