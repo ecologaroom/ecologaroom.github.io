@@ -244,9 +244,11 @@ function numHabitaciones() {
 async function realizaReservacion(){
   try {
     // @ts-ignore
-    const fe_ll = document.getElementById("fecha_llegada").value;
+    var calEnt = document.getElementById("fecha_llegada").value;
+    const fe_ll = calEnt.toString().split("-").reverse().join("-");
     // @ts-ignore
-    const fe_sa = document.getElementById('fecha_salida').value;
+    var calSal = document.getElementById("fecha_salida").value;
+    const fe_sa = calSal.toString().split("-").reverse().join("-");
     // @ts-ignore
     const nu_hu = document.getElementById("num_hues").value;
     // @ts-ignore

@@ -13,7 +13,7 @@ function copyMail() {
     var mail = "ecologaroom@hotmail.com"
     navigator.clipboard.writeText(mail)
         .then(() => {
-        alert("Número copiado en el portapapeles.");
+        alert("Correo copiado en el portapapeles.");
     })
         .catch(err => {
         console.log('Something went wrong', err);
