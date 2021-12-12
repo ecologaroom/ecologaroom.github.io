@@ -93,7 +93,10 @@ function registroAnterior(usuario){
         document.getElementById("correo").value = usuario.email;
 
         /* Transformación de tipo de dato TIMESTAMP en Firestore, por tipo Date en JS */
-        document.getElementById("nombre").innerHTML = '<input id="nombre" value="'+doc.data().NOMBRE+'" type="text" maxlength="40" readonly/>';
+        document.getElementById("nombre").innerHTML = "";
+        document.getElementById("nombre").innerHTML = '<input id="nombre" type="text" maxlength="40" readonly/>';
+        // @ts-ignore
+        document.getElementById("nombre").value = doc.data().NOMBRE;
 
 
       });
