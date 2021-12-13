@@ -166,12 +166,14 @@ async function registroCliente(){
     };
 
     if(confirm("Una vez acepte, sus datos no podrán ser modificados. ¿Estan correctos?")){
+      alert("Si acepta, pero no ");
       /* Conecta a Firebase para cerrar sesión */
-      await firestore.collection("CLIENTE").add(modeloCliente).then(() => {
-        alert("Sus datos han sido registrados exitosamente.");
-        // @ts-ignore
-        protege();
-      });  
+      await firestore.collection("CLIENTE").add(modeloCliente);
+      alert("Sus datos han sido registrados exitosamente.");
+      // @ts-ignore
+      protege();
+    } else {
+      alert("gggg no aceptó");
     }
   } catch (e) {
     procesaError(e);
