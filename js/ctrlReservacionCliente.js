@@ -151,20 +151,21 @@ async function registroCliente(){
     // @ts-ignore
     const corr = document.getElementById("correo").value;
 
-    const modeloCliente = {
-      CORREO: corr, 
-      NOMBRE: nom, 
-      AP_PATERNO: ap_pa, 
-      AP_MATERNO:ap_ma, 
-      EDAD: ed, 
-      SEXO: sex, 
-      CELULAR: cel
-    };
-
     if(confirm("Una vez acepte, sus datos no podrán ser modificados. ¿Estan correctos?")){
       alert("Si acepta, pero no ");
       /* Conecta a Firebase para cerrar sesión */
-      await firestore.collection("CLIENTE").add(modeloCliente);
+      await firestore.collection("CLIENTE").add(
+        {
+          CORREO: corr, 
+          NOMBRE: nom, 
+          AP_PATERNO: ap_pa, 
+          AP_MATERNO:ap_ma, 
+          EDAD: ed, 
+          SEXO: sex, 
+          CELULAR: cel
+        }
+      );
+
       alert("Sus datos han sido registrados exitosamente.");
       // @ts-ignore
       protege();
