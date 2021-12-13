@@ -87,7 +87,7 @@ function registroAnterior(usuario){
       /* Cuando el número de documentos es 0, agrega un texto HTML. */
       snap.forEach(function(doc){
         /* Cuando existe registro del correo. */
-        alert("Bienvenid@ de vuelta a Ecologaroom " + doc.data().NOMBRE);
+        alert("Bienvenid@ de vuelta " + doc.data().NOMBRE);
         // @ts-ignore
         document.getElementById("correo").value = usuario.email;
 
@@ -135,7 +135,6 @@ function registroAnterior(usuario){
 }
 
 async function registroCliente(){
-  alert("entra a registro cliente");
   try {
     // @ts-ignore
     const nom = document.getElementById("nombre").value;
@@ -171,7 +170,7 @@ async function registroCliente(){
       await firestore.collection("CLIENTE").add(modeloCliente).then(() => {
         alert("Sus datos han sido registrados exitosamente.");
         // @ts-ignore
-        protege(); ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        protege();
       });  
     }
   } catch (e) {
@@ -341,7 +340,6 @@ async function realizaReservacion(){
       NUM_HUESPEDES: nu_hu
     };
 
-    alert("Ya se guardó en el modelo.");
     /* Registros de reservación con clave del cliente. */ 
     // @ts-ignore
     firestore.collection("RESERVACION").where("CLV_HUESPED", "==", clv).get().then(async function(snap){
@@ -349,7 +347,7 @@ async function realizaReservacion(){
         /* Cuando el número de documentos es 0, agrega un texto HTML. */
         snap.forEach(function(doc){
           /* Existen reservaciones */
-          alert("Ya ha realizado una reservación. De lo contrario comuníquese con el hotel.");
+          alert("Ya ha realizado una reservación. De lo contrario, comuníquese con el hotel.");
         });
       } else {
         /* Cuando el número de reservaciones por cliente es nulo, agrega la reservación reciente. */
