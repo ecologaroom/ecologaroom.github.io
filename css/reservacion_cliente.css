@@ -267,3 +267,10 @@ tfoot{
   margin: 30px;
   text-align: center;
 }
+
+@media screen and (max-width: 800px) {
+  aside {
+    display: block;
+    overflow-x: auto;
+  }
+}
