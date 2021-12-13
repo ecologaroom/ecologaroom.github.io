@@ -331,8 +331,8 @@ async function realizaReservacion(){
       import("./tipos.js").
         RESERVACION} */
     const modeloReservacion= {
-      NUM_HABITACION: 102,
-      ESTATUS: true, 
+      NUM_HABITACION: "102",
+      ESTATUS: "true", 
       CLV_HUESPED: clv, 
       FECHA_RESERVACION: hoy, 
       FECHA_ENTRADA: fe_ll, 

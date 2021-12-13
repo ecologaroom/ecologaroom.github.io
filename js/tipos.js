@@ -30,13 +30,13 @@
 // @ts-nocheck
 /**
  * @typedef {Object} RESERVACION
- * @property {number} NUM_HABITACION
- * @property {boolean} ESTATUS
+ * @property {string} NUM_HABITACION
+ * @property {string} ESTATUS
  * @property {string} CLV_HUESPED
  * @property {string} FECHA_RESERVACION
  * @property {string} FECHA_ENTRADA
  * @property {string} FECHA_SALIDA
- * @property {number} NUM_HUESPEDES
+ * @property {string} NUM_HUESPEDES
  */
 
 export const __tipos = 0;
