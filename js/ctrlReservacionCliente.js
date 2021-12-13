@@ -135,7 +135,6 @@ function registroAnterior(usuario){
 }
 
 async function registroCliente(){
-  alert("HOLA NEKO :3");
   try {
     // @ts-ignore
     const nom = document.getElementById("nombre").value;
@@ -151,8 +150,6 @@ async function registroCliente(){
     const cel = document.getElementById("celular").value;
     // @ts-ignore
     const corr = document.getElementById("correo").value;
-    // @ts-ignore
-    const fant = document.getElementById("Fantasma").value;
 
     if(confirm("Una vez acepte, sus datos no podrán ser modificados. ¿Estan correctos?")){
       alert("Si acepta, pero no ");
@@ -166,7 +163,7 @@ async function registroCliente(){
           EDAD: ed, 
           SEXO: sex, 
           CELULAR: cel,
-          VACIO: fant
+          VACIO: ""
         }
       );
 
@@ -329,20 +326,6 @@ async function realizaReservacion(){
     var fecha = new Date();
     const hoy = [fecha.getDate(), fecha.getMonth()+1, fecha.getFullYear()].join('-');
 
-    /**
-     * @type {
-      import("./tipos.js").
-        RESERVACION} */
-    const modeloReservacion= {
-      NUM_HABITACION: "102",
-      ESTATUS: "true", 
-      CLV_HUESPED: clv, 
-      FECHA_RESERVACION: hoy, 
-      FECHA_ENTRADA: fe_ll, 
-      FECHA_SALIDA: fe_sa, 
-      NUM_HUESPEDES: nu_hu
-    };
-
     /* Registros de reservación con clave del cliente. */ 
     // @ts-ignore
     firestore.collection("RESERVACION").where("CLV_HUESPED", "==", clv).get().then(async function(snap){
@@ -355,7 +338,18 @@ async function realizaReservacion(){
       } else {
         /* Cuando el número de reservaciones por cliente es nulo, agrega la reservación reciente. */
         alert("No hay reservaciones, así que debe registrar.");
-        await firestore.collection("RESERVACION").add(modeloReservacion); 
+        await firestore.collection("RESERVACION").add(
+          {
+            NUM_HABITACION: "102",
+            ESTATUS: "true", 
+            CLV_HUESPED: clv, 
+            FECHA_RESERVACION: hoy, 
+            FECHA_ENTRADA: fe_ll, 
+            FECHA_SALIDA: fe_sa, 
+            NUM_HUESPEDES: nu_hu,
+            VACIO: ""
+          }
+        );
         alert("Su reservación ha sido registrada exitosamente.");
       }
     });
