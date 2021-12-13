@@ -162,7 +162,8 @@ async function registroCliente(){
           AP_MATERNO:ap_ma, 
           EDAD: ed, 
           SEXO: sex, 
-          CELULAR: cel
+          CELULAR: cel,
+          VACIO: ""
         }
       );
 

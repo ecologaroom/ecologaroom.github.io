@@ -22,10 +22,12 @@ async function cambiaBoton(usuarioAuth) {
         /* Formulario de reservación para clientes. */
         if (roles.has("CLIENTE")) {
             reserva.btnReservar.addEventListener("click", location.href="reservacion_cliente.html");
+            location.href="reservacion_cliente.html";
         }
         /* Formulario de reservación para trabajadores. */
         if (roles.has("TRABAJADOR")) {
             reserva.btnReservar.addEventListener("click", location.href="reservacion_recepcion.html");
+            location.href="reservacion_recepcion.html";
         }
     } else {
         // No ha iniciado sesión. Pide datos para iniciar sesión.
