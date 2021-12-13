@@ -151,10 +151,6 @@ async function registroCliente(){
     // @ts-ignore
     const corr = document.getElementById("correo").value;
 
-    /**
-     * @type {
-      import("./tipos.js").
-        CLIENTE} */
     const modeloCliente = {
       CORREO: corr, 
       NOMBRE: nom, 
