@@ -135,7 +135,7 @@ function registroAnterior(usuario){
 }
 
 async function registroCliente(){
-  alert("NEKKOOO");
+  alert("NEkOOO");
   try {
     // @ts-ignore
     const nom = document.getElementById("nombre").value;
@@ -151,6 +151,8 @@ async function registroCliente(){
     const cel = document.getElementById("celular").value;
     // @ts-ignore
     const corr = document.getElementById("correo").value;
+    // @ts-ignore
+    const fant = document.getElementById("Fantasma").value;
 
     if(confirm("Una vez acepte, sus datos no podrán ser modificados. ¿Estan correctos?")){
       alert("Si acepta, pero no ");
@@ -164,7 +166,7 @@ async function registroCliente(){
           EDAD: ed, 
           SEXO: sex, 
           CELULAR: cel,
-          VACIO: ""
+          VACIO: fant
         }
       );
 
