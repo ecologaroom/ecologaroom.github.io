@@ -135,7 +135,7 @@ function registroAnterior(usuario){
 }
 
 async function registroCliente(){
-  alert("NEkOOO");
+  alert("HOLA NEKO :3");
   try {
     // @ts-ignore
     const nom = document.getElementById("nombre").value;
