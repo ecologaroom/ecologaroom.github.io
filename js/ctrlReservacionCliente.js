@@ -162,8 +162,7 @@ async function registroCliente(){
           AP_MATERNO:ap_ma, 
           EDAD: ed, 
           SEXO: sex, 
-          CELULAR: cel,
-          VACIO: ""
+          CELULAR: cel
         }
       );
 
@@ -346,8 +345,7 @@ async function realizaReservacion(){
             FECHA_RESERVACION: hoy, 
             FECHA_ENTRADA: fe_ll, 
             FECHA_SALIDA: fe_sa, 
-            NUM_HUESPEDES: nu_hu,
-            VACIO: ""
+            NUM_HUESPEDES: nu_hu
           }
         );
         alert("Su reservación ha sido registrada exitosamente.");
