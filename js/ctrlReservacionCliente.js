@@ -169,8 +169,6 @@ async function registroCliente(){
       alert("Sus datos han sido registrados exitosamente.");
       // @ts-ignore
       protege();
-    } else {
-      alert("gggg no aceptó");
     }
   } catch (e) {
     procesaError(e);
