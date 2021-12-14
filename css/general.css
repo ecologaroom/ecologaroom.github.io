@@ -80,3 +80,20 @@ h3 {
     margin: 1rem 0;
     padding: 1em;
 }
+
+.Fantasma {
+    border: none;
+    color: transparent;
+    line-height: 0px;
+    background: none;
+    box-shadow: none;
+    border-radius: 0px;
+    padding: 0;
+    outline: none;
+    border: none;
+    border-bottom: transparent;
+    transition: 0.2s ease;
+    width: 0%;
+    font-family: 'Outfit';
+    font-size: 1px;
+}
