@@ -12,7 +12,6 @@
  * @property {string} EDAD
  * @property {string} SEXO
  * @property {string} CELULAR
- * @property {string} VACIO
  */
 
 /**

@@ -163,7 +163,6 @@ async function registroCliente(){
           EDAD: ed, 
           SEXO: sex, 
           CELULAR: cel,
-          VACIO: ""
         }
       );
 
