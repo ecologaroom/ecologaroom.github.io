@@ -152,7 +152,6 @@ async function registroCliente(){
     const corr = document.getElementById("correo").value;
 
     if(confirm("Una vez acepte, sus datos no podrán ser modificados. ¿Estan correctos?")){
-      alert("Si acepta, pero no ");
       /* Conecta a Firebase para cerrar sesión */
       await firestore.collection("CLIENTE").add(
         {
@@ -165,7 +164,6 @@ async function registroCliente(){
           CELULAR: cel,
         }
       );
-
       alert("Sus datos han sido registrados exitosamente.");
       // @ts-ignore
       protege();
