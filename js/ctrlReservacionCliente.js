@@ -404,6 +404,9 @@ async function ticket() {
   }
   
   if(hab == 'Estándar Plus'){
+
+    alert("Es habitación plus");
+
     imgHabitacionPlus();
 
     habitacion.innerHTML = "";
@@ -437,12 +440,16 @@ function imgHabitacionSencilla(){
 }
 
 function imgHabitacionPlus(){
+  alert("Entra a imgHabitacionPlus");
+
   storage.ref('Estandar_Plus.jpg').getDownloadURL().then(function(url) {
   // `url` es la URL de descarga para 'images/stars.jpg'
+  alert("La url: " + url);
     try {
       //Inserta imagen del Storage
       // @ts-ignore
-      return document.getElementById("imgHab").src = url;
+      document.getElementById("imgHab").src = url;
+      alert("ya asigno la url");
     } catch (e) {
       procesaError(e);
     }
