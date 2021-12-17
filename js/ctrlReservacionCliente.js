@@ -7,6 +7,10 @@ const firestore = firebase.firestore();
 const auth = firebase.auth();
 auth.onAuthStateChanged(protege, procesaError);
 
+/** Conexión a Firestorage */
+// @ts-ignore
+const storage = firebase.storage();
+
 /** @type {HTMLFormElement} */
 const formDaoCliente = document["formDaoCliente"];
 /** @type {HTMLFormElement} */
@@ -22,6 +26,7 @@ async function protege(usuario) {
   if (tieneRol(usuario,["CLIENTE"])) {
     registroAnterior(usuario);
     selectHabitaciones();
+    imgHabitacionSencilla();
   }
 }
 
@@ -353,7 +358,7 @@ async function realizaReservacion(){
 }
 
 /** Muestra las reservaciones por clv_huesped y se actualiza automáticamente. */
-function ticket() {
+async function ticket() {
   // @ts-ignore
   var hab = document.getElementById('tipoHab').value;
   var precio = document.getElementById('precioDia');
@@ -380,6 +385,8 @@ function ticket() {
   
 
   if(hab == 'Estándar Sencilla'){
+    imgHabitacionSencilla();
+
     habitacion.innerHTML = "";
     habitacion.innerHTML = hab;
     precio.innerHTML = "";
@@ -395,7 +402,10 @@ function ticket() {
     pago.innerHTML = "";
     pago.innerHTML = "$ " + sumPago;
   }
+  
   if(hab == 'Estándar Plus'){
+    imgHabitacionPlus();
+
     habitacion.innerHTML = "";
     habitacion.innerHTML = hab;
     precio.innerHTML = "";
@@ -411,23 +421,34 @@ function ticket() {
     pago.innerHTML = "";
     pago.innerHTML = "$ " + sumPago;
   }
-  if(hab == 'Estándar Familiar'){
-    habitacion.innerHTML = "";
-    habitacion.innerHTML = hab;
-    precio.innerHTML = "";
-    precio.innerHTML = "($800/día)";
-    numeroDias.innerHTML = "";
-    numeroDias.innerHTML = dias + " días";
-
-    var sumaHab = numeroHabs * 800;
-    suma.innerHTML = "";
-    suma.innerHTML = "$ " + sumaHab;
-
-    var sumPago = dias * sumaHab;
-    pago.innerHTML = "";
-    pago.innerHTML = "$ " + sumPago;
-  }
 }
+
+function imgHabitacionSencilla(){
+  storage.ref('Estandar_Sencilla.jpg').getDownloadURL().then(function(url) {
+  // `url` es la URL de descarga para 'images/stars.jpg'
+    try {
+      //Inserta imagen del Storage
+      // @ts-ignore
+      return document.getElementById("imgHab").src = url;
+    } catch (e) {
+      procesaError(e);
+    }
+  });
+}
+
+function imgHabitacionPlus(){
+  storage.ref('Estandar_Plus.jpg').getDownloadURL().then(function(url) {
+  // `url` es la URL de descarga para 'images/stars.jpg'
+    try {
+      //Inserta imagen del Storage
+      // @ts-ignore
+      return document.getElementById("imgHab").src = url;
+    } catch (e) {
+      procesaError(e);
+    }
+  });
+}
+
 
 /** Procesa un error. Muestra el objeto en la consola y un cuadro de alerta con el mensaje. @param {Error} e descripción del error. 
  * @param {Error} e */
