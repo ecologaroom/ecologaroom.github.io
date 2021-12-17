@@ -388,8 +388,6 @@ async function ticket() {
   
 
   if(hab == 'Estándar Sencilla'){
-    imgHabitacionSencilla();
-
     habitacion.innerHTML = "";
     habitacion.innerHTML = hab;
     precio.innerHTML = "";
@@ -407,11 +405,6 @@ async function ticket() {
   }
   
   if(hab == 'Estándar Plus'){
-
-    alert("Es habitación plus");
-
-    imgHabitacionPlus();
-
     habitacion.innerHTML = "";
     habitacion.innerHTML = hab;
     precio.innerHTML = "";
@@ -430,7 +423,7 @@ async function ticket() {
 }
 
 function imgHabitacionSencilla(){
-  alert("Entra a la función de cambiar imgane desde el storage"); ///////////////////////////////////////////////////////////////////////////7
+  alert("Entra a la función de cambiar imagen desde el storage"); ///////////////////////////////////////////////////////////////////////////7
   storage.ref('Estandar_Sencilla.jpg').getDownloadURL().then(function(url) {
     alert("La url: " + url);
   // `url` es la URL de descarga para 'images/stars.jpg'
