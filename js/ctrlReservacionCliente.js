@@ -430,7 +430,7 @@ async function ticket() {
 }
 
 function imgHabitacionSencilla(){
-  alert("Entra a imgHabitacion Sencilla");
+  alert("AQUIIIII"); ///////////////////////////////////////////////////////////////////////////7
   storage.ref('Estandar_Sencilla.jpg').getDownloadURL().then(function(url) {
     alert("La url: " + url);
   // `url` es la URL de descarga para 'images/stars.jpg'
