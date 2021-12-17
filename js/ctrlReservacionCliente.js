@@ -359,6 +359,9 @@ async function realizaReservacion(){
 
 /** Muestra las reservaciones por clv_huesped y se actualiza automáticamente. */
 async function ticket() {
+
+  alert("Entra a ticket");
+  
   // @ts-ignore
   var hab = document.getElementById('tipoHab').value;
   var precio = document.getElementById('precioDia');
