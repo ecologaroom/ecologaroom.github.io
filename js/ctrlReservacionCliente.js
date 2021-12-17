@@ -445,8 +445,7 @@ function imgHabitacionSencilla(){
 }
 
 function imgHabitacionPlus(){
-  alert("Entra a imgHabitacionPlus");
-
+  alert("Entra a imgHabitacionPlus()");
   storage.ref('Estandar_Plus.jpg').getDownloadURL().then(function(url) {
   // `url` es la URL de descarga para 'images/stars.jpg'
   alert("La url: " + url);
