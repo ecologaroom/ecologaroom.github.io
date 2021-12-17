@@ -7,5 +7,5 @@ firebase.initializeApp({
     storageBucket: "ecologaroom.appspot.com",
     messagingSenderId: "509252941570",
     appId: "1:509252941570:web:e651c919f5d0902470741b",
-    measurementId: "G-45R2RM4HV8" /*"${config.measurementId}"*/
+    measurementId: "G-45R2RM4HV8"
 });
