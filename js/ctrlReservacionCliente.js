@@ -361,7 +361,7 @@ async function realizaReservacion(){
 async function ticket() {
 
   alert("Entra a ticket");
-  
+
   // @ts-ignore
   var hab = document.getElementById('tipoHab').value;
   var precio = document.getElementById('precioDia');
@@ -430,7 +430,9 @@ async function ticket() {
 }
 
 function imgHabitacionSencilla(){
+  alert("Entra a imgHabitacion Sencilla");
   storage.ref('Estandar_Sencilla.jpg').getDownloadURL().then(function(url) {
+    alert("La url: " + url);
   // `url` es la URL de descarga para 'images/stars.jpg'
     try {
       //Inserta imagen del Storage
